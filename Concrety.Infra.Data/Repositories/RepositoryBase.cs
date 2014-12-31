@@ -13,7 +13,7 @@ namespace Concrety.Infra.Data.Repositories
     {
 
         protected ConcretyContext Db = new ConcretyContext();
-        protected int IdUsuario;
+        protected int? IdUsuario;
 
         public RepositoryBase()
         {
