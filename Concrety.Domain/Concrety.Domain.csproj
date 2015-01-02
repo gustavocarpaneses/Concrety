@@ -32,6 +32,27 @@
   <ItemGroup>
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Base\UsuarioBase.cs" />
+    <Compile Include="Entities\DiarioEmpreendimento.cs" />
+    <Compile Include="Entities\Enumerators\Empreendimento.cs" />
+    <Compile Include="Entities\Enumerators\FichaVerificacaoServico.cs" />
+    <Compile Include="Entities\Enumerators\Material.cs" />
+    <Compile Include="Entities\Enumerators\Permissionamento.cs" />
+    <Compile Include="Entities\FichaVerificacaoMaterial.cs" />
+    <Compile Include="Entities\FichaVerificacaoServico.cs" />
+    <Compile Include="Entities\FichaVerificacaoServicoUnidade.cs" />
+    <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Entities\Material.cs" />
+    <Compile Include="Entities\Ocorrencia.cs" />
+    <Compile Include="Entities\Papel.cs" />
+    <Compile Include="Entities\Patologia.cs" />
+    <Compile Include="Entities\Permissao.cs" />
+    <Compile Include="Entities\Solucao.cs" />
+    <Compile Include="Entities\Unidade.cs" />
+    <Compile Include="Entities\Empreendimento.cs" />
+    <Compile Include="Entities\MacroServico.cs" />
+    <Compile Include="Entities\EstruturaServico.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Interfaces\Entities\IEnderecoBase.cs" />
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Entities\IUsuarioBase.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
