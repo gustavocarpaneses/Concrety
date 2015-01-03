@@ -27,12 +27,12 @@ namespace Concrety.Infra.Data.Repositories
 
         public void Add(TEntity obj)
         {
-            if (IdUsuario == null)
+            if (!IdUsuario.HasValue)
             {
                 throw new ArgumentNullException("IdUsuario");
             }
 
-            obj.IdUsuarioCadastro = IdUsuario;
+            obj.IdUsuarioCadastro = IdUsuario.Value;
             Db.Set<TEntity>().Add(obj);
             Db.SaveChanges();
         }

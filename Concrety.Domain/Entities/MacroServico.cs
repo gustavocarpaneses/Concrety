@@ -10,8 +10,8 @@ namespace Concrety.Domain.Entities
         public virtual Empreendimento Empreendimento { get; set; }
         public int IdEmpreendimento { get; set; }
 
-        public virtual IEnumerable<EstruturaServico> EstruturasServico { get; set; }
+        public virtual ICollection<EstruturaServico> EstruturasServico { get; set; }
 
-        public virtual IEnumerable<FichaVerificacaoServicoUnidade> FichasVerificacaoServico { get; set; }
+        public virtual ICollection<FichaVerificacaoServicoUnidade> FichasVerificacaoServico { get; set; }
     }
 }

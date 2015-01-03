@@ -8,21 +8,12 @@ namespace Concrety.Domain.Entities
         public string Email { get; set; }
         public string Senha { get; set; }
 
-        public virtual IEnumerable<Papel> Papeis { get; set; }
+        public virtual ICollection<Papel> Papeis { get; set; }
 
-        public virtual IEnumerable<Permissao> Permissoes { get; set; }
+        public virtual ICollection<Permissao> Permissoes { get; set; }
         
-        public virtual IEnumerable<Empreendimento> Empreendimentos { get; set; }
+        public virtual ICollection<Empreendimento> Empreendimentos { get; set; }
 
-        public virtual IEnumerable<UsuarioTelefone> Telefones { get; set; }
-    }
-
-    public class UsuarioTelefone : EntityBase
-    {
-        public string DDD { get; set; }
-        public string Telefone { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
-        public int IdUsuario { get; set; }
+        public virtual ICollection<UsuarioTelefone> Telefones { get; set; }
     }
 }

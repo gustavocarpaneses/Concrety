@@ -1,4 +1,6 @@
-﻿using Concrety.Domain.Interfaces.Entities;
+﻿using Concrety.Domain.Entities;
+using Concrety.Domain.Interfaces.Entities;
+using Concrety.Infra.Data.EntityConfig;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -15,6 +17,27 @@ namespace Concrety.Infra.Data.Context
 
         }
 
+        public DbSet<CondicaoClimatica> CondicoesClimaticas { get; set; }
+        public DbSet<Empreendimento> Empreendimentos { get; set; }
+        public DbSet<EmpreendimentoDiario> EmpreendimentoDiarios { get; set; }
+        public DbSet<EstruturaServico> EstruturasServico { get; set; }
+        public DbSet<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
+        public DbSet<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
+        public DbSet<FichaVerificacaoServicoUnidade> FichasVerificacaoServicoUnidades { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<MacroServico> MacroServicos { get; set; }
+        public DbSet<Material> Materiais { get; set; }
+        public DbSet<Ocorrencia> Ocorrencias { get; set; }
+        public DbSet<Papel> Papeis { get; set; }
+        public DbSet<Patologia> Patologias { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
+        public DbSet<Servico> Servicos { get; set; }
+        public DbSet<ServicoUnidade> ServicosUnidades { get; set; }
+        public DbSet<Solucao> Solucoes { get; set; }
+        public DbSet<Unidade> Unidades { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<UsuarioTelefone> UsuarioTelefones { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
@@ -28,10 +51,26 @@ namespace Concrety.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(255));
 
-            modelBuilder.Properties<decimal>()
-                .Configure(p => p.HasPrecision(18, 2));
-
-            //modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new CondicaoClimaticaConfiguration());
+            modelBuilder.Configurations.Add(new EmpreendimentoConfiguration());
+            modelBuilder.Configurations.Add(new EmpreendimentoDiarioConfiguration());
+            modelBuilder.Configurations.Add(new EstruturaServicoConfiguration());
+            modelBuilder.Configurations.Add(new FichaVerificacaoMaterialConfiguration());
+            modelBuilder.Configurations.Add(new FichaVerificacaoServicoConfiguration());
+            modelBuilder.Configurations.Add(new FichaVerificacaoServicoUnidadeConfiguration());
+            modelBuilder.Configurations.Add(new FornecedorConfiguration());
+            modelBuilder.Configurations.Add(new MacroServicoConfiguration());
+            modelBuilder.Configurations.Add(new MaterialConfiguration());
+            modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
+            modelBuilder.Configurations.Add(new PapelConfiguration());
+            modelBuilder.Configurations.Add(new PatologiaConfiguration());
+            modelBuilder.Configurations.Add(new PermissaoConfiguration());
+            modelBuilder.Configurations.Add(new ServicoConfiguration());
+            modelBuilder.Configurations.Add(new ServicoUnidadeConfiguration());
+            modelBuilder.Configurations.Add(new SolucaoConfiguration());
+            modelBuilder.Configurations.Add(new UnidadeConfiguration());
+            modelBuilder.Configurations.Add(new UsuarioConfiguration());
+            modelBuilder.Configurations.Add(new UsuarioTelefoneConfiguration());
 
         }
 
@@ -44,21 +83,23 @@ namespace Concrety.Infra.Data.Context
                 if (entry.State == EntityState.Added)
                 {
                     entry.Property("DataCadastro").CurrentValue = DateTime.Now;
-                 
+
                     entry.Property("DataUltimaAtualizacao").CurrentValue = DBNull.Value;
                     entry.Property("IdUsuarioUltimaAtualizacao").CurrentValue = DBNull.Value;
 
                     entry.Property("DataExclusao").CurrentValue = DBNull.Value;
                     entry.Property("IdUsuarioExclusao").CurrentValue = DBNull.Value;
+                    
+                    entry.Property("Ativo").CurrentValue = true;
                     entry.Property("Excluido").CurrentValue = false;
                 }
                 else if (entry.State == EntityState.Modified)
                 {
                     entry.Property("DataCadastro").IsModified = false;
                     entry.Property("IdUsuarioCadastro").IsModified = false;
-                    
+
                     entry.Property("DataUltimaAtualizacao").CurrentValue = DateTime.Now;
-                    
+
                     entry.Property("DataExclusao").IsModified = false;
                     entry.Property("IdUsuarioExclusao").IsModified = false;
                 }

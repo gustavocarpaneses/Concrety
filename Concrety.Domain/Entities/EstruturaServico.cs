@@ -20,12 +20,12 @@ namespace Concrety.Domain.Entities
         public int IdMacroServico { get; set; }
 
         public virtual EstruturaServico EstruturaServicoPai { get; set; }
-        public int IdEstruturaServicoPai { get; set; }
+        public int? IdEstruturaServicoPai { get; set; }
 
         public virtual EstruturaServico EstruturaServicoFilho { get; set; }
-        public int IdEstruturaServicoFilho { get; set; }
+        public int? IdEstruturaServicoFilho { get; set; }
 
-        public virtual IEnumerable<Unidade> Unidades { get; set; }
+        public virtual ICollection<Unidade> Unidades { get; set; }
 
     }
 }

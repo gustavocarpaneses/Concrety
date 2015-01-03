@@ -7,6 +7,6 @@ namespace Concrety.Domain.Entities
     {
         public string Nome { get; set; }
 
-        public virtual IEnumerable<Solucao> Solucoes { get; set; }
+        public virtual ICollection<Solucao> Solucoes { get; set; }
     }
 }

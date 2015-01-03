@@ -21,7 +21,7 @@ namespace Concrety.Domain.Entities
         public int IdPatologia { get; set; }
 
         //TODO: Decidir entre armazenar as Imagens em Blob ou algum serviço de Streaming
-        //public virtual IEnumerable<string> Evidencias { get; set; }
-        //public virtual IEnumerable<object[]> Evidencias { get; set; }
+        //public virtual ICollection<string> Evidencias { get; set; }
+        //public virtual ICollection<object[]> Evidencias { get; set; }
     }
 }

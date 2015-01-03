@@ -4,10 +4,10 @@ using System;
 
 namespace Concrety.Domain.Entities
 {
-    public class DiarioEmpreendimento : EntityBase
+    public class EmpreendimentoDiario : EntityBase
     {
         public DateTime Data { get; set; }
-        public CondicoesClimaticas CondicaoClimatica { get; set; }
+        public CondicaoClimatica CondicaoClimatica { get; set; }
         public bool HouveTrabalho { get; set; }
         public int TemperaturaMinima { get; set; }
         public int TemperaturaMaxima { get; set; }

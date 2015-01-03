@@ -21,19 +21,6 @@ namespace Concrety.Domain.Entities
         public virtual Unidade Unidade { get; set; }
         public int? IdUnidade { get; set; }
 
-        public virtual IEnumerable<ServicoUnidade> Servicos { get; set; }
-    }
-
-    public class ServicoUnidade : EntityBase
-    {
-        public virtual FichaVerificacaoServicoUnidade FichaVerificacaoServicoUnidade { get; set; }
-        public int IdFichaVerificacaoServicoUnidade { get; set; }
-
-        public virtual Servico Servico { get; set; }
-        public int IdServico { get; set; }
-
-        public ResultadoServicoUnidade Resultado { get; set; }
-
-        public virtual IEnumerable<Ocorrencia> Ocorrencias { get; set; }
-    }    
+        public virtual ICollection<ServicoUnidade> Servicos { get; set; }
+    }   
 }

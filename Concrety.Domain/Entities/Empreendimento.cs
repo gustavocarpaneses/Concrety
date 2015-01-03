@@ -19,10 +19,10 @@ namespace Concrety.Domain.Entities
         public DateTime DataInicioConstrucao { get; set; }
         public DateTime DataFimConstrucao { get; set; }
         
-        public virtual IEnumerable<MacroServico> MacrosServicos { get; set; }
+        public virtual ICollection<MacroServico> MacrosServicos { get; set; }
 
-        public virtual IEnumerable<DiarioEmpreendimento> Diarios { get; set; }
+        public virtual ICollection<EmpreendimentoDiario> Diarios { get; set; }
 
-        public virtual IEnumerable<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
+        public virtual ICollection<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
     }
 }
