@@ -7,8 +7,8 @@ using Concrety.Data.UnitOfWork;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
-using Concrety.Services.Base;
 using System.Web.Mvc;
+using Concrety.Web;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
 
@@ -20,8 +20,7 @@ namespace Concrety.Bootstrapper.App_Start
         {
             var builder = new ContainerBuilder();
             const string nameOrConnectionString = "name=Concrety";
-            //TODO: Registrar Aplicação web
-            //builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModule<AutofacWebTypesModule>();
             //builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
             builder.RegisterModule(new ServiceModule());
