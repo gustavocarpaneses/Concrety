@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Concrety.Core.Entities.Identity
 {
-    public class AppUser
+    public class ApplicationUser
     {
-        public AppUser()
+        public ApplicationUser()
         {
             Claims = new List<ApplicationUserClaim>();
             Roles = new List<ApplicationUserRole>();
@@ -26,5 +26,6 @@ namespace Concrety.Core.Entities.Identity
         public virtual string SecurityStamp { get; set; }
         public virtual bool TwoFactorEnabled { get; set; }
         public virtual string UserName { get; set; }
+        public virtual ICollection<Empreendimento> Empreendimentos { get; set; }
     }
 }

@@ -21,27 +21,6 @@ namespace Concrety.Data.Context
 
         private ObjectContext _objectContext;
         private DbTransaction _transaction;
-                
-        public DbSet<CondicaoClimatica> CondicoesClimaticas { get; set; }
-        public DbSet<Empreendimento> Empreendimentos { get; set; }
-        public DbSet<EmpreendimentoDiario> EmpreendimentoDiarios { get; set; }
-        public DbSet<EstruturaServico> EstruturasServico { get; set; }
-        public DbSet<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
-        public DbSet<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
-        public DbSet<FichaVerificacaoServicoUnidade> FichasVerificacaoServicoUnidades { get; set; }
-        public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<MacroServico> MacroServicos { get; set; }
-        public DbSet<Material> Materiais { get; set; }
-        public DbSet<Ocorrencia> Ocorrencias { get; set; }
-        public DbSet<Papel> Papeis { get; set; }
-        public DbSet<Patologia> Patologias { get; set; }
-        public DbSet<Permissao> Permissoes { get; set; }
-        public DbSet<Servico> Servicos { get; set; }
-        public DbSet<ServicoUnidade> ServicosUnidades { get; set; }
-        public DbSet<Solucao> Solucoes { get; set; }
-        public DbSet<Unidade> Unidades { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<UsuarioTelefone> UsuarioTelefones { get; set; }
 
         public ConcretyContext(string nameOrConnectionString)
             : base(nameOrConnectionString)

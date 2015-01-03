@@ -1,4 +1,5 @@
-﻿using Concrety.Core.Entities.Identity;
+﻿using Concrety.Core.Entities;
+using Concrety.Core.Entities.Identity;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -18,7 +19,7 @@ namespace Concrety.Identity.Extensions
             return identityResult == null ? null : new ApplicationIdentityResult(identityResult.Errors, identityResult.Succeeded);
         }
 
-        public static ApplicationIdentityUser ToApplicationUser(this AppUser appUser)
+        public static ApplicationIdentityUser ToApplicationUser(this ApplicationUser appUser)
         {
             if (appUser == null)
             {
@@ -28,7 +29,7 @@ namespace Concrety.Identity.Extensions
             return applicationUser.CopyAppUserProperties(appUser);
         }
 
-        public static ApplicationIdentityUser CopyAppUserProperties(this ApplicationIdentityUser applicationIdentityUser, AppUser appUser)
+        public static ApplicationIdentityUser CopyAppUserProperties(this ApplicationIdentityUser applicationIdentityUser, ApplicationUser appUser)
         {
             if (appUser == null)
             {
@@ -73,20 +74,24 @@ namespace Concrety.Identity.Extensions
                     UserId = login.UserId
                 });
             }
+            foreach (var empreendimento in appUser.Empreendimentos)
+            {
+                applicationIdentityUser.Empreendimentos.Add(empreendimento);
+            }
             return applicationIdentityUser;
         }
 
-        public static AppUser ToAppUser(this ApplicationIdentityUser applicationIdentityUser)
+        public static ApplicationUser ToAppUser(this ApplicationIdentityUser applicationIdentityUser)
         {
             if (applicationIdentityUser == null)
             {
                 return null;
             }
-            var appUser = new AppUser();
+            var appUser = new ApplicationUser();
             return appUser.CopyApplicationIdentityUserProperties(applicationIdentityUser);
         }
 
-        public static AppUser CopyApplicationIdentityUserProperties(this AppUser appUser, ApplicationIdentityUser applicationIdentityUser)
+        public static ApplicationUser CopyApplicationIdentityUserProperties(this ApplicationUser appUser, ApplicationIdentityUser applicationIdentityUser)
         {
             if (appUser == null)
             {
@@ -130,6 +135,10 @@ namespace Concrety.Identity.Extensions
                     ProviderKey = login.ProviderKey,
                     UserId = login.UserId
                 });
+            }
+            foreach (var empreendimento in applicationIdentityUser.Empreendimentos)
+            {
+                appUser.Empreendimentos.Add(empreendimento);
             }
             return appUser;
         }
@@ -302,12 +311,12 @@ namespace Concrety.Identity.Extensions
             return list.Select(u => u.ToIdentityRole()).ToList();
         }
 
-        public static IEnumerable<ApplicationIdentityUser> ToApplicationUserList(this IEnumerable<AppUser> list)
+        public static IEnumerable<ApplicationIdentityUser> ToApplicationUserList(this IEnumerable<ApplicationUser> list)
         {
             return list.Select(u => u.ToApplicationUser()).ToList();
         }
 
-        public static IEnumerable<AppUser> ToAppUserList(this IEnumerable<ApplicationIdentityUser> list)
+        public static IEnumerable<ApplicationUser> ToAppUserList(this IEnumerable<ApplicationIdentityUser> list)
         {
             return list.Select(u => u.ToAppUser()).ToList();
         }

@@ -32,17 +32,13 @@
   <ItemGroup>
     <Compile Include="Context\ConcretyContext.cs" />
     <Compile Include="Context\IEntitiesContext.cs" />
-    <Compile Include="EntityConfig\Base\UsuarioBaseConfiguration.cs" />
     <Compile Include="EntityConfig\Base\EntityBaseConfiguration.cs" />
     <Compile Include="EntityConfig\CondicaoClimaticaConfiguration.cs" />
     <Compile Include="EntityConfig\EFConfig.cs" />
-    <Compile Include="EntityConfig\UsuarioTelefoneConfiguration.cs" />
-    <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="EntityConfig\UnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\SolucaoConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoConfiguration.cs" />
-    <Compile Include="EntityConfig\PermissaoConfiguration.cs" />
     <Compile Include="EntityConfig\PatologiaConfiguration.cs" />
     <Compile Include="EntityConfig\PapelConfiguration.cs" />
     <Compile Include="EntityConfig\OcorrenciaConfiguration.cs" />

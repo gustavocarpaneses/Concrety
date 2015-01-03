@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Concrety.Core.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace Concrety.Identity.Models
 {
@@ -6,6 +8,9 @@ namespace Concrety.Identity.Models
     public class ApplicationIdentityUser :
         IdentityUser<int, ApplicationIdentityUserLogin, ApplicationIdentityUserRole, ApplicationIdentityUserClaim>
     {
+
+        public virtual ICollection<Empreendimento> Empreendimentos { get; set; }
+
     }
 
 

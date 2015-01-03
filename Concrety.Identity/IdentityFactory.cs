@@ -14,7 +14,7 @@ namespace Concrety.Identity
             // Configure validation logic for usernames
             manager.UserValidator = new  UserValidator<ApplicationIdentityUser, int>(manager)
             {
-                AllowOnlyAlphanumericUserNames = false,
+                AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true
             };
             // Configure validation logic for passwords
@@ -27,7 +27,7 @@ namespace Concrety.Identity
                 RequireUppercase = true,
             };
             // Configure user lockout defaults
-            manager.UserLockoutEnabledByDefault = true;
+            manager.UserLockoutEnabledByDefault = false;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
@@ -43,6 +43,7 @@ namespace Concrety.Identity
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
+            
             return manager;
         }
 

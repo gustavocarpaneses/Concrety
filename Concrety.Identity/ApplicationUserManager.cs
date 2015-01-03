@@ -144,7 +144,7 @@ namespace Concrety.Identity
             _authenticationManager.Challenge(properties, authenticationTypes);
         }
 
-        public virtual async Task<bool> CheckPasswordAsync(AppUser user, string password)
+        public virtual async Task<bool> CheckPasswordAsync(ApplicationUser user, string password)
         {
             var applicationUser = user.ToApplicationUser();
             var flag = await _userManager.CheckPasswordAsync(applicationUser, password).ConfigureAwait(false);
@@ -158,7 +158,7 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual async Task<ApplicationIdentityResult> CreateAsync(AppUser user)
+        public virtual async Task<ApplicationIdentityResult> CreateAsync(ApplicationUser user)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = await _userManager.CreateAsync(applicationUser).ConfigureAwait(false);
@@ -166,7 +166,7 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual async Task<ApplicationIdentityResult> CreateAsync(AppUser user, string password)
+        public virtual async Task<ApplicationIdentityResult> CreateAsync(ApplicationUser user, string password)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = await _userManager.CreateAsync(applicationUser, password).ConfigureAwait(false);
@@ -174,7 +174,7 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual ClaimsIdentity CreateIdentity(AppUser user, string authenticationType)
+        public virtual ClaimsIdentity CreateIdentity(ApplicationUser user, string authenticationType)
         {
             var applicationUser = user.ToApplicationUser();
             var claimsIdentity = _userManager.CreateIdentity(applicationUser, authenticationType);
@@ -182,7 +182,7 @@ namespace Concrety.Identity
             return claimsIdentity;
         }
 
-        public virtual async Task<ClaimsIdentity> CreateIdentityAsync(AppUser user, string authenticationType)
+        public virtual async Task<ClaimsIdentity> CreateIdentityAsync(ApplicationUser user, string authenticationType)
         {
             var applicationUser = user.ToApplicationUser();
             var claimsIdentity = await _userManager.CreateIdentityAsync(applicationUser, authenticationType).ConfigureAwait(false);
@@ -190,7 +190,7 @@ namespace Concrety.Identity
             return claimsIdentity;
         }
 
-        public virtual ApplicationIdentityResult Create(AppUser user)
+        public virtual ApplicationIdentityResult Create(ApplicationUser user)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = _userManager.Create(applicationUser);
@@ -198,7 +198,7 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual ApplicationIdentityResult Create(AppUser user, string password)
+        public virtual ApplicationIdentityResult Create(ApplicationUser user, string password)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = _userManager.Create(applicationUser, password);
@@ -236,42 +236,42 @@ namespace Concrety.Identity
             return await SignInOrTwoFactor(user, isPersistent).ConfigureAwait(false);
         }
 
-        public virtual async Task<AppUser> FindAsync(ApplicationUserLoginInfo login)
+        public virtual async Task<ApplicationUser> FindAsync(ApplicationUserLoginInfo login)
         {
             var user = await _userManager.FindAsync(login.ToUserLoginInfo()).ConfigureAwait(false);
             return user.ToAppUser();
         }
 
-        public virtual async Task<AppUser> FindAsync(string userName, string password)
+        public virtual async Task<ApplicationUser> FindAsync(string userName, string password)
         {
             var user = await _userManager.FindAsync(userName, password).ConfigureAwait(false);
             return user.ToAppUser();
         }
 
-        public virtual async Task<AppUser> FindByEmailAsync(string email)
+        public virtual async Task<ApplicationUser> FindByEmailAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email).ConfigureAwait(false);
             return user.ToAppUser();
         }
 
-        public virtual AppUser FindById(int userId)
+        public virtual ApplicationUser FindById(int userId)
         {
             return _userManager.FindById(userId).ToAppUser();
         }
 
-        public virtual async Task<AppUser> FindByIdAsync(int userId)
+        public virtual async Task<ApplicationUser> FindByIdAsync(int userId)
         {
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(false);
             return user.ToAppUser();
         }
 
-        public virtual async Task<AppUser> FindByNameAsync(string userName)
+        public virtual async Task<ApplicationUser> FindByNameAsync(string userName)
         {
             var user = await _userManager.FindByNameAsync(userName).ConfigureAwait(false);
             return user.ToAppUser();
         }
 
-        public virtual AppUser FindByName(string userName)
+        public virtual ApplicationUser FindByName(string userName)
         {
             var user = _userManager.FindByName(userName);
             return user.ToAppUser();
@@ -598,7 +598,7 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual async Task<SignInStatus> SignInOrTwoFactor(AppUser user, bool isPersistent)
+        public virtual async Task<SignInStatus> SignInOrTwoFactor(ApplicationUser user, bool isPersistent)
         {
             if (await GetTwoFactorEnabledAsync(user.Id).ConfigureAwait(false) &&
                 !await TwoFactorBrowserRememberedAsync(user.Id).ConfigureAwait(false))
@@ -623,7 +623,7 @@ namespace Concrety.Identity
             _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, identities);
         }
 
-        public virtual void SignIn(AppUser user, bool isPersistent, bool rememberBrowser)
+        public virtual void SignIn(ApplicationUser user, bool isPersistent, bool rememberBrowser)
         {
             // Clear any partial cookies from external or two factor partial sign ins
             SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
@@ -639,7 +639,7 @@ namespace Concrety.Identity
             }
         }
 
-        public virtual async Task SignInAsync(AppUser user, bool isPersistent, bool rememberBrowser)
+        public virtual async Task SignInAsync(ApplicationUser user, bool isPersistent, bool rememberBrowser)
         {
             // Clear any partial cookies from external or two factor partial sign ins
             SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
@@ -710,12 +710,12 @@ namespace Concrety.Identity
             return identityResult.ToApplicationIdentityResult();
         }
 
-        public virtual IEnumerable<AppUser> GetUsers()
+        public virtual IEnumerable<ApplicationUser> GetUsers()
         {
             return _userManager.Users.ToList().ToAppUserList();
         }
 
-        public virtual async Task<IEnumerable<AppUser>> GetUsersAsync()
+        public virtual async Task<IEnumerable<ApplicationUser>> GetUsersAsync()
         {
             var users = await _userManager.Users.ToListAsync().ConfigureAwait(false);
             return users.ToAppUserList();

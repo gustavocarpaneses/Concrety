@@ -36,13 +36,10 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
             modelBuilder.Configurations.Add(new PapelConfiguration());
             modelBuilder.Configurations.Add(new PatologiaConfiguration());
-            modelBuilder.Configurations.Add(new PermissaoConfiguration());
             modelBuilder.Configurations.Add(new ServicoConfiguration());
             modelBuilder.Configurations.Add(new ServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new SolucaoConfiguration());
             modelBuilder.Configurations.Add(new UnidadeConfiguration());
-            modelBuilder.Configurations.Add(new UsuarioConfiguration());
-            modelBuilder.Configurations.Add(new UsuarioTelefoneConfiguration());
         }
 
     }

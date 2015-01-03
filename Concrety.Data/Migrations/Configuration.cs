@@ -16,7 +16,7 @@ namespace Concrety.Data.Migrations
 
         protected override void Seed(ConcretyContext context)
         {
-            context.CondicoesClimaticas.AddOrUpdate(
+            context.Set<CondicaoClimatica>().AddOrUpdate(
                 c => c.Descricao,
                 new CondicaoClimatica { Descricao = "Ensolarado" },
                 new CondicaoClimatica { Descricao = "Nublado" },
