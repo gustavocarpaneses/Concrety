@@ -1,10 +1,9 @@
 ﻿using Concrety.Domain.Interfaces.Entities;
-using System;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Interfaces.Repositories
+namespace Concrety.Domain.Interfaces.Services
 {
-    public interface IRepositoryBase<TEntity> : IDisposable
+    public interface IServiceBase<TEntity> : IServiceBase
         where TEntity : IEntityBase
     {
         void Add(TEntity obj);

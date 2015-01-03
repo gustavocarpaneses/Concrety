@@ -33,6 +33,17 @@
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\Base\UsuarioBase.cs" />
     <Compile Include="Entities\CondicaoClimatica.cs" />
+    <Compile Include="Entities\Enumerators\Identity.cs" />
+    <Compile Include="Entities\Identity\ApplicationAuthenticationDescription.cs" />
+    <Compile Include="Entities\Identity\ApplicationExternalLoginInfo.cs" />
+    <Compile Include="Entities\Identity\ApplicationIdentityResult.cs" />
+    <Compile Include="Entities\Identity\ApplicationMessage.cs" />
+    <Compile Include="Entities\Identity\ApplicationRole.cs" />
+    <Compile Include="Entities\Identity\ApplicationUserClaim.cs" />
+    <Compile Include="Entities\Identity\ApplicationUserLogin.cs" />
+    <Compile Include="Entities\Identity\ApplicationUserLoginInfo.cs" />
+    <Compile Include="Entities\Identity\ApplicationUserRole.cs" />
+    <Compile Include="Entities\Identity\AppUser.cs" />
     <Compile Include="Entities\ServicoUnidade.cs" />
     <Compile Include="Entities\EmpreendimentoDiario.cs" />
     <Compile Include="Entities\Enumerators\FichaVerificacaoServico.cs" />
@@ -58,10 +69,13 @@
     <Compile Include="Interfaces\Entities\IEnderecoBase.cs" />
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Entities\IUsuarioBase.cs" />
+    <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
+    <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase%271.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Base\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
