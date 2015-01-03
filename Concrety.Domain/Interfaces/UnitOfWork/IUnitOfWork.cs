@@ -1,10 +1,10 @@
-﻿using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Interfaces.Repositories;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Repositories;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Concrety.Domain.Interfaces.UnitOfWork
+namespace Concrety.Core.Interfaces.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Concrety.Domain.Interfaces.Identity;
+using Concrety.Core.Interfaces.Identity;
 using Concrety.Identity;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;

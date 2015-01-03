@@ -181,14 +181,15 @@
   <ItemGroup>
     <Compile Include="App_Start\IdentityModule.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="App_Start\ServiceModule.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Concrety.Domain\Concrety.Domain.csproj">
+    <ProjectReference Include="..\Concrety.Domain\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
-      <Name>Concrety.Domain</Name>
+      <Name>Concrety.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Concrety.Data\Concrety.Data.csproj">
       <Project>{d34c7f8e-d295-4b31-a39b-b13761376a16}</Project>
@@ -197,6 +198,10 @@
     <ProjectReference Include="..\Concrety.Identity\Concrety.Identity.csproj">
       <Project>{ea8ba25f-5657-402f-9e18-ed69a88aaae0}</Project>
       <Name>Concrety.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Concrety.Services\Concrety.Services\Concrety.Services.csproj">
+      <Project>{12474593-99d8-4d0d-8caa-e7b1196e3d02}</Project>
+      <Name>Concrety.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Concrety.Web\Concrety.Web.csproj">
       <Project>{0ab0a3f4-f35f-4f99-8f53-e1ddd4a2227f}</Project>

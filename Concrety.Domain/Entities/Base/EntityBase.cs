@@ -1,7 +1,7 @@
-﻿using Concrety.Domain.Interfaces.Entities;
+﻿using Concrety.Core.Interfaces.Entities;
 using System;
 
-namespace Concrety.Domain.Entities.Base
+namespace Concrety.Core.Entities.Base
 {
     public abstract class EntityBase : IEntityBase
     {

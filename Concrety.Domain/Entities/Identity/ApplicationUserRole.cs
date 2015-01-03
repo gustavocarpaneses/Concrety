@@ -1,4 +1,4 @@
-﻿namespace Concrety.Domain.Entities.Identity
+﻿namespace Concrety.Core.Entities.Identity
 {
     public class ApplicationUserRole
     {

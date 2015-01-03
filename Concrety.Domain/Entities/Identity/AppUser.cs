@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Entities.Identity
+namespace Concrety.Core.Entities.Identity
 {
     public class AppUser
     {

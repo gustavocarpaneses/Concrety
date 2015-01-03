@@ -1,5 +1,5 @@
-﻿using Concrety.Domain.Entities;
-using Concrety.Domain.Entities.Base;
+﻿using Concrety.Core.Entities;
+using Concrety.Core.Entities.Base;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig.Base

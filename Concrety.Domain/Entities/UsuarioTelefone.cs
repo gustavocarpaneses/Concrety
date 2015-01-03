@@ -1,6 +1,6 @@
-﻿using Concrety.Domain.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
 
-namespace Concrety.Domain.Entities
+namespace Concrety.Core.Entities
 {
     public class UsuarioTelefone : EntityBase
     {

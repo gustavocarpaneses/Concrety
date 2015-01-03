@@ -1,6 +1,6 @@
 namespace Concrety.Data.Migrations
 {
-    using Concrety.Domain.Entities;
+    using Concrety.Core.Entities;
     using Concrety.Data.Context;
     using System;
     using System.Data.Entity;

@@ -1,7 +1,7 @@
-﻿using Concrety.Domain.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Entities
+namespace Concrety.Core.Entities
 {
     public class Usuario : UsuarioBase
     {

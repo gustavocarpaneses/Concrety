@@ -1,7 +1,7 @@
-﻿using Concrety.Domain.Interfaces.Entities;
+﻿using Concrety.Core.Interfaces.Entities;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Interfaces.Services
+namespace Concrety.Core.Interfaces.Services
 {
     public interface IServiceBase<TEntity> : IServiceBase
         where TEntity : IEntityBase

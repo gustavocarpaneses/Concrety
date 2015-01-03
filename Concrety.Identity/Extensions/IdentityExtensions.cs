@@ -1,4 +1,4 @@
-﻿using Concrety.Domain.Entities.Identity;
+﻿using Concrety.Core.Entities.Identity;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;

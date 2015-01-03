@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infrastructure", "2 - I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Web", "Concrety.Web\Concrety.Web.csproj", "{0AB0A3F4-F35F-4F99-8F53-E1DDD4A2227F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Domain", "Concrety.Domain\Concrety.Domain.csproj", "{8ECDF78E-2747-41D4-A681-F4003ACB8FAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Core", "Concrety.Domain\Concrety.Core.csproj", "{8ECDF78E-2747-41D4-A681-F4003ACB8FAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data", "Concrety.Data\Concrety.Data.csproj", "{D34C7F8E-D295-4B31-A39B-B13761376A16}"
 EndProject

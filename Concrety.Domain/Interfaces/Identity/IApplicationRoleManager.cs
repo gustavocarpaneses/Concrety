@@ -1,9 +1,9 @@
-﻿using Concrety.Domain.Entities.Identity;
+﻿using Concrety.Core.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Concrety.Domain.Interfaces.Identity
+namespace Concrety.Core.Interfaces.Identity
 {
     public interface IApplicationRoleManager :IDisposable
     {

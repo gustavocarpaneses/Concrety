@@ -1,7 +1,7 @@
-﻿using Concrety.Domain.Interfaces.UnitOfWork;
+﻿using Concrety.Core.Interfaces.UnitOfWork;
 using System;
 
-namespace Concrety.Domain.Interfaces.Services
+namespace Concrety.Core.Interfaces.Services
 {
     public interface IServiceBase : IDisposable
     {

@@ -1,8 +1,8 @@
 ﻿using Concrety.Data.Context;
 using Concrety.Data.Repositories;
-using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Interfaces.Repositories;
-using Concrety.Domain.Interfaces.UnitOfWork;
+using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Repositories;
+using Concrety.Core.Interfaces.UnitOfWork;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections;

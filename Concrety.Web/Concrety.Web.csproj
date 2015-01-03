@@ -257,9 +257,9 @@
     <Content Include="Views\App\TodoManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Concrety.Domain\Concrety.Domain.csproj">
+    <ProjectReference Include="..\Concrety.Domain\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
-      <Name>Concrety.Domain</Name>
+      <Name>Concrety.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

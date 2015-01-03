@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Concrety.Domain.Interfaces.Entities
+namespace Concrety.Core.Interfaces.Entities
 {
     public interface IEntityBase
     {

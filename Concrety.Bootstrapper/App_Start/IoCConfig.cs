@@ -4,9 +4,9 @@ using Concrety.Bootstrapper.App_Start;
 using Concrety.Data.Context;
 using Concrety.Data.Repositories;
 using Concrety.Data.UnitOfWork;
-using Concrety.Domain.Interfaces.Repositories;
-using Concrety.Domain.Interfaces.Services;
-using Concrety.Domain.Interfaces.UnitOfWork;
+using Concrety.Core.Interfaces.Repositories;
+using Concrety.Core.Interfaces.Services;
+using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Services.Base;
 using System.Web.Mvc;
 
@@ -24,7 +24,7 @@ namespace Concrety.Bootstrapper.App_Start
             //builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModule<AutofacWebTypesModule>();
             //builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
-            builder.RegisterGeneric(typeof(ServiceBase<>)).As(typeof(IServiceBase<>)).InstancePerRequest();
+            builder.RegisterModule(new ServiceModule());
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             builder.Register<IEntitiesContext>(b =>
             {

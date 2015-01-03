@@ -1,8 +1,8 @@
-﻿using Concrety.Domain.Interfaces.Entities;
+﻿using Concrety.Core.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Interfaces.Repositories
+namespace Concrety.Core.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> : IDisposable
         where TEntity : IEntityBase

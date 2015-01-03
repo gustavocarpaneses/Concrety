@@ -1,7 +1,7 @@
-﻿using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Entities.Enumerators;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Entities.Enumerators;
 
-namespace Concrety.Domain.Entities
+namespace Concrety.Core.Entities
 {
     public class Permissao : EntityBase
     {

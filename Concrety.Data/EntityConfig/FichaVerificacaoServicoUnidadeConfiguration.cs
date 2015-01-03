@@ -1,4 +1,4 @@
-﻿using Concrety.Domain.Entities;
+﻿using Concrety.Core.Entities;
 using Concrety.Data.EntityConfig.Base;
 
 namespace Concrety.Data.EntityConfig

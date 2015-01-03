@@ -1,5 +1,5 @@
-﻿using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Interfaces.Repositories;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Repositories;
 using Concrety.Data.Context;
 using System;
 using System.Collections.Generic;

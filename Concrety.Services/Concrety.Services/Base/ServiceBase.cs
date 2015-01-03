@@ -1,8 +1,8 @@
-﻿using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Interfaces.Entities;
-using Concrety.Domain.Interfaces.Repositories;
-using Concrety.Domain.Interfaces.Services;
-using Concrety.Domain.Interfaces.UnitOfWork;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Entities;
+using Concrety.Core.Interfaces.Repositories;
+using Concrety.Core.Interfaces.Services;
+using Concrety.Core.Interfaces.UnitOfWork;
 using System;
 using System.Collections.Generic;
 

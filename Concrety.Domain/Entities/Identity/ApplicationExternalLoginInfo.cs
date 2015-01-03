@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Concrety.Domain.Entities.Identity
+namespace Concrety.Core.Entities.Identity
 {
     public class ApplicationExternalLoginInfo
     {

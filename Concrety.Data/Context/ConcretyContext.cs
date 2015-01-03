@@ -1,7 +1,7 @@
 ﻿using Concrety.Data.EntityConfig;
-using Concrety.Domain.Entities;
-using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Interfaces.Entities;
+using Concrety.Core.Entities;
+using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Entities;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;

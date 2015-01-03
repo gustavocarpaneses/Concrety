@@ -1,5 +1,5 @@
 ﻿
-namespace Concrety.Domain.Entities.Enumerators
+namespace Concrety.Core.Entities.Enumerators
 {
     public enum Funcionalidades
     {

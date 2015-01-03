@@ -1,8 +1,8 @@
-﻿using Concrety.Domain.Entities.Base;
-using Concrety.Domain.Entities.Enumerators;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Entities.Enumerators;
 using System.Collections.Generic;
 
-namespace Concrety.Domain.Entities
+namespace Concrety.Core.Entities
 {
     public class ServicoUnidade : EntityBase
     {

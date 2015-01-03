@@ -1,4 +1,4 @@
-﻿using Concrety.Domain.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
 using System;
 using System.Data.Entity;
 using System.Threading;

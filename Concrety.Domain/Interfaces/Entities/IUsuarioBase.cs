@@ -1,5 +1,5 @@
 ﻿
-namespace Concrety.Domain.Interfaces.Entities
+namespace Concrety.Core.Interfaces.Entities
 {
     public interface IUsuarioBase : IEntityBase
     {

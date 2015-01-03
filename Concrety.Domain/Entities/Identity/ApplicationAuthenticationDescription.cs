@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace Concrety.Domain.Entities.Identity
+namespace Concrety.Core.Entities.Identity
 {
      public class ApplicationAuthenticationDescription
     {

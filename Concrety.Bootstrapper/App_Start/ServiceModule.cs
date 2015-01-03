@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac;
+using Concrety.Core.Interfaces.Services;
+using Concrety.Services.Base;
 
 namespace Concrety.Bootstrapper.App_Start
 {
-    class ServiceModule
+    public class ServiceModule : Module
     {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterGeneric(typeof(ServiceBase<>)).As(typeof(IServiceBase<>)).InstancePerRequest();
+        }
     }
 }
