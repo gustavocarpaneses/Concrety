@@ -1,21 +1,19 @@
 ﻿using System.Web.Mvc;
 
-namespace Concrety.Web.Controllers {
-    public class HomeController : Controller {
+namespace Concrety.Web.Controllers
+{
+    [Authorize]
+    public class HomeController : Controller
+    {
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult About() {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact() {
-            ViewBag.Message = "Your contact page.";
-
+        
+        [AllowAnonymous]
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "";
             return View();
         }
     }
