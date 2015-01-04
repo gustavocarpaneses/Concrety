@@ -10,6 +10,7 @@ namespace Concrety.Core.Entities.Identity
             Claims = new List<ApplicationUserClaim>();
             Roles = new List<ApplicationUserRole>();
             Logins = new List<ApplicationUserLogin>();
+            Empreendimentos = new List<Empreendimento>();
         }
         public virtual int AccessFailedCount { get; set; }
         public virtual ICollection<ApplicationUserClaim> Claims { get; private set; }

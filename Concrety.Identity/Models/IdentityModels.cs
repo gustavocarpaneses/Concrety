@@ -9,6 +9,11 @@ namespace Concrety.Identity.Models
         IdentityUser<int, ApplicationIdentityUserLogin, ApplicationIdentityUserRole, ApplicationIdentityUserClaim>
     {
 
+        public ApplicationIdentityUser()
+        {
+            Empreendimentos = new List<Empreendimento>();
+        }
+
         public virtual ICollection<Empreendimento> Empreendimentos { get; set; }
 
     }

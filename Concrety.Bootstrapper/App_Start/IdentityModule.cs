@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Concrety.Core.Interfaces.Identity;
+using Concrety.Data.Context;
 using Concrety.Identity;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;
@@ -21,7 +22,7 @@ namespace Concrety.Bootstrapper.App_Start
             builder.RegisterType(typeof(ApplicationUserManager)).As(typeof(IApplicationUserManager)).InstancePerRequest();
             builder.RegisterType(typeof(ApplicationRoleManager)).As(typeof(IApplicationRoleManager)).InstancePerRequest();
             builder.RegisterType(typeof(ApplicationIdentityUser)).As(typeof(IUser<int>)).InstancePerRequest();
-            //builder.Register(b => b.Resolve<IEntitiesContext>() as DbContext).InstancePerRequest();
+            builder.Register(b => b.Resolve<IEntitiesContext>() as DbContext).InstancePerRequest();
             builder.Register(b =>
             {
                 var manager = IdentityFactory.CreateUserManager(b.Resolve<DbContext>());
