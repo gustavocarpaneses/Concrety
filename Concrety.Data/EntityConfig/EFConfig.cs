@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Concrety.Identity.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -34,12 +36,53 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new MacroServicoConfiguration());
             modelBuilder.Configurations.Add(new MaterialConfiguration());
             modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
-            modelBuilder.Configurations.Add(new PapelConfiguration());
             modelBuilder.Configurations.Add(new PatologiaConfiguration());
             modelBuilder.Configurations.Add(new ServicoConfiguration());
             modelBuilder.Configurations.Add(new ServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new SolucaoConfiguration());
             modelBuilder.Configurations.Add(new UnidadeConfiguration());
+
+            ConfigureIdentityEntities(modelBuilder);      
+        }
+
+        private static void ConfigureIdentityEntities(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ApplicationIdentityUserClaim>()
+                .ToTable("UsuariosClaims")
+                .Property(a => a.Id)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<ApplicationIdentityUser>()
+                .ToTable("Usuarios")
+                .HasMany(u => u.Empreendimentos)
+                    .WithMany()
+                        .Map(m => m
+                            .ToTable("UsuariosEmpreendimentos")
+                            .MapLeftKey("IdUsuario")
+                            .MapRightKey("IdEmpreendimento"));
+            
+            modelBuilder.Entity<ApplicationIdentityUser>()
+                .Property(a => a.Id)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<ApplicationIdentityRole>()
+                .ToTable("Papeis")
+                .HasMany(p => p.FichasVerificacaoServico)
+                    .WithMany()
+                        .Map(m => m
+                            .ToTable("FichasVerificacaoServicoPapeis")
+                            .MapLeftKey("IdPapel")
+                            .MapRightKey("IdFichaVerificacaoServico"));
+
+            modelBuilder.Entity<ApplicationIdentityRole>()
+                .Property(a => a.Id)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<ApplicationIdentityUserLogin>()
+                .ToTable("UsuariosLogins");
+
+            modelBuilder.Entity<ApplicationIdentityUserRole>()
+                .ToTable("UsuariosPapeis");  
         }
 
     }

@@ -40,7 +40,6 @@
     <Compile Include="EntityConfig\ServicoUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoConfiguration.cs" />
     <Compile Include="EntityConfig\PatologiaConfiguration.cs" />
-    <Compile Include="EntityConfig\PapelConfiguration.cs" />
     <Compile Include="EntityConfig\OcorrenciaConfiguration.cs" />
     <Compile Include="EntityConfig\MaterialConfiguration.cs" />
     <Compile Include="EntityConfig\MacroServicoConfiguration.cs" />

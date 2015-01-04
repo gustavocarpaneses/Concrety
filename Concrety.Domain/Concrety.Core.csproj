@@ -54,7 +54,6 @@
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\Material.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
-    <Compile Include="Entities\Papel.cs" />
     <Compile Include="Entities\Patologia.cs" />
     <Compile Include="Entities\Servico.cs" />
     <Compile Include="Entities\Solucao.cs" />

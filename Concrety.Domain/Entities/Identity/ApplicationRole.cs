@@ -7,6 +7,7 @@ namespace Concrety.Core.Entities.Identity
         public ApplicationRole()
         {
             Users = new List<ApplicationUserRole>();
+            FichasVerificacaoServico = new List<FichaVerificacaoServico>();
         }
 
         public int Id
@@ -17,5 +18,8 @@ namespace Concrety.Core.Entities.Identity
         public virtual ICollection<ApplicationUserRole> Users{ get; private set; }
 
         public string Name { get; set; }
+
+        public virtual ICollection<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
+
     }
 }

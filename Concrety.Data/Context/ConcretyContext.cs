@@ -22,6 +22,12 @@ namespace Concrety.Data.Context
         private ObjectContext _objectContext;
         private DbTransaction _transaction;
 
+        public ConcretyContext()
+            : base("Concrety")
+        {
+
+        }
+
         public ConcretyContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
@@ -49,7 +55,7 @@ namespace Concrety.Data.Context
 
                     entry.Property("DataExclusao").CurrentValue = DBNull.Value;
                     entry.Property("IdUsuarioExclusao").CurrentValue = DBNull.Value;
-                    
+
                     entry.Property("Ativo").CurrentValue = true;
                     entry.Property("Excluido").CurrentValue = false;
                 }
@@ -85,7 +91,7 @@ namespace Concrety.Data.Context
         {
             return base.Set<TEntity>();
         }
-
+        
         public void SetAsAdded<TEntity>(TEntity entity) where TEntity : EntityBase
         {
             UpdateEntityState(entity, EntityState.Added);

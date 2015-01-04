@@ -11,10 +11,6 @@ namespace Concrety.Data.EntityConfig
             ToTable("FichasVerificacaoServico");
 
             Property(f => f.Nome).IsRequired();
-
-            HasRequired(f => f.Responsavel)
-                .WithMany()
-                .HasForeignKey(f => f.IdPapelResponsavel);
         }
     }
 }

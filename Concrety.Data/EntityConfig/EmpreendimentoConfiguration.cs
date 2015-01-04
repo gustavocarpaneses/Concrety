@@ -16,7 +16,6 @@ namespace Concrety.Data.EntityConfig
             Property(e => e.Complemento).HasMaxLength(50);
             Property(e => e.CEP).HasMaxLength(8);
             Property(e => e.Estado).HasMaxLength(2);
-
         }
     }
 }

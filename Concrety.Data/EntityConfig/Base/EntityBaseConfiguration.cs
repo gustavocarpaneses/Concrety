@@ -1,5 +1,5 @@
-﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Identity.Models;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig.Base
@@ -15,17 +15,17 @@ namespace Concrety.Data.EntityConfig.Base
             Property(e => e.Excluido).IsRequired();
             Property(e => e.DataCadastro).IsRequired();
 
-            HasOptional(e => e.UsuarioCadastro)
-                .WithMany()
-                .HasForeignKey(e => e.IdUsuarioCadastro);
+            //HasOptional(e => e.UsuarioCadastro)
+            //    .WithMany()
+            //    .HasForeignKey(e => e.IdUsuarioCadastro);
 
-            HasOptional(e => e.UsuarioUltimaAtualizacao)
-                .WithMany()
-                .HasForeignKey(e => e.IdUsuarioUltimaAtualizacao);
+            //HasOptional(e => e.UsuarioUltimaAtualizacao)
+            //    .WithMany()
+            //    .HasForeignKey(e => e.IdUsuarioUltimaAtualizacao);
 
-            HasOptional(e => e.UsuarioExclusao)
-                .WithMany()
-                .HasForeignKey(e => e.IdUsuarioExclusao);
+            //HasOptional(e => e.UsuarioExclusao)
+            //    .WithMany()
+            //    .HasForeignKey(e => e.IdUsuarioExclusao);
         }
     }
 }

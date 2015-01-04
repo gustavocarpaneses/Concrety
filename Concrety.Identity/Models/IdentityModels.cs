@@ -1,4 +1,6 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 
@@ -17,18 +19,15 @@ namespace Concrety.Identity.Models
         public virtual ICollection<Empreendimento> Empreendimentos { get; set; }
 
     }
-
-
+    
     public class ApplicationIdentityRole : IdentityRole<int, ApplicationIdentityUserRole>
     {
         public ApplicationIdentityRole()
         {
+            FichasVerificacaoServico = new List<FichaVerificacaoServico>();
         }
-
-        public ApplicationIdentityRole(string name)
-        {
-            Name = name;
-        }
+        
+        public virtual ICollection<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
     }
 
     public class ApplicationIdentityUserRole : IdentityUserRole<int>

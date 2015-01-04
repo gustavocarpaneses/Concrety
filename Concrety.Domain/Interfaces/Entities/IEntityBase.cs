@@ -1,4 +1,4 @@
-﻿using Concrety.Core.Entities.Identity;
+﻿using Concrety.Core.Entities.Base;
 using System;
 
 namespace Concrety.Core.Interfaces.Entities
@@ -13,12 +13,12 @@ namespace Concrety.Core.Interfaces.Entities
         DateTime? DataExclusao { get; set; }
         
         int? IdUsuarioCadastro { get; set; }
-        ApplicationUser UsuarioCadastro { get; set; }
+        //UsuarioBase UsuarioCadastro { get; set; }
 
         int? IdUsuarioUltimaAtualizacao { get; set; }
-        ApplicationUser UsuarioUltimaAtualizacao { get; set; }
+        //UsuarioBase UsuarioUltimaAtualizacao { get; set; }
 
         int? IdUsuarioExclusao { get; set; }
-        ApplicationUser UsuarioExclusao { get; set; }
+        //UsuarioBase UsuarioExclusao { get; set; }
     }
 }

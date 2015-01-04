@@ -7,8 +7,5 @@ namespace Concrety.Core.Entities
     {
         public string Nome { get; set; }
         public virtual ICollection<Servico> Servicos { get; set; }
-        
-        public virtual Papel Responsavel { get; set; }
-        public int IdPapelResponsavel { get; set; }
     }
 }

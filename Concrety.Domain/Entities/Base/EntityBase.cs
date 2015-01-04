@@ -14,12 +14,12 @@ namespace Concrety.Core.Entities.Base
         public DateTime? DataExclusao { get; set; }
 
         public int? IdUsuarioCadastro { get; set; }
-        public ApplicationUser UsuarioCadastro { get; set; }
+        //public UsuarioBase UsuarioCadastro { get; set; }
 
         public int? IdUsuarioUltimaAtualizacao { get; set; }
-        public ApplicationUser UsuarioUltimaAtualizacao { get; set; }
+        //public UsuarioBase UsuarioUltimaAtualizacao { get; set; }
 
         public int? IdUsuarioExclusao { get; set; }
-        public ApplicationUser UsuarioExclusao { get; set; }
+        //public UsuarioBase UsuarioExclusao { get; set; }
     }
 }
