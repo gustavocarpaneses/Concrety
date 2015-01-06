@@ -34,9 +34,11 @@
     <Compile Include="Entities\CondicaoClimatica.cs" />
     <Compile Include="Entities\Enumerators\Identity.cs" />
     <Compile Include="Entities\Identity\ApplicationAuthenticationDescription.cs" />
+    <Compile Include="Entities\Identity\ApplicationClient.cs" />
     <Compile Include="Entities\Identity\ApplicationExternalLoginInfo.cs" />
     <Compile Include="Entities\Identity\ApplicationIdentityResult.cs" />
     <Compile Include="Entities\Identity\ApplicationMessage.cs" />
+    <Compile Include="Entities\Identity\ApplicationRefreshToken.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />
     <Compile Include="Entities\Identity\ApplicationUserClaim.cs" />
     <Compile Include="Entities\Identity\ApplicationUserLogin.cs" />
