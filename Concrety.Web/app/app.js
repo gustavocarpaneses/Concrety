@@ -1,4 +1,4 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('ConcretyApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -28,3 +28,7 @@ app.config(function ($routeProvider) {
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
