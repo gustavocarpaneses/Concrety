@@ -158,7 +158,7 @@
       <Project>{d34c7f8e-d295-4b31-a39b-b13761376a16}</Project>
       <Name>Concrety.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Concrety.Domain\Concrety.Core.csproj">
+    <ProjectReference Include="..\Concrety.Core\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
       <Name>Concrety.Core</Name>
     </ProjectReference>

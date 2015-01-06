@@ -145,7 +145,7 @@
       <Project>{d34c7f8e-d295-4b31-a39b-b13761376a16}</Project>
       <Name>Concrety.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Concrety.Domain\Concrety.Core.csproj">
+    <ProjectReference Include="..\Concrety.Core\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
       <Name>Concrety.Core</Name>
     </ProjectReference>
@@ -157,9 +157,9 @@
       <Project>{12474593-99d8-4d0d-8caa-e7b1196e3d02}</Project>
       <Name>Concrety.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Concrety.Web\Concrety.Web.csproj">
+    <ProjectReference Include="..\Concrety.Web_old\Concrety.Web_old.csproj">
       <Project>{cdd6a4c1-9edd-420f-a3d5-f175d0112c4e}</Project>
-      <Name>Concrety.Web</Name>
+      <Name>Concrety.Web_old</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
