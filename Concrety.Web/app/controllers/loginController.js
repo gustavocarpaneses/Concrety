@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+app.controller('loginController', ['$rootScope', '$scope', '$location', 'authService', function ($rootScope, $scope, $location, authService) {
 
     $scope.loginData = {
         userName: "",
@@ -12,6 +12,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', functio
 
         authService.login($scope.loginData).then(function (response) {
 
+            $rootScope.$broadcast('loginEvent', []);
             $location.path('/home');
 
         },

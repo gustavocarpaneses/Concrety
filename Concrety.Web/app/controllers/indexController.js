@@ -6,9 +6,8 @@ app.controller('indexController', ['$rootScope', '$scope', '$location', 'authSer
         $location.path('/home');
     }
 
-    $scope.alterarEmpreendimento = function (id, nome) {
-        $rootScope.idEmpreendimentoAtual = id;
-        $rootScope.nomeEmpreendimentoAtual = nome;
+    $scope.alterarEmpreendimento = function (empreendimentoAtual) {
+        $rootScope.empreendimentoAtual = empreendimentoAtual;
         $location.path('/home');
     }
 
@@ -16,8 +15,13 @@ app.controller('indexController', ['$rootScope', '$scope', '$location', 'authSer
 
     $scope.empreendimentosUsuario = [];
 
-    accountService.getEmpreendimentos().then(function (results) {
-        $scope.empreendimentosUsuario = results.data;
+    $scope.$on('loginEvent', function (event, args) {
+
+        accountService.getEmpreendimentos().then(function (results) {
+            $scope.empreendimentosUsuario = results.data;
+            $rootScope.empreendimentoAtual = $scope.empreendimentosUsuario[0];
+        });
+
     });
 
 }]);
