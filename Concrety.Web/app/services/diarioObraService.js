@@ -1,7 +1,7 @@
 ﻿'use strict';
-app.factory('ordersService', ['$http', function ($http) {
+app.factory('diarioObraService', ['$http', 'concretySettings', function ($http, concretySettings) {
 
-    var serviceBase = 'http://localhost:51503/';
+    var serviceBase = concretySettings.apiServiceBaseUri;
     var ordersServiceFactory = {};
 
     var _getOrders = function () {

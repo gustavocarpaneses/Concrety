@@ -1,28 +1,29 @@
-﻿var app = angular.module('ConcretyApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('concretyApp', ['ngRoute', 'LocalStorageModule', 'ui.bootstrap', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
     $routeProvider.when("/home", {
         controller: "homeController",
-        templateUrl: "/app/views/home.html"
+        templateUrl: "/app/partials/home.html"
     });
 
     $routeProvider.when("/login", {
         controller: "loginController",
-        templateUrl: "/app/views/login.html"
+        templateUrl: "/app/partials/login.html"
     });
-
-    $routeProvider.when("/signup", {
-        controller: "signupController",
-        templateUrl: "/app/views/signup.html"
-    });
-
-    $routeProvider.when("/orders", {
-        controller: "ordersController",
-        templateUrl: "/app/views/orders.html"
+    
+    $routeProvider.when("/diarioObra", {
+        controller: "diarioObraController",
+        templateUrl: "/app/partials/diarioObra.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });
+});
+
+var serviceBase = 'http://localhost:51503/';
+app.constant('concretySettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'concretyApp'
 });
 
 app.run(['authService', function (authService) {

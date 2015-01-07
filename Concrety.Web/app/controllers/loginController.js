@@ -2,7 +2,7 @@
 app.controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
 
     $scope.loginData = {
-        email: "",
+        userName: "",
         password: ""
     };
 
@@ -12,7 +12,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', functio
 
         authService.login($scope.loginData).then(function (response) {
 
-            $location.path('/orders');
+            $location.path('/home');
 
         },
          function (err) {

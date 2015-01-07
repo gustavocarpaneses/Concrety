@@ -58,25 +58,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
-    <Content Include="app\controllers\ordersController.js" />
-    <Content Include="app\controllers\signupController.js" />
+    <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authService.js" />
-    <Content Include="app\services\ordersService.js" />
-    <Content Include="app\views\home.html" />
-    <Content Include="app\views\login.html" />
-    <Content Include="app\views\orders.html" />
-    <Content Include="app\views\signup.html" />
+    <Content Include="app\services\diarioObraService.js" />
+    <Content Include="app\partials\home.html" />
+    <Content Include="app\partials\login.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,9 @@
     <Content Include="content\less\variables.less" />
     <Content Include="content\sass\_bootswatch.scss" />
     <Content Include="content\sass\_variables.scss" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -95,7 +99,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="content\fonts\" />
+    <Folder Include="app\directives\" />
+    <Folder Include="app\filters\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

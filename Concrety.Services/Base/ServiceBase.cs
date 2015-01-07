@@ -20,11 +20,6 @@ namespace Concrety.Services.Base
             _repository = UnitOfWork.Repository<TEntity>();
         }
 
-        public ServiceBase(IRepositoryBase<TEntity> repository)
-        {
-            _repository = repository;
-        }
-
         public void Add(TEntity obj)
         {
             _repository.Add(obj);

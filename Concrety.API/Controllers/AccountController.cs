@@ -1,4 +1,6 @@
-﻿using Concrety.API.ViewModels;
+﻿using AutoMapper;
+using Concrety.API.ViewModels;
+using Concrety.Core.Entities;
 using Concrety.Core.Entities.Identity;
 using Concrety.Core.Interfaces.Identity;
 using System;
@@ -43,6 +45,14 @@ namespace Concrety.API.Controllers
             }
 
             return Ok();
+        }
+
+        [Authorize]
+        [Route("Empreendimentos")]
+        public async Task<IEnumerable<EmpreendimentoViewModel>> GetEmpreendimentos()
+        {
+            var user = await _userManager.FindByIdAsync(User.Identity.GetUserId());
+            return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos);
         }
         
         private IHttpActionResult GetErrorResult(ApplicationIdentityResult result)

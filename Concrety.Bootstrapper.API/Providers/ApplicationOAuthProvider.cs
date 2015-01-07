@@ -37,8 +37,10 @@ namespace Concrety.Bootstrapper.API.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
+            identity.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+            //identity.AddClaim(new Claim("sub", context.UserName));
+            //identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
         }

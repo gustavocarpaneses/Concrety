@@ -1,7 +1,7 @@
 ﻿'use strict';
-app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
+app.factory('authService', ['$http', '$q', 'localStorageService', 'concretySettings', function ($http, $q, localStorageService, concretySettings) {
 
-    var serviceBase = 'http://localhost:51503/';
+    var serviceBase = concretySettings.apiServiceBaseUri;
     var authServiceFactory = {};
 
     var _authentication = {
@@ -9,19 +9,9 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
         userName: ""
     };
 
-    var _saveRegistration = function (registration) {
-
-        _logOut();
-
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
-            return response;
-        });
-
-    };
-
     var _login = function (loginData) {
 
-        var data = "grant_type=password&username=" + loginData.email + "&password=" + loginData.password;
+        var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
 
         var deferred = $q.defer();
 
@@ -62,7 +52,6 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
 
     }
 
-    authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;

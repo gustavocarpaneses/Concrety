@@ -52,6 +52,7 @@
     <Compile Include="EntityConfig\FichaVerificacaoServicoUnidadeConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EmpreendimentoRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
