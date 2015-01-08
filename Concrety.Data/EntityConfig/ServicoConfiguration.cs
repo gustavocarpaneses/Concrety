@@ -4,20 +4,19 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {
-    public class ServicoConfiguration : EntityBaseConfiguration<ItemVerificacao>
+    public class ServicoConfiguration : EntityBaseConfiguration<Servico>
     {
         public ServicoConfiguration()
         {
             ToTable("Servicos");
 
             Property(s => s.Nome).IsRequired();
-            Property(s => s.Validacao).IsRequired();
+            Property(s => s.Descricao).IsRequired();
+            Property(s => s.Norma).IsRequired().HasColumnType("text");
 
-            Property(s => s.Validacao).HasMaxLength(5000);
-
-            HasRequired(s => s.FichaVerificacaoServico)
-                .WithMany(f => f.Itens)
-                .HasForeignKey(s => s.IdFichaVerificacaoServico);
+            HasRequired(s => s.Nivel)
+                .WithMany(n => n.Servicos)
+                .HasForeignKey(s => s.IdNivel);
         }
     }
 }

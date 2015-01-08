@@ -14,8 +14,8 @@ namespace Concrety.Data.EntityConfig
             Property(o => o.Status).IsRequired();
 
             HasRequired(o => o.ItemVerificacao)
-                .WithMany(s => s.Ocorrencias)
-                .HasForeignKey(o => o.IdItemVerificacao);
+                .WithMany(i => i.Ocorrencias)
+                .HasForeignKey(o => o.IdItemVerificacaoUnidade);
 
             HasRequired(o => o.Patologia)
                 .WithMany()

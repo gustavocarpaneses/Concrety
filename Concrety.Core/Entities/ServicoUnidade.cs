@@ -19,7 +19,6 @@ namespace Concrety.Core.Entities
         public int IdUnidade { get; set; }
 
         public virtual FichaVerificacaoServicoUnidade FichaVerificacaoServico { get; set; }
-        public int IdFichaVerificacaoServicoUnidade { get; set; }
 
     }
 }

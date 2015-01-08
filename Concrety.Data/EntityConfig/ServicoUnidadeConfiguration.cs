@@ -4,22 +4,22 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {
-    public class ServicoUnidadeConfiguration : EntityBaseConfiguration<ItemVerificacaoUnidade>
+    public class ServicoUnidadeConfiguration : EntityBaseConfiguration<ServicoUnidade>
     {
         public ServicoUnidadeConfiguration()
         {
             ToTable("ServicosUnidades");
 
-            Property(s => s.Resultado).IsRequired();
+            Property(s => s.DataInicio).IsRequired();
+            Property(s => s.Status).IsRequired();
 
-            HasRequired(s => s.FichaVerificacaoServicoUnidade)
-                .WithMany(f => f.Itens)
-                .HasForeignKey(s => s.IdFichaVerificacaoServicoUnidade);
-
-            HasRequired(s => s.ItemVerificacao)
+            HasRequired(s => s.Servico)
                 .WithMany()
-                .HasForeignKey(s => s.IdItemVerificacao);
+                .HasForeignKey(s => s.IdServico);
 
+            HasRequired(s => s.Unidade)
+                .WithMany(u => u.Servicos)
+                .HasForeignKey(s => s.IdUnidade);
         }
     }
 }

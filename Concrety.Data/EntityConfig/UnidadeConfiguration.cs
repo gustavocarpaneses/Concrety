@@ -13,7 +13,7 @@ namespace Concrety.Data.EntityConfig
             Property(u => u.Nome).IsRequired();
 
             HasRequired(u => u.Nivel)
-                .WithMany(e => e.Unidades)
+                .WithMany(n => n.Unidades)
                 .HasForeignKey(u => u.IdNivel);
 
             HasOptional(u => u.UnidadePai)

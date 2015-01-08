@@ -6,8 +6,8 @@ namespace Concrety.Core.Entities
 {
     public class FichaVerificacaoMaterial : EntityBase
     {
-        public virtual Empreendimento Empreendimento { get; set; }
-        public int IdEmpreendimento { get; set; }
+        public virtual Unidade Unidade { get; set; }
+        public int IdUnidade { get; set; }
 
         public string NotaFiscal { get; set; }
         public DateTime Data { get; set; }

@@ -14,7 +14,6 @@ namespace Concrety.Core.Entities
         public int IdNivel { get; set; }
 
         public virtual FichaVerificacaoServico FichaVerificacaoServico { get; set; }
-        public int IdFichaVerificacaoServico { get; set; }
 
         public ICollection<Patologia> Patologias { get; set; }
     }

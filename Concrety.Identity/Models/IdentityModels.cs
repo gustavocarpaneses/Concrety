@@ -22,12 +22,6 @@ namespace Concrety.Identity.Models
     
     public class ApplicationIdentityRole : IdentityRole<int, ApplicationIdentityUserRole>
     {
-        public ApplicationIdentityRole()
-        {
-            FichasVerificacaoServico = new List<FichaVerificacaoServico>();
-        }
-        
-        public virtual ICollection<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
     }
 
     public class ApplicationIdentityUserRole : IdentityUserRole<int>

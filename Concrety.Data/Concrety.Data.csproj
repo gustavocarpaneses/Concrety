@@ -35,10 +35,12 @@
     <Compile Include="EntityConfig\Base\EntityBaseConfiguration.cs" />
     <Compile Include="EntityConfig\CondicaoClimaticaConfiguration.cs" />
     <Compile Include="EntityConfig\EFConfig.cs" />
-    <Compile Include="EntityConfig\UnidadeConfiguration.cs" />
-    <Compile Include="EntityConfig\SolucaoConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoConfiguration.cs" />
+    <Compile Include="EntityConfig\UnidadeConfiguration.cs" />
+    <Compile Include="EntityConfig\SolucaoConfiguration.cs" />
+    <Compile Include="EntityConfig\ItemVerificacaoUnidadeConfiguration.cs" />
+    <Compile Include="EntityConfig\ItemVerificacaoConfiguration.cs" />
     <Compile Include="EntityConfig\PatologiaConfiguration.cs" />
     <Compile Include="EntityConfig\OcorrenciaConfiguration.cs" />
     <Compile Include="EntityConfig\MaterialConfiguration.cs" />
@@ -46,7 +48,7 @@
     <Compile Include="EntityConfig\FornecedorConfiguration.cs" />
     <Compile Include="EntityConfig\FichaVerificacaoServicoConfiguration.cs" />
     <Compile Include="EntityConfig\FichaVerificacaoMaterialConfiguration.cs" />
-    <Compile Include="EntityConfig\EstruturaServicoConfiguration.cs" />
+    <Compile Include="EntityConfig\NivelConfiguration.cs" />
     <Compile Include="EntityConfig\EmpreendimentoConfiguration.cs" />
     <Compile Include="EntityConfig\EmpreendimentoDiarioConfiguration.cs" />
     <Compile Include="EntityConfig\FichaVerificacaoServicoUnidadeConfiguration.cs" />

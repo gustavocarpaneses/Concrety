@@ -11,6 +11,11 @@ namespace Concrety.Data.EntityConfig
             ToTable("Patologias");
 
             Property(p => p.Nome).IsRequired();
+
+            HasRequired(p => p.Servico)
+                .WithMany(s => s.Patologias)
+                .HasForeignKey(p => p.IdServico);
+
         }
     }
 }

@@ -9,20 +9,14 @@ namespace Concrety.Data.EntityConfig
         {
             ToTable("FichasVerificacaoServicoUnidades");
 
-            Property(f => f.DataAbertura).IsRequired();
-            Property(f => f.Status).IsRequired();
-
             HasRequired(f => f.FichaVerificacaoServico)
                 .WithMany()
                 .HasForeignKey(f => f.IdFichaVerificacaoServico);
 
-            HasRequired(f => f.MacroServico)
-                .WithMany(m => m.FichasVerificacaoServico)
-                .HasForeignKey(f => f.IdMacroServico);
-
-            HasOptional(f => f.Unidade)
-                .WithMany(u => u.FichasVerificacaoServico)
-                .HasForeignKey(f => f.IdUnidade);
+            //TODO: Não está criando a FK
+            HasRequired(f => f.Servico)
+                .WithRequiredPrincipal(s => s.FichaVerificacaoServico)
+                .Map(_ => _.MapKey("IdServicoUnidade"));            
         }
     }
 }

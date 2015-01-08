@@ -11,6 +11,11 @@ namespace Concrety.Data.EntityConfig
             ToTable("FichasVerificacaoServico");
 
             Property(f => f.Nome).IsRequired();
+
+            //TODO: Não está criando a FK
+            HasRequired(f => f.Servico)
+                .WithRequiredPrincipal(s => s.FichaVerificacaoServico)
+                .Map(_ => _.MapKey("IdServico"));
         }
     }
 }

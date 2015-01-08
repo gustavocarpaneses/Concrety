@@ -22,7 +22,5 @@ namespace Concrety.Core.Entities
         public virtual ICollection<MacroServico> MacrosServicos { get; set; }
 
         public virtual ICollection<EmpreendimentoDiario> Diarios { get; set; }
-
-        public virtual ICollection<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
     }
 }

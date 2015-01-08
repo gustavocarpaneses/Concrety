@@ -29,6 +29,6 @@ namespace Concrety.Core.Entities
         public virtual ICollection<Unidade> Unidades { get; set; }
 
         public virtual ICollection<Servico> Servicos { get; set; }
-
+        
     }
 }

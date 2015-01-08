@@ -16,5 +16,7 @@ namespace Concrety.Core.Entities
         public virtual ICollection<Unidade> SubUnidades { get; set; }
 
         public virtual ICollection<ServicoUnidade> Servicos { get; set; }
+
+        public virtual ICollection<FichaVerificacaoMaterial> FichasVerificacaoMaterial { get; set; }
     }
 }

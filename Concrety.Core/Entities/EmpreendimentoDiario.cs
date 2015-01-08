@@ -7,7 +7,6 @@ namespace Concrety.Core.Entities
     public class EmpreendimentoDiario : EntityBase
     {
         public DateTime Data { get; set; }
-        public CondicaoClimatica CondicaoClimatica { get; set; }
         public bool HouveTrabalho { get; set; }
         public int TemperaturaMinima { get; set; }
         public int TemperaturaMaxima { get; set; }
@@ -33,5 +32,8 @@ namespace Concrety.Core.Entities
 
         public virtual Empreendimento Empreendimento { get; set; }
         public int IdEmpreendimento { get; set; }
+
+        public virtual CondicaoClimatica CondicaoClimatica { get; set; }
+        public int IdCondicaoClimatica { get; set; }
     }
 }

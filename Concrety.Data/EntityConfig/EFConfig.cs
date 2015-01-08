@@ -28,20 +28,22 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new CondicaoClimaticaConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoDiarioConfiguration());
-            modelBuilder.Configurations.Add(new EstruturaServicoConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoMaterialConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoServicoConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new FornecedorConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new MacroServicoConfiguration());
             modelBuilder.Configurations.Add(new MaterialConfiguration());
+            modelBuilder.Configurations.Add(new NivelConfiguration());
             modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
             modelBuilder.Configurations.Add(new PatologiaConfiguration());
             modelBuilder.Configurations.Add(new ServicoConfiguration());
             modelBuilder.Configurations.Add(new ServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new SolucaoConfiguration());
             modelBuilder.Configurations.Add(new UnidadeConfiguration());
-
+            
             ConfigureIdentityEntities(modelBuilder);      
         }
 
@@ -67,14 +69,6 @@ namespace Concrety.Data.EntityConfig
 
             modelBuilder.Entity<ApplicationIdentityRole>()
                 .ToTable("Papeis")
-                .HasMany(p => p.FichasVerificacaoServico)
-                    .WithMany()
-                        .Map(m => m
-                            .ToTable("FichasVerificacaoServicoPapeis")
-                            .MapLeftKey("IdPapel")
-                            .MapRightKey("IdFichaVerificacaoServico"));
-
-            modelBuilder.Entity<ApplicationIdentityRole>()
                 .Property(a => a.Id)
                     .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 

@@ -219,10 +219,6 @@ namespace Concrety.Identity.Extensions
             {
                 applicationRole.Users.Add(userRole.ToApplicationUserRole());
             }
-            foreach (var fichaVerificacaoServico in identityRole.FichasVerificacaoServico)
-            {
-                applicationRole.FichasVerificacaoServico.Add(fichaVerificacaoServico);
-            }
             return applicationRole;
         }
 
@@ -251,10 +247,6 @@ namespace Concrety.Identity.Extensions
             foreach (var userRole in applicationRole.Users)
             {
                 identityRole.Users.Add(userRole.ToIdentityUserRole());
-            }
-            foreach (var fichaVerificacaoServico in applicationRole.FichasVerificacaoServico)
-            {
-                identityRole.FichasVerificacaoServico.Add(fichaVerificacaoServico);
             }
             return identityRole;
         }
