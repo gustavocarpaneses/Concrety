@@ -12,9 +12,9 @@ namespace Concrety.Data.EntityConfig
 
             Property(u => u.Nome).IsRequired();
 
-            HasRequired(u => u.EstruturaServico)
+            HasRequired(u => u.Nivel)
                 .WithMany(e => e.Unidades)
-                .HasForeignKey(u => u.IdEstruturaServico);
+                .HasForeignKey(u => u.IdNivel);
 
             HasOptional(u => u.UnidadePai)
                 .WithMany(u => u.SubUnidades)

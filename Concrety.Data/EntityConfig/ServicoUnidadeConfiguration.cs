@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {
-    public class ServicoUnidadeConfiguration : EntityBaseConfiguration<ServicoUnidade>
+    public class ServicoUnidadeConfiguration : EntityBaseConfiguration<ItemVerificacaoUnidade>
     {
         public ServicoUnidadeConfiguration()
         {
@@ -13,12 +13,12 @@ namespace Concrety.Data.EntityConfig
             Property(s => s.Resultado).IsRequired();
 
             HasRequired(s => s.FichaVerificacaoServicoUnidade)
-                .WithMany(f => f.Servicos)
+                .WithMany(f => f.Itens)
                 .HasForeignKey(s => s.IdFichaVerificacaoServicoUnidade);
 
-            HasRequired(s => s.Servico)
+            HasRequired(s => s.ItemVerificacao)
                 .WithMany()
-                .HasForeignKey(s => s.IdServico);
+                .HasForeignKey(s => s.IdItemVerificacao);
 
         }
     }

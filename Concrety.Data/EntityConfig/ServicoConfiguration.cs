@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {
-    public class ServicoConfiguration : EntityBaseConfiguration<Servico>
+    public class ServicoConfiguration : EntityBaseConfiguration<ItemVerificacao>
     {
         public ServicoConfiguration()
         {
@@ -16,7 +16,7 @@ namespace Concrety.Data.EntityConfig
             Property(s => s.Validacao).HasMaxLength(5000);
 
             HasRequired(s => s.FichaVerificacaoServico)
-                .WithMany(f => f.Servicos)
+                .WithMany(f => f.Itens)
                 .HasForeignKey(s => s.IdFichaVerificacaoServico);
         }
     }

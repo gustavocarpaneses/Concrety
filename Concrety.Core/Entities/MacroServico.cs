@@ -10,8 +10,7 @@ namespace Concrety.Core.Entities
         public virtual Empreendimento Empreendimento { get; set; }
         public int IdEmpreendimento { get; set; }
 
-        public virtual ICollection<EstruturaServico> EstruturasServico { get; set; }
+        public virtual ICollection<Nivel> EstruturasServico { get; set; }
 
-        public virtual ICollection<FichaVerificacaoServicoUnidade> FichasVerificacaoServico { get; set; }
     }
 }

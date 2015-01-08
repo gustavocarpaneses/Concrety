@@ -6,6 +6,11 @@ namespace Concrety.Core.Entities
     public class FichaVerificacaoServico : EntityBase
     {
         public string Nome { get; set; }
-        public virtual ICollection<Servico> Servicos { get; set; }
+        public string Descricao { get; set; }
+
+        public virtual Servico Servico { get; set; }
+        public int IdServico { get; set; }
+
+        public virtual ICollection<ItemVerificacao> Itens { get; set; }
     }
 }

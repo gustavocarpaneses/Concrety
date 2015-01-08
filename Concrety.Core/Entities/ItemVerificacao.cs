@@ -1,21 +1,14 @@
 ﻿using Concrety.Core.Entities.Base;
-using System.Collections.Generic;
 
 namespace Concrety.Core.Entities
 {
-    public class Servico : EntityBase
+    public class ItemVerificacao : EntityBase
     {
-
         public string Nome { get; set; }
+        public string Validacao { get; set; }
         public string Descricao { get; set; }
-        public string Norma { get; set; }
-
-        public virtual Nivel Nivel { get; set; }
-        public int IdNivel { get; set; }
 
         public virtual FichaVerificacaoServico FichaVerificacaoServico { get; set; }
         public int IdFichaVerificacaoServico { get; set; }
-
-        public ICollection<Patologia> Patologias { get; set; }
     }
 }

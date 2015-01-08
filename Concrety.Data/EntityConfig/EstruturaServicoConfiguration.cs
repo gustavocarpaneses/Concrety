@@ -4,7 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {
-    public class EstruturaServicoConfiguration : EntityBaseConfiguration<EstruturaServico>
+    public class EstruturaServicoConfiguration : EntityBaseConfiguration<Nivel>
     {
         public EstruturaServicoConfiguration()
         {
@@ -16,13 +16,13 @@ namespace Concrety.Data.EntityConfig
                 .WithMany(m => m.EstruturasServico)
                 .HasForeignKey(e => e.IdMacroServico);
 
-            HasOptional(e => e.EstruturaServicoPai)
+            HasOptional(e => e.NivelPai)
                 .WithMany()
-                .HasForeignKey(e => e.IdEstruturaServicoPai);
+                .HasForeignKey(e => e.IdNivelPai);
 
-            HasOptional(e => e.EstruturaServicoFilho)
+            HasOptional(e => e.NivelFilho)
                 .WithMany()
-                .HasForeignKey(e => e.IdEstruturaServicoFilho);
+                .HasForeignKey(e => e.IdNivelFilho);
         }
     }
 }

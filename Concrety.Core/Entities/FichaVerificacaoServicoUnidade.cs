@@ -7,20 +7,12 @@ namespace Concrety.Core.Entities
 {
     public class FichaVerificacaoServicoUnidade : EntityBase
     {
-        public DateTime DataAbertura { get; set; }
-        public DateTime DataFechamento { get; set; }
-
-        public StatusFichaVerificacaoServico Status { get; set; }
-
         public virtual FichaVerificacaoServico FichaVerificacaoServico { get; set; }
         public int IdFichaVerificacaoServico { get; set; }
 
-        public virtual MacroServico MacroServico { get; set; }
-        public int IdMacroServico { get; set; }
+        public virtual ServicoUnidade Servico { get; set; }
+        public int IdServicoUnidade { get; set; }
 
-        public virtual Unidade Unidade { get; set; }
-        public int? IdUnidade { get; set; }
-
-        public virtual ICollection<ServicoUnidade> Servicos { get; set; }
+        public virtual ICollection<ItemVerificacaoUnidade> Itens { get; set; }
     }   
 }

@@ -14,8 +14,8 @@ namespace Concrety.Core.Entities
 
         public StatusOcorrencia Status { get; set; }
 
-        public virtual ServicoUnidade Servico { get; set; }
-        public int IdServico { get; set; }
+        public virtual ItemVerificacaoUnidade ItemVerificacao { get; set; }
+        public int IdItemVerificacao { get; set; }
 
         public virtual Patologia Patologia { get; set; }
         public int IdPatologia { get; set; }

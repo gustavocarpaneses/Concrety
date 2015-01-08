@@ -1,7 +1,5 @@
-﻿using Concrety.Data.EntityConfig;
-using Concrety.Core.Entities;
-using Concrety.Core.Entities.Base;
-using Concrety.Core.Interfaces.Entities;
+﻿using Concrety.Core.Entities.Base;
+using Concrety.Data.EntityConfig;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -10,7 +8,6 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading.Tasks;
 

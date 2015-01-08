@@ -7,14 +7,14 @@ namespace Concrety.Core.Entities
     {
         public string Nome { get; set; }
 
-        public virtual EstruturaServico EstruturaServico { get; set; }
-        public int IdEstruturaServico { get; set; }
+        public virtual Nivel Nivel { get; set; }
+        public int IdNivel { get; set; }
 
         public virtual Unidade UnidadePai { get; set; }
         public int? IdUnidadePai { get; set; }
 
         public virtual ICollection<Unidade> SubUnidades { get; set; }
 
-        public virtual ICollection<FichaVerificacaoServicoUnidade> FichasVerificacaoServico { get; set; }
+        public virtual ICollection<ServicoUnidade> Servicos { get; set; }
     }
 }

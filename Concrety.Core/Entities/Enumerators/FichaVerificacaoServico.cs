@@ -1,7 +1,7 @@
 ﻿
 namespace Concrety.Core.Entities.Enumerators
 {
-    public enum StatusFichaVerificacaoServico
+    public enum StatusServicoUnidade
     {
         NaoIniciada = 10,
         EmAndamento = 20,
