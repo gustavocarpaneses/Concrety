@@ -13,10 +13,9 @@ namespace Concrety.Data.EntityConfig
                 .WithMany()
                 .HasForeignKey(f => f.IdFichaVerificacaoServico);
 
-            //TODO: Não está criando a FK
             HasRequired(f => f.Servico)
-                .WithRequiredPrincipal(s => s.FichaVerificacaoServico)
-                .Map(_ => _.MapKey("IdServicoUnidade"));            
+                .WithMany(s => s.FichasVerificacaoServico)
+                .HasForeignKey(f => f.IdServicoUnidade);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Concrety.Core.Entities
         public virtual Nivel Nivel { get; set; }
         public int IdNivel { get; set; }
 
-        public virtual FichaVerificacaoServico FichaVerificacaoServico { get; set; }
+        public virtual ICollection<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
     }
 }

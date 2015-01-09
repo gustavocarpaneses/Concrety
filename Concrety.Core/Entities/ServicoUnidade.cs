@@ -1,6 +1,8 @@
 ﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Entities.Enumerators;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Concrety.Core.Entities
 {
@@ -18,7 +20,7 @@ namespace Concrety.Core.Entities
         public virtual Unidade Unidade { get; set; }
         public int IdUnidade { get; set; }
 
-        public virtual FichaVerificacaoServicoUnidade FichaVerificacaoServico { get; set; }
+        public virtual ICollection<FichaVerificacaoServicoUnidade> FichasVerificacaoServico { get; set; }
 
     }
 }
