@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.factory('accountService', ['$http', '$q', 'concretySettings', function ($http, $q, concretySettings) {
+app.factory('accountService', ['$http', 'concretySettings', function ($http, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
     var accountServiceFactory = {};

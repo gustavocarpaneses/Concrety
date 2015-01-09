@@ -69,14 +69,24 @@
     <Content Include="app\services\diarioObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
+    <Content Include="app\services\materiaisService.js" />
+    <Content Include="app\services\servicosService.js" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\kendo.bootstrap.min.css" />
+    <Content Include="content\css\kendo.common-bootstrap.min.css" />
+    <Content Include="content\css\kendo.common.min.css" />
+    <Content Include="content\css\kendo.flat.min.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
+    <Content Include="scripts\cultures\kendo.culture.pt-BR.min.js" />
+    <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\kendo.all.min.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\messages\kendo.messages.pt-BR.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -91,6 +101,8 @@
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="scripts\jquery.min.map" />
+    <Content Include="scripts\kendo.all.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

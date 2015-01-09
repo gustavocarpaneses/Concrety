@@ -2,12 +2,10 @@ namespace Concrety.Data.Migrations
 {
     using Concrety.Core.Entities;
     using Concrety.Data.Context;
+    using Concrety.Identity;
     using Concrety.Identity.Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ConcretyContext>
     {
@@ -25,13 +23,31 @@ namespace Concrety.Data.Migrations
                 new CondicaoClimatica { Descricao = "Chuvoso" }
             );
 
-            context.Roles.AddOrUpdate(
-                r => r.Name,
-                new ApplicationIdentityRole { Name = "Engenheiro Calculista" },
-                new ApplicationIdentityRole { Name = "Engenheiro de Campo" },
-                new ApplicationIdentityRole { Name = "Gerente de projeto" },
-                new ApplicationIdentityRole { Name = "Financeiro/Administrativo" }
-            );
+            var dataInicio = DateTime.Today;
+            var dataFim = DateTime.Today.AddYears(1);
+
+            var empreendimentos = new []
+            {
+                new Empreendimento { Nome = "Empreendimento 01", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim },
+                new Empreendimento { Nome = "Empreendimento 02", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim },
+                new Empreendimento { Nome = "Empreendimento 03", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim }
+            };
+
+            //context.Set<Empreendimento>().AddOrUpdate(
+            //    e => e.Nome,
+            //    empreendimentos);
+
+            var userManager = IdentityFactory.CreateUserManager(context);
+
+            context.Users.AddOrUpdate(
+                u => u.UserName,
+                new ApplicationIdentityUser
+                {
+                    UserName = "gcarpane@gmail.com",
+                    Email = "gcarpane@gmail.com",
+                    PasswordHash = userManager.PasswordHasher.HashPassword("Teste@123"),
+                    Empreendimentos = empreendimentos
+                });
         }
     }
 }

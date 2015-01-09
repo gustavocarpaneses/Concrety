@@ -1,4 +1,4 @@
-﻿var app = angular.module('concretyApp', ['ngRoute', 'LocalStorageModule', 'ui.bootstrap', 'angular-loading-bar']);
+﻿var app = angular.module('concretyApp', ['ngRoute', 'LocalStorageModule', 'kendo.directives', 'ui.bootstrap', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
