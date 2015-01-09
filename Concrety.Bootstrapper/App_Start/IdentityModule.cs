@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Concrety.Bootstrapper.App_Start
+namespace Concrety.Bootstrapper
 {
     public class IdentityModule : Module
     {

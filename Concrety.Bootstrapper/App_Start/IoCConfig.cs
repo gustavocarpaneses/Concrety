@@ -1,27 +1,21 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
-using Concrety.Bootstrapper.App_Start;
-using Concrety.Data.Context;
-using Concrety.Data.Repositories;
-using Concrety.Data.UnitOfWork;
-using Concrety.Core.Interfaces.Repositories;
-using Concrety.Core.Interfaces.Services;
+using Autofac.Integration.WebApi;
+using Concrety.API;
 using Concrety.Core.Interfaces.UnitOfWork;
-using System.Web.Mvc;
-using Concrety.Web;
+using Concrety.Data.Context;
+using Concrety.Data.UnitOfWork;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(IocConfig), "RegisterDependencies")]
-
-namespace Concrety.Bootstrapper.App_Start
+namespace Concrety.Bootstrapper
 {
     public class IocConfig
     {
-        public static void RegisterDependencies()
+        public static IContainer RegisterDependencies()
         {
             var builder = new ContainerBuilder();
+
             const string nameOrConnectionString = "name=Concrety";
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterModule<AutofacWebTypesModule>();
+
+            builder.RegisterApiControllers(typeof(WebApiApplication).Assembly);
             //builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
             builder.RegisterModule(new ServiceModule());
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
@@ -34,8 +28,7 @@ namespace Concrety.Bootstrapper.App_Start
             /*builder.Register(b => NLogLogger.Instance).SingleInstance();*/
             builder.RegisterModule(new IdentityModule());
 
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            return builder.Build();
         }
     }
 }

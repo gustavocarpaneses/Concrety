@@ -7,8 +7,8 @@ namespace Concrety.Core.Entities
     {
         public string Nome { get; set; }
 
-        public Servico Servico { get; set; }
-        public int IdServico { get; set; }
+        public ItemVerificacaoServico ItemVerificacao { get; set; }
+        public int IdItemVerificacao { get; set; }
 
         public virtual ICollection<Solucao> Solucoes { get; set; }
     }

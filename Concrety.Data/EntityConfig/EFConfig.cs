@@ -29,13 +29,15 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new EmpreendimentoConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoDiarioConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoMaterialConfiguration());
+            modelBuilder.Configurations.Add(new FichaVerificacaoMaterialUnidadeConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoServicoConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new FornecedorConfiguration());
-            modelBuilder.Configurations.Add(new ItemVerificacaoConfiguration());
-            modelBuilder.Configurations.Add(new ItemVerificacaoUnidadeConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoMaterialConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoMaterialUnidadeConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoServicoConfiguration());
+            modelBuilder.Configurations.Add(new ItemVerificacaoServicoUnidadeConfiguration());
             modelBuilder.Configurations.Add(new MacroServicoConfiguration());
-            modelBuilder.Configurations.Add(new MaterialConfiguration());
             modelBuilder.Configurations.Add(new NivelConfiguration());
             modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
             modelBuilder.Configurations.Add(new PatologiaConfiguration());

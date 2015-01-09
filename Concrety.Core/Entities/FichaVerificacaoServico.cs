@@ -11,6 +11,6 @@ namespace Concrety.Core.Entities
         public virtual Servico Servico { get; set; }
         public int IdServico { get; set; }
 
-        public virtual ICollection<ItemVerificacao> Itens { get; set; }
+        public virtual ICollection<ItemVerificacaoServico> Itens { get; set; }
     }
 }

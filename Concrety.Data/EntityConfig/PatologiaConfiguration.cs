@@ -12,9 +12,9 @@ namespace Concrety.Data.EntityConfig
 
             Property(p => p.Nome).IsRequired();
 
-            HasRequired(p => p.Servico)
+            HasRequired(p => p.ItemVerificacao)
                 .WithMany(s => s.Patologias)
-                .HasForeignKey(p => p.IdServico);
+                .HasForeignKey(p => p.IdItemVerificacao);
 
         }
     }

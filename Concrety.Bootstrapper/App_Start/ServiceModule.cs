@@ -2,7 +2,7 @@
 using Concrety.Core.Interfaces.Services;
 using Concrety.Services.Base;
 
-namespace Concrety.Bootstrapper.App_Start
+namespace Concrety.Bootstrapper
 {
     public class ServiceModule : Module
     {

@@ -5,7 +5,6 @@ namespace Concrety.Core.Entities
 {
     public class Servico : EntityBase
     {
-
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Norma { get; set; }
@@ -14,7 +13,5 @@ namespace Concrety.Core.Entities
         public int IdNivel { get; set; }
 
         public virtual FichaVerificacaoServico FichaVerificacaoServico { get; set; }
-
-        public ICollection<Patologia> Patologias { get; set; }
     }
 }
