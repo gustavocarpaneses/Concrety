@@ -17,12 +17,8 @@ namespace Concrety.Data.EntityConfig
                 .HasForeignKey(n => n.IdMacroServico);
 
             HasOptional(n => n.NivelPai)
-                .WithMany()
-                .HasForeignKey(n => n.IdNivelPai);
-
-            HasOptional(n => n.NivelFilho)
-                .WithMany()
-                .HasForeignKey(n => n.IdNivelFilho);
+                .WithOptionalDependent(n => n.NivelFilho)
+                .Map(_ => _.MapKey("IdNivelPai"));
         }
     }
 }

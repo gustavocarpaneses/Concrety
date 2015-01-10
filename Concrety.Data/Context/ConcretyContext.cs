@@ -1,4 +1,5 @@
 ﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Interfaces.Logging;
 using Concrety.Data.EntityConfig;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,9 +26,10 @@ namespace Concrety.Data.Context
 
         }
 
-        public ConcretyContext(string nameOrConnectionString)
+        public ConcretyContext(string nameOrConnectionString, ILogger logger)
             : base(nameOrConnectionString)
         {
+            Database.Log = logger.Log;
 
         }
 

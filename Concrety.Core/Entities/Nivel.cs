@@ -21,10 +21,10 @@ namespace Concrety.Core.Entities
         public int IdMacroServico { get; set; }
 
         public virtual Nivel NivelPai { get; set; }
-        public int? IdNivelPai { get; set; }
+        //public int? IdNivelPai { get; set; }
 
         public virtual Nivel NivelFilho { get; set; }
-        public int? IdNivelFilho { get; set; }
+        //public int? IdNivelFilho { get; set; }
 
         public virtual ICollection<Unidade> Unidades { get; set; }
 

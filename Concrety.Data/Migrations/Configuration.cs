@@ -1,11 +1,16 @@
 namespace Concrety.Data.Migrations
 {
     using Concrety.Core.Entities;
+    using Concrety.Core.Entities.Enumerators;
+    using Concrety.Core.Interfaces.Logging;
     using Concrety.Data.Context;
     using Concrety.Identity;
     using Concrety.Identity.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+    using System.Diagnostics;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ConcretyContext>
     {
@@ -16,428 +21,225 @@ namespace Concrety.Data.Migrations
 
         protected override void Seed(ConcretyContext context)
         {
+
+            var userManager = IdentityFactory.CreateUserManager(context);
+
+            var usuario = new ApplicationIdentityUser
+            {
+                UserName = "gcarpane@gmail.com",
+                Email = "gcarpane@gmail.com",
+                PasswordHash = userManager.PasswordHasher.HashPassword("Teste@123")
+            };
+
+            context.Users.AddOrUpdate(
+                u => u.UserName,
+                usuario);
+            context.SaveChanges();
+
             context.Set<CondicaoClimatica>().AddOrUpdate(
                 c => c.Descricao,
-                new CondicaoClimatica { Descricao = "Ensolarado" },
-                new CondicaoClimatica { Descricao = "Nublado" },
-                new CondicaoClimatica { Descricao = "Chuvoso" }
+                new CondicaoClimatica { Descricao = "Ensolarado", IdUsuarioCadastro = usuario.Id },
+                new CondicaoClimatica { Descricao = "Nublado", IdUsuarioCadastro = usuario.Id },
+                new CondicaoClimatica { Descricao = "Chuvoso", IdUsuarioCadastro = usuario.Id }
             );
-
-            var fvm01 = new FichaVerificacaoMaterial
-            {
-                CriterioAceite = "",
-                Material = "Material 01",
-                Nome = "FVM 01"
-            };
-
-            var fvm02 = new FichaVerificacaoMaterial
-            {
-                CriterioAceite = "",
-                Material = "Material 02",
-                Nome = "FVM 02"
-            };
-
-            var fvs01 = new FichaVerificacaoServico
-            {
-                Nome = "FVS 01",
-                Descricao = "Verificação 1",
-                Itens = new[] 
-                {
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 01", 
-                        Validacao = "Validar 01", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 02", 
-                        Validacao = "Validar 02", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 03", 
-                        Validacao = "Validar 03", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
-            var fvs02 = new FichaVerificacaoServico
-            {
-                Nome = "FVS 02",
-                Descricao = "Verificação 2",
-                Itens = new[] 
-                {
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 01", 
-                        Validacao = "Validar 01", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 02", 
-                        Validacao = "Validar 02", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 03", 
-                        Validacao = "Validar 03", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
-            var fvs03 = new FichaVerificacaoServico
-            {
-                Nome = "FVS 01",
-                Descricao = "Verificação 3",
-                Itens = new[] 
-                {
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 01", 
-                        Validacao = "Validar 01", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 02", 
-                        Validacao = "Validar 02", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    },
-                    new ItemVerificacaoServico
-                    { 
-                        Nome = "Verificar 03", 
-                        Validacao = "Validar 03", 
-                        Patologias = new []
-                        {
-                            new Patologia
-                            {
-                                Nome = "Patologia 01",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 01", Norma = "Norma 01" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 02",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 02", Norma = "Norma 02" }
-                                }
-                            },
-                            new Patologia
-                            {
-                                Nome = "Patologia 03",
-                                Solucoes = new []
-                                {
-                                    new Solucao { Nome = "Solução 03", Norma = "Norma 03" }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
-            var pes01 = new Servico
-            {
-                Nome = "PES 01",
-                Norma = "",
-                Descricao = "Serviço 1",
-                FichasVerificacaoServico = new[] { fvs01 }
-            };
-
-            var pes02 = new Servico
-            {
-                Nome = "PES 02",
-                Norma = "",
-                Descricao = "Serviço 2",
-                FichasVerificacaoServico = new[] { fvs02 }
-            };
-
-            var pes03 = new Servico
-            {
-                Nome = "PES 03",
-                Norma = "",
-                Descricao = "Serviço 3",
-                FichasVerificacaoServico = new[] { fvs03 }
-            };
-
-            var nivelUnidade = new Nivel
-            {
-                Nome = "Unidade",
-                Servicos = new[] 
-                {
-                    pes02,
-                    pes03
-                }
-            };
-
-            var nivelBloco = new Nivel
-            {
-                Nome = "Bloco",
-                NivelFilho = nivelUnidade
-            };
-
-            var nivelObra = new Nivel
-            {
-                Nome = "Obra",
-                NivelFilho = nivelBloco,
-                FichasVerificacaoMaterial = new[] 
-                {
-                    fvm01,
-                    fvm02
-                },
-                Servicos = new[] 
-                {
-                    pes01
-                }
-            };
-
-            var macroServico = new MacroServico
-            {
-                Nome = "Unidades Habitacionais",
-                Niveis = new[] { 
-                    nivelObra,
-                    nivelBloco,
-                    nivelUnidade
-                }
-            };
 
             var dataInicio = DateTime.Today;
             var dataFim = DateTime.Today.AddYears(1);
 
             var empreendimentos = new[]
             {
-                new Empreendimento { Nome = "Empreendimento 01", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim, MacrosServicos = new [] { macroServico } },
-                new Empreendimento { Nome = "Empreendimento 02", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim },
-                new Empreendimento { Nome = "Empreendimento 03", DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim }
+                new Empreendimento { Nome = "Obra 1", Ativo = true, DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim, IdUsuarioCadastro = usuario.Id },
+                new Empreendimento { Nome = "Obra 2", Ativo = true, DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim, IdUsuarioCadastro = usuario.Id },
+                new Empreendimento { Nome = "Obra 3", Ativo = true, DataInicioConstrucao = dataInicio, DataFimConstrucao = dataFim, IdUsuarioCadastro = usuario.Id }
             };
 
-            var userManager = IdentityFactory.CreateUserManager(context);
+            context.Set<Empreendimento>().AddOrUpdate(
+                e => e.Nome,
+                empreendimentos);
 
-            context.Users.AddOrUpdate(
-                u => u.UserName,
-                new ApplicationIdentityUser
+            context.SaveChanges();
+
+            usuario.Empreendimentos = empreendimentos;
+            context.SaveChanges();
+
+            foreach (var obra in empreendimentos)
+            {
+
+                var macroServico = new MacroServico
                 {
-                    UserName = "gcarpane@gmail.com",
-                    Email = "gcarpane@gmail.com",
-                    PasswordHash = userManager.PasswordHasher.HashPassword("Teste@123"),
-                    Empreendimentos = empreendimentos
-                });
+                    Nome = "Unidades Habitacionais do " + obra.Nome,
+                    Ativo = true,
+                    IdEmpreendimento = obra.Id,
+                    IdUsuarioCadastro = usuario.Id
+                };
+
+                context.Set<MacroServico>().AddOrUpdate(
+                    m => m.Nome,
+                    macroServico);
+
+                var nivelObra = new Nivel
+                {
+                    Ativo = true,
+                    Nome = "Obra (" + macroServico.Nome + ")",
+                    IdMacroServico = macroServico.Id,
+                    IdUsuarioCadastro = usuario.Id
+                };
+
+                var nivelBloco = new Nivel
+                {
+                    Ativo = true,
+                    Nome = "Bloco (" + macroServico.Nome + ")",
+                    IdMacroServico = macroServico.Id,
+                    NivelPai = nivelObra,
+                    IdUsuarioCadastro = usuario.Id
+                };
+
+                var nivelUnidade = new Nivel
+                {
+                    Ativo = true,
+                    Nome = "Unidade (" + macroServico.Nome + ")",
+                    IdMacroServico = macroServico.Id,
+                    NivelPai = nivelBloco,
+                    IdUsuarioCadastro = usuario.Id
+                };
+
+                context.Set<Nivel>().AddOrUpdate(
+                    n => n.Nome,
+                    nivelObra,
+                    nivelBloco,
+                    nivelUnidade);
+
+                context.SaveChanges();
+
+                for (int iPES = 1; iPES <= 3; iPES++)
+                {
+
+                    var servico = new Servico
+                    {
+                        Ativo = true,
+                        Nome = "PES 0" + iPES + " (" + macroServico.Nome + ")",
+                        Norma = "Norma da PES 0" + iPES,
+                        Descricao = "Serviço " + iPES,
+                        IdUsuarioCadastro = usuario.Id
+                    };
+
+                    if (iPES == 1)
+                    {
+                        servico.IdNivel = nivelObra.Id;
+                    }
+                    else
+                    {
+                        servico.IdNivel = nivelUnidade.Id;
+                    }
+
+                    context.Set<Servico>().AddOrUpdate(
+                        s => s.Nome,
+                        servico);
+                    context.SaveChanges();
+
+                    var fvs = new FichaVerificacaoServico
+                    {
+                        Ativo = true,
+                        Nome = "FVS 0" + iPES + " (" + macroServico.Nome + ")",
+                        Descricao = "Verificação " + iPES,
+                        IdServico = servico.Id,
+                        IdUsuarioCadastro = usuario.Id
+                    };
+
+                    context.Set<FichaVerificacaoServico>().AddOrUpdate(
+                        f => f.Nome,
+                        fvs);
+                    context.SaveChanges();
+
+                    for (int iItem = 1; iItem <= 3; iItem++)
+                    {
+
+                        var item = new ItemVerificacaoServico
+                        {
+                            Ativo = true,
+                            Nome = fvs.Nome + " - Item " + iItem,
+                            Validacao = fvs.Nome + " - Verificar Item " + iItem,
+                            IdFichaVerificacaoServico = fvs.Id,
+                            IdUsuarioCadastro = usuario.Id
+                        };
+
+                        context.Set<ItemVerificacaoServico>().AddOrUpdate(
+                            i => i.Nome,
+                            item);
+                        context.SaveChanges();
+
+                        for (int iPatologia = 1; iPatologia <= 3; iPatologia++)
+                        {
+                            var patologia = new Patologia
+                            {
+                                Ativo = true,
+                                Nome = item.Nome + " - Patologia 0" + iPatologia,
+                                IdItemVerificacaoServico = item.Id,
+                                IdUsuarioCadastro = usuario.Id
+                            };
+
+                            context.Set<Patologia>().AddOrUpdate(
+                                p => p.Nome,
+                                patologia);
+                            context.SaveChanges();
+
+                            var solucao = new Solucao
+                            {
+                                Ativo = true,
+                                Nome = "Solução da Patologia " + patologia.Nome,
+                                Descricao = "Aplicar Norma da Solução da Patologia " + patologia.Nome,
+                                Norma = "Norma da Solução da Patologia " + patologia.Nome,
+                                IdPatologia = patologia.Id,
+                                IdUsuarioCadastro = usuario.Id
+                            };
+
+                            context.Set<Solucao>().AddOrUpdate(
+                                s => s.Nome,
+                                solucao);
+                            context.SaveChanges();
+
+                        }
+                    }
+                }
+
+                for (int iFVM = 1; iFVM <= 3; iFVM++)
+                {
+                    var fvm = new FichaVerificacaoMaterial
+                    {
+                        Ativo = true,
+                        CriterioAceite = "",
+                        Material = "Material 0" + iFVM,
+                        Nome = "FVM 0" + iFVM + " (" + macroServico.Nome + ")",
+                        IdNivel = nivelObra.Id,
+                        IdUsuarioCadastro = usuario.Id
+                    };
+
+                    context.Set<FichaVerificacaoMaterial>().AddOrUpdate(
+                        f => f.Nome,
+                        fvm);
+                    context.SaveChanges();
+
+                    for (int iItem = 1; iItem <= 3; iItem++)
+                    {
+                        var itemFVM = new ItemVerificacaoMaterial
+                        {
+                            Ativo = true,
+                            IdFichaVerificacaoMaterial = fvm.Id,
+                            Nome = fvm.Nome + " Item 0" + iItem,
+                            Tipo = TipoVerificacaoMaterial.Texto,
+                            IdUsuarioCadastro = usuario.Id
+                        };
+
+                        context.Set<ItemVerificacaoMaterial>().AddOrUpdate(
+                            f => f.Nome,
+                            itemFVM);
+                        context.SaveChanges();
+                    }
+                }
+
+            }
+          
         }
     }
+
 }

@@ -12,7 +12,7 @@ namespace Concrety.Core.Interfaces.Entities
         DateTime? DataUltimaAtualizacao { get; set; }
         DateTime? DataExclusao { get; set; }
         
-        int? IdUsuarioCadastro { get; set; }
+        int IdUsuarioCadastro { get; set; }
         //UsuarioBase UsuarioCadastro { get; set; }
 
         int? IdUsuarioUltimaAtualizacao { get; set; }

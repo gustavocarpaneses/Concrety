@@ -57,6 +57,7 @@
     <Compile Include="Entities\FichaVerificacaoServico.cs" />
     <Compile Include="Entities\FichaVerificacaoServicoUnidade.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Interfaces\Logging\ILogger.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
     <Compile Include="Entities\Patologia.cs" />
     <Compile Include="Entities\ItemVerificacaoServico.cs" />

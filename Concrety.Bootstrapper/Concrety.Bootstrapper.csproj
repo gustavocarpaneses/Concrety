@@ -10,7 +10,7 @@
     <RootNamespace>Concrety.Bootstrapper</RootNamespace>
     <AssemblyName>Concrety.Bootstrapper</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-	<FileAlignment>512</FileAlignment>
+    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -145,6 +145,10 @@
     <ProjectReference Include="..\Concrety.API\Concrety.API.csproj">
       <Project>{c8b703ee-c2bc-4b0e-9755-65686b0686a9}</Project>
       <Name>Concrety.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Concrety.Crosscutting.Logging\Concrety.Crosscutting.Logging.csproj">
+      <Project>{80756397-e0db-4a07-802a-aa3cccb948b4}</Project>
+      <Name>Concrety.Crosscutting.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Concrety.Data\Concrety.Data.csproj">
       <Project>{d34c7f8e-d295-4b31-a39b-b13761376a16}</Project>

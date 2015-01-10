@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
 using Concrety.API;
+using Concrety.Core.Interfaces.Logging;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Crosscutting.Logging;
 using Concrety.Data.Context;
 using Concrety.Data.UnitOfWork;
 
@@ -21,11 +23,11 @@ namespace Concrety.Bootstrapper
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             builder.Register<IEntitiesContext>(b =>
             {
-                //var logger = b.Resolve<ILogger>();
-                var context = new ConcretyContext(nameOrConnectionString);//, logger);
+                var logger = b.Resolve<ILogger>();
+                var context = new ConcretyContext(nameOrConnectionString, logger);
                 return context;
             }).InstancePerRequest();
-            /*builder.Register(b => NLogLogger.Instance).SingleInstance();*/
+            builder.Register(b => NLogLogger.Instance).SingleInstance();
             builder.RegisterModule(new IdentityModule());
 
             return builder.Build();

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Bootstrapper", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Web", "Concrety.Web\Concrety.Web.csproj", "{74332055-1529-4CC5-BC73-4F031BCE3C85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Crosscutting.Logging", "Concrety.Crosscutting.Logging\Concrety.Crosscutting.Logging.csproj", "{80756397-E0DB-4A07-802A-AA3CCCB948B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{74332055-1529-4CC5-BC73-4F031BCE3C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74332055-1529-4CC5-BC73-4F031BCE3C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74332055-1529-4CC5-BC73-4F031BCE3C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80756397-E0DB-4A07-802A-AA3CCCB948B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80756397-E0DB-4A07-802A-AA3CCCB948B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80756397-E0DB-4A07-802A-AA3CCCB948B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80756397-E0DB-4A07-802A-AA3CCCB948B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,5 +77,6 @@ Global
 		{C8B703EE-C2BC-4B0E-9755-65686B0686A9} = {BE1271E7-2DD6-4EAA-9502-18535A634F8C}
 		{382FFD8F-6A5F-4162-B0FD-D22C9F9325DE} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 		{74332055-1529-4CC5-BC73-4F031BCE3C85} = {AA0D085E-22B7-4794-BFA4-D449DC8A6743}
+		{80756397-E0DB-4A07-802A-AA3CCCB948B4} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 	EndGlobalSection
 EndGlobal
