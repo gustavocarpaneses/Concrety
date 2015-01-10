@@ -36,6 +36,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'concretySetti
     var _logOut = function () {
 
         localStorageService.remove('authorizationData');
+        localStorageService.remove('empreendimentoAtual');
 
         _authentication.isAuth = false;
         _authentication.userName = "";

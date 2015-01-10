@@ -10,8 +10,8 @@ app.factory('servicosService', ['$http', 'concretySettings', function ($http, co
             params: {
                 idEmpreendimento: idEmpreendimento
             }
-        }).then(function (results) {
-            return results;
+        }).then(function (response) {
+            return response;
         });
 
     };

@@ -9,29 +9,35 @@ app.controller('indexController',
     }
 
     $scope.alterarEmpreendimento = function (empreendimentoAtual) {
-        $rootScope.empreendimentoAtual = empreendimentoAtual;
-        $location.path('/home');
+        accountService.alterarEmpreendimentoAtual(empreendimentoAtual);
+        recarregarEmpreendimentoAtual();
     }
 
     $scope.authentication = authService.authentication;
 
-    $scope.empreendimentosUsuario = [];
+    if (authService.authentication.isAuth) {
+        carregarDadosComLogin();
+    }
 
     $scope.$on('loginEvent', function (event, args) {
-
-        accountService.getEmpreendimentos().then(function (results) {
-            $scope.empreendimentosUsuario = results.data;
-            $rootScope.empreendimentoAtual = $scope.empreendimentosUsuario[0];
-        });
-
-        materiaisService.getNiveis($rootScope.empreendimentoAtual.id).then(function (results) {
-            $scope.niveisMaterial = results.data;
-        });
-
-        servicosService.getNiveis($rootScope.empreendimentoAtual.id).then(function (results) {
-            $scope.niveisServico = results.data;
-        });
-
+        carregarDadosComLogin();
     });
+
+    function carregarDadosComLogin() {
+        $scope.empreendimentosUsuario = accountService.getEmpreendimentosUsuario();
+        recarregarEmpreendimentoAtual();
+    }
+
+    function recarregarEmpreendimentoAtual() {
+        $scope.empreendimentoAtual = accountService.empreendimentoAtual;
+
+        materiaisService.getNiveis(accountService.empreendimentoAtual.id).then(function (response) {
+            $scope.niveisMaterial = response.data;
+        });
+
+        servicosService.getNiveis(accountService.empreendimentoAtual.id).then(function (response) {
+            $scope.niveisServico = response.data;
+        });
+    }
 
 }]);

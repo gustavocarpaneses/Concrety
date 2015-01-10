@@ -30,6 +30,10 @@ app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
 
+app.run(['accountService', function (accountService) {
+    accountService.fillData();
+}]);
+
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });

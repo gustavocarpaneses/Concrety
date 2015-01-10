@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('loginController', ['$rootScope', '$scope', '$location', 'authService', function ($rootScope, $scope, $location, authService) {
+app.controller('loginController', ['$rootScope', '$scope', '$location', 'authService', 'accountService', function ($rootScope, $scope, $location, authService, accountService) {
 
     $scope.loginData = {
         userName: "",
@@ -12,13 +12,14 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
 
         authService.login($scope.loginData).then(function (response) {
 
-            $rootScope.$broadcast('loginEvent', []);
+            accountService.fillEmpreendimentosUsuario().then(function () {
+                $rootScope.$broadcast('loginEvent', []);
+            });
             $location.path('/home');
 
-        },
-         function (err) {
+        }, function (err) {
              $scope.message = err.error_description;
-         });
+        });
     };
 
 }]);

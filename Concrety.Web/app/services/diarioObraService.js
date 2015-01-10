@@ -6,8 +6,8 @@ app.factory('diarioObraService', ['$http', 'concretySettings', function ($http, 
 
     var _getOrders = function () {
 
-        return $http.get(serviceBase + 'api/orders').then(function (results) {
-            return results;
+        return $http.get(serviceBase + 'api/orders').then(function (response) {
+            return response;
         });
     };
 
