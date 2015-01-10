@@ -36,11 +36,17 @@ namespace Concrety.Data.Migrations
                 usuario);
             context.SaveChanges();
 
+            context.Set<Fornecedor>().AddOrUpdate(
+                f => f.Nome,
+                new Fornecedor { Ativo = true, Nome = "Fornecedor 01", IdUsuarioCadastro = usuario.Id },
+                new Fornecedor { Ativo = true, Nome = "Fornecedor 02", IdUsuarioCadastro = usuario.Id }
+            );
+
             context.Set<CondicaoClimatica>().AddOrUpdate(
                 c => c.Descricao,
-                new CondicaoClimatica { Descricao = "Ensolarado", IdUsuarioCadastro = usuario.Id },
-                new CondicaoClimatica { Descricao = "Nublado", IdUsuarioCadastro = usuario.Id },
-                new CondicaoClimatica { Descricao = "Chuvoso", IdUsuarioCadastro = usuario.Id }
+                new CondicaoClimatica { Ativo = true, Descricao = "Ensolarado", IdUsuarioCadastro = usuario.Id },
+                new CondicaoClimatica { Ativo = true, Descricao = "Nublado", IdUsuarioCadastro = usuario.Id },
+                new CondicaoClimatica { Ativo = true, Descricao = "Chuvoso", IdUsuarioCadastro = usuario.Id }
             );
 
             var dataInicio = DateTime.Today;
@@ -110,6 +116,54 @@ namespace Concrety.Data.Migrations
                     nivelUnidade);
 
                 context.SaveChanges();
+
+                var unidadeObra = new Unidade
+                {
+                    Ativo = true,
+                    IdNivel = nivelObra.Id,
+                    Nome = obra.Nome,
+                    IdUsuarioCadastro = usuario.Id
+                };
+
+                context.Set<Unidade>().AddOrUpdate(
+                    u => u.Nome,
+                    unidadeObra);
+
+                context.SaveChanges();
+                
+                for (int iBloco = 1; iBloco <= 3; iBloco++)
+                {
+                    var unidadeBloco = new Unidade
+                    {
+                        Ativo = true,
+                        IdUsuarioCadastro = usuario.Id,
+                        IdUnidadePai = unidadeObra.Id,
+                        IdNivel = nivelBloco.Id,
+                        Nome = unidadeObra.Nome + " - Bloco 0" + iBloco
+                    };
+
+                    context.Set<Unidade>().AddOrUpdate(
+                        u => u.Nome,
+                        unidadeBloco);
+                    context.SaveChanges();
+
+                    for (int iUnidade = 1; iUnidade <= 9; iUnidade++)
+                    {
+                        var unidadeUnidade = new Unidade
+                        {
+                            Ativo = true,
+                            IdUsuarioCadastro = usuario.Id,
+                            IdUnidadePai = unidadeBloco.Id,
+                            IdNivel = nivelUnidade.Id,
+                            Nome = unidadeBloco.Nome + " - Unidade 0" + iUnidade
+                        };
+
+                        context.Set<Unidade>().AddOrUpdate(
+                            u => u.Nome,
+                            unidadeUnidade);
+                        context.SaveChanges();
+                    }
+                }
 
                 for (int iPES = 1; iPES <= 3; iPES++)
                 {
@@ -238,7 +292,7 @@ namespace Concrety.Data.Migrations
                 }
 
             }
-          
+
         }
     }
 
