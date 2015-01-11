@@ -8,7 +8,8 @@ app.factory('accountService', ['$http', '$q', 'localStorageService', 'concretySe
 
     var _empreendimentoAtual = {
         id: 0,
-        nome: ""
+        nome: "",
+        macrosServicos: []
     };
 
     var _macroServicoAtual = {
@@ -48,6 +49,9 @@ app.factory('accountService', ['$http', '$q', 'localStorageService', 'concretySe
     var _alterarEmpreendimentoAtual = function (empreendimentoAtual) {
         localStorageService.set('empreendimentoAtual', empreendimentoAtual);
         fillEmpreendimentoAtual(empreendimentoAtual);
+
+        localStorageService.set('macroServicoAtual', empreendimentoAtual.macrosServicos[0]);
+        fillMacroServicoAtual(empreendimentoAtual.macrosServicos[0]);
     };
         
     var _fillData = function () {
@@ -72,6 +76,7 @@ app.factory('accountService', ['$http', '$q', 'localStorageService', 'concretySe
     function fillEmpreendimentoAtual(empreendimento) {
         _empreendimentoAtual.id = empreendimento.id;
         _empreendimentoAtual.nome = empreendimento.nome;
+        _empreendimentoAtual.macrosServicos = empreendimento.macrosServicos;
     }
 
     function fillMacroServicoAtual(macroServico) {

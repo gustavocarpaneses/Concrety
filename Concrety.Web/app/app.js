@@ -20,7 +20,7 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
-var serviceBase = 'http://localhost:51503/';
+var serviceBase = 'http://concrety.azurewebsites.net/';
 app.constant('concretySettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'concretyApp'

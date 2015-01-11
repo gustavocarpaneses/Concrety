@@ -37,9 +37,9 @@ app.controller('indexController',
             $scope.niveisVerificacaoMaterial = response.data;
         });
 
-        //niveisService.getNiveisServico(idMacroServicoAtual).then(function (response) {
-        //    $scope.niveisServico = response.data;
-        //});
+        niveisService.getNiveisServico(idMacroServicoAtual).then(function (response) {
+            $scope.niveisServico = response.data;
+        });
     }
 
 }]);
