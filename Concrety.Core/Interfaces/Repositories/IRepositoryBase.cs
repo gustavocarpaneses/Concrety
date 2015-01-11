@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Concrety.Core.Interfaces.Repositories
 {
@@ -10,6 +11,7 @@ namespace Concrety.Core.Interfaces.Repositories
         void Add(TEntity obj);
         TEntity GetById(int id);
         IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetQuery();
         void Update(TEntity obj);
         void Remove(TEntity obj);
     }

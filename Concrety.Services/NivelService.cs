@@ -5,28 +5,42 @@ using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Concrety.Services
 {
     public class NivelService : ServiceBase<Nivel>, INivelService
     {
 
-        private readonly INivelRepository _nivelRepository;
+        private IRepositoryBase<Nivel> _nivelRepository;
+        private IRepositoryBase<Servico> _servicoRepository;
+        private IRepositoryBase<FichaVerificacaoMaterial> _fichaVerificacaoMaterialRepository;
 
         public NivelService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _nivelRepository = (INivelRepository)unitOfWork.Repository<Nivel>();
+            _nivelRepository = UnitOfWork.Repository<Nivel>();
+            _servicoRepository = UnitOfWork.Repository<Servico>();
+            _fichaVerificacaoMaterialRepository = UnitOfWork.Repository<FichaVerificacaoMaterial>();
         }
         
-        public Task<IEnumerable<Nivel>> GetNiveisServico(int idMacroServico)
+        public async Task<IEnumerable<Nivel>> GetNiveisServico(int idMacroServico)
         {
-            return _nivelRepository.GetNiveisServico(idMacroServico);
+            var query = _nivelRepository.GetNiveisServico(
+                _servicoRepository.GetQuery(),
+                idMacroServico);
+
+            return await Task.Factory.StartNew(() => { return query; });
+
         }
 
-        public Task<IEnumerable<Nivel>> GetNiveisVerificacaoMaterial(int idMacroServico)
+        public async Task<IEnumerable<Nivel>> GetNiveisVerificacaoMaterial(int idMacroServico)
         {
-            return _nivelRepository.GetNiveisVerificacaoMaterial(idMacroServico);
+            var query = _nivelRepository.GetNiveisVerificacaoMaterial(
+                _fichaVerificacaoMaterialRepository.GetQuery(),
+                idMacroServico);
+
+            return await Task.Factory.StartNew(() => { return query; });
         }
     }
 }

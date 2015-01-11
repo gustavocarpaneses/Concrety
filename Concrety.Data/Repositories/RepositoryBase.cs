@@ -13,10 +13,10 @@ namespace Concrety.Data.Repositories
         where TEntity : EntityBase
     {
 
-        protected readonly IEntitiesContext _context;
-        protected readonly IDbSet<TEntity> _dbEntitySet;
+        private readonly IEntitiesContext _context;
+        private readonly IDbSet<TEntity> _dbEntitySet;
         private bool _disposed;
-        protected IUser<int> _user;
+        private IUser<int> _user;
 
         public RepositoryBase(IEntitiesContext context, IUser<int> user)
         {
@@ -36,6 +36,11 @@ namespace Concrety.Data.Repositories
         public TEntity GetById(int id)
         {
             return _dbEntitySet.Find(id);
+        }
+
+        public IQueryable<TEntity> GetQuery()
+        {
+            return _dbEntitySet.AsQueryable();
         }
 
         public IEnumerable<TEntity> GetAll()

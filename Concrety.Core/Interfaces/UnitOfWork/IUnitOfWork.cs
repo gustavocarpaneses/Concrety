@@ -1,4 +1,5 @@
-﻿using Concrety.Core.Entities.Base;
+﻿using Concrety.Core.Entities;
+using Concrety.Core.Entities.Base;
 using Concrety.Core.Interfaces.Repositories;
 using System;
 using System.Threading;
@@ -11,12 +12,13 @@ namespace Concrety.Core.Interfaces.UnitOfWork
         int SaveChanges();
         void Dispose(bool disposing);
         IRepositoryBase<TEntity> Repository<TEntity>() where TEntity : EntityBase;
-        INivelRepository NivelRepository();
+        
         void BeginTransaction();
         int Commit();
         void Rollback();
         Task<int> SaveChangesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<int> CommitAsync();
+
     }
 }
