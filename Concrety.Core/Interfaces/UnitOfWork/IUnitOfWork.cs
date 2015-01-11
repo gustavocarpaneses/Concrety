@@ -11,6 +11,7 @@ namespace Concrety.Core.Interfaces.UnitOfWork
         int SaveChanges();
         void Dispose(bool disposing);
         IRepositoryBase<TEntity> Repository<TEntity>() where TEntity : EntityBase;
+        INivelRepository NivelRepository();
         void BeginTransaction();
         int Commit();
         void Rollback();

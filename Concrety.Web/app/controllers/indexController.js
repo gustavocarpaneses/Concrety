@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.controller('indexController',
-    ['$rootScope', '$scope', '$location', 'authService', 'accountService', 'materiaisService', 'servicosService',
-        function ($rootScope, $scope, $location, authService, accountService, materiaisService, servicosService) {
+    ['$rootScope', '$scope', '$location', 'authService', 'accountService', 'niveisService',
+        function ($rootScope, $scope, $location, authService, accountService, niveisService) {
 
     $scope.logOut = function () {
         authService.logOut();
@@ -31,13 +31,15 @@ app.controller('indexController',
     function recarregarEmpreendimentoAtual() {
         $scope.empreendimentoAtual = accountService.empreendimentoAtual;
 
-        materiaisService.getNiveis(accountService.empreendimentoAtual.id).then(function (response) {
-            $scope.niveisMaterial = response.data;
+        var idMacroServicoAtual = accountService.macroServicoAtual.id;
+
+        niveisService.getNiveisVerificacaoMaterial(idMacroServicoAtual).then(function (response) {
+            $scope.niveisVerificacaoMaterial = response.data;
         });
 
-        servicosService.getNiveis(accountService.empreendimentoAtual.id).then(function (response) {
-            $scope.niveisServico = response.data;
-        });
+        //niveisService.getNiveisServico(idMacroServicoAtual).then(function (response) {
+        //    $scope.niveisServico = response.data;
+        //});
     }
 
 }]);

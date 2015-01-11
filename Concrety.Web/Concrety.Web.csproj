@@ -69,8 +69,7 @@
     <Content Include="app\services\diarioObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
-    <Content Include="app\services\materiaisService.js" />
-    <Content Include="app\services\servicosService.js" />
+    <Content Include="app\services\niveisService.js" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\kendo.bootstrap.min.css" />

@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Base\ServiceBase.cs" />
+    <Compile Include="MacroServicoService.cs" />
+    <Compile Include="NivelService.cs" />
+    <Compile Include="ServicoService.cs" />
     <Compile Include="EmpreendimentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

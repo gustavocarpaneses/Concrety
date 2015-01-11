@@ -46,8 +46,8 @@
                             Verificação de Materiais <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li ng-repeat="nivel in niveisMaterial">
-                                <a href="#/materiais/{{nivel.id}}">{{nivel.nome}}</a>
+                            <li ng-repeat="nivel in niveisVerificacaoMaterial">
+                                <a href="#/verificacaoMateriais/{{nivel.id}}">{{nivel.nome}}</a>
                             </li>
                             <!--<li><a href="">Obra</a></li>-->
                         </ul>
@@ -121,8 +121,7 @@
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
     <script src="app/services/accountService.js"></script>
-    <script src="app/services/materiaisService.js"></script>
-    <script src="app/services/servicosService.js"></script>
+    <script src="app/services/niveisService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js"></script>
     <script src="app/controllers/homeController.js"></script>

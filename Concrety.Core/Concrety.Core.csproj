@@ -72,8 +72,14 @@
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
+    <Compile Include="Interfaces\Repositories\INivelRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IMacroServicoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IServicoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IEmpreendimentoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Services\INivelService.cs" />
+    <Compile Include="Interfaces\Services\IMacroServicoService.cs" />
+    <Compile Include="Interfaces\Services\IServicoService.cs" />
     <Compile Include="Interfaces\Services\IEmpreendimentoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase%271.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />

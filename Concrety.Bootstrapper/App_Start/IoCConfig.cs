@@ -2,9 +2,11 @@
 using Autofac.Integration.WebApi;
 using Concrety.API;
 using Concrety.Core.Interfaces.Logging;
+using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Crosscutting.Logging;
 using Concrety.Data.Context;
+using Concrety.Data.Repositories;
 using Concrety.Data.UnitOfWork;
 
 namespace Concrety.Bootstrapper
@@ -18,7 +20,10 @@ namespace Concrety.Bootstrapper
             const string nameOrConnectionString = "name=Concrety";
 
             builder.RegisterApiControllers(typeof(WebApiApplication).Assembly);
-            //builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
+            
+            builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
+            builder.RegisterType(typeof(NivelRepository)).As(typeof(INivelRepository)).InstancePerRequest();
+            
             builder.RegisterModule(new ServiceModule());
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             builder.Register<IEntitiesContext>(b =>

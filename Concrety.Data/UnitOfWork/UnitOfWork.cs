@@ -46,6 +46,27 @@ namespace Concrety.Data.UnitOfWork
             return (IRepositoryBase<TEntity>)_repositories[type];
         }
 
+        private IRepositoryBase<TEntity> GetRepository<TEntity>(Type repositoryType) where TEntity : EntityBase
+        {
+            if (_repositories == null)
+            {
+                _repositories = new Hashtable();
+            }
+            var type = typeof(TEntity).Name;
+            if (_repositories.ContainsKey(type))
+            {
+                return (IRepositoryBase<TEntity>)_repositories[type];
+            }
+            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context, _user));
+            return (IRepositoryBase<TEntity>)_repositories[type];
+        }
+
+        public INivelRepository NivelRepository()
+        {
+            return (INivelRepository)GetRepository<Concrety.Core.Entities.Nivel>(typeof(NivelRepository));
+        }
+
+
         public Task<int> SaveChangesAsync()
         {
             return _context.SaveChangesAsync();
