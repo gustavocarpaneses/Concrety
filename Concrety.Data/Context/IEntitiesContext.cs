@@ -8,7 +8,7 @@ namespace Concrety.Data.Context
 {
     public interface IEntitiesContext : IDisposable
     {
-        IDbSet<TEntity> Set<TEntity>() where TEntity : EntityBase;
+        DbSet<TEntity> Set<TEntity>() where TEntity : EntityBase;
         void SetAsAdded<TEntity>(TEntity entity) where TEntity : EntityBase;
         void SetAsModified<TEntity>(TEntity entity) where TEntity : EntityBase;
         void SetAsDeleted<TEntity>(TEntity entity) where TEntity : EntityBase;

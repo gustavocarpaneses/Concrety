@@ -86,7 +86,7 @@ namespace Concrety.Data.Context
         }
 
 
-        public new IDbSet<TEntity> Set<TEntity>() where TEntity : EntityBase
+        public new DbSet<TEntity> Set<TEntity>() where TEntity : EntityBase
         {
             return base.Set<TEntity>();
         }

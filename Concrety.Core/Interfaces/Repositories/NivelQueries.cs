@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Concrety.Core.Interfaces.Repositories
 {
-    public static class NivelRepositoryExtensions
+    public static class NivelQueries
     {
         public static IEnumerable<Nivel> GetNiveisServico(
             this IRepositoryBase<Nivel> nivelRepository, 

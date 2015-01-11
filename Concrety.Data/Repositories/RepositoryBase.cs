@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace Concrety.Data.Repositories
 {
@@ -14,7 +15,7 @@ namespace Concrety.Data.Repositories
     {
 
         private readonly IEntitiesContext _context;
-        private readonly IDbSet<TEntity> _dbEntitySet;
+        private readonly DbSet<TEntity> _dbEntitySet;
         private bool _disposed;
         private IUser<int> _user;
 
@@ -36,6 +37,11 @@ namespace Concrety.Data.Repositories
         public TEntity GetById(int id)
         {
             return _dbEntitySet.Find(id);
+        }
+
+        public async Task<TEntity> GetByIdAsync(int id)
+        {
+            return await _dbEntitySet.FindAsync(id);
         }
 
         public IQueryable<TEntity> GetQuery()

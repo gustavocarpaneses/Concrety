@@ -42,5 +42,21 @@ namespace Concrety.Services
 
             return await Task.Factory.StartNew(() => { return query; });
         }
+
+
+        public async Task<IEnumerable<Nivel>> GetNiveisAcima(int idNivel)
+        {
+            var niveis = new List<Nivel>();
+
+            var nivel = await _nivelRepository.GetByIdAsync(idNivel);
+
+            do
+            {
+                niveis.Add(nivel);
+                nivel = nivel.NivelPai;
+            } while (nivel != null);
+
+            return niveis.Reverse<Nivel>();
+        }
     }
 }

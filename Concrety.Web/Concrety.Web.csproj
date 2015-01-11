@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,40 +39,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\servicosController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\partials\diarioObra.html" />
+    <Content Include="app\partials\servicos.html" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\diarioObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
+    <Content Include="app\services\unidadesService.js" />
     <Content Include="app\services\niveisService.js" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
+    <Content Include="content\css\Bootstrap\editor.png" />
+    <Content Include="content\css\Bootstrap\imagebrowser.png" />
+    <Content Include="content\css\Bootstrap\indeterminate.gif" />
+    <Content Include="content\css\Bootstrap\loading-image.gif" />
+    <Content Include="content\css\Bootstrap\loading.gif" />
+    <Content Include="content\css\Bootstrap\loading_2x.gif" />
+    <Content Include="content\css\Bootstrap\slider-h.gif" />
+    <Content Include="content\css\Bootstrap\slider-v.gif" />
+    <Content Include="content\css\Bootstrap\sprite.png" />
+    <Content Include="content\css\Bootstrap\sprite_2x.png" />
+    <Content Include="content\css\Bootstrap\sprite_kpi.png" />
+    <Content Include="content\css\Bootstrap\sprite_kpi_2x.png" />
     <Content Include="content\css\kendo.bootstrap.min.css" />
     <Content Include="content\css\kendo.common-bootstrap.min.css" />
     <Content Include="content\css\kendo.common.min.css" />
@@ -87,7 +84,6 @@
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\messages\kendo.messages.pt-BR.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls-0.12.0.min.js" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,12 +99,6 @@
     <Content Include="scripts\jquery.min.map" />
     <Content Include="scripts\kendo.all.min.js.map" />
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\directives\" />

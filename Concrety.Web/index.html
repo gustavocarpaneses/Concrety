@@ -6,10 +6,10 @@
     <link href="content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="content/css/site.css" rel="stylesheet" />
     <link href="content/css/loading-bar.min.css" rel="stylesheet" />
-    <link href="content/css/kendo.common.min.css" rel="stylesheet" />
-    <link href="content/css/kendo.flat.min.css" rel="stylesheet" />
-    <!--<link href="content/css/kendo.common-bootstrap.min.css" rel="stylesheet" />
-    <link href="content/css/kendo.bootstrap.min.css" rel="stylesheet" />--->
+    <!--<link href="content/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="content/css/kendo.flat.min.css" rel="stylesheet" />-->
+    <link href="content/css/kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="content/css/kendo.bootstrap.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
 <body>
@@ -35,9 +35,6 @@
                             <li ng-repeat="nivel in niveisServico">
                                 <a href="#/servicos/{{nivel.id}}">{{nivel.nome}}</a>
                             </li>
-                            <!--<li><a href="">Obra</a></li>
-                            <li><a href="">Quadra</a></li>
-                            <li><a href="">Unidade</a></li>-->
                         </ul>
                     </li>
 
@@ -49,7 +46,6 @@
                             <li ng-repeat="nivel in niveisVerificacaoMaterial">
                                 <a href="#/verificacaoMateriais/{{nivel.id}}">{{nivel.nome}}</a>
                             </li>
-                            <!--<li><a href="">Obra</a></li>-->
                         </ul>
                     </li>
                 </ul>
@@ -122,9 +118,11 @@
     <script src="app/services/authService.js"></script>
     <script src="app/services/accountService.js"></script>
     <script src="app/services/niveisService.js"></script>
+    <script src="app/services/unidadesService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js"></script>
     <script src="app/controllers/homeController.js"></script>
     <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/servicosController.js"></script>
 </body>
 </html>

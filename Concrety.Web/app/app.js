@@ -17,10 +17,16 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/partials/diarioObra.html"
     });
 
+    $routeProvider.when("/servicos/:id", {
+        controller: "servicosController",
+        templateUrl: "/app/partials/servicos.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
-var serviceBase = 'http://concrety.azurewebsites.net/';
+//var serviceBase = 'http://concrety.azurewebsites.net/';
+var serviceBase = 'http://localhost:51503/';
 app.constant('concretySettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'concretyApp'

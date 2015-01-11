@@ -16,6 +16,7 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<EmpreendimentoViewModel, Empreendimento>();
             Mapper.CreateMap<MacroServicoViewModel, MacroServico>();
             Mapper.CreateMap<NivelViewModel, Nivel>();
+            Mapper.CreateMap<UnidadeViewModel, Unidade>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.controller('indexController',
-    ['$rootScope', '$scope', '$location', 'authService', 'accountService', 'niveisService',
-        function ($rootScope, $scope, $location, authService, accountService, niveisService) {
+    ['$scope', '$location', 'authService', 'accountService', 'niveisService',
+        function ($scope, $location, authService, accountService, niveisService) {
 
     $scope.logOut = function () {
         authService.logOut();
@@ -11,6 +11,7 @@ app.controller('indexController',
     $scope.alterarEmpreendimento = function (empreendimentoAtual) {
         accountService.alterarEmpreendimentoAtual(empreendimentoAtual);
         recarregarEmpreendimentoAtual();
+        $location.path('/home');
     }
 
     $scope.authentication = authService.authentication;

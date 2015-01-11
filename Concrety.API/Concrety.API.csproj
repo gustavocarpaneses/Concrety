@@ -88,6 +88,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\NiveisController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\UnidadesController.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -96,10 +97,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MacroServicoViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoViewModel.cs" />
+    <Compile Include="ViewModels\UnidadeViewModel.cs" />
     <Compile Include="ViewModels\NivelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\DropBox.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

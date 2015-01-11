@@ -28,8 +28,21 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     };
 
+    var _getNiveisAcima = function (idNivel) {
+
+        return $http.get(serviceBase + 'api/niveis/acima', {
+            params: {
+                idNivel: idNivel
+            }
+        }).then(function (response) {
+            return response;
+        });
+
+    };
+
     niveisServiceFactory.getNiveisServico = _getNiveisServico;
     niveisServiceFactory.getNiveisVerificacaoMaterial = _getNiveisVerificacaoMaterial;
+    niveisServiceFactory.getNiveisAcima = _getNiveisAcima;
 
     return niveisServiceFactory;
 }]);
