@@ -110,10 +110,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Concrety.Core\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
