@@ -5,6 +5,10 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
 
     $scope.dropDownOptions = [];
 
+    $scope.unidadeSelecionada = '';
+    $scope.urlsServicos = [];
+    $scope.servicos = [];
+
     niveisService.getNiveisAcima(idNivel).then(function (response) {
         $scope.niveis = response.data;
 
@@ -15,6 +19,7 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
                 dataValueField: "id",
                 cascadeFrom: key == 0 ? "" : "nivel" + (key - 1),
                 cascadeFromField: key == 0 ? "" : "idUnidadePai",
+                optionLabel: key == $scope.niveis.length - 1 ? "Selecione..." : "",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {
@@ -29,6 +34,10 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
 
         }, $scope.dropDownOptions);
 
+    });
+
+    $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
+        alert(newValue + "-" + oldValue);
     });
             
 }]);
