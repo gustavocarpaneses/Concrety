@@ -25,7 +25,7 @@
         <div class="servicos">
             <div kendo-tab-strip k-content-urls="urlsServicos">
                 <ul>
-                    <li ng-class="{k-state-active: servico.atual}" data-ng-repeat="servico in servicos">
+                    <li ng-class="{'k-state-active': servico.atual}" data-ng-repeat="servico in servicos">
                         {{servico.nome}}
                     </li>
                 </ul>

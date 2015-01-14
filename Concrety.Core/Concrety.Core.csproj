@@ -73,6 +73,8 @@
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\ServicoUnidadeQueries.cs" />
+    <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\UnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\NivelQueries.cs" />
     <Compile Include="Interfaces\Services\IUnidadeService.cs" />

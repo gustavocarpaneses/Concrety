@@ -24,9 +24,9 @@ namespace Concrety.Services
             _fichaVerificacaoMaterialRepository = UnitOfWork.Repository<FichaVerificacaoMaterial>();
         }
         
-        public async Task<IEnumerable<Nivel>> GetNiveisServico(int idMacroServico)
+        public async Task<IEnumerable<Nivel>> ObterNiveisDeServico(int idMacroServico)
         {
-            var query = _nivelRepository.GetNiveisServico(
+            var query = _nivelRepository.ObterNiveisDeServico(
                 _servicoRepository.GetQuery(),
                 idMacroServico);
 
@@ -34,9 +34,9 @@ namespace Concrety.Services
 
         }
 
-        public async Task<IEnumerable<Nivel>> GetNiveisVerificacaoMaterial(int idMacroServico)
+        public async Task<IEnumerable<Nivel>> ObterNiveisDeVerificacaoDeMaterial(int idMacroServico)
         {
-            var query = _nivelRepository.GetNiveisVerificacaoMaterial(
+            var query = _nivelRepository.ObterNiveisDeVerificacaoDeMaterial(
                 _fichaVerificacaoMaterialRepository.GetQuery(),
                 idMacroServico);
 
@@ -44,7 +44,7 @@ namespace Concrety.Services
         }
 
 
-        public async Task<IEnumerable<Nivel>> GetNiveisAcima(int idNivel)
+        public async Task<IEnumerable<Nivel>> ObterNiveisSuperiores(int idNivel)
         {
             var niveis = new List<Nivel>();
 

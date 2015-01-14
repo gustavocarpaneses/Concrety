@@ -6,7 +6,7 @@ namespace Concrety.Core.Interfaces.Repositories
 {
     public static class NivelQueries
     {
-        public static IEnumerable<Nivel> GetNiveisServico(
+        public static IEnumerable<Nivel> ObterNiveisDeServico(
             this IRepositoryBase<Nivel> nivelRepository, 
             IQueryable<Servico> servicos, 
             int idMacroServico)
@@ -24,7 +24,7 @@ namespace Concrety.Core.Interfaces.Repositories
                 .Select(g => g.FirstOrDefault());
         }
 
-        public static IEnumerable<Nivel> GetNiveisVerificacaoMaterial(
+        public static IEnumerable<Nivel> ObterNiveisDeVerificacaoDeMaterial(
             this IRepositoryBase<Nivel> nivelRepository, 
             IQueryable<FichaVerificacaoMaterial> fichasVerificacao, 
             int idMacroServico)

@@ -6,7 +6,7 @@ namespace Concrety.Core.Interfaces.Repositories
 {
     public static class UnidadeQueries
     {
-        public static IEnumerable<Unidade> GetByIdNivel(
+        public static IEnumerable<Unidade> ObterDoNivel(
             this IRepositoryBase<Unidade> unidadeRepository, 
             int idNivel)
         {

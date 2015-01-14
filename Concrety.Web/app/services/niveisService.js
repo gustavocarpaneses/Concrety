@@ -4,7 +4,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
     var serviceBase = concretySettings.apiServiceBaseUri;
     var niveisServiceFactory = {};
 
-    var _getNiveisServico = function (idMacroServico) {
+    var _obterNiveisDeServico = function (idMacroServico) {
 
         return $http.get(serviceBase + 'api/niveis/servico', {
             params: {
@@ -16,7 +16,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     };
 
-    var _getNiveisVerificacaoMaterial = function (idMacroServico) {
+    var _obterNiveisDeVerificacaoDeMaterial = function (idMacroServico) {
 
         return $http.get(serviceBase + 'api/niveis/verificacaomaterial', {
             params: {
@@ -28,7 +28,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     };
 
-    var _getNiveisAcima = function (idNivel) {
+    var _obterNiveisAcima = function (idNivel) {
 
         return $http.get(serviceBase + 'api/niveis/acima', {
             params: {
@@ -40,9 +40,9 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     };
 
-    niveisServiceFactory.getNiveisServico = _getNiveisServico;
-    niveisServiceFactory.getNiveisVerificacaoMaterial = _getNiveisVerificacaoMaterial;
-    niveisServiceFactory.getNiveisAcima = _getNiveisAcima;
+    niveisServiceFactory.obterNiveisDeServico = _obterNiveisDeServico;
+    niveisServiceFactory.obterNiveisDeVerificacaoDeMaterial = _obterNiveisDeVerificacaoDeMaterial;
+    niveisServiceFactory.obterNiveisAcima = _obterNiveisAcima;
 
     return niveisServiceFactory;
 }]);

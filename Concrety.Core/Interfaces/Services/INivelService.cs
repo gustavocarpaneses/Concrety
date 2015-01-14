@@ -6,8 +6,8 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface INivelService : IServiceBase<Nivel>
     {
-        Task<IEnumerable<Nivel>> GetNiveisServico(int idMacroServico);
-        Task<IEnumerable<Nivel>> GetNiveisVerificacaoMaterial(int idMacroServico);
-        Task<IEnumerable<Nivel>> GetNiveisAcima(int idNivel);
+        Task<IEnumerable<Nivel>> ObterNiveisDeServico(int idMacroServico);
+        Task<IEnumerable<Nivel>> ObterNiveisDeVerificacaoDeMaterial(int idMacroServico);
+        Task<IEnumerable<Nivel>> ObterNiveisSuperiores(int idNivel);
     }
 }

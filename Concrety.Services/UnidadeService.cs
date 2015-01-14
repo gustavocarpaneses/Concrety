@@ -20,9 +20,9 @@ namespace Concrety.Services
             _unidadeRepository = UnitOfWork.Repository<Unidade>();
         }
         
-        public async Task<IEnumerable<Unidade>> GetByIdNivel(int idNivel)
+        public async Task<IEnumerable<Unidade>> ObterDoNivel(int idNivel)
         {
-            var query = _unidadeRepository.GetByIdNivel(idNivel);
+            var query = _unidadeRepository.ObterDoNivel(idNivel);
             return await Task.Factory.StartNew(() => { return query; });
         }
 

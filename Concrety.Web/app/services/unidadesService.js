@@ -4,11 +4,11 @@ app.factory('unidadesService', ['$http', '$q', 'concretySettings', function ($ht
     var serviceBase = concretySettings.apiServiceBaseUri;
     var unidadesServiceFactory = {};
 
-    var _getByIdNivel = function (idNivel) {
+    var _obterDoNivel = function (idNivel) {
 
         var deferred = $q.defer();
 
-        $http.get(serviceBase + 'api/unidades/getByIdNivel', {
+        $http.get(serviceBase + 'api/unidades/ObterDoNivel', {
             params: {
                 idNivel: idNivel
             }
@@ -20,7 +20,7 @@ app.factory('unidadesService', ['$http', '$q', 'concretySettings', function ($ht
 
     };
     
-    unidadesServiceFactory.getByIdNivel = _getByIdNivel;
+    unidadesServiceFactory.obterDoNivel = _obterDoNivel;
 
     return unidadesServiceFactory;
 }]);

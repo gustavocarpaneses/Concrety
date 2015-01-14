@@ -53,6 +53,7 @@
     <Content Include="app\services\diarioObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
+    <Content Include="app\services\servicosService.js" />
     <Content Include="app\services\unidadesService.js" />
     <Content Include="app\services\niveisService.js" />
     <Content Include="content\css\bootstrap.css" />

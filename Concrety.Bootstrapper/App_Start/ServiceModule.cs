@@ -12,6 +12,7 @@ namespace Concrety.Bootstrapper
             builder.RegisterGeneric(typeof(ServiceBase<>)).As(typeof(IServiceBase<>)).InstancePerRequest();
             builder.RegisterType(typeof(NivelService)).As(typeof(INivelService)).InstancePerRequest();
             builder.RegisterType(typeof(UnidadeService)).As(typeof(IUnidadeService)).InstancePerRequest();
+            builder.RegisterType(typeof(ServicoService)).As(typeof(IServicoService)).InstancePerRequest();
         }
     }
 }

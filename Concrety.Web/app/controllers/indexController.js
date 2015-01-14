@@ -34,11 +34,11 @@ app.controller('indexController',
 
         var idMacroServicoAtual = accountService.macroServicoAtual.id;
 
-        niveisService.getNiveisVerificacaoMaterial(idMacroServicoAtual).then(function (response) {
+        niveisService.obterNiveisDeVerificacaoDeMaterial(idMacroServicoAtual).then(function (response) {
             $scope.niveisVerificacaoMaterial = response.data;
         });
 
-        niveisService.getNiveisServico(idMacroServicoAtual).then(function (response) {
+        niveisService.obterNiveisDeServico(idMacroServicoAtual).then(function (response) {
             $scope.niveisServico = response.data;
         });
     }

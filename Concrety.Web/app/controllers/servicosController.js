@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService', 'niveisService', function ($scope, $routeParams, unidadesService, niveisService) {
+app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService', 'niveisService', 'servicosService', function ($scope, $routeParams, unidadesService, niveisService, servicosService) {
 
     var idNivel = $routeParams.id;
 
@@ -9,22 +9,22 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
     $scope.urlsServicos = [];
     $scope.servicos = [];
 
-    niveisService.getNiveisAcima(idNivel).then(function (response) {
+    niveisService.obterNiveisAcima(idNivel).then(function (response) {
         $scope.niveis = response.data;
 
-        angular.forEach($scope.niveis, function(value, key){
+        angular.forEach($scope.niveis, function(nivel, index){
 
             this.push({
                 dataTextField: "nome",
                 dataValueField: "id",
-                cascadeFrom: key == 0 ? "" : "nivel" + (key - 1),
-                cascadeFromField: key == 0 ? "" : "idUnidadePai",
-                optionLabel: key == $scope.niveis.length - 1 ? "Selecione..." : "",
+                cascadeFrom: index == 0 ? "" : "nivel" + (index - 1),
+                cascadeFromField: index == 0 ? "" : "idUnidadePai",
+                optionLabel: index == $scope.niveis.length - 1 ? "Selecione..." : "",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {
                         read: function (o) {
-                            unidadesService.getByIdNivel(value.id).then(function(response){
+                            unidadesService.obterDoNivel(nivel.id).then(function (response) {
                                 o.success(response.data)
                             })
                         }
@@ -37,7 +37,25 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
     });
 
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
-        alert(newValue + "-" + oldValue);
+        
+        if (!newValue) {
+            return;
+        }
+
+        var idUnidade = $scope.unidadeSelecionada;
+        var idNivel = $scope.niveis[$scope.niveis.length - 1].id;
+
+        servicosService.obterDaUnidade(idUnidade, idNivel).then(function (response) {
+
+            $scope.servicos = response.data;
+            $scope.urlsServicos = [];
+
+            angular.forEach($scope.servicos, function (servico, index) {
+                this.push("/#/servicoUnidade/" + servico.id + "/" + idUnidade);
+            }, $scope.urlsServicos);
+
+        });
+
     });
             
 }]);

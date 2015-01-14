@@ -22,6 +22,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/partials/servicos.html"
     });
 
+    $routeProvider.when("/servicoUnidade/:idServico/:idUnidade", {
+        controller: "servicoUnidadeController",
+        templateUrl: "/app/partials/servicoUnidade.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
