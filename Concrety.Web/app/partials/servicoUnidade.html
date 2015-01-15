@@ -1,0 +1,15 @@
+﻿<div class="row">
+    <div>
+        {{servico.nome}} - {{servico.descricao}} <button class="btn btn-default" ng-click="abrirModalNorma()">Norma</button>
+    </div>
+    <div>
+        Data Início:
+        <input kendo-date-time-picker="$parent.dataInicioPicker"
+               k-options="dataOptions"
+               k-ng-model="servicoUnidade.testeDataInicio" />
+        Data Conclusão:
+        <input kendo-date-time-picker="$parent.dataConclusaoPicker"
+               k-options="dataOptions"
+               k-ng-model="servicoUnidade.testeDataConclusao" />
+    </div>
+</div>

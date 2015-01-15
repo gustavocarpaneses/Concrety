@@ -1,0 +1,10 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
+    <h3 class="modal-title">{{servico.nome}}</h3>
+</div>
+<div class="modal-body">
+    <p ng-bind-html="servico.norma"></p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="fechar()">Fechar</button>
+</div>

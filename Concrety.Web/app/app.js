@@ -1,4 +1,4 @@
-﻿var app = angular.module('concretyApp', ['ngRoute', 'LocalStorageModule', 'kendo.directives', 'ui.bootstrap', 'angular-loading-bar']);
+﻿var app = angular.module('concretyApp', ['ngRoute', 'ngSanitize', 'LocalStorageModule', 'kendo.directives', 'ui.bootstrap', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -20,11 +20,6 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/servicos/:id", {
         controller: "servicosController",
         templateUrl: "/app/partials/servicos.html"
-    });
-
-    $routeProvider.when("/servicoUnidade/:idServico/:idUnidade", {
-        controller: "servicoUnidadeController",
-        templateUrl: "/app/partials/servicoUnidade.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });

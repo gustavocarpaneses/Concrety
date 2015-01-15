@@ -15,6 +15,7 @@ namespace Concrety.Data.EntityConfig
             Property(s => s.Descricao).IsRequired();
             Property(s => s.Norma).IsRequired().HasColumnType("text");
             Ignore(s => s.Atual);
+            Ignore(s => s.Desabilitado);
 
             HasRequired(s => s.Nivel)
                 .WithMany(n => n.Servicos)

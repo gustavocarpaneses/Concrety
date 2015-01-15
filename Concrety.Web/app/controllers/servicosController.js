@@ -4,10 +4,8 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
     var idNivel = $routeParams.id;
 
     $scope.dropDownOptions = [];
-
     $scope.unidadeSelecionada = '';
-    $scope.urlsServicos = [];
-    $scope.servicos = [];
+    $scope.servicosDaUnidade = [];
 
     niveisService.obterNiveisAcima(idNivel).then(function (response) {
         $scope.niveis = response.data;
@@ -45,15 +43,10 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
         var idUnidade = $scope.unidadeSelecionada;
         var idNivel = $scope.niveis[$scope.niveis.length - 1].id;
 
+        $scope.abasServico = [];
+
         servicosService.obterDaUnidade(idUnidade, idNivel).then(function (response) {
-
-            $scope.servicos = response.data;
-            $scope.urlsServicos = [];
-
-            angular.forEach($scope.servicos, function (servico, index) {
-                this.push("/#/servicoUnidade/" + servico.id + "/" + idUnidade);
-            }, $scope.urlsServicos);
-
+            $scope.servicosDaUnidade = response.data;
         });
 
     });

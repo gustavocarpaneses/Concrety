@@ -49,6 +49,14 @@ namespace Concrety.Services
 
             servicos.Single(s => s.Id == servicoAtual.Id).Atual = true;
 
+            var proximoServico = servicoAtual.ProximoServico;
+
+            while (proximoServico != null)
+            {
+                servicos.Single(s => s.Id == proximoServico.Id).Desabilitado = true;
+                proximoServico = proximoServico.ProximoServico;
+            }
+
             return servicos;            
         }
     }

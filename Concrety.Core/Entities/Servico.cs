@@ -18,6 +18,7 @@ namespace Concrety.Core.Entities
         public virtual ICollection<FichaVerificacaoServico> FichasVerificacaoServico { get; set; }
 
         public bool Atual { get; set; }
+        public bool Desabilitado { get; set; }
 
     }
 }

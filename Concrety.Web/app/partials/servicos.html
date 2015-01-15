@@ -23,13 +23,16 @@
             </ul>
         </div>
         <div class="servicos">
-            <div kendo-tab-strip k-content-urls="urlsServicos">
-                <ul>
-                    <li ng-class="{'k-state-active': servico.atual}" data-ng-repeat="servico in servicos">
-                        {{servico.nome}}
-                    </li>
-                </ul>
-            </div>
+
+            <tabset type="pills">
+                <tab ng-repeat="servico in servicosDaUnidade" heading="{{servico.nome}}" active="servico.atual" disabled="servico.desabilitado">
+                    <div ng-controller="servicoUnidadeController"
+                         ng-init="servico=servico"
+                         ng-include="'/app/partials/servicounidade.html'">
+                    </div>
+                </tab>
+            </tabset>
+
         </div>
     </div>
 
