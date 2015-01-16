@@ -1,15 +1,14 @@
 ﻿'use strict';
-app.controller('servicoUnidadeController', function ($scope, $modal) {
+app.controller('servicoUnidadeController', function ($scope, $modal, servicoUnidadeService) {
 
     if ($scope.servico.desabilitado) {
         return;
     }
     //Sugestão: se não for atual, setTimeout pra carregar
 
-    $scope.servicoUnidade = {
-        testeDataInicio: '',
-        testeDataConclusao: ''
-    };
+    servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
+        $scope.servicoUnidade = response.data;
+    });
     
     $scope.abrirModalNorma = function () {
         var modalInstance = $modal.open({

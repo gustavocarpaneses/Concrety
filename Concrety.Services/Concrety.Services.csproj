@@ -31,7 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Base\ServiceBase.cs" />
+    <Compile Include="ItemVerificacaoServicoUnidadeService.cs" />
+    <Compile Include="FichaVerificacaoServicoUnidadeService.cs" />
+    <Compile Include="FichaVerificacaoServicoService.cs" />
     <Compile Include="MacroServicoService.cs" />
+    <Compile Include="ServicoUnidadeService.cs" />
     <Compile Include="UnidadeService.cs" />
     <Compile Include="NivelService.cs" />
     <Compile Include="ServicoService.cs" />

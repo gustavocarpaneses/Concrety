@@ -72,11 +72,16 @@
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
+    <Compile Include="Interfaces\Repositories\FichaVerificacaoServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\ServicoUnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\UnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\NivelQueries.cs" />
+    <Compile Include="Interfaces\Services\IItemVerificacaoServicoUnidadeService.cs" />
+    <Compile Include="Interfaces\Services\IFichaVerificacaoServicoUnidadeService.cs" />
+    <Compile Include="Interfaces\Services\IFichaVerificacaoServicoService.cs" />
+    <Compile Include="Interfaces\Services\IServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IUnidadeService.cs" />
     <Compile Include="Interfaces\Services\INivelService.cs" />
     <Compile Include="Interfaces\Services\IMacroServicoService.cs" />

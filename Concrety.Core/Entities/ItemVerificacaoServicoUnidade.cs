@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Entities.Enumerators;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Concrety.Core.Entities
 {
@@ -15,5 +16,11 @@ namespace Concrety.Core.Entities
         public ResultadoServicoUnidade Resultado { get; set; }
 
         public virtual ICollection<Ocorrencia> Ocorrencias { get; set; }
+
+        public int ObterQuantidadeOcorrencias()
+        {
+            return Ocorrencias == null ? 0 : Ocorrencias.Count(o => o.Ativo && !o.Excluido);
+        }
+
     } 
 }

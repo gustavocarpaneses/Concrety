@@ -18,6 +18,12 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<Nivel, NivelViewModel>();
             Mapper.CreateMap<Unidade, UnidadeViewModel>();
             Mapper.CreateMap<Servico, ServicoViewModel>();
+            Mapper.CreateMap<ServicoUnidade, ServicoUnidadeViewModel>();
+            Mapper.CreateMap<FichaVerificacaoServico, FichaVerificacaoServicoViewModel>();
+            Mapper.CreateMap<FichaVerificacaoServicoUnidade, FichaVerificacaoServicoUnidadeViewModel>();
+            Mapper.CreateMap<ItemVerificacaoServico, ItemVerificacaoServicoViewModel>();
+            Mapper.CreateMap<ItemVerificacaoServicoUnidade, ItemVerificacaoServicoUnidadeViewModel>()
+                .AfterMap((model, viewModel) => viewModel.QuantidadeOcorrencias = model.ObterQuantidadeOcorrencias());
         }
     }
 }

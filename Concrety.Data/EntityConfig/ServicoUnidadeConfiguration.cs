@@ -10,7 +10,6 @@ namespace Concrety.Data.EntityConfig
         {
             ToTable("ServicosUnidades");
 
-            Property(s => s.DataInicio).IsRequired();
             Property(s => s.Status).IsRequired();
 
             HasRequired(s => s.Servico)

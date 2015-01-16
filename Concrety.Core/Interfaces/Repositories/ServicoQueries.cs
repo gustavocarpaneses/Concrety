@@ -21,21 +21,5 @@ namespace Concrety.Core.Interfaces.Repositories
             return query;
         }
 
-        public static Servico ObterAtualDaUnidade(
-            this IRepositoryBase<Servico> servicoRepository, 
-            IQueryable<ServicoUnidade> servicosUnidades,
-            int idUnidade)
-        {
-            var query = from s in servicoRepository.GetQuery()
-                        join su in servicosUnidades on s.Id equals su.IdServico
-                        where
-                            su.IdUnidade == idUnidade &&
-                            s.Ativo && !s.Excluido &&
-                            su.Ativo && !su.Excluido
-                        orderby s.Nome
-                        select s;
-
-            return query.LastOrDefault();
-        }
     }
 }

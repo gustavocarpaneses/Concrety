@@ -9,8 +9,8 @@ namespace Concrety.Core.Entities
     public class ServicoUnidade : EntityBase
     {
 
-        public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataFim { get; set; }
 
         public StatusServicoUnidade Status { get; set; }
 

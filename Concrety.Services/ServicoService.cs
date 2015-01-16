@@ -12,19 +12,19 @@ namespace Concrety.Services
 {
     public class ServicoService : ServiceBase<Servico>, IServicoService
     {
-        private IRepositoryBase<Servico> _servicoRepository;
+        private IRepositoryBase<Servico> _repository;
         private IRepositoryBase<ServicoUnidade> _servicoUnidadeRepository;
 
         public ServicoService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _servicoRepository = UnitOfWork.Repository<Servico>();
+            _repository = UnitOfWork.Repository<Servico>();
             _servicoUnidadeRepository = UnitOfWork.Repository<ServicoUnidade>();
         }
 
         public async Task<IEnumerable<Servico>> ObterDaUnidade(int idUnidade, int idNivel)
         {
-            var servicos = await Task.Factory.StartNew(() => { return _servicoRepository.ObterDoNivel(idNivel); });
+            var servicos = await Task.Factory.StartNew(() => { return _repository.ObterDoNivel(idNivel); });
 
             Servico servicoAtual = null;
             var servicoUnidadeAtual = await Task.Factory.StartNew(() => { return _servicoUnidadeRepository.ObterAtualDaUnidade(idUnidade); });

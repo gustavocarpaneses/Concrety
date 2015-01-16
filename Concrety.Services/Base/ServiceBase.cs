@@ -5,6 +5,7 @@ using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Concrety.Services.Base
 {
@@ -26,6 +27,12 @@ namespace Concrety.Services.Base
             UnitOfWork.SaveChanges();
         }
 
+        public async Task AddAsync(TEntity obj)
+        {
+            _repository.Add(obj);
+            await UnitOfWork.SaveChangesAsync();
+        }
+
         public TEntity GetById(int id)
         {
             return _repository.GetById(id);
@@ -42,10 +49,22 @@ namespace Concrety.Services.Base
             UnitOfWork.SaveChanges();
         }
 
+        public async void UpdateAsync(TEntity obj)
+        {
+            _repository.Update(obj);
+            await UnitOfWork.SaveChangesAsync();
+        }
+
         public void Remove(TEntity obj)
         {
             _repository.Remove(obj);
             UnitOfWork.SaveChanges();
+        }
+
+        public async void RemoveAsync(TEntity obj)
+        {
+            _repository.Remove(obj);
+            await UnitOfWork.SaveChangesAsync();
         }
 
         public void Dispose()

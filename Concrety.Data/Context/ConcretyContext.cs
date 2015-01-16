@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Concrety.Data.Context
@@ -41,50 +42,21 @@ namespace Concrety.Data.Context
 
         public override int SaveChanges()
         {
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetInterface("IEntityBase") != null))
-            {
-                var objeto = entry.Entity as EntityBase;
-
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
-
-                    entry.Property("DataUltimaAtualizacao").CurrentValue = DBNull.Value;
-                    entry.Property("IdUsuarioUltimaAtualizacao").CurrentValue = DBNull.Value;
-
-                    entry.Property("DataExclusao").CurrentValue = DBNull.Value;
-                    entry.Property("IdUsuarioExclusao").CurrentValue = DBNull.Value;
-
-                    entry.Property("Ativo").CurrentValue = true;
-                    entry.Property("Excluido").CurrentValue = false;
-                }
-                else if (entry.State == EntityState.Modified)
-                {
-                    entry.Property("DataCadastro").IsModified = false;
-                    entry.Property("IdUsuarioCadastro").IsModified = false;
-
-                    entry.Property("DataUltimaAtualizacao").CurrentValue = DateTime.Now;
-
-                    entry.Property("DataExclusao").IsModified = false;
-                    entry.Property("IdUsuarioExclusao").IsModified = false;
-                }
-                else if (entry.State == EntityState.Deleted)
-                {
-                    entry.State = EntityState.Modified;
-
-                    entry.Property("DataCadastro").IsModified = false;
-                    entry.Property("IdUsuarioCadastro").IsModified = false;
-
-                    entry.Property("DataUltimaAtualizacao").IsModified = false;
-                    entry.Property("IdUsuarioUltimaAtualizacao").IsModified = false;
-
-                    entry.Property("DataExclusao").CurrentValue = DateTime.Now;
-                    entry.Property("Excluido").CurrentValue = true;
-                }
-            }
+            AtualizarEntradas();   
             return base.SaveChanges();
         }
 
+        public override Task<int> SaveChangesAsync()
+        {
+            //não precisa chamar o AtualizarEntradas, pois o base chama o método que recebe o CancellationToken, e ele já chama o AtualizarEntradas
+            return base.SaveChangesAsync();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            AtualizarEntradas();
+            return base.SaveChangesAsync(cancellationToken);
+        }
 
         public new DbSet<TEntity> Set<TEntity>() where TEntity : EntityBase
         {
@@ -170,6 +142,51 @@ namespace Concrety.Data.Context
                 }
             }
             base.Dispose(disposing);
+        }
+
+        private void AtualizarEntradas()
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetInterface("IEntityBase") != null))
+            {
+                var objeto = entry.Entity as EntityBase;
+
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+
+                    entry.Property("DataUltimaAtualizacao").CurrentValue = DBNull.Value;
+                    entry.Property("IdUsuarioUltimaAtualizacao").CurrentValue = DBNull.Value;
+
+                    entry.Property("DataExclusao").CurrentValue = DBNull.Value;
+                    entry.Property("IdUsuarioExclusao").CurrentValue = DBNull.Value;
+
+                    entry.Property("Ativo").CurrentValue = true;
+                    entry.Property("Excluido").CurrentValue = false;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("DataCadastro").IsModified = false;
+                    entry.Property("IdUsuarioCadastro").IsModified = false;
+
+                    entry.Property("DataUltimaAtualizacao").CurrentValue = DateTime.Now;
+
+                    entry.Property("DataExclusao").IsModified = false;
+                    entry.Property("IdUsuarioExclusao").IsModified = false;
+                }
+                else if (entry.State == EntityState.Deleted)
+                {
+                    entry.State = EntityState.Modified;
+
+                    entry.Property("DataCadastro").IsModified = false;
+                    entry.Property("IdUsuarioCadastro").IsModified = false;
+
+                    entry.Property("DataUltimaAtualizacao").IsModified = false;
+                    entry.Property("IdUsuarioUltimaAtualizacao").IsModified = false;
+
+                    entry.Property("DataExclusao").CurrentValue = DateTime.Now;
+                    entry.Property("Excluido").CurrentValue = true;
+                }
+            }
         }
     }
 }

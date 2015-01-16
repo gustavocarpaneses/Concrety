@@ -12,17 +12,17 @@ namespace Concrety.Services
     public class UnidadeService : ServiceBase<Unidade>, IUnidadeService
     {
 
-        private IRepositoryBase<Unidade> _unidadeRepository;
+        private IRepositoryBase<Unidade> _repository;
 
         public UnidadeService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _unidadeRepository = UnitOfWork.Repository<Unidade>();
+            _repository = UnitOfWork.Repository<Unidade>();
         }
         
         public async Task<IEnumerable<Unidade>> ObterDoNivel(int idNivel)
         {
-            var query = _unidadeRepository.ObterDoNivel(idNivel);
+            var query = _repository.ObterDoNivel(idNivel);
             return await Task.Factory.StartNew(() => { return query; });
         }
 

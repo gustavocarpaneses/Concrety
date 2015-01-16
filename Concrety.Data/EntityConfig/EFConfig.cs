@@ -21,7 +21,7 @@ namespace Concrety.Data.EntityConfig
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));
-
+            
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(255));
 

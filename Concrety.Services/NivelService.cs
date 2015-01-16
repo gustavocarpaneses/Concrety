@@ -12,21 +12,21 @@ namespace Concrety.Services
     public class NivelService : ServiceBase<Nivel>, INivelService
     {
 
-        private IRepositoryBase<Nivel> _nivelRepository;
+        private IRepositoryBase<Nivel> _repository;
         private IRepositoryBase<Servico> _servicoRepository;
         private IRepositoryBase<FichaVerificacaoMaterial> _fichaVerificacaoMaterialRepository;
 
         public NivelService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _nivelRepository = UnitOfWork.Repository<Nivel>();
+            _repository = UnitOfWork.Repository<Nivel>();
             _servicoRepository = UnitOfWork.Repository<Servico>();
             _fichaVerificacaoMaterialRepository = UnitOfWork.Repository<FichaVerificacaoMaterial>();
         }
         
         public async Task<IEnumerable<Nivel>> ObterNiveisDeServico(int idMacroServico)
         {
-            var query = _nivelRepository.ObterNiveisDeServico(
+            var query = _repository.ObterNiveisDeServico(
                 _servicoRepository.GetQuery(),
                 idMacroServico);
 
@@ -36,7 +36,7 @@ namespace Concrety.Services
 
         public async Task<IEnumerable<Nivel>> ObterNiveisDeVerificacaoDeMaterial(int idMacroServico)
         {
-            var query = _nivelRepository.ObterNiveisDeVerificacaoDeMaterial(
+            var query = _repository.ObterNiveisDeVerificacaoDeMaterial(
                 _fichaVerificacaoMaterialRepository.GetQuery(),
                 idMacroServico);
 
@@ -48,7 +48,7 @@ namespace Concrety.Services
         {
             var niveis = new List<Nivel>();
 
-            var nivel = await _nivelRepository.GetByIdAsync(idNivel);
+            var nivel = await _repository.GetByIdAsync(idNivel);
 
             do
             {
