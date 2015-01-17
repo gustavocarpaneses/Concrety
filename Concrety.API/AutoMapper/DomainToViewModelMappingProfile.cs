@@ -23,7 +23,13 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<FichaVerificacaoServicoUnidade, FichaVerificacaoServicoUnidadeViewModel>();
             Mapper.CreateMap<ItemVerificacaoServico, ItemVerificacaoServicoViewModel>();
             Mapper.CreateMap<ItemVerificacaoServicoUnidade, ItemVerificacaoServicoUnidadeViewModel>()
-                .AfterMap((model, viewModel) => viewModel.QuantidadeOcorrencias = model.ObterQuantidadeOcorrencias());
+                .AfterMap(
+                (model, viewModel) =>
+                {
+                    viewModel.QuantidadeOcorrencias = model.ObterQuantidadeOcorrencias();
+
+                }
+            );
         }
     }
 }

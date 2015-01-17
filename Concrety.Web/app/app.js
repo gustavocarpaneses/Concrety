@@ -43,3 +43,11 @@ app.run(['accountService', function (accountService) {
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
+
+app.config(['datepickerPopupConfig', function (datepickerPopupConfig) {
+    datepickerPopupConfig.datepickerPopup = 'dd/MM/yyyy';
+    datepickerPopupConfig.currentText = 'Hoje';
+    datepickerPopupConfig.clearText = 'Limpar';
+    datepickerPopupConfig.closeText = 'Fechar';
+    datepickerPopupConfig.closeOnDateSelection = true;
+}]);

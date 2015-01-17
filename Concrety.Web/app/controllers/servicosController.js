@@ -27,7 +27,7 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
                             })
                         }
                     }
-                }),
+                })
             });
 
         }, $scope.dropDownOptions);

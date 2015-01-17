@@ -18,6 +18,7 @@ namespace Concrety.Data.Context
     public class ConcretyContext : IdentityDbContext<ApplicationIdentityUser, ApplicationIdentityRole, int, ApplicationIdentityUserLogin, ApplicationIdentityUserRole, ApplicationIdentityUserClaim>, IEntitiesContext
     {
 
+        private bool _disposed;
         private ObjectContext _objectContext;
         private DbTransaction _transaction;
 
@@ -126,7 +127,7 @@ namespace Concrety.Data.Context
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!_disposed && disposing)
             {
                 if (_objectContext != null && _objectContext.Connection.State == ConnectionState.Open)
                 {
@@ -141,6 +142,7 @@ namespace Concrety.Data.Context
                     _transaction.Dispose();
                 }
             }
+            _disposed = true;
             base.Dispose(disposing);
         }
 

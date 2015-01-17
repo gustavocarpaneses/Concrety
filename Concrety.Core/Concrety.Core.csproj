@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\CondicaoClimatica.cs" />
     <Compile Include="Entities\Enumerators\FichaVerificacaoMaterial.cs" />
@@ -38,7 +39,7 @@
     <Compile Include="Entities\Identity\ApplicationAuthenticationDescription.cs" />
     <Compile Include="Entities\Identity\ApplicationClient.cs" />
     <Compile Include="Entities\Identity\ApplicationExternalLoginInfo.cs" />
-    <Compile Include="Entities\Identity\ApplicationIdentityResult.cs" />
+    <Compile Include="Entities\Results\ApplicationIdentityResult.cs" />
     <Compile Include="Entities\Identity\ApplicationMessage.cs" />
     <Compile Include="Entities\Identity\ApplicationRefreshToken.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />
@@ -57,6 +58,8 @@
     <Compile Include="Entities\FichaVerificacaoServico.cs" />
     <Compile Include="Entities\FichaVerificacaoServicoUnidade.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Extensions\TExtensions.cs" />
+    <Compile Include="Interfaces\Entities\IEntityResult.cs" />
     <Compile Include="Interfaces\Logging\ILogger.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
     <Compile Include="Entities\Patologia.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="Interfaces\Services\IServiceBase%271.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Messages\ServicoMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

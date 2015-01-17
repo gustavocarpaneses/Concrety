@@ -2,6 +2,7 @@
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
 using Concrety.Core.Entities.Identity;
+using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Identity;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Web.Http;
 namespace Concrety.API.Controllers
 {
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : ApiControllerBase
     {
 
         private IApplicationUserManager _userManager;
@@ -55,34 +56,5 @@ namespace Concrety.API.Controllers
             return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos);
         }
         
-        private IHttpActionResult GetErrorResult(ApplicationIdentityResult result)
-        {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
-
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            return null;
-        }
-
     }
 }

@@ -4,26 +4,62 @@
     </div>
     <div>
         Data Início:
-        <input kendo-date-time-picker="$parent.dataInicioPicker"
-               k-options="dataOptions"
-               k-ng-model="servicoUnidade.DataInicio" />
+        <input type="text"
+               datepicker-popup
+               ng-model="servicoUnidade.dataInicio"
+               is-open="servicoUnidade.dataInicioOpened"
+               ng-click="servicoUnidade.dataInicioOpened = true"
+               class="input-md" />       
+        <!--max-date="maxDate"-->
+
         Data Conclusão:
-        <input kendo-date-time-picker="$parent.dataConclusaoPicker"
-               k-options="dataOptions"
-               k-ng-model="servicoUnidade.DataFim" />
+        <input type="text"
+               datepicker-popup
+               ng-model="servicoUnidade.dataFim"
+               is-open="servicoUnidade.dataFimOpened"
+               ng-click="servicoUnidade.dataFimOpened = true"
+               class="input-md" />  
 
-        {{servicoUnidade.status}}
+        <select kendo-drop-down-list
+                k-options="dropDownStatusOptions"
+                ng-model="servicoUnidade.status"
+                style="width: auto"></select>
 
-        <ul>
-            <li ng-repeat="fvs in servicoUnidade.fichasVerificacaoServico">
-                {{fvs.fichaVerificacaoServico.nome}} - {{fvs.fichaVerificacaoServico.descricao}}
-                <ul>
-                    <li ng-repeat="item in fvs.itens">
-                        {{item.itemVerificacao.nome}} - {{item.itemVerificacao.validacao}} - {{item.itemVerificacao.descricao}} - {{item.resultado}} - {{item.quantidadeOcorrencias}}
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div ng-repeat="fvs in servicoUnidade.fichasVerificacaoServico">
+            {{fvs.fichaVerificacaoServico.nome}} - {{fvs.fichaVerificacaoServico.descricao}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serviço</th>
+                        <th>Validação</th>
+                        <th>Descrição</th>
+                        <th>Resultado</th>
+                        <th>Ocorrências</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in fvs.itens">
+                        <td>{{item.itemVerificacao.nome}}</td>
+                        <td>{{item.itemVerificacao.validacao}}</td>
+                        <td>{{item.itemVerificacao.descricao}}</td>
+                        <td>
+                            <select kendo-drop-down-list
+                                    k-options="dropDownResultadoOptions"
+                                    ng-model="item.resultado"
+                                    style="width: auto"></select>
+                        </td>
+                        <td>{{item.quantidadeOcorrencias}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+        <button type="button" class="btn btn-primary" ng-click="salvar()">
+            Salvar
+        </button>
+
+    </div>
+    <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
+        {{mensagem}}
     </div>
 </div>

@@ -20,10 +20,9 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<FichaVerificacaoServicoUnidade>();
         }
 
-        internal async Task<ICollection<FichaVerificacaoServicoUnidade>> Criar(ServicoUnidade servicoUnidade)
+        internal async Task Criar(ServicoUnidade servicoUnidade)
         {
             var fichasVerificacaoServico = await new FichaVerificacaoServicoService(UnitOfWork).ObterDoServico(servicoUnidade.IdServico);
-            var fichasVerificacaoServicoUnidade = new List<FichaVerificacaoServicoUnidade>();
 
             foreach (var fvs in fichasVerificacaoServico.ToList())
             {
@@ -33,15 +32,10 @@ namespace Concrety.Services
                     IdFichaVerificacaoServico = fvs.Id
                 };
 
-                _repository.Add(fvsUnidade);
+                await base.AddAsync(fvsUnidade);
 
-                fvsUnidade.FichaVerificacaoServico = fvs;
-                fvsUnidade.Itens = await new ItemVerificacaoServicoUnidadeService(UnitOfWork).Criar(fvs, fvsUnidade);
-
-                fichasVerificacaoServicoUnidade.Add(fvsUnidade);
+                await new ItemVerificacaoServicoUnidadeService(UnitOfWork).Criar(fvs, fvsUnidade);
             }
-
-            return fichasVerificacaoServicoUnidade;
         }
 
     }

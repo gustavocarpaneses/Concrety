@@ -17,7 +17,25 @@ app.factory('servicosService', ['$http', 'concretySettings', function ($http, co
 
     };
     
+    var _obterPossiveisStatus = function () {
+
+        return $http.get(serviceBase + 'api/servicos/possiveisStatus').then(function (response) {
+            return response;
+        });
+
+    };
+
+    var _obterPossiveisResultados = function () {
+
+        return $http.get(serviceBase + 'api/servicos/possiveisResultados').then(function (response) {
+            return response;
+        });
+
+    };
+
+    servicosServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
     servicosServiceFactory.obterDaUnidade = _obterDaUnidade;
+    servicosServiceFactory.obterPossiveisResultados = _obterPossiveisResultados;
 
     return servicosServiceFactory;
 }]);

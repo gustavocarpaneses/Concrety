@@ -86,6 +86,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\ServicoUnidadeController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Controllers\NiveisController.cs" />
@@ -104,6 +105,8 @@
     <Compile Include="ViewModels\EmpreendimentoViewModel.cs" />
     <Compile Include="ViewModels\ServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\ServicoViewModel.cs" />
+    <Compile Include="ViewModels\StatusResultadoViewModel.cs" />
+    <Compile Include="ViewModels\StatusServicoViewModel.cs" />
     <Compile Include="ViewModels\UnidadeViewModel.cs" />
     <Compile Include="ViewModels\NivelViewModel.cs" />
   </ItemGroup>

@@ -27,15 +27,20 @@ namespace Concrety.Services.Base
             UnitOfWork.SaveChanges();
         }
 
-        public async Task AddAsync(TEntity obj)
+        public async Task<int> AddAsync(TEntity obj)
         {
             _repository.Add(obj);
-            await UnitOfWork.SaveChangesAsync();
+            return await UnitOfWork.SaveChangesAsync();
         }
 
         public TEntity GetById(int id)
         {
             return _repository.GetById(id);
+        }
+
+        public async Task<TEntity> GetByIdAsync(int id)
+        {
+            return await _repository.GetByIdAsync(id);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -49,10 +54,10 @@ namespace Concrety.Services.Base
             UnitOfWork.SaveChanges();
         }
 
-        public async void UpdateAsync(TEntity obj)
+        public async Task<int> UpdateAsync(TEntity obj)
         {
             _repository.Update(obj);
-            await UnitOfWork.SaveChangesAsync();
+            return await UnitOfWork.SaveChangesAsync();
         }
 
         public void Remove(TEntity obj)
@@ -61,10 +66,10 @@ namespace Concrety.Services.Base
             UnitOfWork.SaveChanges();
         }
 
-        public async void RemoveAsync(TEntity obj)
+        public async Task<int> RemoveAsync(TEntity obj)
         {
             _repository.Remove(obj);
-            await UnitOfWork.SaveChangesAsync();
+            return await UnitOfWork.SaveChangesAsync();
         }
 
         public void Dispose()

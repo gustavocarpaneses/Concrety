@@ -1,10 +1,14 @@
 ﻿'use strict';
-app.controller('servicoUnidadeController', function ($scope, $modal, servicoUnidadeService) {
+app.controller('servicoUnidadeController', function ($scope, $modal, servicosService, servicoUnidadeService) {
 
     if ($scope.servico.desabilitado) {
         return;
     }
     //Sugestão: se não for atual, setTimeout pra carregar
+
+    $scope.servicoUnidade = [];
+    $scope.salvoComSucesso = false;
+    $scope.mensagem = "";
 
     servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
         $scope.servicoUnidade = response.data;
@@ -22,58 +26,63 @@ app.controller('servicoUnidadeController', function ($scope, $modal, servicoUnid
         });
     };
 
-    $scope.dataOptions = {
-        culture: 'pt-BR'
+    $scope.salvar = function () {
+        servicoUnidadeService.salvar($scope.servicoUnidade).then(function (response) {
+            $scope.salvoComSucesso = true;
+            $scope.mensagem = "Alterações salvas com sucesso.";
+        }, function (response) {
+            var errors = [];
+            for (var key in response.data.modelState) {
+                for (var i = 0; i < response.data.modelState[key].length; i++) {
+                    errors.push(response.data.modelState[key][i]);
+                }
+            }
+            $scope.mensagem = "Erro ao salvar as alterações:" + errors.join(' ');
+        });
     };
 
-    $scope.$watch('servicoUnidade.testeDataInicio', function (newValue, oldValue) {
+    $scope.dropDownStatusOptions = {
+        dataTextField: "nome",
+        dataValueField: "id",
+        dataSource: new kendo.data.DataSource({
+            type: "json",
+            transport: {
+                read: function (o) {
+                    servicosService.obterPossiveisStatus().then(function (response) {
+                        o.success(response.data)
+                    })
+                }
+            }
+        })
+    };
 
-        var start = $scope.dataInicioPicker;
-        var end = $scope.dataConclusaoPicker;
+    $scope.dropDownResultadoOptions = {
+        dataTextField: "nome",
+        dataValueField: "id",
+        optionLabel: "Selecione...",
+        dataSource: new kendo.data.DataSource({
+            type: "json",
+            transport: {
+                read: function (o) {
+                    servicosService.obterPossiveisResultados().then(function (response) {
+                        o.success(response.data)
+                    })
+                }
+            }
+        })
+    }
 
-        if (!start || !end) {
-            return;
-        }
+    $scope.open = function ($event, datePicker) {
+        $event.preventDefault();
+        $event.stopPropagation();
 
-        var startDate = start.value(),
-        endDate = end.value();
+        $scope.closeAllDatePickers();
+        datePicker.opened = true;
+    };
 
-        if (startDate) {
-            startDate = new Date(startDate);
-            startDate.setDate(startDate.getDate());
-            end.min(startDate);
-        } else if (endDate) {
-            start.max(new Date(endDate));
-        } else {
-            endDate = new Date();
-            start.max(endDate);
-            end.min(endDate);
-        }
-    });
-
-    $scope.$watch('servicoUnidade.testeDataConclusao', function (newValue, oldValue) {
-
-        var start = $scope.dataInicioPicker;
-        var end = $scope.dataConclusaoPicker;
-
-        if (!start || !end) {
-            return;
-        }
-
-        var endDate = end.value(),
-        startDate = start.value();
-
-        if (endDate) {
-            endDate = new Date(endDate);
-            endDate.setDate(endDate.getDate());
-            start.max(endDate);
-        } else if (startDate) {
-            end.min(new Date(startDate));
-        } else {
-            endDate = new Date();
-            start.max(endDate);
-            end.min(endDate);
-        }
-    });
-
+    $scope.closeAllDatePickers = function ($event) {
+        $scope.servicoUnidade.dataInicio.opened = false;
+        $scope.servicoUnidade.dataFim.opened = false;
+    };
+        
 });

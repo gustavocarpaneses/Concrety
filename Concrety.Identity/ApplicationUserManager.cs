@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Entities;
 using Concrety.Core.Entities.Enumerators;
 using Concrety.Core.Entities.Identity;
+using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Identity;
 using Concrety.Identity.Extensions;
 using Concrety.Identity.Models;

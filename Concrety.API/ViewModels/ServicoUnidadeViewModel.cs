@@ -9,6 +9,8 @@ namespace Concrety.API.ViewModels
     public class ServicoUnidadeViewModel
     {
 
+        public int Id { get; set; }
+
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
 

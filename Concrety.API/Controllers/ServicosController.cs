@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
+using Concrety.Core.Entities.Enumerators;
+using Concrety.Core.Extensions;
 using Concrety.Core.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,58 @@ namespace Concrety.API.Controllers
         {
             var servicos = await _servicoService.ObterDaUnidade(idUnidade, idNivel);
             return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(servicos);
+        }
+
+        [Route("PossiveisStatus")]
+        public async Task<IEnumerable<StatusServicoViewModel>> GetPossiveisStatus()
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return new List<StatusServicoViewModel>
+                {
+                    new StatusServicoViewModel
+                    {
+                        Id = (int)StatusServicoUnidade.NaoIniciada,
+                        Nome = StatusServicoUnidade.NaoIniciada.GetDescription()
+                    },
+                    new StatusServicoViewModel
+                    {
+                        Id = (int)StatusServicoUnidade.EmAndamento,
+                        Nome = StatusServicoUnidade.EmAndamento.GetDescription()
+                    },
+                    new StatusServicoViewModel
+                    {
+                        Id = (int)StatusServicoUnidade.Concluida,
+                        Nome = StatusServicoUnidade.Concluida.GetDescription()
+                    }
+                };
+            });
+        }
+
+        [Route("PossiveisResultados")]
+        public async Task<IEnumerable<StatusResultadoViewModel>> GetPossiveisResultados()
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return new List<StatusResultadoViewModel>
+                {
+                    new StatusResultadoViewModel
+                    {
+                        Id = (int)ResultadoServicoUnidade.Aprovado,
+                        Nome = ResultadoServicoUnidade.Aprovado.GetDescription()
+                    },
+                    new StatusResultadoViewModel
+                    {
+                        Id = (int)ResultadoServicoUnidade.Reprovado,
+                        Nome = ResultadoServicoUnidade.Reprovado.GetDescription()
+                    },
+                    new StatusResultadoViewModel
+                    {
+                        Id = (int)ResultadoServicoUnidade.ReinspecionadoAprovado,
+                        Nome = ResultadoServicoUnidade.ReinspecionadoAprovado.GetDescription()
+                    }
+                };
+            });
         }
 
     }
