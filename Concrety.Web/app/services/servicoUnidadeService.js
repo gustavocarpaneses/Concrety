@@ -22,7 +22,7 @@ app.factory('servicoUnidadeService', ['$http', 'concretySettings', function ($ht
         return $http.post(serviceBase + 'api/servicounidade/post', servicoUnidade).then(function (response) {
             return response;
         });
-
+        
     };
     
     servicoUnidadeServiceFactory.salvar = _salvar;

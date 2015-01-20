@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('servicoUnidadeController', function ($scope, $modal, servicosService, servicoUnidadeService) {
+app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal, servicosService, servicoUnidadeService) {
 
     if ($scope.servico.desabilitado) {
         return;
@@ -12,6 +12,7 @@ app.controller('servicoUnidadeController', function ($scope, $modal, servicosSer
 
     servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
         $scope.servicoUnidade = response.data;
+        LimparDatas();
     });
     
     $scope.abrirModalNorma = function () {
@@ -27,18 +28,33 @@ app.controller('servicoUnidadeController', function ($scope, $modal, servicosSer
     };
 
     $scope.salvar = function () {
+
+        if ($scope.servicoUnidade.dataInicio == '') {
+            $scope.servicoUnidade.dataInicio = '0001-01-01T00:00:00';
+        }
+
+        if ($scope.servicoUnidade.dataFim == '') {
+            $scope.servicoUnidade.dataFim = '0001-01-01T00:00:00';
+        }
+
         servicoUnidadeService.salvar($scope.servicoUnidade).then(function (response) {
+            LimparDatas();
             $scope.salvoComSucesso = true;
             $scope.mensagem = "Alterações salvas com sucesso.";
+            if (response.data.servicoConcluido) {
+                $rootScope.$broadcast('servicoConcluidoEvent', []);
+            }
         }, function (response) {
+            LimparDatas();
             var errors = [];
             for (var key in response.data.modelState) {
                 for (var i = 0; i < response.data.modelState[key].length; i++) {
                     errors.push(response.data.modelState[key][i]);
                 }
             }
-            $scope.mensagem = "Erro ao salvar as alterações:" + errors.join(' ');
+            $scope.mensagem = errors.join(' ');
         });
+
     };
 
     $scope.dropDownStatusOptions = {
@@ -82,7 +98,16 @@ app.controller('servicoUnidadeController', function ($scope, $modal, servicosSer
 
     $scope.closeAllDatePickers = function ($event) {
         $scope.servicoUnidade.dataInicio.opened = false;
-        $scope.servicoUnidade.dataFim.opened = false;
+        $scope.servicoUnidade.dataFimy.opened = false;
     };
+
+    function LimparDatas() {
+        if ($scope.servicoUnidade.dataInicio == '0001-01-01T00:00:00') {
+            $scope.servicoUnidade.dataInicio = '';
+        }
+        if ($scope.servicoUnidade.dataFim == '0001-01-01T00:00:00') {
+            $scope.servicoUnidade.dataFim = '';
+        }
+    }
         
 });

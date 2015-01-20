@@ -75,7 +75,7 @@ namespace Concrety.Services
             return await Task.Factory.StartNew(() =>
             {
                 return new ServicoUnidadeResult(
-                    null, 
+                    null,
                     true, 
                     servicoUnidade.Status == StatusServicoUnidade.Concluida);
             }); 
@@ -87,7 +87,9 @@ namespace Concrety.Services
             {
                 if (servicoUnidade.FichasVerificacaoServico.Any(
                     f => f.Itens.Any(
-                        i => i.Resultado != ResultadoServicoUnidade.Aprovado)))
+                        i => i.Resultado != ResultadoServicoUnidade.Aprovado
+                        &&
+                        i.Resultado != ResultadoServicoUnidade.ReinspecionadoAprovado)))
                 {
                     return new List<string>()
                     {
@@ -103,7 +105,9 @@ namespace Concrety.Services
             {
                 if (servicoUnidade.FichasVerificacaoServico.All(
                     f => f.Itens.All(
-                        i => i.Resultado == ResultadoServicoUnidade.Aprovado)))
+                        i => i.Resultado == ResultadoServicoUnidade.Aprovado
+                        ||
+                        i.Resultado == ResultadoServicoUnidade.ReinspecionadoAprovado)))
                 {
                     servicoUnidade.Status = StatusServicoUnidade.Concluida;
                     if (servicoUnidade.DataFim == null || servicoUnidade.DataFim == DateTime.MinValue)

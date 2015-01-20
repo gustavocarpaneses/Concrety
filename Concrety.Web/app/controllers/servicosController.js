@@ -35,20 +35,24 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
     });
 
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
-        
         if (!newValue) {
             return;
         }
 
+        CarregarAbasServico();
+    });
+
+    $scope.$on('servicoConcluidoEvent', function (event, args) {
+        CarregarAbasServico();
+    });
+           
+    function CarregarAbasServico() {
         var idUnidade = $scope.unidadeSelecionada;
         var idNivel = $scope.niveis[$scope.niveis.length - 1].id;
-
-        $scope.abasServico = [];
 
         servicosService.obterDaUnidade(idUnidade, idNivel).then(function (response) {
             $scope.servicosDaUnidade = response.data;
         });
+    }
 
-    });
-            
 }]);

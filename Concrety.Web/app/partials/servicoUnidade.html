@@ -9,8 +9,8 @@
                ng-model="servicoUnidade.dataInicio"
                is-open="servicoUnidade.dataInicioOpened"
                ng-click="servicoUnidade.dataInicioOpened = true"
+               max-date="servicoUnidade.dataFim"
                class="input-md" />       
-        <!--max-date="maxDate"-->
 
         Data Conclusão:
         <input type="text"
@@ -18,6 +18,7 @@
                ng-model="servicoUnidade.dataFim"
                is-open="servicoUnidade.dataFimOpened"
                ng-click="servicoUnidade.dataFimOpened = true"
+               min-date="servicoUnidade.dataInicio"
                class="input-md" />  
 
         <select kendo-drop-down-list
