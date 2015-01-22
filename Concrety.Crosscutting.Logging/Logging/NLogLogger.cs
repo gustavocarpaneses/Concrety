@@ -1,5 +1,5 @@
-﻿using System;
-using Concrety.Core.Interfaces.Logging;
+﻿using Concrety.Core.Interfaces.Logging;
+using System;
 
 namespace Concrety.Crosscutting.Logging
 {

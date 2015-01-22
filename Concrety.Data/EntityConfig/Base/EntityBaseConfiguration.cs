@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities.Base;
-using Concrety.Identity.Models;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig.Base

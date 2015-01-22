@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.Entity;
-using Concrety.Identity.Models;
+﻿using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Data.Entity;
 
 namespace Concrety.Identity
 {

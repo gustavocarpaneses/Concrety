@@ -2,15 +2,11 @@ namespace Concrety.Data.Migrations
 {
     using Concrety.Core.Entities;
     using Concrety.Core.Entities.Enumerators;
-    using Concrety.Core.Interfaces.Logging;
     using Concrety.Data.Context;
     using Concrety.Identity;
     using Concrety.Identity.Models;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    using System.Diagnostics;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ConcretyContext>
     {

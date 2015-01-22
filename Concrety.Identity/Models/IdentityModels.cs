@@ -1,6 +1,4 @@
 ﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Base;
-using Concrety.Core.Interfaces.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 

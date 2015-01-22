@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Concrety.Core.Interfaces.Repositories

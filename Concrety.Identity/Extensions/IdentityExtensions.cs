@@ -1,5 +1,4 @@
-﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Identity;
+﻿using Concrety.Core.Entities.Identity;
 using Concrety.Core.Entities.Results;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity;

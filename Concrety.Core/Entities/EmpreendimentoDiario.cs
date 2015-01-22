@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities.Base;
-using Concrety.Core.Entities.Enumerators;
 using System;
 
 namespace Concrety.Core.Entities

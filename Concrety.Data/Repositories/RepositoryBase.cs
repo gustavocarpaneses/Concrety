@@ -1,11 +1,11 @@
 ﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Data.Context;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 
 namespace Concrety.Data.Repositories

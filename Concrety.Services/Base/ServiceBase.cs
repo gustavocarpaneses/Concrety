@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities.Base;
-using Concrety.Core.Interfaces.Entities;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;

@@ -1,5 +1,4 @@
-﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Interfaces.Repositories;
 using System;
 using System.Threading;

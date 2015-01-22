@@ -1,6 +1,4 @@
-﻿using Concrety.Core.Entities.Base;
-using Concrety.Core.Interfaces.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Concrety.Core.Entities.Identity

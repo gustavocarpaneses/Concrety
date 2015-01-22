@@ -5,7 +5,6 @@ using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace Concrety.Services
 {

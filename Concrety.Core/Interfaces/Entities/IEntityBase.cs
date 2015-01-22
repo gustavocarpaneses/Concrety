@@ -1,5 +1,4 @@
-﻿using Concrety.Core.Entities.Base;
-using System;
+﻿using System;
 
 namespace Concrety.Core.Interfaces.Entities
 {

@@ -1,7 +1,5 @@
 ﻿using Concrety.Core.Entities;
 using Concrety.Data.EntityConfig.Base;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
 
 namespace Concrety.Data.EntityConfig
 {

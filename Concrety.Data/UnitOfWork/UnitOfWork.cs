@@ -1,14 +1,13 @@
-﻿using Concrety.Data.Context;
-using Concrety.Data.Repositories;
-using Concrety.Core.Entities.Base;
+﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Data.Context;
+using Concrety.Data.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections;
 using System.Threading;
 using System.Threading.Tasks;
-using Concrety.Core.Entities;
 
 namespace Concrety.Data.UnitOfWork
 {
