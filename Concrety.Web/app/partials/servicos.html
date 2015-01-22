@@ -25,7 +25,7 @@
         <div class="servicos">
 
             <tabset type="pills">
-                <tab ng-repeat="servico in servicosDaUnidade" heading="{{servico.nome}}" active="servico.atual" disabled="servico.desabilitado">
+                <tab ng-repeat="servico in servicosDaUnidade" heading="{{servico.nome}}" active="servico.atual"> <!--disabled="servico.desabilitado"-->
                     <div ng-controller="servicoUnidadeController"
                          ng-init="servico=servico"
                          ng-include="'/app/partials/servicounidade.html'">
