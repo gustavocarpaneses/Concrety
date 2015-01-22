@@ -2,17 +2,21 @@
 app.factory('diarioObraService', ['$http', 'concretySettings', function ($http, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
-    var ordersServiceFactory = {};
+    var diariosObraServiceFactory = {};
 
-    var _getOrders = function () {
+    var _get = function (idEmpreendimento) {
 
-        return $http.get(serviceBase + 'api/orders').then(function (response) {
+        return $http.get(serviceBase + 'api/diariosObra/get', {
+            params: {
+                idEmpreendimento: idEmpreendimento
+            }
+        }).then(function (response) {
             return response;
         });
     };
 
-    ordersServiceFactory.getOrders = _getOrders;
+    diariosObraServiceFactory.get = _get;
 
-    return ordersServiceFactory;
+    return diariosObraServiceFactory;
 
 }]);
