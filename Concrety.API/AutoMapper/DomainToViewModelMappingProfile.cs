@@ -14,6 +14,7 @@ namespace Concrety.API.AutoMapper
         protected override void Configure()
         {
             Mapper.CreateMap<Empreendimento, EmpreendimentoViewModel>();
+            Mapper.CreateMap<EmpreendimentoDiario, EmpreendimentoDiarioViewModel>();
             Mapper.CreateMap<MacroServico, MacroServicoViewModel>();
             Mapper.CreateMap<Nivel, NivelViewModel>();
             Mapper.CreateMap<Unidade, UnidadeViewModel>();

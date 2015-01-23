@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Results\EntityResultBase.cs" />
     <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
     <Compile Include="Entities\CondicaoClimatica.cs" />
@@ -39,7 +40,6 @@
     <Compile Include="Entities\Identity\ApplicationAuthenticationDescription.cs" />
     <Compile Include="Entities\Identity\ApplicationClient.cs" />
     <Compile Include="Entities\Identity\ApplicationExternalLoginInfo.cs" />
-    <Compile Include="Entities\Results\ApplicationIdentityResult.cs" />
     <Compile Include="Entities\Identity\ApplicationMessage.cs" />
     <Compile Include="Entities\Identity\ApplicationRefreshToken.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />

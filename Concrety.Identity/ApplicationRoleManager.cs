@@ -23,31 +23,31 @@ namespace Concrety.Identity
             _roleManager = roleManager;
         }
 
-        public virtual async Task<ApplicationIdentityResult> CreateAsync(ApplicationRole role)
+        public virtual async Task<EntityResultBase> CreateAsync(ApplicationRole role)
         {
             var identityRole = role.ToIdentityRole();
             var identityResult = await _roleManager.CreateAsync(identityRole).ConfigureAwait(false);
             role.CopyIdentityRoleProperties(identityRole);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public ApplicationIdentityResult Create(ApplicationRole role)
+        public EntityResultBase Create(ApplicationRole role)
         {
             var identityRole = role.ToIdentityRole();
             var identityResult = _roleManager.Create(identityRole);
             role.CopyIdentityRoleProperties(identityRole);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> DeleteAsync(int roleId)
+        public virtual async Task<EntityResultBase> DeleteAsync(int roleId)
         {
             var identityRole = await _roleManager.FindByIdAsync(roleId);
             if (identityRole == null)
             {
-                return new ApplicationIdentityResult(new[] { "Invalid role Id" }, false);
+                return new EntityResultBase(new[] { "Invalid role Id" }, false);
             }
             var identityResult = await _roleManager.DeleteAsync(identityRole).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual async Task<ApplicationRole> FindByIdAsync(int roleId)
@@ -83,16 +83,16 @@ namespace Concrety.Identity
             return await _roleManager.RoleExistsAsync(roleName).ConfigureAwait(false);
         }
 
-        public virtual async Task<ApplicationIdentityResult> UpdateAsync(int roleId, string roleName)
+        public virtual async Task<EntityResultBase> UpdateAsync(int roleId, string roleName)
         {
             var identityRole = await _roleManager.FindByIdAsync(roleId);
             if (identityRole == null)
             {
-                return new ApplicationIdentityResult(new[] { "Invalid role Id" }, false);
+                return new EntityResultBase(new[] { "Invalid role Id" }, false);
             }
             identityRole.Name = roleName;
             var identityResult = await _roleManager.UpdateAsync(identityRole).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public void Dispose()

@@ -3,20 +3,8 @@ using System.Collections.Generic;
 
 namespace Concrety.Core.Entities.Results
 {
-    public class ServicoUnidadeResult : IEntityResult
+    public class ServicoUnidadeResult : EntityResultBase
     {
-        public IEnumerable<string> Erros
-        {
-            get;
-            private set;
-        }
-
-        public bool Sucesso
-        {
-            get;
-            private set;
-        }
-
         public bool ServicoConcluido
         {
             get;
@@ -24,9 +12,8 @@ namespace Concrety.Core.Entities.Results
         }
 
         public ServicoUnidadeResult(IEnumerable<string> erros, bool sucesso, bool servicoConcluido)
+            : base(erros, sucesso)
         {
-            Sucesso = sucesso;
-            Erros = erros;
             ServicoConcluido = servicoConcluido;
         }
     }

@@ -68,43 +68,43 @@ namespace Concrety.Identity
             }
         }
 
-        public virtual async Task<ApplicationIdentityResult> AccessFailedAsync(int userId)
+        public virtual async Task<EntityResultBase> AccessFailedAsync(int userId)
         {
             var identityResult = await _userManager.AccessFailedAsync(userId).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> AddClaimAsync(int userId, Claim claim)
+        public virtual async Task<EntityResultBase> AddClaimAsync(int userId, Claim claim)
         {
             var identityResult = await _userManager.AddClaimAsync(userId, claim).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> AddLoginAsync(int userId, ApplicationUserLoginInfo login)
+        public virtual async Task<EntityResultBase> AddLoginAsync(int userId, ApplicationUserLoginInfo login)
         {
             var identityResult = await _userManager.AddLoginAsync(userId, login.ToUserLoginInfo()).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> AddPasswordAsync(int userId, string password)
+        public virtual async Task<EntityResultBase> AddPasswordAsync(int userId, string password)
         {
             var identityResult = await _userManager.AddPasswordAsync(userId, password).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> AddToRoleAsync(int userId, string role)
+        public virtual async Task<EntityResultBase> AddToRoleAsync(int userId, string role)
         {
             var identityResult = await _userManager.AddToRoleAsync(userId, role).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual ApplicationIdentityResult AddToRole(int userId, string role)
+        public virtual EntityResultBase AddToRole(int userId, string role)
         {
             var identityResult = _userManager.AddToRole(userId, role);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> AddUserToRolesAsync(int userId, IList<string> roles)
+        public virtual async Task<EntityResultBase> AddUserToRolesAsync(int userId, IList<string> roles)
         {
             var user = await FindByIdAsync(userId).ConfigureAwait(false);
             if (user == null)
@@ -123,16 +123,16 @@ namespace Concrety.Identity
             return await UpdateAsync(userId).ConfigureAwait(false);
         }
 
-        public virtual async Task<ApplicationIdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
+        public virtual async Task<EntityResultBase> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
         {
             var identityResult = await _userManager.ChangePasswordAsync(userId, currentPassword, newPassword).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> ChangePhoneNumberAsync(int userId, string phoneNumber, string token)
+        public virtual async Task<EntityResultBase> ChangePhoneNumberAsync(int userId, string phoneNumber, string token)
         {
             var identityResult = await _userManager.ChangePhoneNumberAsync(userId, phoneNumber, token).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual void Challenge(string redirectUri, string xsrfKey, int? userId, params string[] authenticationTypes)
@@ -153,26 +153,26 @@ namespace Concrety.Identity
             return flag;
         }
 
-        public virtual async Task<ApplicationIdentityResult> ConfirmEmailAsync(int userId,  string token)
+        public virtual async Task<EntityResultBase> ConfirmEmailAsync(int userId,  string token)
         {
             var identityResult = await _userManager.ConfirmEmailAsync(userId, token).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> CreateAsync(ApplicationUser user)
+        public virtual async Task<EntityResultBase> CreateAsync(ApplicationUser user)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = await _userManager.CreateAsync(applicationUser).ConfigureAwait(false);
             user.CopyApplicationIdentityUserProperties(applicationUser);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> CreateAsync(ApplicationUser user, string password)
+        public virtual async Task<EntityResultBase> CreateAsync(ApplicationUser user, string password)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = await _userManager.CreateAsync(applicationUser, password).ConfigureAwait(false);
             user.CopyApplicationIdentityUserProperties(applicationUser);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual ClaimsIdentity CreateIdentity(ApplicationUser user, string authenticationType)
@@ -191,20 +191,20 @@ namespace Concrety.Identity
             return claimsIdentity;
         }
 
-        public virtual ApplicationIdentityResult Create(ApplicationUser user)
+        public virtual EntityResultBase Create(ApplicationUser user)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = _userManager.Create(applicationUser);
             user.CopyApplicationIdentityUserProperties(applicationUser);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual ApplicationIdentityResult Create(ApplicationUser user, string password)
+        public virtual EntityResultBase Create(ApplicationUser user, string password)
         {
             var applicationUser = user.ToApplicationUser();
             var identityResult = _userManager.Create(applicationUser, password);
             user.CopyApplicationIdentityUserProperties(applicationUser);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual ClaimsIdentity CreateTwoFactorRememberBrowserIdentity(int userId)
@@ -212,15 +212,15 @@ namespace Concrety.Identity
             return _authenticationManager.CreateTwoFactorRememberBrowserIdentity(userId.ToString());
         }
 
-        public virtual async Task<ApplicationIdentityResult> DeleteAsync(int userId)
+        public virtual async Task<EntityResultBase> DeleteAsync(int userId)
         {
             var applicationUser = await _userManager.FindByIdAsync(userId);
             if (applicationUser == null)
             {
-                return new ApplicationIdentityResult(new[] { "Invalid user Id" }, false);
+                return new EntityResultBase(new[] { "Invalid user Id" }, false);
             }
             var identityResult = await _userManager.DeleteAsync(applicationUser).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual async Task<SignInStatus> ExternalSignIn(ApplicationExternalLoginInfo loginInfo, bool isPersistent)
@@ -441,10 +441,10 @@ namespace Concrety.Identity
             return await _userManager.IsPhoneNumberConfirmedAsync(userId).ConfigureAwait(false);
         }
 
-        public virtual async Task<ApplicationIdentityResult> NotifyTwoFactorTokenAsync(int userId, string twoFactorProvider, string token)
+        public virtual async Task<EntityResultBase> NotifyTwoFactorTokenAsync(int userId, string twoFactorProvider, string token)
         {
             var identityResult = await _userManager.NotifyTwoFactorTokenAsync(userId, twoFactorProvider, token).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual async Task<SignInStatus> PasswordSignIn(string userName, string password, bool isPersistent, bool shouldLockout)
@@ -474,32 +474,32 @@ namespace Concrety.Identity
             return SignInStatus.Failure;
         }
 
-        public virtual async Task<ApplicationIdentityResult> RemoveClaimAsync(int userId, Claim claim)
+        public virtual async Task<EntityResultBase> RemoveClaimAsync(int userId, Claim claim)
         {
             var identityResult = await _userManager.RemoveClaimAsync(userId, claim).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> RemoveFromRoleAsync(int userId, string role)
+        public virtual async Task<EntityResultBase> RemoveFromRoleAsync(int userId, string role)
         {
             var identityResult = await _userManager.RemoveFromRoleAsync(userId, role).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> RemoveLoginAsync(int userId,
+        public virtual async Task<EntityResultBase> RemoveLoginAsync(int userId,
             ApplicationUserLoginInfo login)
         {
             var identityResult = await _userManager.RemoveLoginAsync(userId, login.ToUserLoginInfo()).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> RemovePasswordAsync(int userId)
+        public virtual async Task<EntityResultBase> RemovePasswordAsync(int userId)
         {
             var identityResult = await _userManager.RemovePasswordAsync(userId).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> RemoveUserFromRolesAsync(int userId, IList<string> roles)
+        public virtual async Task<EntityResultBase> RemoveUserFromRolesAsync(int userId, IList<string> roles)
         {
             var user = await FindByIdAsync(userId).ConfigureAwait(false);
             if (user == null)
@@ -518,17 +518,17 @@ namespace Concrety.Identity
             return await UpdateAsync(user.Id).ConfigureAwait(false);
         }
 
-        public virtual async Task<ApplicationIdentityResult> ResetAccessFailedCountAsync(int userId)
+        public virtual async Task<EntityResultBase> ResetAccessFailedCountAsync(int userId)
         {
             var identityResult = await _userManager.ResetAccessFailedCountAsync(userId).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> ResetPasswordAsync(int userId, string token,
+        public virtual async Task<EntityResultBase> ResetPasswordAsync(int userId, string token,
             string newPassword)
         {
             var identityResult = await _userManager.ResetPasswordAsync(userId, token, newPassword).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual async Task SendEmailAsync(int userId, string subject, string body)
@@ -562,41 +562,41 @@ namespace Concrety.Identity
             return true;
         }
 
-        public virtual async Task<ApplicationIdentityResult> SetEmailAsync(int userId, string email)
+        public virtual async Task<EntityResultBase> SetEmailAsync(int userId, string email)
         {
             var identityResult = await _userManager.SetEmailAsync(userId, email).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual ApplicationIdentityResult SetLockoutEnabled(int userId, bool enabled)
+        public virtual EntityResultBase SetLockoutEnabled(int userId, bool enabled)
         {
             var identityResult = _userManager.SetLockoutEnabled(userId, enabled);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> SetLockoutEnabledAsync(int userId, bool enabled)
+        public virtual async Task<EntityResultBase> SetLockoutEnabledAsync(int userId, bool enabled)
         {
             var identityResult = await _userManager.SetLockoutEnabledAsync(userId, enabled).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> SetLockoutEndDateAsync(int userId,
+        public virtual async Task<EntityResultBase> SetLockoutEndDateAsync(int userId,
             DateTimeOffset lockoutEnd)
         {
             var identityResult = await _userManager.SetLockoutEndDateAsync(userId, lockoutEnd).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> SetPhoneNumberAsync(int userId, string phoneNumber)
+        public virtual async Task<EntityResultBase> SetPhoneNumberAsync(int userId, string phoneNumber)
         {
             var identityResult = await _userManager.SetPhoneNumberAsync(userId, phoneNumber).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> SetTwoFactorEnabledAsync(int userId, bool enabled)
+        public virtual async Task<EntityResultBase> SetTwoFactorEnabledAsync(int userId, bool enabled)
         {
             var identityResult = await _userManager.SetTwoFactorEnabledAsync(userId, enabled).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual async Task<SignInStatus> SignInOrTwoFactor(ApplicationUser user, bool isPersistent)
@@ -694,21 +694,21 @@ namespace Concrety.Identity
             return SignInStatus.Failure;
         }
 
-        public virtual async Task<ApplicationIdentityResult> UpdateAsync(int userId)
+        public virtual async Task<EntityResultBase> UpdateAsync(int userId)
         {
             var applicationUser = await _userManager.FindByIdAsync(userId).ConfigureAwait(false);
             if (applicationUser == null)
             {
-                return new ApplicationIdentityResult(new[] { "Invalid user Id" }, false);
+                return new EntityResultBase(new[] { "Invalid user Id" }, false);
             }
             var identityResult = await _userManager.UpdateAsync(applicationUser).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
-        public virtual async Task<ApplicationIdentityResult> UpdateSecurityStampAsync(int userId)
+        public virtual async Task<EntityResultBase> UpdateSecurityStampAsync(int userId)
         {
             var identityResult = await _userManager.UpdateSecurityStampAsync(userId).ConfigureAwait(false);
-            return identityResult.ToApplicationIdentityResult();
+            return identityResult.ToEntityResultBase();
         }
 
         public virtual IEnumerable<ApplicationUser> GetUsers()

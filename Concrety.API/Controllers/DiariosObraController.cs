@@ -30,6 +30,52 @@ namespace Concrety.API.Controllers
             var diarios = await _empreendimentoDiarioService.ObterDoEmpreendimento(idEmpreendimento);
             return Mapper.Map<IEnumerable<EmpreendimentoDiario>, IEnumerable<EmpreendimentoDiarioViewModel>>(diarios);
         }
+
+        [Route("Create")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Create(EmpreendimentoDiarioViewModel diarioViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var diario = Mapper.Map<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>(diarioViewModel);
+
+            var resultado = await _empreendimentoDiarioService.Criar(diario);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+        [Route("Update")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Update(EmpreendimentoDiarioViewModel diarioViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var diario = Mapper.Map<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>(diarioViewModel);
+
+            var resultado = await _empreendimentoDiarioService.Atualizar(diario);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
         
     }
 }

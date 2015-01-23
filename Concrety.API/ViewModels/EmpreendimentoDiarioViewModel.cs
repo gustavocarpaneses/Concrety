@@ -6,6 +6,7 @@ namespace Concrety.API.ViewModels
     public class EmpreendimentoDiarioViewModel
     {
 
+        public int? Id { get; set; }
         public DateTime Data { get; set; }
         public bool HouveTrabalho { get; set; }
         public int TemperaturaMinima { get; set; }

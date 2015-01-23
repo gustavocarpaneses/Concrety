@@ -14,9 +14,9 @@ namespace Concrety.Identity.Extensions
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class IdentityExtensions
     {
-        public static ApplicationIdentityResult ToApplicationIdentityResult(this IdentityResult identityResult)
+        public static EntityResultBase ToEntityResultBase(this IdentityResult identityResult)
         {
-            return identityResult == null ? null : new ApplicationIdentityResult(identityResult.Errors, identityResult.Succeeded);
+            return identityResult == null ? null : new EntityResultBase(identityResult.Errors, identityResult.Succeeded);
         }
 
         public static ApplicationIdentityUser ToApplicationUser(this ApplicationUser appUser)

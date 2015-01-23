@@ -1,9 +1,13 @@
 ﻿using Concrety.Core.Interfaces.Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Concrety.Core.Entities.Results
 {
-    public class ApplicationIdentityResult : IEntityResult
+    public class EntityResultBase : IEntityResult
     {
         public IEnumerable<string> Erros
         {
@@ -17,10 +21,11 @@ namespace Concrety.Core.Entities.Results
             private set;
         }
 
-        public ApplicationIdentityResult(IEnumerable<string> errors, bool succeeded)
+        public EntityResultBase(IEnumerable<string> erros, bool sucesso)
         {
-            Sucesso = succeeded;
-            Erros = errors;
+            Sucesso = sucesso;
+            Erros = erros;
         }
+
     }
 }
