@@ -47,23 +47,24 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
     $scope.empreendimentoAtual = accountService.empreendimentoAtual;
 
     var columns = [
+            { field: "id", title: "Id" },
             { field: "data", title: "Data" },
             { field: "houveTrabalho", title: "Houve Trabalho?" },
             { field: "temperaturaMinima", title: "Temperatura Mínima" },
             { field: "temperaturaMaxima", title: "Temperatura Máxima" },
             { command: ["edit"], title: "&nbsp;", width: "250px" }];
 
-    var model = {
+    var model = kendo.data.Model.define({
         id: "id",
         fields: {
-            id: { editable: false, nullable: true },
+            id: { type: "number", editable: false, nullable: true },
             //idEmpreendimento: { visible: false },
             houveTrabalho: { type: "boolean", validation: { required: true } },
             temperaturaMinima: { type: "number", validation: { required: true, min: 1 } },
             temperaturaMaxima: { type: "number", validation: { required: true, min: 1 } },
             data: { type: "date", validation: { required: true } }
         }
-    };
+    });
 
     var dataSource = new kendo.data.DataSource({
         type: "json",
