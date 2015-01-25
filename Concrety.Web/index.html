@@ -46,7 +46,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li ng-repeat="nivel in niveisVerificacaoMaterial">
-                                <a href="#/verificacaoMateriais/{{nivel.id}}">{{nivel.nome}}</a>
+                                <a href="#/materiais/{{nivel.id}}">{{nivel.nome}}</a>
                             </li>
                         </ul>
                     </li>
@@ -126,6 +126,8 @@
     <script src="app/services/unidadesService.js"></script>
     <script src="app/services/diarioObraService.js"></script>
     <script src="app/services/condicaoClimaticaService.js"></script>
+    <script src="app/services/materiaisService.js"></script>
+    <script src="app/services/fornecedorService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js"></script>
     <script src="app/controllers/homeController.js"></script>
@@ -134,5 +136,6 @@
     <script src="app/controllers/servicoUnidadeController.js"></script>
     <script src="app/controllers/modalNormasController.js"></script>
     <script src="app/controllers/diarioObraController.js"></script>
+    <script src="app/controllers/materiaisController.js"></script>
 </body>
 </html>

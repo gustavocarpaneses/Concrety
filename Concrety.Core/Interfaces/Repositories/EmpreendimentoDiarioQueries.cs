@@ -15,6 +15,7 @@ namespace Concrety.Core.Interfaces.Repositories
                         where
                             d.IdEmpreendimento == idEmpreendimento &&
                             d.Ativo && !d.Excluido
+                        orderby d.Data descending
                         select d;
 
             return query;

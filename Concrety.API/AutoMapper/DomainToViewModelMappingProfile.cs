@@ -39,6 +39,11 @@ namespace Concrety.API.AutoMapper
 
                 }
             );
+
+            Mapper.CreateMap<FichaVerificacaoMaterial, FichaVerificacaoMaterialViewModel>();
+            Mapper.CreateMap<FichaVerificacaoMaterialUnidade, FichaVerificacaoMaterialUnidadeViewModel>();
+            Mapper.CreateMap<Fornecedor, FornecedorViewModel>();
+
         }
     }
 }

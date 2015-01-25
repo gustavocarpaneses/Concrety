@@ -17,7 +17,7 @@ app.controller('servicosController', ['$scope', '$routeParams', 'unidadesService
                 dataValueField: "id",
                 cascadeFrom: index == 0 ? "" : "nivel" + (index - 1),
                 cascadeFromField: index == 0 ? "" : "idUnidadePai",
-                optionLabel: index == $scope.niveis.length - 1 ? "Selecione..." : "",
+                optionLabel: index == $scope.niveis.length - 1 && $scope.niveis.length > 1 ? "Selecione..." : "",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {

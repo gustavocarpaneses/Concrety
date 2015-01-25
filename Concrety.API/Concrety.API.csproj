@@ -87,8 +87,11 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\CondicoesClimaticasController.cs" />
     <Compile Include="Controllers\DiariosObraController.cs" />
+    <Compile Include="Controllers\MaterialUnidadeController.cs" />
+    <Compile Include="Controllers\MateriaisController.cs" />
     <Compile Include="Controllers\ServicoUnidadeController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Controllers\NiveisController.cs" />
@@ -101,8 +104,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CondicaoClimaticaViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoDiarioViewModel.cs" />
+    <Compile Include="ViewModels\FichaVerificacaoMaterialViewModel.cs" />
+    <Compile Include="ViewModels\FichaVerificacaoMaterialUnidadeViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoServicoViewModel.cs" />
+    <Compile Include="ViewModels\FornecedorViewModel.cs" />
     <Compile Include="ViewModels\ItemVerificacaoServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\ItemVerificacaoServicoViewModel.cs" />
     <Compile Include="ViewModels\MacroServicoViewModel.cs" />

@@ -4,7 +4,7 @@
         &nbsp;
     </div>
     <div class="col-md-8">
-        <div class="pesquisa">
+        <div class="pesquisa" ng-hide="niveis.length == 1">
             <ul>
                 <li data-ng-repeat="nivel in niveis">
                     {{nivel.nome}}:
