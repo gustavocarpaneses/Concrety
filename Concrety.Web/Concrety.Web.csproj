@@ -77,6 +77,7 @@
     <Content Include="content\css\Bootstrap\sprite_2x.png" />
     <Content Include="content\css\Bootstrap\sprite_kpi.png" />
     <Content Include="content\css\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="content\css\concrety.css" />
     <Content Include="content\css\Default\editor.png" />
     <Content Include="content\css\Default\imagebrowser.png" />
     <Content Include="content\css\Default\indeterminate.gif" />

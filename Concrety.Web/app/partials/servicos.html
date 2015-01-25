@@ -1,29 +1,26 @@
 ﻿
-<div class="row">
-    <div class="col-md-2">
-        &nbsp;
-    </div>
-    <div class="col-md-8">
+<div class="row" id="conteudo_info_detalhada">
+      <div class="col-md-8">
         <div class="pesquisa">
+            <h4>Serviços - Informações detalhadas</h4>
             <ul>
                 <li data-ng-repeat="nivel in niveis">
                     {{nivel.nome}}:
                     <select kendo-drop-down-list
                             id="nivel{{$index}}"
                             k-options="dropDownOptions[$index]"
-                            style="width: auto"
+                            style="width: 250px"
                             ng-model="$parent.$parent.unidadeSelecionada"
                             ng-if="$last"></select>
                     <select kendo-drop-down-list
                             id="nivel{{$index}}"
                             k-options="dropDownOptions[$index]"
-                            style="width: auto"
+                            style="width: 200px"
                             ng-if="!$last"></select>
                 </li>
             </ul>
         </div>
         <div class="servicos">
-
             <tabset type="pills">
                 <tab ng-repeat="servico in servicosDaUnidade" heading="{{servico.nome}}" active="servico.atual"> <!--disabled="servico.desabilitado"-->
                     <div ng-controller="servicoUnidadeController"

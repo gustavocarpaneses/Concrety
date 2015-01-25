@@ -31,3 +31,22 @@ margin: 0 auto;
 .navbar .dropdown-menu>li>a:hover {
     background-color:#0099CC    !important;
 }
+
+
+/*página de serviços*/
+
+.pesquisa li{
+    padding-top:5px;
+}
+
+.pesquisa h4{
+    font-weight:bold;
+}
+
+#conteudo_info_detalhada{
+    margin-top:-30px!important;
+}
+
+.nav nav-pills{
+    
+}
