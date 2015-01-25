@@ -1,0 +1,106 @@
+﻿
+<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <div class="pesquisa" ng-hide="niveis.length == 1">
+            <ul>
+                <li data-ng-repeat="nivel in niveis">
+                    {{nivel.nome}}:
+                    <select kendo-drop-down-list
+                            id="nivel{{$index}}"
+                            k-options="dropDownOptions[$index]"
+                            style="width: auto"
+                            ng-model="$parent.$parent.unidadeSelecionada"
+                            ng-if="$last"></select>
+                    <select kendo-drop-down-list
+                            id="nivel{{$index}}"
+                            k-options="dropDownOptions[$index]"
+                            style="width: auto"
+                            ng-if="!$last"></select>
+                </li>
+            </ul>
+        </div>
+
+        <div kendo-grid k-options="materiaisGridOptions"
+             k-ng-delay="materiaisGridOptions"
+             ng-if="unidadeSelecionada"></div>
+
+        <script type="text/x-kendo-template" id="editTemplate">
+            <div class="k-edit-label">
+                <label for="fichas">Fichas</label>
+            </div>
+            <div class="k-edit-field">
+                <select kendo-drop-down-list
+                        name="fichas"
+                        k-options="dropDownFichasOptions"
+                        ng-model="dataItem.idFichaVerificacaoMaterial"
+                        style="width: auto"></select>
+            </div>
+            <div ng-if="dataItem.idFichaVerificacaoMaterial">
+                <div class="k-edit-label">
+                    <label for="data">Data</label>
+                </div>
+                <div class="k-edit-field">
+                    <input name="data" type="text" datepicker-popup ng-model="dataItem.data" required
+                           is-open="dataItem.dataOpened" ng-click="dataItem.dataOpened = true" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="fornecedor">Fornecedor</label>
+                </div>
+                <div class="k-edit-field">
+                    <select kendo-drop-down-list
+                            name="fornecedor"
+                            k-options="dropDownFornecedoresOptions"
+                            ng-model="dataItem.idFornecedor"
+                            style="width: auto"></select>
+                </div>
+                <div class="k-edit-label">
+                    <label for="numeroPedido">Número do Pedido</label>
+                </div>
+                <div class="k-edit-field">
+                    <input type="text" name="numeroPedido" ng-model="dataItem.numeroPedido" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="notaFiscal">Nota Fiscal</label>
+                </div>
+                <div class="k-edit-field">
+                    <input type="text" name="notaFiscal" ng-model="dataItem.notaFiscal" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="quantidadeTotal">Qtde. Total</label>
+                </div>
+                <div class="k-edit-field">
+                    <input type="text" name="quantidadeTotal" ng-model="dataItem.quantidadeTotal" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="amostraValidacao">Amostra</label>
+                </div>
+                <div class="k-edit-field">
+                    <input type="text" name="amostraValidacao" ng-model="dataItem.amostraValidacao" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="observacoes">Observações</label>
+                </div>
+                <div class="k-edit-field">
+                    <textarea kendo-editor name="observacoes" style="width:550px;" ng-model="dataItem.observacoes"></textarea>
+                </div>
+                <div class="k-edit-label">
+                    <label for="aprovado">Aprovado?</label>
+                </div>
+                <div class="k-edit-field">
+                    <input type="checkbox" name="aprovado" ng-model="dataItem.aprovado">
+                </div>
+
+                <!-- Itens -->
+                <!-- Critério Aceite -->
+            </div>
+
+        </script>
+    </div>
+
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>

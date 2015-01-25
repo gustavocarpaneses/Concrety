@@ -25,6 +25,15 @@ namespace Concrety.API.ViewModels
         public int TotalAjudantes { get; set; }
         public int TotalPedreiros { get; set; }
 
+        public int EfetivoTotal
+        {
+            get
+            {
+                return TotalMontadores + TotalArmadores + TotalCarpinteiros + TotalEletricistas 
+                    + TotalEncanadores + TotalEncarregados + TotalMestres + TotalAjudantes + TotalPedreiros;
+            }
+        }
+
         public int TotalFaltas { get; set; }
         public int TotalAcidentados { get; set; }
         public int TotalNovosFuncionarios { get; set; }
@@ -33,8 +42,22 @@ namespace Concrety.API.ViewModels
 
         public int IdEmpreendimento { get; set; }
 
-        //public virtual CondicaoClimatica CondicaoClimatica { get; set; }
-        //public int IdCondicaoClimatica { get; set; }
+        public virtual CondicaoClimaticaViewModel CondicaoClimatica { get; set; }
+        public int IdCondicaoClimatica { get; set; }
+        public string TextoCondicaoClimatica
+        {
+            get
+            {
+                if (CondicaoClimatica == null)
+                {
+                    return String.Empty;
+                }
+                else
+                {
+                    return CondicaoClimatica.Text;
+                }
+            }
+        }
 
     }
 }

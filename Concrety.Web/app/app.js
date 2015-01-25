@@ -22,6 +22,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/partials/servicos.html"
     });
 
+    $routeProvider.when("/materiais/:id", {
+        controller: "materiaisController",
+        templateUrl: "/app/partials/materiais.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
@@ -44,10 +49,13 @@ app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
 
-app.config(['datepickerPopupConfig', function (datepickerPopupConfig) {
+app.config(['datepickerConfig', 'datepickerPopupConfig', function (datepickerConfig, datepickerPopupConfig) {
     datepickerPopupConfig.datepickerPopup = 'dd/MM/yyyy';
     datepickerPopupConfig.currentText = 'Hoje';
     datepickerPopupConfig.clearText = 'Limpar';
     datepickerPopupConfig.closeText = 'Fechar';
     datepickerPopupConfig.closeOnDateSelection = true;
+    
+    datepickerConfig.showWeeks = false;
+
 }]);
