@@ -1,9 +1,9 @@
-﻿<div class="row">
-    <div>
-        {{servico.nome}} - {{servico.descricao}} <button class="btn btn-default" ng-click="abrirModalNorma()">Norma</button>
+﻿<div class="row_detalhe">
+    <div class="detalhes_servicos">
+        {{servico.nome}} - {{servico.descricao}} <button id="btn_norma" class="btn btn-default" ng-click="abrirModalNorma()">Consultar Norma</button>
     </div>
-    <div>
-        Data Início:
+    <div class="dados_concrety">
+        <b>Data Início:</b>
         <input type="text"
                datepicker-popup
                ng-model="servicoUnidade.dataInicio"
@@ -12,7 +12,7 @@
                max-date="servicoUnidade.dataFim"
                class="input-md" />       
 
-        Data Conclusão:
+        <b>Data Conclusão:</b>
         <input type="text"
                datepicker-popup
                ng-model="servicoUnidade.dataFim"
@@ -26,36 +26,36 @@
                 ng-model="servicoUnidade.status"
                 style="width: auto"></select>
 
-        <div ng-repeat="fvs in servicoUnidade.fichasVerificacaoServico">
+        <div ng-repeat="fvs in servicoUnidade.fichasVerificacaoServico" class="tabela_servicos">
             {{fvs.fichaVerificacaoServico.nome}} - {{fvs.fichaVerificacaoServico.descricao}}
-            <table>
+            <table class="itens_verificacao">
                 <thead>
                     <tr>
-                        <th>Serviço</th>
-                        <th>Validação</th>
-                        <th>Descrição</th>
-                        <th>Resultado</th>
-                        <th>Ocorrências</th>
+                        <th class="th_servicos">Serviço</th>
+                        <th class="th_validacao">Validação</th>
+                        <th class="th_descricao">Descrição</th>
+                        <th class="th_resultado">Resultado</th>
+                        <th class="th_ocorrencias">Ocorrências</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in fvs.itens">
-                        <td>{{item.itemVerificacao.nome}}</td>
-                        <td>{{item.itemVerificacao.validacao}}</td>
-                        <td>{{item.itemVerificacao.descricao}}</td>
-                        <td>
+                        <td class="td_servicos">{{item.itemVerificacao.nome}}</td>
+                        <td class="td_validacao">{{item.itemVerificacao.validacao}}</td>
+                        <td class="td_descricao">{{item.itemVerificacao.descricao}}</td>
+                        <td class="td_resultados">
                             <select kendo-drop-down-list
                                     k-options="dropDownResultadoOptions"
                                     ng-model="item.resultado"
-                                    style="width: auto"></select>
+                                    style="width: 200px"></select>
                         </td>
-                        <td>{{item.quantidadeOcorrencias}}</td>
+                        <td class="td_ocorrencias">{{item.quantidadeOcorrencias}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <button type="button" class="btn btn-primary" ng-click="salvar()">
+        <button type="button" class="btn btn-primary" ng-click="salvar()" id="salvar_servico">
             Salvar
         </button>
 
