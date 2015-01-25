@@ -13,6 +13,7 @@ namespace Concrety.API.AutoMapper
 
         protected override void Configure()
         {
+            Mapper.CreateMap<CondicaoClimaticaViewModel, CondicaoClimatica>();
             Mapper.CreateMap<EmpreendimentoViewModel, Empreendimento>();
             Mapper.CreateMap<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>();
             Mapper.CreateMap<MacroServicoViewModel, MacroServico>();

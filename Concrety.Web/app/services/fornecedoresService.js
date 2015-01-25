@@ -1,8 +1,8 @@
 ﻿'use strict';
-app.factory('fornecedorService', function ($http, concretySettings) {
+app.factory('fornecedoresService', function ($http, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
-    var fornecedorServiceFactory = {};
+    var fornecedoresServiceFactory = {};
 
     var _get = function () {
         return $http.get(serviceBase + 'api/fornecedores/get').then(function (response) {
@@ -10,8 +10,8 @@ app.factory('fornecedorService', function ($http, concretySettings) {
         });
     };
 
-    fornecedorServiceFactory.get = _get;
+    fornecedoresServiceFactory.get = _get;
 
-    return fornecedorServiceFactory;
+    return fornecedoresServiceFactory;
 
 });

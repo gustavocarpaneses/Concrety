@@ -28,8 +28,22 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     };
 
+    var _update = function (fvm) {
+        return $http.post(serviceBase + 'api/materialUnidade/update', fvm).then(function (response) {
+            return response;
+        });
+    };
+
+    var _create = function (fvm) {
+        return $http.post(serviceBase + 'api/materialUnidade/create', fvm).then(function (response) {
+            return response;
+        });
+    };
+
     materiaisServiceFactory.obterDaUnidade = _obterDaUnidade;
     materiaisServiceFactory.obterDoNivel = _obterDoNivel;
+    materiaisServiceFactory.update = _update;
+    materiaisServiceFactory.create = _create;
 
     return materiaisServiceFactory;
 });

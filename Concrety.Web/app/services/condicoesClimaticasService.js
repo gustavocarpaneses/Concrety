@@ -1,8 +1,8 @@
 ﻿'use strict';
-app.factory('condicaoClimaticaService', function ($http, concretySettings) {
+app.factory('condicoesClimaticasService', function ($http, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
-    var condicaoClimaticaServiceFactory = {};
+    var condicoesClimaticasServiceFactory = {};
 
     var _get = function () {
         return $http.get(serviceBase + 'api/condicoesClimaticas/get').then(function (response) {
@@ -10,8 +10,8 @@ app.factory('condicaoClimaticaService', function ($http, concretySettings) {
         });
     };
 
-    condicaoClimaticaServiceFactory.get = _get;
+    condicoesClimaticasServiceFactory.get = _get;
 
-    return condicaoClimaticaServiceFactory;
+    return condicoesClimaticasServiceFactory;
 
 });

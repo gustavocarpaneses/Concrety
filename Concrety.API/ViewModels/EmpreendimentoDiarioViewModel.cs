@@ -6,7 +6,7 @@ namespace Concrety.API.ViewModels
     public class EmpreendimentoDiarioViewModel
     {
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public DateTime Data { get; set; }
         public bool HouveTrabalho { get; set; }
         public int TemperaturaMinima { get; set; }
@@ -24,16 +24,7 @@ namespace Concrety.API.ViewModels
         public int TotalMestres { get; set; }
         public int TotalAjudantes { get; set; }
         public int TotalPedreiros { get; set; }
-
-        public int EfetivoTotal
-        {
-            get
-            {
-                return TotalMontadores + TotalArmadores + TotalCarpinteiros + TotalEletricistas 
-                    + TotalEncanadores + TotalEncarregados + TotalMestres + TotalAjudantes + TotalPedreiros;
-            }
-        }
-
+        
         public int TotalFaltas { get; set; }
         public int TotalAcidentados { get; set; }
         public int TotalNovosFuncionarios { get; set; }
@@ -42,22 +33,7 @@ namespace Concrety.API.ViewModels
 
         public int IdEmpreendimento { get; set; }
 
-        public virtual CondicaoClimaticaViewModel CondicaoClimatica { get; set; }
         public int IdCondicaoClimatica { get; set; }
-        public string TextoCondicaoClimatica
-        {
-            get
-            {
-                if (CondicaoClimatica == null)
-                {
-                    return String.Empty;
-                }
-                else
-                {
-                    return CondicaoClimatica.Text;
-                }
-            }
-        }
 
     }
 }

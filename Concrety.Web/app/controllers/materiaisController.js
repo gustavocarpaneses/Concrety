@@ -3,69 +3,22 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
 
     var idNivel = $routeParams.id;
 
-    $scope.dropDownOptions = [];
-    $scope.unidadeSelecionada = '';
-    $scope.materiaisDaUnidade = [];
+    $scope.mensagem = "";
+    
+    $scope.unidadeSelecionada = "";
 
-    $scope.dropDownFichasOptions = {
-        dataTextField: "nomeCompleto",
-        dataValueField: "id",
-        optionLabel: "Selecione...",
-        dataSource: new kendo.data.DataSource({
-            type: "json",
-            transport: {
-                read: function (o) {
-                    var idNivel = $scope.niveis[$scope.niveis.length - 1].id;
-                    materiaisService.obterDoNivel(idNivel).then(function (response) {
-                        o.success(response.data)
-                    })
-                }
-            }
-        })
-    };
+    $scope.niveis = [];
+    $scope.dropDownNiveisOptions = [];
 
-    $scope.dropDownFornecedoresOptions = {
-        dataTextField: "nome",
-        dataValueField: "id",
-        optionLabel: "Selecione...",
-        dataSource: new kendo.data.DataSource({
-            type: "json",
-            transport: {
-                read: function (o) {
-                    fornecedoresService.get().then(function (response) {
-                        o.success(response.data)
-                    })
-                }
-            }
-        })
-    }
+    $scope.fichas = [];
+    $scope.dropDownFichasOptions = [];
 
-    niveisService.obterNiveisAcima(idNivel).then(function (response) {
-        $scope.niveis = response.data;
-
-        angular.forEach($scope.niveis, function(nivel, index){
-
-            this.push({
-                dataTextField: "nome",
-                dataValueField: "id",
-                cascadeFrom: index == 0 ? "" : "nivel" + (index - 1),
-                cascadeFromField: index == 0 ? "" : "idUnidadePai",
-                optionLabel: index == $scope.niveis.length - 1 && $scope.niveis.length > 1 ? "Selecione..." : "",
-                dataSource: new kendo.data.DataSource({
-                    type: "json",
-                    transport: {
-                        read: function (o) {
-                            unidadesService.obterDoNivel(nivel.id).then(function (response) {
-                                o.success(response.data)
-                            })
-                        }
-                    }
-                })
-            });
-
-        }, $scope.dropDownOptions);
-
-    });
+    $scope.fornecedores = [];
+    $scope.dropDownFornecedoresOptions = [];
+    
+    obterNiveis(idNivel);
+    obterFichas(idNivel);
+    obterFornecedores();
 
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
         if (!newValue) {
@@ -75,23 +28,26 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
         CarregarMateriais();
     });
 
-    function CarregarMateriais() {
-        var idUnidade = $scope.unidadeSelecionada;
-        var idNivel = $scope.niveis[$scope.niveis.length - 1].id;
+    $scope.carregarItensFicha = function (e) {
+        console.log(e);
+    }
 
+    function CarregarMateriais() {
         var columns = [
                     {
-                        field: "fichaVerificacaoMaterial",
-                        title: "Material"
-                    },
+                        field: "idFichaVerificacaoMaterial",
+                        title: "Material",
+                        values: $scope.fichas
+                    }, 
                     {
                         field: "data",
                         title: "Data",
                         format: "{0:d}"
                     },
                     {
-                        field: "fornecedor",
-                        title: "Fornecedor"
+                        field: "idFornecedor",
+                        title: "Fornecedor",
+                        values: $scope.fornecedores
                     },
                     {
                         field: "aprovado",
@@ -106,8 +62,11 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
         var model = kendo.data.Model.define({
             id: "id",
             fields: {
+                id: { type: "number", defaultValue: 0 },
                 data: { type: "date" },
-                aprovado: { type: "boolean" }
+                aprovado: { type: "boolean" },
+                idFichaVerificacaoMaterial: { type: "number" },
+                idFornecedor: { type: "number" }
             }
         });
 
@@ -115,7 +74,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             type: "json",
             transport: {
                 read: function (o) {
-                    materiaisService.obterDaUnidade(idUnidade).then(function (response) {
+                    materiaisService.obterDaUnidade($scope.unidadeSelecionada).then(function (response) {
                         o.success(response.data);
                     });
                 },
@@ -127,6 +86,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
                     });
                 },
                 create: function (o) {
+                    o.data.models[0].idUnidade = $scope.unidadeSelecionada;
                     materiaisService.create(o.data.models[0]).then(function (response) {
                         o.success(response.data);
                     }, function (response) {
@@ -159,7 +119,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
                     width: "800px",
                     height: "600px"
                 }
-            },
+            }
         };
 
     }
@@ -172,6 +132,89 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             }
         }
         $scope.mensagem = errors.join(' ');
+    }
+
+    function obterFichas(idNivel) {
+        materiaisService.obterDoNivel(idNivel).then(function (response) {
+
+            angular.forEach(response.data, function (ficha, index) {
+                this.push({
+                    text: ficha.nomeCompleto,
+                    value: ficha.id
+                });
+            }, $scope.fichas);
+
+            $scope.dropDownFichasOptions = {
+                dataTextField: "text",
+                dataValueField: "value",
+                optionLabel: "Selecione...",
+                dataSource: new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: function (o) {
+                            o.success($scope.fichas);
+                        }
+                    }
+                })
+            };
+
+        });
+    }
+
+    function obterFornecedores() {
+        fornecedoresService.get().then(function (response) {
+
+            angular.forEach(response.data, function (fornecedor, index) {
+                this.push({
+                    text: fornecedor.nome,
+                    value: fornecedor.id
+                });
+            }, $scope.fornecedores);
+
+            $scope.dropDownFornecedoresOptions = {
+                dataTextField: "text",
+                dataValueField: "value",
+                optionLabel: "Selecione...",
+                dataSource: new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: function (o) {
+                            o.success($scope.fornecedores);
+                        }
+                    }
+                })
+            }
+
+        });
+    }
+
+    function obterNiveis(idNivel) {
+        niveisService.obterNiveisAcima(idNivel).then(function (response) {
+            $scope.niveis = response.data;
+
+            angular.forEach($scope.niveis, function (nivel, index) {
+
+                this.push({
+                    dataTextField: "nome",
+                    dataValueField: "id",
+                    cascadeFrom: index == 0 ? "" : "nivel" + (index - 1),
+                    cascadeFromField: index == 0 ? "" : "idUnidadePai",
+                    optionLabel: index == $scope.niveis.length - 1 && $scope.niveis.length > 1 ? "Selecione..." : "",
+                    dataSource: new kendo.data.DataSource({
+                        type: "json",
+                        transport: {
+                            read: function (o) {
+                                unidadesService.obterDoNivel(nivel.id).then(function (response) {
+                                    o.success(response.data)
+                                })
+                            }
+                        }
+                    })
+                });
+
+            }, $scope.dropDownNiveisOptions);
+
+        });
     }
 
 });

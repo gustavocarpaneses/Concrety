@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.factory('diarioObraService', function ($http, $q, concretySettings) {
+app.factory('diariosObraService', function ($http, $q, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
     var diariosObraServiceFactory = {};

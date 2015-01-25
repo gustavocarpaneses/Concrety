@@ -26,8 +26,7 @@ namespace Concrety.Services
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDoEmpreendimento(idEmpreendimento); });
         }
-
-
+        
         public async Task<EntityResultBase> Criar(EmpreendimentoDiario empreendimentoDiario)
         {
 

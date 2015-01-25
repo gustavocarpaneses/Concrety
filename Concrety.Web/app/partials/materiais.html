@@ -10,13 +10,13 @@
                     {{nivel.nome}}:
                     <select kendo-drop-down-list
                             id="nivel{{$index}}"
-                            k-options="dropDownOptions[$index]"
+                            k-options="dropDownNiveisOptions[$index]"
                             style="width: auto"
                             ng-model="$parent.$parent.unidadeSelecionada"
                             ng-if="$last"></select>
                     <select kendo-drop-down-list
                             id="nivel{{$index}}"
-                            k-options="dropDownOptions[$index]"
+                            k-options="dropDownNiveisOptions[$index]"
                             style="width: auto"
                             ng-if="!$last"></select>
                 </li>
@@ -28,13 +28,14 @@
              ng-if="unidadeSelecionada"></div>
 
         <script type="text/x-kendo-template" id="editTemplate">
-            <div class="k-edit-label">
+            <div class="k-edit-label" ng-hide="!dataItem.isNew()">
                 <label for="fichas">Fichas</label>
             </div>
-            <div class="k-edit-field">
+            <div class="k-edit-field" ng-hide="!dataItem.isNew()">
                 <select kendo-drop-down-list
                         name="fichas"
                         k-options="dropDownFichasOptions"
+                        k-on-select="carregarItensFicha(kendoEvent)"
                         ng-model="dataItem.idFichaVerificacaoMaterial"
                         style="width: auto"></select>
             </div>
@@ -60,25 +61,25 @@
                     <label for="numeroPedido">Número do Pedido</label>
                 </div>
                 <div class="k-edit-field">
-                    <input type="text" name="numeroPedido" ng-model="dataItem.numeroPedido" />
+                    <input type="text" name="numeroPedido" ng-model="dataItem.numeroPedido" required />
                 </div>
                 <div class="k-edit-label">
                     <label for="notaFiscal">Nota Fiscal</label>
                 </div>
                 <div class="k-edit-field">
-                    <input type="text" name="notaFiscal" ng-model="dataItem.notaFiscal" />
+                    <input type="text" name="notaFiscal" ng-model="dataItem.notaFiscal" required />
                 </div>
                 <div class="k-edit-label">
                     <label for="quantidadeTotal">Qtde. Total</label>
                 </div>
                 <div class="k-edit-field">
-                    <input type="text" name="quantidadeTotal" ng-model="dataItem.quantidadeTotal" />
+                    <input type="text" name="quantidadeTotal" ng-model="dataItem.quantidadeTotal" required />
                 </div>
                 <div class="k-edit-label">
                     <label for="amostraValidacao">Amostra</label>
                 </div>
                 <div class="k-edit-field">
-                    <input type="text" name="amostraValidacao" ng-model="dataItem.amostraValidacao" />
+                    <input type="text" name="amostraValidacao" ng-model="dataItem.amostraValidacao" required />
                 </div>
                 <div class="k-edit-label">
                     <label for="observacoes">Observações</label>
@@ -95,6 +96,10 @@
 
                 <!-- Itens -->
                 <!-- Critério Aceite -->
+
+                <div data-ng-hide="mensagem == ''" class="alert alert-danger">
+                    {{mensagem}}
+                </div>
             </div>
 
         </script>

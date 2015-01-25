@@ -44,7 +44,6 @@
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
-    <Content Include="app\controllers\materiaisUnidadeController.js" />
     <Content Include="app\controllers\servicoUnidadeController.js" />
     <Content Include="app\controllers\servicosController.js" />
     <Content Include="app\controllers\indexController.js" />
@@ -52,15 +51,14 @@
     <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
-    <Content Include="app\partials\materiaisUnidade.html" />
     <Content Include="app\partials\servicoUnidade.html" />
     <Content Include="app\partials\servicos.html" />
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authService.js" />
-    <Content Include="app\services\fornecedorService.js" />
-    <Content Include="app\services\condicaoClimaticaService.js" />
-    <Content Include="app\services\diarioObraService.js" />
+    <Content Include="app\services\fornecedoresService.js" />
+    <Content Include="app\services\condicoesClimaticasService.js" />
+    <Content Include="app\services\diariosObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
     <Content Include="app\services\materiaisService.js" />

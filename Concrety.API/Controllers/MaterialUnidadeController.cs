@@ -33,5 +33,52 @@ namespace Concrety.API.Controllers
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterialUnidade>, IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>>(fvms);
         }
 
+
+        [Route("Create")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Create(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
+
+            var resultado = await _fvmUnidadeService.Criar(fvm);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+        [Route("Update")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Update(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
+
+            var resultado = await _fvmUnidadeService.Atualizar(fvm);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
     }
 }

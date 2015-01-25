@@ -1,8 +1,11 @@
 ﻿'use strict';
-app.controller('diarioObraController', function ($scope, $http, diarioObraService, condicaoClimaticaService, accountService) {
+app.controller('diarioObraController', function ($scope, $q, $http, diariosObraService, condicoesClimaticasService, accountService) {
 
     $scope.mensagem = "";
     $scope.empreendimentoAtual = accountService.empreendimentoAtual;
+
+    $scope.condicoesClimaticas = [];
+    $scope.dropDownCondicoesClimaticasOptions = [];
 
     $scope.optionsTemperatura = {
         decimals: 0,
@@ -18,7 +21,6 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
         min: 0,
         max: 23,
         format: "#"
-        //format: "00':'00"
     };
 
     $scope.optionsTotais = {
@@ -28,31 +30,17 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
         format: "#"
     };
 
-    $scope.dropDownCondicoesClimaticasOptions = {
-        dataTextField: "text",
-        dataValueField: "value",
-        dataSource: new kendo.data.DataSource({
-            type: "json",
-            transport: {
-                read: function (o) {
-                    condicaoClimaticaService.get().then(function (response) {
-                        o.success(response.data)
-                    })
-                }
-            }
-        })
-    };
+    obterCondicoesClimaticas().then(function () {
+        configurarGrid();
+    });
 
-    //condicaoClimaticaService.get().then(function (response) {
+    function configurarGrid() {
 
         var columns = [
                 {
                     field: "data",
                     title: "Data",
-                    format: "{0:d}",
-                    //filterable: {
-                      //  ui: "datetimepicker"
-                    //}
+                    format: "{0:d}"
                 },
                 {
                     field: "houveTrabalho",
@@ -68,12 +56,14 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
                     title: "Temperatura Máxima"
                 },
                 {
-                    field: "textoCondicaoClimatica",
-                    title: "Condição Climática"
+                    field: "idCondicaoClimatica",
+                    title: "Condição Climática",
+                    values: $scope.condicoesClimaticas
                 },
                 {
                     field: "efetivoTotal",
-                    title: "Efetivo Total"
+                    title: "Efetivo Total",
+                    template: "#= efetivoTotal() #"
                 },
                 {
                     command: ["edit"],
@@ -83,30 +73,16 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
         var model = kendo.data.Model.define({
             id: "id",
             fields: {
-                //id: { type: "number", editable: false, nullable: true },
+                id: { type: "number", defaultValue: 0 },
                 data: { type: "date" },
                 houveTrabalho: { type: "boolean" },
                 temperaturaMinima: { type: "number" },
                 temperaturaMaxima: { type: "number" },
-                efetivoTotal: { type: "number" },
-                //idCondicaoClimatica: { type: "number", defaultValue: 1, field: "idCondicaoClimatica", validation: { required: true } },
-                //horasTrabalhadas: { type: "number", validation: { min: 0 } },
-                //horasParadas: { type: "number", validation: { min: 0 } },
-                //servicosExecutados: { type: "string", validation: {} },
-                //totalMontadores: { type: "number", validation: { min: 0 } },
-                //totalArmadores: { type: "number", validation: { min: 0 } },
-                //totalCarpinteiros: { type: "number", validation: { min: 0 } },
-                //totalEletricistas: { type: "number", validation: { min: 0 } },
-                //totalEncarregados: { type: "number", validation: { min: 0 } },
-                //totalEncanadores: { type: "number", validation: { min: 0 } },
-                //totalMestres: { type: "number", validation: { min: 0 } },
-                //totalAjudantes: { type: "number", validation: { min: 0 } },
-                //totalPedreiros: { type: "number", validation: { min: 0 } },
-                //totalFaltas: { type: "number", validation: { min: 0 } },
-                //totalAcidentados: { type: "number", validation: { min: 0 } },
-                //totalNovosFuncionarios: { type: "number", validation: { min: 0 } },
-                //totalDoentes: { type: "number", validation: { min: 0 } },
-                //totalDemitidos: { type: "number", validation: { min: 0 } }
+                idCondicaoClimatica: { type: "number" }
+            },
+            efetivoTotal: function () {
+                return this.get("totalMontadores") + this.get("totalArmadores") + this.get("totalCarpinteiros") + this.get("totalEletricistas")
+                + this.get("totalEncanadores") + this.get("totalEncarregados") + this.get("totalMestres") + this.get("totalAjudantes") + this.get("totalPedreiros");
             }
         });
 
@@ -114,12 +90,12 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
             type: "json",
             transport: {
                 read: function (o) {
-                    diarioObraService.get($scope.empreendimentoAtual.id).then(function (response) {
+                    diariosObraService.get($scope.empreendimentoAtual.id).then(function (response) {
                         o.success(response.data);
                     });
                 },
                 update: function (o) {
-                    diarioObraService.update(o.data.models[0]).then(function (response) {
+                    diariosObraService.update(o.data.models[0]).then(function (response) {
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -127,7 +103,7 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
                 },
                 create: function (o) {
                     o.data.models[0].idEmpreendimento = $scope.empreendimentoAtual.id;
-                    diarioObraService.create(o.data.models[0]).then(function (response) {
+                    diariosObraService.create(o.data.models[0]).then(function (response) {
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -137,15 +113,7 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
             batch: true,
             pageSize: 10,
             schema: {
-                model: model,
-                //parse: function (response) {
-                //    $.each(response, function (idx, elem) {
-                //        if (elem.data && typeof elem.data === "string") {
-                //            elem.data = kendo.parseDate(elem.data);
-                //        }
-                //    });
-                //    return response;
-                //}
+                model: model
             }
         });
 
@@ -169,8 +137,7 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
                 }
             },
         };
-
-    //});
+    }
 
     function ObterErros(data) {
         var errors = [];
@@ -184,6 +151,40 @@ app.controller('diarioObraController', function ($scope, $http, diarioObraServic
 
     function condicaoClimaticaFilter(element) {
         element.kendoDropDownList($scope.dropDownCondicoesClimaticasOptions);
+    }
+    
+    function obterCondicoesClimaticas() {
+
+        var deferred = $q.defer();
+
+        condicoesClimaticasService.get().then(function (response) {
+
+            angular.forEach(response.data, function (condicaoClimatica, index) {
+                this.push({
+                    text: condicaoClimatica.descricao,
+                    value: condicaoClimatica.id
+                });
+            }, $scope.condicoesClimaticas);
+
+            $scope.dropDownCondicoesClimaticasOptions = {
+                dataTextField: "text",
+                dataValueField: "value",
+                dataSource: new kendo.data.DataSource({
+                    type: "json",
+                    transport: {
+                        read: function (o) {
+                            o.success($scope.condicoesClimaticas);
+                        }
+                    }
+                })
+            };
+
+            deferred.resolve();
+
+        });
+
+        return deferred.promise;
+
     }
 
 });

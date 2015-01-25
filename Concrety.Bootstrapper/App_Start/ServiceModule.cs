@@ -18,6 +18,7 @@ namespace Concrety.Bootstrapper
             builder.RegisterType(typeof(CondicaoClimaticaService)).As(typeof(ICondicaoClimaticaService)).InstancePerRequest();
             builder.RegisterType(typeof(FichaVerificacaoMaterialService)).As(typeof(IFichaVerificacaoMaterialService)).InstancePerRequest();
             builder.RegisterType(typeof(FichaVerificacaoMaterialUnidadeService)).As(typeof(IFichaVerificacaoMaterialUnidadeService)).InstancePerRequest();
+            builder.RegisterType(typeof(FornecedorService)).As(typeof(IFornecedorService)).InstancePerRequest();
         }
     }
 }
