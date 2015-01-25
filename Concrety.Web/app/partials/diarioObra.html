@@ -1,9 +1,9 @@
 ﻿
 <div class="row">
-    <div class="col-md-2">
-        &nbsp;
-    </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
+        <div id="conteudo_info_detalhada">
+            <h4><b>Diário de Obra</b></h4>
+        </div>
         <div kendo-grid k-options="diariosObraGridOptions"
              k-ng-delay="diariosObraGridOptions"></div>
         <script type="text/x-kendo-template" id="editTemplate">
@@ -149,9 +149,5 @@
                 {{mensagem}}
             </div>
         </script>
-    </div>
-
-    <div class="col-md-2">
-        &nbsp;
     </div>
 </div>
