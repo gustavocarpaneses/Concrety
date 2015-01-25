@@ -169,6 +169,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
             $scope.dropDownCondicoesClimaticasOptions = {
                 dataTextField: "text",
                 dataValueField: "value",
+                optionLabel: "Selecione...",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {
