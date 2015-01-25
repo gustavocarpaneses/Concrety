@@ -109,6 +109,8 @@
     <Compile Include="ViewModels\FichaVerificacaoServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoServicoViewModel.cs" />
     <Compile Include="ViewModels\FornecedorViewModel.cs" />
+    <Compile Include="ViewModels\ItemVerificacaoMaterialViewModel.cs" />
+    <Compile Include="ViewModels\ItemVerificacaoMaterialUnidadeViewModel.cs" />
     <Compile Include="ViewModels\ItemVerificacaoServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\ItemVerificacaoServicoViewModel.cs" />
     <Compile Include="ViewModels\MacroServicoViewModel.cs" />

@@ -16,6 +16,18 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     };
 
+    var _obterItens = function (idFichaVerificacaoMaterial) {
+
+        return $http.get(serviceBase + 'api/materialUnidade/itens', {
+            params: {
+                idFichaVerificacaoMaterial: idFichaVerificacaoMaterial
+            }
+        }).then(function (response) {
+            return response;
+        });
+
+    };
+
     var _obterDoNivel = function (idNivel) {
 
         return $http.get(serviceBase + 'api/materiais/nivel', {
@@ -42,8 +54,10 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     materiaisServiceFactory.obterDaUnidade = _obterDaUnidade;
     materiaisServiceFactory.obterDoNivel = _obterDoNivel;
+    materiaisServiceFactory.obterItens = _obterItens;
     materiaisServiceFactory.update = _update;
     materiaisServiceFactory.create = _create;
+
 
     return materiaisServiceFactory;
 });

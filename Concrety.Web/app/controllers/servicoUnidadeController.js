@@ -1,9 +1,9 @@
 ﻿'use strict';
 app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal, servicosService, servicoUnidadeService) {
 
-    if ($scope.servico.desabilitado) {
-        return;
-    }
+    //if ($scope.servico.desabilitado) {
+    //    return;
+    //}
     //Sugestão: se não for atual, setTimeout pra carregar
 
     $scope.servicoUnidade = [];

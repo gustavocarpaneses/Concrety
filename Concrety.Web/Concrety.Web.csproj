@@ -42,6 +42,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\materialUnidadeController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
     <Content Include="app\controllers\servicoUnidadeController.js" />

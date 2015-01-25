@@ -28,10 +28,6 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
         CarregarMateriais();
     });
 
-    $scope.carregarItensFicha = function (e) {
-        console.log(e);
-    }
-
     function CarregarMateriais() {
         var columns = [
                     {

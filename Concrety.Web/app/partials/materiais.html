@@ -28,77 +28,82 @@
              ng-if="unidadeSelecionada"></div>
 
         <script type="text/x-kendo-template" id="editTemplate">
-            <div class="k-edit-label" ng-hide="!dataItem.isNew()">
-                <label for="fichas">Fichas</label>
-            </div>
-            <div class="k-edit-field" ng-hide="!dataItem.isNew()">
-                <select kendo-drop-down-list
-                        name="fichas"
-                        k-options="dropDownFichasOptions"
-                        k-on-select="carregarItensFicha(kendoEvent)"
-                        ng-model="dataItem.idFichaVerificacaoMaterial"
-                        style="width: auto"></select>
-            </div>
-            <div ng-if="dataItem.idFichaVerificacaoMaterial">
-                <div class="k-edit-label">
-                    <label for="data">Data</label>
+            <div ng-controller="materialUnidadeController"
+                ng-init="fvm=dataItem">
+
+                <div class="k-edit-label" ng-hide="!fvm.isNew()">
+                    <label for="fichas">Fichas</label>
                 </div>
-                <div class="k-edit-field">
-                    <input name="data" type="text" datepicker-popup ng-model="dataItem.data" required
-                           is-open="dataItem.dataOpened" ng-click="dataItem.dataOpened = true" />
-                </div>
-                <div class="k-edit-label">
-                    <label for="fornecedor">Fornecedor</label>
-                </div>
-                <div class="k-edit-field">
+                <div class="k-edit-field" ng-hide="!fvm.isNew()">
                     <select kendo-drop-down-list
-                            name="fornecedor"
-                            k-options="dropDownFornecedoresOptions"
-                            ng-model="dataItem.idFornecedor"
+                            name="fichas"
+                            k-options="dropDownFichasOptions"
+                            ng-model="fvm.idFichaVerificacaoMaterial"
                             style="width: auto"></select>
-                </div>
-                <div class="k-edit-label">
-                    <label for="numeroPedido">Número do Pedido</label>
-                </div>
-                <div class="k-edit-field">
-                    <input type="text" name="numeroPedido" ng-model="dataItem.numeroPedido" required />
-                </div>
-                <div class="k-edit-label">
-                    <label for="notaFiscal">Nota Fiscal</label>
-                </div>
-                <div class="k-edit-field">
-                    <input type="text" name="notaFiscal" ng-model="dataItem.notaFiscal" required />
-                </div>
-                <div class="k-edit-label">
-                    <label for="quantidadeTotal">Qtde. Total</label>
-                </div>
-                <div class="k-edit-field">
-                    <input type="text" name="quantidadeTotal" ng-model="dataItem.quantidadeTotal" required />
-                </div>
-                <div class="k-edit-label">
-                    <label for="amostraValidacao">Amostra</label>
-                </div>
-                <div class="k-edit-field">
-                    <input type="text" name="amostraValidacao" ng-model="dataItem.amostraValidacao" required />
-                </div>
-                <div class="k-edit-label">
-                    <label for="observacoes">Observações</label>
-                </div>
-                <div class="k-edit-field">
-                    <textarea kendo-editor name="observacoes" style="width:550px;" ng-model="dataItem.observacoes"></textarea>
-                </div>
-                <div class="k-edit-label">
-                    <label for="aprovado">Aprovado?</label>
-                </div>
-                <div class="k-edit-field">
-                    <input type="checkbox" name="aprovado" ng-model="dataItem.aprovado">
-                </div>
 
-                <!-- Itens -->
-                <!-- Critério Aceite -->
+                    <!--k-on-select="carregarItensFicha(kendoEvent)"-->
+                </div>
+                <div ng-if="fvm.idFichaVerificacaoMaterial">
+                    <div class="k-edit-label">
+                        <label for="data">Data</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input name="data" type="text" datepicker-popup ng-model="fvm.data" required
+                               is-open="fvm.dataOpened" ng-click="fvm.dataOpened = true" />
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="fornecedor">Fornecedor</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <select kendo-drop-down-list required
+                                name="fornecedor"
+                                k-options="dropDownFornecedoresOptions"
+                                ng-model="fvm.idFornecedor"
+                                style="width: auto"></select>
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="numeroPedido">Número do Pedido</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input type="text" name="numeroPedido" ng-model="fvm.numeroPedido" required />
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="notaFiscal">Nota Fiscal</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input type="text" name="notaFiscal" ng-model="fvm.notaFiscal" required />
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="quantidadeTotal">Qtde. Total</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input type="text" name="quantidadeTotal" ng-model="fvm.quantidadeTotal" required />
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="amostraValidacao">Amostra</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required />
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="observacoes">Observações</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <textarea kendo-editor name="observacoes" style="width:550px;" ng-model="fvm.observacoes"></textarea>
+                    </div>
+                    <div class="k-edit-label">
+                        <label for="aprovado">Aprovado?</label>
+                    </div>
+                    <div class="k-edit-field">
+                        <input type="checkbox" name="aprovado" ng-model="fvm.aprovado">
+                    </div>
 
-                <div data-ng-hide="mensagem == ''" class="alert alert-danger">
-                    {{mensagem}}
+                    <!-- Itens -->
+                    <!-- Critério Aceite -->
+
+                    <div data-ng-hide="mensagem == ''" class="alert alert-danger">
+                        {{mensagem}}
+                    </div>
                 </div>
             </div>
 

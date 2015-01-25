@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 namespace Concrety.API.ViewModels
 {
     public class FichaVerificacaoMaterialViewModel
@@ -17,6 +18,6 @@ namespace Concrety.API.ViewModels
             }
         }
 
-        //public ICollection<ItemVerificacaoMaterial> Itens { get; set; }
+        public ICollection<ItemVerificacaoMaterialViewModel> Itens { get; set; }
     }
 }

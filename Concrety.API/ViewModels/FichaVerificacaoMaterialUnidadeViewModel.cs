@@ -17,16 +17,15 @@ namespace Concrety.API.ViewModels
         public bool Aprovado { get; set; }
         public string Observacoes { get; set; }
 
-        public virtual FornecedorViewModel Fornecedor { get; set; }
+        //public virtual FornecedorViewModel Fornecedor { get; set; }
         public int IdFornecedor { get; set; }
 
-        public virtual FichaVerificacaoMaterialViewModel FichaVerificacaoMaterial { get; set; }
+        //public virtual FichaVerificacaoMaterialViewModel FichaVerificacaoMaterial { get; set; }
         public int IdFichaVerificacaoMaterial { get; set; }
 
-        //public virtual Unidade Unidade { get; set; }
         public int IdUnidade { get; set; }
 
-        //public ICollection<ItemVerificacaoMaterialUnidadeViewModel> Itens { get; set; }
+        public ICollection<ItemVerificacaoMaterialUnidadeViewModel> Itens { get; set; }
 
     }
 }
