@@ -32,5 +32,12 @@ namespace Concrety.API.Controllers
             var fvms = await _fvmService.ObterDoNivel(idNivel);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterial>, IEnumerable<FichaVerificacaoMaterialViewModel>>(fvms);
         }
+
+        [Route("CriterioAceite")]
+        public async Task<string> GetCriterioAceite(int idFichaVerificacaoMaterial)
+        {
+            var fvm = await _fvmService.GetByIdAsync(idFichaVerificacaoMaterial);
+            return fvm.CriterioAceite;
+        }
     }
 }

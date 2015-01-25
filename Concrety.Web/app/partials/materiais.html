@@ -39,8 +39,6 @@
                             k-options="dropDownFichasOptions"
                             ng-model="fvm.idFichaVerificacaoMaterial"
                             style="width: auto"></select>
-
-                    <!--k-on-select="carregarItensFicha(kendoEvent)"-->
                 </div>
                 <div ng-if="fvm.idFichaVerificacaoMaterial">
                     <div class="k-edit-label">
@@ -97,8 +95,17 @@
                         <input type="checkbox" name="aprovado" ng-model="fvm.aprovado">
                     </div>
 
-                    <!-- Itens -->
-                    <!-- Critério Aceite -->
+                    <span data-ng-repeat="item in fvm.itens">
+                        <div class="k-edit-label">
+                            <label>{{item.itemVerificacao.nome}}</label>
+                        </div>
+                        <div class="k-edit-field" ng-switch on="item.itemVerificacao.tipo">
+                            <input type="checkbox" ng-model="item.resultado" ng-switch-when="10">
+                            <input type="textbox" ng-model="item.resultado" ng-switch-when="20">
+                        </div>
+                    </span>
+
+                    <p ng-bind-html="criterioAceite"></p>
 
                     <div data-ng-hide="mensagem == ''" class="alert alert-danger">
                         {{mensagem}}

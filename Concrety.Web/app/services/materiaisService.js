@@ -16,9 +16,21 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     };
 
-    var _obterItens = function (idFichaVerificacaoMaterial) {
+    var _criarItens = function (idFichaVerificacaoMaterial) {
 
         return $http.get(serviceBase + 'api/materialUnidade/itens', {
+            params: {
+                idFichaVerificacaoMaterial: idFichaVerificacaoMaterial
+            }
+        }).then(function (response) {
+            return response;
+        });
+
+    };
+
+    var _obterCriterioAceite = function (idFichaVerificacaoMaterial) {
+
+        return $http.get(serviceBase + 'api/materiais/criterioAceite', {
             params: {
                 idFichaVerificacaoMaterial: idFichaVerificacaoMaterial
             }
@@ -54,7 +66,8 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     materiaisServiceFactory.obterDaUnidade = _obterDaUnidade;
     materiaisServiceFactory.obterDoNivel = _obterDoNivel;
-    materiaisServiceFactory.obterItens = _obterItens;
+    materiaisServiceFactory.criarItens = _criarItens;
+    materiaisServiceFactory.obterCriterioAceite = _obterCriterioAceite;
     materiaisServiceFactory.update = _update;
     materiaisServiceFactory.create = _create;
 

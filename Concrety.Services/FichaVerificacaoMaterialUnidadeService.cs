@@ -12,11 +12,13 @@ namespace Concrety.Services
     public class FichaVerificacaoMaterialUnidadeService : ServiceBase<FichaVerificacaoMaterialUnidade>, IFichaVerificacaoMaterialUnidadeService
     {
         private IRepositoryBase<FichaVerificacaoMaterialUnidade> _repository;
+        private IRepositoryBase<ItemVerificacaoMaterial> _itemVerificacaoMaterialRepository;
 
         public FichaVerificacaoMaterialUnidadeService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
             _repository = UnitOfWork.Repository<FichaVerificacaoMaterialUnidade>();
+            _itemVerificacaoMaterialRepository = UnitOfWork.Repository<ItemVerificacaoMaterial>();
         }
 
         public async Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidade(int idUnidade)
@@ -72,6 +74,25 @@ namespace Concrety.Services
         private async Task<IEnumerable<string>> Validar(FichaVerificacaoMaterialUnidade fvm)
         {
             return null;
+        }
+        
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterial)
+        {
+            var itens = await Task.Factory.StartNew(() => { return _itemVerificacaoMaterialRepository.ObterDaFichaVerificacaoMaterial(idFichaVerificacaoMaterial); });
+
+            var itensUnidade = new List<ItemVerificacaoMaterialUnidade>();
+
+            foreach (var item in itens)
+            {
+                itensUnidade.Add(new ItemVerificacaoMaterialUnidade
+                {
+                    IdItemVerificacaoMaterial = item.Id,
+                    ItemVerificacao = item
+                });
+            }
+
+            return itensUnidade;
+
         }
     }
 }

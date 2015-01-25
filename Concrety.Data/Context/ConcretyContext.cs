@@ -111,14 +111,14 @@ namespace Concrety.Data.Context
 
         private void UpdateEntityState<TEntity>(TEntity entity, EntityState entityState) where TEntity : EntityBase
         {
-            var dbEntityEntry = GetDbEntityEntrySafely(entity);
+            var dbEntityEntry = GetDbEntityEntrySafely(entity, entityState != EntityState.Added);
             dbEntityEntry.State = entityState;
         }
 
-        private DbEntityEntry GetDbEntityEntrySafely<TEntity>(TEntity entity) where TEntity : EntityBase
+        private DbEntityEntry GetDbEntityEntrySafely<TEntity>(TEntity entity, bool attach) where TEntity : EntityBase
         {
             var dbEntityEntry = Entry<TEntity>(entity);
-            if (dbEntityEntry.State == EntityState.Detached)
+            if (dbEntityEntry.State == EntityState.Detached && attach)
             {
                 Set<TEntity>().Attach(entity);
             }

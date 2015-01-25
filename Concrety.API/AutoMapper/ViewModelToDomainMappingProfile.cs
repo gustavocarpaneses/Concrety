@@ -27,6 +27,8 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<ItemVerificacaoServicoUnidadeViewModel, ItemVerificacaoServicoUnidade>();
             Mapper.CreateMap<FichaVerificacaoMaterialViewModel, FichaVerificacaoMaterial>();
             Mapper.CreateMap<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>();
+            Mapper.CreateMap<ItemVerificacaoMaterialViewModel, ItemVerificacaoMaterial>();
+            Mapper.CreateMap<ItemVerificacaoMaterialUnidadeViewModel, ItemVerificacaoMaterialUnidade>();
             Mapper.CreateMap<FornecedorViewModel, Fornecedor>();
         }
     }
