@@ -47,6 +47,51 @@ margin: 0 auto;
     margin-top:-30px!important;
 }
 
-.nav nav-pills{
-    
+.row{
+    margin-left:0px!important;
+}
+
+#btn_norma{
+    left:5px;
+}
+
+.detalhes_servicos{
+    padding-top:5px;
+    padding-bottom:3px;
+}
+
+#salvar_servico{
+    float:right;
+    margin-top:5px;
+    margin-right:0px;
+    margin-left:0px;
+}
+
+.dados_concrety{
+    margin:2px 2px 2px 2px;
+}
+
+.tabela_servicos{
+    padding-top:5px;
+}
+
+.th_servicos, .th_validacao , .th_descricao, .th_resultado, .th_ocorrencias, .td_servicos, .td_validacao, .td_descricao, .td_resultados, .td_ocorrencias{
+    padding-left:10px;
+}
+
+.td_servicos, .td_validacao, .td_descricao, .td_resultados, .td_ocorrencias{
+    padding-bottom:5px;
+}
+
+.td_ocorrencias{
+    text-align:center;
+}
+
+
+
+.row_detalhe{
+    border-color:#0099CC!important;
+    border-style:solid;
+    border-width:thin;
+    margin:0 auto;
 }
