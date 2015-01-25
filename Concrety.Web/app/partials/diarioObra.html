@@ -145,6 +145,9 @@
             <div class="k-edit-field">
                 <input kendo-numeric-text-box name="totalDemitidos" ng-model="dataItem.totalDemitidos" options="optionsTotais" />
             </div>
+            <div data-ng-hide="mensagem == ''" class="alert alert-danger">
+                {{mensagem}}
+            </div>
         </script>
     </div>
 
