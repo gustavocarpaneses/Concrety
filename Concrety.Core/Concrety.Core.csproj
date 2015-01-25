@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
+    <Compile Include="Interfaces\Repositories\CondicaoClimaticaQueries.cs" />
     <Compile Include="Interfaces\Repositories\EmpreendimentoDiarioQueries.cs" />
     <Compile Include="Interfaces\Repositories\FichaVerificacaoServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\UnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\NivelQueries.cs" />
+    <Compile Include="Interfaces\Services\ICondicaoClimaticaService.cs" />
     <Compile Include="Interfaces\Services\IEmpreendimentoDiarioService.cs" />
     <Compile Include="Interfaces\Services\IItemVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoUnidadeService.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Interfaces\Services\IServiceBase%271.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Messages\EmpreendimentoDiarioMessages.cs" />
     <Compile Include="Messages\ServicoMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

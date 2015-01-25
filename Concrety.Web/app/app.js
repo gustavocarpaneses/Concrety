@@ -44,10 +44,13 @@ app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
 
-app.config(['datepickerPopupConfig', function (datepickerPopupConfig) {
+app.config(['datepickerConfig', 'datepickerPopupConfig', function (datepickerConfig, datepickerPopupConfig) {
     datepickerPopupConfig.datepickerPopup = 'dd/MM/yyyy';
     datepickerPopupConfig.currentText = 'Hoje';
     datepickerPopupConfig.clearText = 'Limpar';
     datepickerPopupConfig.closeText = 'Fechar';
     datepickerPopupConfig.closeOnDateSelection = true;
+    
+    datepickerConfig.showWeeks = false;
+
 }]);

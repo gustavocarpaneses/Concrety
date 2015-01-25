@@ -54,6 +54,7 @@
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authService.js" />
+    <Content Include="app\services\condicaoClimaticaService.js" />
     <Content Include="app\services\diarioObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
