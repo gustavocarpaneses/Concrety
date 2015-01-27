@@ -15,7 +15,12 @@ namespace Concrety.API.AutoMapper
         {
             Mapper.CreateMap<CondicaoClimaticaViewModel, CondicaoClimatica>();
             Mapper.CreateMap<EmpreendimentoViewModel, Empreendimento>();
-            Mapper.CreateMap<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>();
+            Mapper.CreateMap<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>()
+                .AfterMap(
+                (viewModel, model) =>
+                {
+                    model.Data = viewModel.DataDiario;
+                }); 
             Mapper.CreateMap<MacroServicoViewModel, MacroServico>();
             Mapper.CreateMap<NivelViewModel, Nivel>();
             Mapper.CreateMap<UnidadeViewModel, Unidade>();
@@ -26,7 +31,12 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<ItemVerificacaoServicoViewModel, ItemVerificacaoServico>();
             Mapper.CreateMap<ItemVerificacaoServicoUnidadeViewModel, ItemVerificacaoServicoUnidade>();
             Mapper.CreateMap<FichaVerificacaoMaterialViewModel, FichaVerificacaoMaterial>();
-            Mapper.CreateMap<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>();
+            Mapper.CreateMap<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>()
+                .AfterMap(
+                (viewModel, model) =>
+                {
+                    model.Data = viewModel.DataFicha;
+                }); 
             Mapper.CreateMap<ItemVerificacaoMaterialViewModel, ItemVerificacaoMaterial>();
             Mapper.CreateMap<ItemVerificacaoMaterialUnidadeViewModel, ItemVerificacaoMaterialUnidade>();
             Mapper.CreateMap<FornecedorViewModel, Fornecedor>();

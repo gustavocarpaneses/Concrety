@@ -8,7 +8,8 @@ namespace Concrety.Core.Interfaces.Services
     public interface IFichaVerificacaoMaterialUnidadeService : IServiceBase<FichaVerificacaoMaterialUnidade>
     {
         Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidade(int idUnidade);
-        Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterial);
+        Task<IEnumerable<ItemVerificacaoMaterialUnidade>> CriarItens(int idFichaVerificacaoMaterial);
+        Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterialUnidade);
         Task<EntityResultBase> Criar(FichaVerificacaoMaterialUnidade fvm);
         Task<EntityResultBase> Atualizar(FichaVerificacaoMaterialUnidade fvm);
     }

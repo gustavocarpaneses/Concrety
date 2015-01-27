@@ -19,7 +19,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
     obterNiveis(idNivel);
     obterFichas(idNivel);
     obterFornecedores();
-
+    
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
         if (!newValue) {
             return;
@@ -36,9 +36,9 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
                         values: $scope.fichas
                     }, 
                     {
-                        field: "data",
+                        field: "dataFicha",
                         title: "Data",
-                        format: "{0:d}"
+                        format: "{0:dd/MM/yyyy}"
                     },
                     {
                         field: "idFornecedor",
@@ -59,7 +59,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                data: { type: "date" },
+                dataFicha: { type: "date" },
                 aprovado: { type: "boolean" },
                 idFichaVerificacaoMaterial: { type: "number" },
                 idFornecedor: { type: "number" }

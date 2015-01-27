@@ -17,7 +17,7 @@ namespace Concrety.Data.Migrations
 
         protected override void Seed(ConcretyContext context)
         {
-            //return;
+            return;
             var userManager = IdentityFactory.CreateUserManager(context);
 
             var usuario = new ApplicationIdentityUser

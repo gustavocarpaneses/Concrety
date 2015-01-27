@@ -24,11 +24,13 @@ namespace Concrety.Core.Interfaces.Repositories
         public static bool ExisteNaData(
             this IRepositoryBase<EmpreendimentoDiario> empreendimentoDiarioRepository,
             int idEmpreendimento,
+            int idEmpreendimentoDiario,
             DateTime data)
         {
             var query = from d in empreendimentoDiarioRepository.GetQuery()
                         where
                             d.IdEmpreendimento == idEmpreendimento &&
+                            d.Id != idEmpreendimentoDiario &&
                             d.Data == data &&
                             d.Ativo && !d.Excluido
                         select d;

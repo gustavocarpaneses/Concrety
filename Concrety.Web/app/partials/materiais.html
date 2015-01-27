@@ -28,35 +28,37 @@
 
         <script type="text/x-kendo-template" id="editTemplate">
             <div ng-controller="materialUnidadeController"
-                ng-init="fvm=dataItem">
+                ng-init="fvm=dataItem"
+                 ng-if="dataItem">
 
                 <div class="k-edit-label" ng-hide="!fvm.isNew()">
                     <label for="fichas">Fichas</label>
                 </div>
                 <div class="k-edit-field" ng-hide="!fvm.isNew()">
                     <select kendo-drop-down-list
-                            name="fichas"
-                            k-options="dropDownFichasOptions"
-                            ng-model="fvm.idFichaVerificacaoMaterial"
-                            style="width: auto"></select>
+                        name="fichas"
+                        k-options="dropDownFichasOptions"
+                        ng-model="fvm.idFichaVerificacaoMaterial"
+                        style="width: auto"></select>
                 </div>
                 <div ng-if="fvm.idFichaVerificacaoMaterial">
                     <div class="k-edit-label">
                         <label for="data">Data</label>
                     </div>
                     <div class="k-edit-field">
-                        <input name="data" type="text" datepicker-popup ng-model="fvm.data" required
-                               is-open="fvm.dataOpened" ng-click="fvm.dataOpened = true" />
+                        <datepicker ng-model="fvm.dataFicha"></datepicker>
+                        <!--<input name="data" type="text" datepicker-popup ng-model="fvm.dataFicha" required
+                               is-open="fvm.dataOpened" ng-click="fvm.dataOpened = true" />-->
                     </div>
                     <div class="k-edit-label">
                         <label for="fornecedor">Fornecedor</label>
                     </div>
                     <div class="k-edit-field">
                         <select kendo-drop-down-list required
-                                name="fornecedor"
-                                k-options="dropDownFornecedoresOptions"
-                                ng-model="fvm.idFornecedor"
-                                style="width: auto"></select>
+                            name="fornecedor"
+                            k-options="dropDownFornecedoresOptions"
+                            ng-model="fvm.idFornecedor"
+                            style="width: auto"></select>
                     </div>
                     <div class="k-edit-label">
                         <label for="numeroPedido">Número do Pedido</label>

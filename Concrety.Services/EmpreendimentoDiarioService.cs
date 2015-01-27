@@ -84,7 +84,7 @@ namespace Concrety.Services
 
             var existeNaData = await Task.Factory.StartNew(() => 
             {
-                return _repository.ExisteNaData(empreendimentoDiario.IdEmpreendimento, empreendimentoDiario.Data);
+                return _repository.ExisteNaData(empreendimentoDiario.IdEmpreendimento, empreendimentoDiario.Id, empreendimentoDiario.Data);
             });
 
             if (existeNaData)

@@ -13,12 +13,14 @@ namespace Concrety.Services
     {
         private IRepositoryBase<FichaVerificacaoMaterialUnidade> _repository;
         private IRepositoryBase<ItemVerificacaoMaterial> _itemVerificacaoMaterialRepository;
+        private IRepositoryBase<ItemVerificacaoMaterialUnidade> _itemVerificacaoMaterialUnidadeRepository;
 
         public FichaVerificacaoMaterialUnidadeService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
             _repository = UnitOfWork.Repository<FichaVerificacaoMaterialUnidade>();
             _itemVerificacaoMaterialRepository = UnitOfWork.Repository<ItemVerificacaoMaterial>();
+            _itemVerificacaoMaterialUnidadeRepository = UnitOfWork.Repository<ItemVerificacaoMaterialUnidade>();
         }
 
         public async Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidade(int idUnidade)
@@ -61,7 +63,11 @@ namespace Concrety.Services
                 });
             }
 
-            await base.UpdateAsync(fvm);
+            _repository.Update(fvm);
+
+            new ItemVerificacaoMaterialUnidadeService(UnitOfWork).Atualizar(fvm);
+
+            await UnitOfWork.SaveChangesAsync();
 
             return await Task.Factory.StartNew(() =>
             {
@@ -75,8 +81,13 @@ namespace Concrety.Services
         {
             return null;
         }
+
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterialUnidade)
+        {
+            return await Task.Factory.StartNew(() => { return _itemVerificacaoMaterialUnidadeRepository.ObterDaFichaVerificacaoMaterialUnidade(idFichaVerificacaoMaterialUnidade); });
+        }
         
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterial)
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> CriarItens(int idFichaVerificacaoMaterial)
         {
             var itens = await Task.Factory.StartNew(() => { return _itemVerificacaoMaterialRepository.ObterDaFichaVerificacaoMaterial(idFichaVerificacaoMaterial); });
 

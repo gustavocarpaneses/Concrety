@@ -11,6 +11,11 @@ app.controller('materialUnidadeController', function ($scope, materiaisService) 
                     $scope.fvm.itens = response.data;
                 });
             }
+            else {
+                materiaisService.obterItens($scope.fvm.id).then(function (response) {
+                    $scope.fvm.itens = response.data;
+                });
+            }
 
             materiaisService.obterCriterioAceite($scope.fvm.idFichaVerificacaoMaterial).then(function (response) {
                 $scope.criterioAceite = response.data;

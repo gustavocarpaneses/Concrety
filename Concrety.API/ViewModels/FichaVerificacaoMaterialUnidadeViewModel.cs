@@ -7,10 +7,12 @@ namespace Concrety.API.ViewModels
     {
 
         public int Id { get; set; }
+        public bool Ativo { get; set; }
 
         public string NumeroPedido { get; set; }
         public string NotaFiscal { get; set; }
-        public DateTime Data { get; set; }
+        //O campo não pode se chamar Data, pois dá erro no Kendo Grid
+        public DateTime DataFicha { get; set; }
         public string QuantidadeTotal { get; set; }
 
         public string AmostraValidacao { get; set; }

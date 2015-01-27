@@ -38,9 +38,9 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
 
         var columns = [
                 {
-                    field: "data",
+                    field: "dataDiario",
                     title: "Data",
-                    format: "{0:d}"
+                    format: "{0:dd/MM/yyyy}"
                 },
                 {
                     field: "houveTrabalho",
@@ -74,7 +74,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                data: { type: "date" },
+                dataDiario: { type: "date" },
                 houveTrabalho: { type: "boolean" },
                 temperaturaMinima: { type: "number" },
                 temperaturaMaxima: { type: "number" },

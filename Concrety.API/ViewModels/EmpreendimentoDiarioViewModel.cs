@@ -7,7 +7,8 @@ namespace Concrety.API.ViewModels
     {
 
         public int Id { get; set; }
-        public DateTime Data { get; set; }
+        //O campo não pode se chamar Data, pois dá erro no Kendo Grid
+        public DateTime DataDiario { get; set; }
         public bool HouveTrabalho { get; set; }
         public int TemperaturaMinima { get; set; }
         public int TemperaturaMaxima { get; set; }

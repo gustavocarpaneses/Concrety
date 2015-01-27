@@ -33,13 +33,19 @@ namespace Concrety.API.Controllers
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterialUnidade>, IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>>(fvms);
         }
 
-        [Route("Itens")]
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> GetItens(int idFichaVerificacaoMaterial)
+        [Route("CriarItens")]
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> CriarItens(int idFichaVerificacaoMaterial)
         {
-            var itens = await _fvmUnidadeService.ObterItens(idFichaVerificacaoMaterial);
+            var itens = await _fvmUnidadeService.CriarItens(idFichaVerificacaoMaterial);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
+        [Route("Itens")]
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> GetItens(int idFichaVerificacaoMaterialUnidade)
+        {
+            var itens = await _fvmUnidadeService.ObterItens(idFichaVerificacaoMaterialUnidade);
+            return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
+        }
 
         [Route("Create")]
         [HttpPost]

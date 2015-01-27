@@ -9,7 +9,7 @@ namespace Concrety.Data.EntityConfig
         {
             ToTable("ItensVerificacaoMaterialUnidades");
 
-            Property(s => s.Resultado).IsRequired();
+            //Property(s => s.Resultado).IsRequired();
 
             HasRequired(s => s.FichaVerificacaoUnidade)
                 .WithMany(f => f.Itens)
