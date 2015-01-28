@@ -34,6 +34,7 @@ namespace Concrety.API.Controllers
         }
 
         [Route("CriarItens")]
+        [HttpGet]
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> CriarItens(int idFichaVerificacaoMaterial)
         {
             var itens = await _fvmUnidadeService.CriarItens(idFichaVerificacaoMaterial);
@@ -67,7 +68,18 @@ namespace Concrety.API.Controllers
                 return errorResult;
             }
 
-            return Ok();
+            //fvmViewModel = Mapper.Map<FichaVerificacaoMaterialUnidade, FichaVerificacaoMaterialUnidadeViewModel>(fvm);
+
+            fvmViewModel.Id = fvm.Id;
+            fvmViewModel.Ativo = fvm.Ativo;
+            for (int i = 0; i < fvm.Itens.Count; i++)
+            {
+                fvmViewModel.Itens.ElementAt(i).Id = fvm.Itens.ElementAt(i).Id;
+                fvmViewModel.Itens.ElementAt(i).Ativo = fvm.Itens.ElementAt(i).Ativo;
+                fvmViewModel.Itens.ElementAt(i).IdFichaVerificacaoMaterialUnidade = fvm.Id;
+            }
+
+            return Ok(fvmViewModel);
         }
 
         [Route("Update")]

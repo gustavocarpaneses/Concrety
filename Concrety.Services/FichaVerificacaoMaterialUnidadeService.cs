@@ -41,6 +41,11 @@ namespace Concrety.Services
                 });
             }
 
+            foreach (var item in fvm.Itens)
+            {
+                item.ItemVerificacao = null;
+            }
+
             await base.AddAsync(fvm);
 
             return await Task.Factory.StartNew(() =>

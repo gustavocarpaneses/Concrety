@@ -51,7 +51,11 @@ namespace Concrety.API.Controllers
                 return errorResult;
             }
 
-            return Ok();
+            diarioViewModel.Id = diario.Id;
+            diarioViewModel.Ativo = diario.Ativo;
+            //diarioViewModel = Mapper.Map<EmpreendimentoDiario, EmpreendimentoDiarioViewModel>(diario);
+
+            return Ok(diarioViewModel);
         }
 
         [Route("Update")]
