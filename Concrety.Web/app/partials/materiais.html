@@ -64,31 +64,31 @@
                         <label for="numeroPedido">Número do Pedido</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="numeroPedido" ng-model="fvm.numeroPedido" required />
+                        <input type="text" name="numeroPedido" ng-model="fvm.numeroPedido" required ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="notaFiscal">Nota Fiscal</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="notaFiscal" ng-model="fvm.notaFiscal" required />
+                        <input type="text" name="notaFiscal" ng-model="fvm.notaFiscal" required ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="quantidadeTotal">Qtde. Total</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="quantidadeTotal" ng-model="fvm.quantidadeTotal" required />
+                        <input type="text" name="quantidadeTotal" ng-model="fvm.quantidadeTotal" required ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="amostraValidacao">Amostra</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required />
+                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="observacoes">Observações</label>
                     </div>
                     <div class="k-edit-field">
-                        <textarea kendo-editor name="observacoes" style="width:550px;" ng-model="fvm.observacoes"></textarea>
+                        <textarea kendo-editor name="observacoes" style="width:550px;" ng-model="fvm.observacoes" k-encoded="false" ng-change="fvm.dirty=true"></textarea>
                     </div>
                     <div class="k-edit-label">
                         <label for="aprovado">Aprovado?</label>
@@ -102,17 +102,18 @@
                             <label>{{item.itemVerificacao.nome}}</label>
                         </div>
                         <div class="k-edit-field" ng-switch on="item.itemVerificacao.tipo">
-                            <input type="checkbox" ng-model="item.resultado" ng-switch-when="10">
-                            <input type="textbox" ng-model="item.resultado" ng-switch-when="20">
+                            <input type="checkbox" ng-model="item.resultado" ng-true-value="True" ng-false-value="False" ng-switch-when="10" ng-change="fvm.dirty=true">
+                            <input type="textbox" ng-model="item.resultado" ng-switch-when="20" ng-change="fvm.dirty=true">
                         </div>
                     </span>
 
-                    <p ng-bind-html="criterioAceite"></p>
+                    <div class="k-edit-field">
+                        <p ng-bind-html="criterioAceite"></p>
+                    </div>
 
                     <div data-ng-hide="mensagem == ''" class="alert alert-danger">
                         {{mensagem}}
                     </div>
-                </div>
             </div>
 
         </script>

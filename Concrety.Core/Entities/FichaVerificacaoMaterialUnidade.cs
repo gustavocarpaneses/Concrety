@@ -25,7 +25,7 @@ namespace Concrety.Core.Entities
         public virtual Unidade Unidade { get; set; }
         public int IdUnidade { get; set; }
 
-        public ICollection<ItemVerificacaoMaterialUnidade> Itens { get; set; }
+        public virtual ICollection<ItemVerificacaoMaterialUnidade> Itens { get; set; }
 
     }
 }

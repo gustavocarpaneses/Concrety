@@ -6,13 +6,7 @@ app.controller('materialUnidadeController', function ($scope, materiaisService) 
         if ($scope.fvm.idFichaVerificacaoMaterial) {
 
             if ($scope.fvm.isNew()) {
-
                 materiaisService.criarItens($scope.fvm.idFichaVerificacaoMaterial).then(function (response) {
-                    $scope.fvm.itens = response.data;
-                });
-            }
-            else {
-                materiaisService.obterItens($scope.fvm.id).then(function (response) {
                     $scope.fvm.itens = response.data;
                 });
             }
