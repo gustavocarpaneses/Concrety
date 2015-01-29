@@ -4,6 +4,9 @@ app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorre
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
 
+    $scope.salvoComSucesso = false;
+    $scope.mensagem = "";
+
     $scope.isNew = function () {
         return !$scope.ocorrencia.id;
     }
@@ -63,6 +66,26 @@ app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorre
 
     $scope.fechar = function () {
         $modalInstance.close();
+    };
+
+    $scope.salvar = function () {
+        if ($scope.isNew()) {
+            ocorrenciasService.create($scope.ocorrencia).then(function (response) {
+                $scope.salvoComSucesso = true;
+                $scope.mensagem = "Ocorrência criada com sucesso.";
+            }, function (response) {
+                var errors = [];
+                for (var key in response.data.modelState) {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
+                }
+                $scope.mensagem = errors.join(' ');
+            });
+        }
+        else {
+            ocorrenciasService.update($scope.ocorrencia);
+        }
     };
 
 });

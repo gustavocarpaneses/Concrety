@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('loginController', ['$rootScope', '$scope', '$location', 'authService', 'accountService', function ($rootScope, $scope, $location, authService, accountService) {
+app.controller('loginController', function ($rootScope, $scope, $location, authService, accountService) {
 
     $scope.loginData = {
         userName: "",
@@ -7,6 +7,8 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
     };
 
     $scope.message = "";
+
+    authService.logOut();
 
     $scope.login = function () {
 
@@ -22,4 +24,4 @@ app.controller('loginController', ['$rootScope', '$scope', '$location', 'authSer
         });
     };
 
-}]);
+});
