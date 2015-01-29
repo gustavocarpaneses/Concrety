@@ -33,7 +33,7 @@ app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorre
         $scope.dropDownPatologiasOptions = {
             dataTextField: "nome",
             dataValueField: "id",
-            options: "Selecione...",
+            optionLabel: "Selecione...",
             dataSource: new kendo.data.DataSource({
                 type: "json",
                 transport: {
@@ -52,7 +52,7 @@ app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorre
 
         for (var i = 0; i < $scope.patologias.length; i++) {
 
-            if ($scope.patologias[i].id === $scope.ocorrencia.idPatologia) {
+            if ($scope.patologias[i].id == $scope.ocorrencia.idPatologia) {
                 $scope.ocorrencia.patologia = $scope.patologias[i];
                 break;
             }
