@@ -24,7 +24,9 @@ namespace Concrety.Core.Entities.Enumerators
 
     public enum StatusOcorrencia
     {
+        [Description("Pendente")]
         Pendente = 10,
+        [Description("Concluída")]
         Concluida = 20
     }
 

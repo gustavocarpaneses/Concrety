@@ -43,6 +43,7 @@
     <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\materialUnidadeController.js" />
+    <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
     <Content Include="app\controllers\servicoUnidadeController.js" />
@@ -50,6 +51,7 @@
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\partials\diarioObra.html" />
+    <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
     <Content Include="app\partials\servicoUnidade.html" />
@@ -63,6 +65,8 @@
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
     <Content Include="app\services\materiaisService.js" />
+    <Content Include="app\services\patologiasService.js" />
+    <Content Include="app\services\ocorrenciasService.js" />
     <Content Include="app\services\servicoUnidadeService.js" />
     <Content Include="app\services\servicosService.js" />
     <Content Include="app\services\unidadesService.js" />

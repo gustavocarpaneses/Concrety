@@ -1,0 +1,54 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
+    <h3 class="modal-title">Ocorrência</h3>
+</div>
+<div class="modal-body">
+    <div class="k-edit-label">
+        <label>Data Abertura</label>
+    </div>
+    <div class="k-edit-field">
+        <datepicker ng-model="ocorrencia.dataAbertura" required></datepicker>
+    </div>
+    <div class="k-edit-label">
+        <label>Data Conclusão</label>
+    </div>
+    <div class="k-edit-field">
+        <datepicker ng-model="ocorrencia.dataConclusao"></datepicker>
+    </div>
+    <div class="k-edit-label">
+        <label>Status</label>
+    </div>
+    <div class="k-edit-field">
+        <select kendo-drop-down-list required
+                k-options="dropDownStatusOptions"
+                ng-model="ocorrencia.status"
+                style="width: auto"></select>
+    </div>
+    <div class="k-edit-label">
+        <label>Patologia</label>
+    </div>
+    <div class="k-edit-field" ng-if="dropDownPatologiasOptions">
+        <select kendo-drop-down-list required
+                k-options="dropDownPatologiasOptions"
+                ng-model="ocorrencia.idPatologia"
+                style="width: auto"></select> {{ocorrencia.idPatologia}}
+    </div>
+    <div ng-if="ocorrencia.patologia">
+        <div class="k-edit-label">
+            <label>Solução</label>
+        </div>
+        <div class="k-edit-field">
+            {{ocorrencia.patologia.solucoes[0].nome}} - {{ocorrencia.patologia.solucoes[0].descricao}}
+            {{ocorrencia.patologia.solucoes[0].norma}}
+        </div>
+    </div>
+    <div class="k-edit-label">
+        <label>Descrição</label>
+    </div>
+    <div class="k-edit-field">
+        <textarea kendo-editor style="width:550px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="btn_fechar" class="btn btn-primary" ng-click="fechar()">Fechar</button>
+</div>

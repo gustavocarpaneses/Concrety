@@ -27,6 +27,18 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         });
     };
 
+    $scope.novaOcorrencia = function (itemVerificacao) {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalOcorrencia.html',
+            controller: 'ocorrenciasController',
+            resolve: {
+                ocorrencia: function () {
+                    return obterNovaOcorrencia(itemVerificacao);
+                }
+            }
+        });
+    };
+
     $scope.salvar = function () {
 
         if ($scope.servicoUnidade.dataInicio == '') {
@@ -108,6 +120,19 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         if ($scope.servicoUnidade.dataFim == '0001-01-01T00:00:00') {
             $scope.servicoUnidade.dataFim = '';
         }
+    }
+
+
+    function obterNovaOcorrencia(itemVerificacao) {
+        return {
+            id: 0,
+            descricao: '',
+            dataAbertura: new Date(),
+            dataConclusao: '',
+            status: 10,
+            itemVerificacao: itemVerificacao,
+            idItemVerificacaoUnidade: itemVerificacao.id
+        };
     }
         
 });

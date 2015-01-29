@@ -92,6 +92,8 @@
     <Compile Include="Controllers\DiariosObraController.cs" />
     <Compile Include="Controllers\MaterialUnidadeController.cs" />
     <Compile Include="Controllers\MateriaisController.cs" />
+    <Compile Include="Controllers\PatologiasController.cs" />
+    <Compile Include="Controllers\OcorrenciasController.cs" />
     <Compile Include="Controllers\ServicoUnidadeController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Controllers\NiveisController.cs" />
@@ -115,9 +117,13 @@
     <Compile Include="ViewModels\ItemVerificacaoServicoViewModel.cs" />
     <Compile Include="ViewModels\MacroServicoViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoViewModel.cs" />
+    <Compile Include="ViewModels\OcorrenciaViewModel.cs" />
+    <Compile Include="ViewModels\PatologiaViewModel.cs" />
     <Compile Include="ViewModels\ServicoUnidadeViewModel.cs" />
     <Compile Include="ViewModels\ServicoViewModel.cs" />
+    <Compile Include="ViewModels\SolucaoViewModel.cs" />
     <Compile Include="ViewModels\StatusResultadoViewModel.cs" />
+    <Compile Include="ViewModels\StatusOcorrenciaViewModel.cs" />
     <Compile Include="ViewModels\StatusServicoViewModel.cs" />
     <Compile Include="ViewModels\UnidadeViewModel.cs" />
     <Compile Include="ViewModels\NivelViewModel.cs" />

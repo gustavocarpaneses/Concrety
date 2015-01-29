@@ -8,14 +8,11 @@
              k-ng-delay="diariosObraGridOptions"></div>
         <script type="text/x-kendo-template" id="editTemplate">
             <div ng-if="dataItem">
-                <!--<span ng-bind="dataItem.id" class="ng-binding"></span>-->
                 <div class="k-edit-label">
                     <label for="data">Data</label>
                 </div>
                 <div class="k-edit-field">
                     <datepicker ng-model="dataItem.dataDiario"></datepicker>
-                    <!--<input name="data" type="text" datepicker-popup ng-model="dataItem.dataDiario" ng-required="true" class="input-md"
-                           is-open="dataItem.dataOpened" ng-click="dataItem.dataOpened = true" />-->
                 </div>
                 <div class="k-edit-label">
                     <label for="houveTrabalho">Houve Trabalho?</label>
@@ -27,7 +24,6 @@
                     <label for="condicaoClimatica">Condição Climática</label>
                 </div>
                 <div class="k-edit-field">
-                    <!-- ng-if="dataItem.idCondicaoClimatica || dataItem.isNew()">-->
                     <select kendo-drop-down-list required
                             name="condicaoClimatica"
                             k-options="dropDownCondicoesClimaticasOptions"

@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\Repositories\FichaVerificacaoServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\FichaVerificacaoMaterialUnidadeQueries.cs" />
+    <Compile Include="Interfaces\Repositories\PatologiaQueries.cs" />
     <Compile Include="Interfaces\Repositories\ServicoUnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\UnidadeQueries.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Interfaces\Services\IItemVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoService.cs" />
+    <Compile Include="Interfaces\Services\IOcorrenciaService.cs" />
+    <Compile Include="Interfaces\Services\IPatologiaService.cs" />
     <Compile Include="Interfaces\Services\IServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IUnidadeService.cs" />
     <Compile Include="Interfaces\Services\INivelService.cs" />

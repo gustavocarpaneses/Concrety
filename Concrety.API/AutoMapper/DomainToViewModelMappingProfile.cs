@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
+using System.Linq;
 
 namespace Concrety.API.AutoMapper
 {
@@ -48,7 +49,9 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<ItemVerificacaoMaterial, ItemVerificacaoMaterialViewModel>();
             Mapper.CreateMap<ItemVerificacaoMaterialUnidade, ItemVerificacaoMaterialUnidadeViewModel>();
             Mapper.CreateMap<Fornecedor, FornecedorViewModel>();
-
+            Mapper.CreateMap<Ocorrencia, OcorrenciaViewModel>();
+            Mapper.CreateMap<Patologia, PatologiaViewModel>();
+            Mapper.CreateMap<Solucao, SolucaoViewModel>();
         }
     }
 }
