@@ -59,15 +59,15 @@
                 </tbody>
             </table>
         </div>
-
-        <button type="button" class="btn btn-primary" ng-click="salvar()" id="salvar_servico">
-            Salvar
-        </button>
-        
-        <div kendo-grid="ocorrenciasGrid" k-options="ocorrenciasGridOptions"
-             ng-if="ocorrenciasGridOptions"></div>
-
     </div>
+
+    <button type="button" class="btn btn-primary" ng-click="salvar()" id="salvar_servico">
+        Salvar
+    </button>
+
+    <div kendo-grid="ocorrenciasGrid" k-options="ocorrenciasGridOptions" style="position:inherit;"
+         ng-if="ocorrenciasGridOptions"></div>
+
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
         {{mensagem}}
     </div>

@@ -7,6 +7,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
     //Sugestão: se não for atual, setTimeout pra carregar
 
     $scope.servicoUnidade = [];
+    $scope.ocorrenciasGrid = [];
     $scope.ocorrenciasGridOptions = [];
     $scope.salvoComSucesso = false;
     $scope.mensagem = "";
@@ -119,6 +120,26 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         $scope.servicoUnidade.dataFim.opened = false;
     };
 
+    function editarOcorrencia(e) {
+        e.preventDefault();
+
+        var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
+
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalOcorrencia.html',
+            controller: 'ocorrenciasController',
+            resolve: {
+                ocorrencia: function () {
+                    return ocorrencia;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (ocorrencia) {
+            $scope.ocorrenciasGrid.refresh();
+        });
+    }
+
     function LimparDatas() {
         if ($scope.servicoUnidade.dataInicio == '0001-01-01T00:00:00') {
             $scope.servicoUnidade.dataInicio = '';
@@ -164,7 +185,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                     format: "{0:dd/MM/yyyy}"
                 },
                 {
-                    field: "status",
+                    field: "descricaoStatus",
                     title: "Status"
                 },
                 {
@@ -172,7 +193,11 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                     title: "Patologia"
                 },
                 {
-                    command: ["edit"],
+                    command: [{
+                        text: "Editar",
+                        //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
+                        click: editarOcorrencia
+                    }],
                     title: "&nbsp;"
                 }];
 
@@ -184,7 +209,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                 nomeItemVerificacaoServico: { type: "string" },
                 dataAbertura: { type: "date" },
                 dataConclusao: { type: "date" },
-                status: { type: "string" },
+                descricaoStatus: { type: "string" },
                 nomePatologia: { type: "string" }
             }
         });
@@ -207,34 +232,15 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         $scope.ocorrenciasGridOptions = {
             dataSource: dataSource,
             sortable: true,
-            pageable: true,
+            pageable: {
+                refresh: true
+            },
             filterable: {
                 extra: false
             },
-            columns: columns,
-            edit: function (e) {
-                var x = 0;
-            }
+            columns: columns
         };
 
-    }
-
-    function editarOcorrencia(e) {
-        e.preventDefault();
-
-        var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html',
-            controller: 'ocorrenciasController',
-            resolve: {
-                ocorrencia: function () {
-                    return null;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (ocorrencia) {
-            $scope.ocorrenciasGrid.refresh();
-        });
     }
         
 });

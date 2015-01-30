@@ -100,7 +100,9 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
         $scope.materiaisGridOptions = {
             dataSource: dataSource,
             sortable: true,
-            pageable: true,
+            pageable: {
+                refresh: true
+            },
             filterable: {
                 extra: false
             },

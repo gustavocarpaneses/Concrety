@@ -120,7 +120,9 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
         $scope.diariosObraGridOptions = {
             dataSource: dataSource,
             sortable: true,
-            pageable: true,
+            pageable: {
+                refresh: true
+            },
             filterable: {
                 extra: false
             },
