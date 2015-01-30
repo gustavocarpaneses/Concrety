@@ -12,7 +12,7 @@ namespace Concrety.API.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Ocorrencias")]
-    public class OcorrenciasController : ApiController
+    public class OcorrenciasController : ApiControllerBase
     {
 
         private IOcorrenciaService _ocorrenciaService;
@@ -41,6 +41,59 @@ namespace Concrety.API.Controllers
                     }
                 };
             });
+        }
+
+        [Route("Create")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Create(OcorrenciaViewModel ocorrenciaViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
+
+            var resultado = await _ocorrenciaService.Criar(ocorrencia);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+        [Route("Update")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Update(OcorrenciaViewModel ocorrenciaViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
+
+            var resultado = await _ocorrenciaService.Atualizar(ocorrencia);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+        [Route("ObterDoServicoUnidade")]
+        public async Task<IEnumerable<OcorrenciaViewModel>> GetDoServicoUnidade(int idServicoUnidade)
+        {
+            var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidade(idServicoUnidade);
+            return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
         
     }

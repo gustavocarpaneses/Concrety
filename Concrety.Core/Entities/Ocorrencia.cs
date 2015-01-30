@@ -9,7 +9,7 @@ namespace Concrety.Core.Entities
         public string Descricao { get; set; }
 
         public DateTime DataAbertura { get; set; }
-        public DateTime DataConclusao { get; set; }
+        public DateTime? DataConclusao { get; set; }
 
         public StatusOcorrencia Status { get; set; }
 

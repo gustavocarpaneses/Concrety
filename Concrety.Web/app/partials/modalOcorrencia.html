@@ -48,6 +48,9 @@
     <div class="k-edit-field">
         <textarea kendo-editor style="width:550px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
     </div>
+    <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
+        {{mensagem}}
+    </div>
 </div>
 <div class="modal-footer">
     <button id="btn_salvar" class="btn btn-primary" ng-click="salvar()">Salvar</button>

@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\Repositories\FichaVerificacaoServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\FichaVerificacaoMaterialUnidadeQueries.cs" />
+    <Compile Include="Interfaces\Repositories\OcorrenciaQueries.cs" />
     <Compile Include="Interfaces\Repositories\PatologiaQueries.cs" />
     <Compile Include="Interfaces\Repositories\ServicoUnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />

@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal, servicosService, servicoUnidadeService) {
+app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal, servicosService, servicoUnidadeService, ocorrenciasService) {
 
     //if ($scope.servico.desabilitado) {
     //    return;
@@ -7,12 +7,14 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
     //Sugestão: se não for atual, setTimeout pra carregar
 
     $scope.servicoUnidade = [];
+    $scope.ocorrenciasGridOptions = [];
     $scope.salvoComSucesso = false;
     $scope.mensagem = "";
 
     servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
         $scope.servicoUnidade = response.data;
         LimparDatas();
+        configurarGridOcorrencias();
     });
     
     $scope.abrirModalNorma = function () {
@@ -36,6 +38,10 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                     return obterNovaOcorrencia(itemVerificacao);
                 }
             }
+        });
+
+        modalInstance.result.then(function (ocorrencia) {
+            itemVerificacao.quantidadeOcorrencias++;
         });
     };
 
@@ -110,7 +116,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
     $scope.closeAllDatePickers = function ($event) {
         $scope.servicoUnidade.dataInicio.opened = false;
-        $scope.servicoUnidade.dataFimy.opened = false;
+        $scope.servicoUnidade.dataFim.opened = false;
     };
 
     function LimparDatas() {
@@ -133,6 +139,102 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
             itemVerificacao: itemVerificacao,
             idItemVerificacaoUnidade: itemVerificacao.id
         };
+    }
+
+    function configurarGridOcorrencias() {
+
+
+        var columns = [
+                {
+                    field: "nomeFichaVerificacaoServico",
+                    title: "FVS"
+                },
+                {
+                    field: "nomeItemVerificacaoServico",
+                    title: "Item"
+                },
+                {
+                    field: "dataAbertura",
+                    title: "Data Abertura",
+                    format: "{0:dd/MM/yyyy}"
+                },
+                {
+                    field: "dataConclusao",
+                    title: "Data Conclusão",
+                    format: "{0:dd/MM/yyyy}"
+                },
+                {
+                    field: "status",
+                    title: "Status"
+                },
+                {
+                    field: "nomePatologia",
+                    title: "Patologia"
+                },
+                {
+                    command: ["edit"],
+                    title: "&nbsp;"
+                }];
+
+        var model = kendo.data.Model.define({
+            id: "id",
+            fields: {
+                id: { type: "number" },
+                nomeFichaVerificacaoServico: { type: "string" },
+                nomeItemVerificacaoServico: { type: "string" },
+                dataAbertura: { type: "date" },
+                dataConclusao: { type: "date" },
+                status: { type: "string" },
+                nomePatologia: { type: "string" }
+            }
+        });
+
+        var dataSource = new kendo.data.DataSource({
+            type: "json",
+            transport: {
+                read: function (o) {
+                    ocorrenciasService.obterDoServicoUnidade($scope.servicoUnidade.id).then(function (response) {
+                        o.success(response.data);
+                    });
+                }
+            },
+            pageSize: 10,
+            schema: {
+                model: model
+            }
+        });
+
+        $scope.ocorrenciasGridOptions = {
+            dataSource: dataSource,
+            sortable: true,
+            pageable: true,
+            filterable: {
+                extra: false
+            },
+            columns: columns,
+            edit: function (e) {
+                var x = 0;
+            }
+        };
+
+    }
+
+    function editarOcorrencia(e) {
+        e.preventDefault();
+
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalOcorrencia.html',
+            controller: 'ocorrenciasController',
+            resolve: {
+                ocorrencia: function () {
+                    return null;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (ocorrencia) {
+            $scope.ocorrenciasGrid.refresh();
+        });
     }
         
 });

@@ -12,9 +12,14 @@ namespace Concrety.API.ViewModels
         public string Descricao { get; set; }
 
         public DateTime DataAbertura { get; set; }
-        public DateTime DataConclusao { get; set; }
+        public DateTime? DataConclusao { get; set; }
 
+        public string DescricaoStatus { get; set; }
         public StatusOcorrencia Status { get; set; }
+
+        public string NomeFichaVerificacaoServico { get; set; }
+        public string NomeItemVerificacaoServico { get; set; }
+        public string NomePatologia { get; set; }
 
         public virtual ItemVerificacaoServicoUnidadeViewModel ItemVerificacao { get; set; }
         public int IdItemVerificacaoUnidade { get; set; }

@@ -22,9 +22,20 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
         });
     };
 
+    var _obterDoServicoUnidade = function (idServicoUnidade) {
+        return $http.get(serviceBase + 'api/ocorrencias/obterDoServicoUnidade', {
+            params: {
+                idServicoUnidade: idServicoUnidade
+            }
+        }).then(function (response) {
+            return response;
+        });
+    }
+
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
     ocorrenciasServiceFactory.create = _create;
     ocorrenciasServiceFactory.update = _update;
+    ocorrenciasServiceFactory.obterDoServicoUnidade = _obterDoServicoUnidade;
 
     return ocorrenciasServiceFactory;
 }]);

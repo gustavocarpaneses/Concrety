@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorrencia, ocorrenciasService, patologiasService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -70,22 +70,35 @@ app.controller('ocorrenciasController', function ($scope, $modalInstance, ocorre
 
     $scope.salvar = function () {
         if ($scope.isNew()) {
-            ocorrenciasService.create($scope.ocorrencia).then(function (response) {
-                $scope.salvoComSucesso = true;
-                $scope.mensagem = "Ocorrência criada com sucesso.";
-            }, function (response) {
-                var errors = [];
-                for (var key in response.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
-                    }
-                }
-                $scope.mensagem = errors.join(' ');
-            });
+            ocorrenciasService.create($scope.ocorrencia).then(salvoSucesso, erroSalvar);
         }
         else {
-            ocorrenciasService.update($scope.ocorrencia);
+            ocorrenciasService.update($scope.ocorrencia).then(salvoSucesso, erroSalvar);
         }
     };
+
+    function salvoSucesso(response) {
+        $scope.salvoComSucesso = true;
+        if ($scope.isNew()) {
+            $scope.mensagem = "Ocorrência criada com sucesso.";
+        }
+        else {
+            $scope.mensagem = "Ocorrência atualizada com sucesso.";
+        }
+
+        $timeout(function () {
+            $modalInstance.close($scope.ocorrencia);
+        }, 1000);
+    }
+
+    function erroSalvar(response) {
+        var errors = [];
+        for (var key in response.data.modelState) {
+            for (var i = 0; i < response.data.modelState[key].length; i++) {
+                errors.push(response.data.modelState[key][i]);
+            }
+        }
+        $scope.mensagem = errors.join(' ');
+    }
 
 });

@@ -1,4 +1,6 @@
-﻿<div class="row_detalhe">
+﻿<!--Qualquer alteração realiada nesse HTML não reflete imediatamente, pois ele é carregado via ng-include na partial servicos.html. Altere a querystring que tem lá para que este HTML seja atualizado no cache-->
+
+<div class="row_detalhe">
     <div class="detalhes_servicos">
         {{servico.nome}} - {{servico.descricao}} <button id="btn_norma" class="btn btn-default" ng-click="abrirModalNorma()">Consultar Procedimento de Execução</button>
     </div>
@@ -61,6 +63,9 @@
         <button type="button" class="btn btn-primary" ng-click="salvar()" id="salvar_servico">
             Salvar
         </button>
+        
+        <div kendo-grid="ocorrenciasGrid" k-options="ocorrenciasGridOptions"
+             ng-if="ocorrenciasGridOptions"></div>
 
     </div>
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
