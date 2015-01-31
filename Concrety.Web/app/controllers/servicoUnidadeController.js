@@ -170,6 +170,14 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
         var columns = [
                 {
+                    command: [{
+                    text: "Editar",
+                    //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
+                    click: editarOcorrencia
+                     }],
+                    title: "Ações"
+                },
+                {
                     field: "nomeFichaVerificacaoServico",
                     title: "FVS"
                 },
@@ -194,14 +202,6 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                 {
                     field: "nomePatologia",
                     title: "Patologia"
-                },
-                {
-                    command: [{
-                        text: "Editar",
-                        //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
-                        click: editarOcorrencia
-                    }],
-                    title: "&nbsp;"
                 }];
 
         var model = kendo.data.Model.define({
