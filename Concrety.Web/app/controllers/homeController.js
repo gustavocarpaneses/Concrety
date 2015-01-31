@@ -15,6 +15,7 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
         var modalInstance = $modal.open({
             templateUrl: '/app/partials/modalOcorrencia.html',
             controller: 'ocorrenciasController',
+            size: 'lg',
             resolve: {
                 ocorrencia: function () {
                     return ocorrencia;
