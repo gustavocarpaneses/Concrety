@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="servicos">
-                        <tabset type="pills">
+                        <tabset type="pills" justified="true">
                             <tab ng-repeat="servico in servicosDaUnidade" heading="{{servico.nome}}" active="servico.atual">
                                 <!--disabled="servico.desabilitado"-->
                                 <div ng-controller="servicoUnidadeController"
