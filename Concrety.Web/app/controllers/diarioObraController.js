@@ -38,6 +38,10 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
 
         var columns = [
                 {
+                    command: ["edit"],
+                    title: "Ações"
+                },
+                {
                     field: "dataDiario",
                     title: "Data",
                     format: "{0:dd/MM/yyyy}"
@@ -64,10 +68,6 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
                     field: "efetivoTotal",
                     title: "Efetivo Total",
                     template: "#= efetivoTotal() #"
-                },
-                {
-                    command: ["edit"],
-                    title: "&nbsp;"
                 }];
 
         var model = kendo.data.Model.define({
