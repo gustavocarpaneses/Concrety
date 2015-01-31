@@ -30,6 +30,10 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
 
     function CarregarMateriais() {
         var columns = [
+                     {
+                         command: ["edit"],
+                         title: "Ações"
+                     },
                     {
                         field: "idFichaVerificacaoMaterial",
                         title: "Material",
@@ -49,11 +53,8 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
                         field: "aprovado",
                         title: "Aprovado",
                         template: '<input type="checkbox" #= aprovado ? "checked=checked" : "" # disabled="disabled" ></input>'
-                    },
-                    {
-                        command: ["edit"],
-                        title: "&nbsp;"
-                    }];
+                    }
+                    ];
 
         var model = kendo.data.Model.define({
             id: "id",
