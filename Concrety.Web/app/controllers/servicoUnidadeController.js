@@ -22,6 +22,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         var modalInstance = $modal.open({
             templateUrl: '/app/partials/modalNorma.html',
             controller: 'modalNormasController',
+            size: 'lg',
             resolve: {
                 servico: function () {
                     return $scope.servico;
@@ -129,6 +130,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         var modalInstance = $modal.open({
             templateUrl: '/app/partials/modalOcorrencia.html',
             controller: 'ocorrenciasController',
+            size: 'lg',
             resolve: {
                 ocorrencia: function () {
                     return ocorrencia;
