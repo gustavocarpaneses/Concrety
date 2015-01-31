@@ -38,10 +38,11 @@
                         <th class="th_descricao">Descrição</th>
                         <th class="th_resultado">Resultado</th>
                         <th class="th_ocorrencias">Ocorrências</th>
+                        <th class="th_abrir_ocorrencia">Abrir ocorrência</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in fvs.itens">
+                    <tr ng-repeat="item in fvs.itens" id="linhas_fvs">
                         <td class="td_servicos">{{item.itemVerificacao.nome}}</td>
                         <td class="td_validacao">{{item.itemVerificacao.validacao}}</td>
                         <td class="td_descricao">{{item.itemVerificacao.descricao}}</td>
@@ -53,6 +54,8 @@
                         </td>
                         <td class="td_ocorrencias">
                             {{item.quantidadeOcorrencias}}
+                        </td>
+                        <td class="td_btn_ocorrencia">
                             <button id="btn_Ocorrencia" class="btn btn-default" ng-click="novaOcorrencia(item)">Nova Ocorrência</button>
                         </td>
                     </tr>
@@ -64,8 +67,10 @@
     <button type="button" class="btn btn-primary" ng-click="salvar()" id="salvar_servico">
         Salvar
     </button>
-
-    <div kendo-grid="ocorrenciasGrid" k-options="ocorrenciasGridOptions" style="position:inherit;"
+    <div class="divisao_registro_ocorrencias">
+        <b>Registros de Ocorrências</b>
+    </div>
+    <div id="grid_ocorrencias" kendo-grid="ocorrenciasGrid" k-options="ocorrenciasGridOptions" style="position:inherit;"
          ng-if="ocorrenciasGridOptions"></div>
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
