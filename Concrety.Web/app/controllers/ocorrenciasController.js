@@ -65,7 +65,7 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
     });
 
     $scope.fechar = function () {
-        $modalInstance.close();
+        $modalInstance.dismiss();
     };
 
     $scope.salvar = function () {
