@@ -34,6 +34,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         var modalInstance = $modal.open({
             templateUrl: '/app/partials/modalOcorrencia.html',
             controller: 'ocorrenciasController',
+            size: 'lg',
             resolve: {
                 ocorrencia: function () {
                     return obterNovaOcorrencia(itemVerificacao);
