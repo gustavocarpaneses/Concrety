@@ -14,6 +14,9 @@ namespace Concrety.Services
         private IRepositoryBase<Ocorrencia> _repository;
         private IRepositoryBase<ItemVerificacaoServicoUnidade> _itemVerificacaoServicoUnidadeRepository;
         private IRepositoryBase<FichaVerificacaoServicoUnidade> _fichaVerificacaoServicoUnidadeRepository;
+        private IRepositoryBase<ServicoUnidade> _servicoUnidadeRepository;
+        private IRepositoryBase<Servico> _servicoRepository;
+        private IRepositoryBase<Nivel> _nivelRepository;
 
         public OcorrenciaService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
@@ -21,6 +24,9 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<Ocorrencia>();
             _itemVerificacaoServicoUnidadeRepository = UnitOfWork.Repository<ItemVerificacaoServicoUnidade>();
             _fichaVerificacaoServicoUnidadeRepository = UnitOfWork.Repository<FichaVerificacaoServicoUnidade>();
+            _servicoUnidadeRepository = UnitOfWork.Repository<ServicoUnidade>();
+            _servicoRepository = UnitOfWork.Repository<Servico>();
+            _nivelRepository = UnitOfWork.Repository<Nivel>();
         }
 
 
@@ -82,12 +88,27 @@ namespace Concrety.Services
 
         public async Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidade(int idServicoUnidade)
         {
-            return await Task.Factory.StartNew(() => 
-            { 
+            return await Task.Factory.StartNew(() =>
+            {
                 return _repository.ObterDoServicoUnidade(
                     _itemVerificacaoServicoUnidadeRepository.GetQuery(),
                     _fichaVerificacaoServicoUnidadeRepository.GetQuery(),
-                    idServicoUnidade); 
+                    idServicoUnidade);
+            });
+        }
+
+
+        public async Task<IEnumerable<Ocorrencia>> ObterPendentes(int idMacroServico)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                return _repository.ObterPendentes(
+                    _itemVerificacaoServicoUnidadeRepository.GetQuery(),
+                    _fichaVerificacaoServicoUnidadeRepository.GetQuery(),
+                    _servicoUnidadeRepository.GetQuery(),
+                    _servicoRepository.GetQuery(),
+                    _nivelRepository.GetQuery(),
+                    idMacroServico);
             });
         }
     }

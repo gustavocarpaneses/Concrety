@@ -32,10 +32,21 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
         });
     }
 
+    var _obterPendentes = function (idMacroServico) {
+        return $http.get(serviceBase + 'api/ocorrencias/obterPendentes', {
+            params: {
+                idMacroServico: idMacroServico
+            }
+        }).then(function (response) {
+            return response;
+        });
+    }
+
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
     ocorrenciasServiceFactory.create = _create;
     ocorrenciasServiceFactory.update = _update;
     ocorrenciasServiceFactory.obterDoServicoUnidade = _obterDoServicoUnidade;
+    ocorrenciasServiceFactory.obterPendentes = _obterPendentes;
 
     return ocorrenciasServiceFactory;
 }]);

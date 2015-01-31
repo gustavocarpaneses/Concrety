@@ -20,6 +20,7 @@ namespace Concrety.API.ViewModels
         public string NomeFichaVerificacaoServico { get; set; }
         public string NomeItemVerificacaoServico { get; set; }
         public string NomePatologia { get; set; }
+        public string NomeUnidade { get; set; }
 
         public virtual ItemVerificacaoServicoUnidadeViewModel ItemVerificacao { get; set; }
         public int IdItemVerificacaoUnidade { get; set; }

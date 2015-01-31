@@ -10,5 +10,6 @@ namespace Concrety.Core.Interfaces.Services
         Task<EntityResultBase> Criar(Ocorrencia ocorrencia);
         Task<EntityResultBase> Atualizar(Ocorrencia ocorrencia);
         Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidade(int idServicoUnidade);
+        Task<IEnumerable<Ocorrencia>> ObterPendentes(int idMacroServico);
     }
 }

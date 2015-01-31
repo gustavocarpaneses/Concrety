@@ -95,6 +95,13 @@ namespace Concrety.API.Controllers
             var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidade(idServicoUnidade);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
+
+        [Route("ObterPendentes")]
+        public async Task<IEnumerable<OcorrenciaViewModel>> GetPendentes(int idMacroServico)
+        {
+            var ocorrencias = await _ocorrenciaService.ObterPendentes(idMacroServico);
+            return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
+        }
         
     }
 }
