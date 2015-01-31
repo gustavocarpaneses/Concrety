@@ -19,6 +19,13 @@ namespace Concrety.Data.EntityConfig
             HasRequired(o => o.Patologia)
                 .WithMany()
                 .HasForeignKey(o => o.IdPatologia);
+
+            HasMany(o => o.Anexos)
+                .WithMany()
+                .Map(o => o
+                    .ToTable("OcorrenciasAnexos")
+                    .MapLeftKey("IdOcorrencia")
+                    .MapRightKey("IdAnexo"));
         }
     }
 }
