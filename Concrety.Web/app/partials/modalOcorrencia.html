@@ -49,6 +49,9 @@
         <textarea kendo-editor style="width:550px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
     </div>
     
+    <input type="file" id="file" name="file" />
+    <button ng-click="adicionarArquivo()">Adicionar Arquivo</button>
+
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
         {{mensagem}}
     </div>

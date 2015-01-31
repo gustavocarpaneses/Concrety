@@ -77,6 +77,18 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
     };
 
+    $scope.adicionarArquivo = function () {
+        var file = document.getElementById('file').files[0],
+            reader = new FileReader();
+
+        reader.onloadend = function (e) {
+            var data = e.target.result;
+
+            //send you binary data via $http or $resource or do anything else with it
+        }
+        reader.readAsBinaryString(file);
+    }
+
     function salvoSucesso(response) {
         $scope.salvoComSucesso = true;
         if ($scope.isNew()) {
