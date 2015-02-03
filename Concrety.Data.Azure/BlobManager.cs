@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.Storage;
+﻿using Concrety.Core.Entities;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Configuration;
@@ -9,15 +10,15 @@ namespace Concrety.Data.Azure
     public class BlobManager
     {
 
-        public Task UploadFile(byte[] conteudo)
+        public async void UploadOcorrencia(Anexo anexo)
         {
             var container = GetOcorrenciasContainer();
 
-            // Retrieve reference to a blob named "myblob".
-            var blockBlob = container.GetBlockBlobReference(DateTime.Now.Ticks.ToString());
+            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeComExtensao());
 
-            // Create or overwrite the "myblob" blob with contents from a local file.
-            return blockBlob.UploadFromByteArrayAsync(conteudo, 0, conteudo.Length);
+            blockBlob.Properties.ContentType = anexo.ContentType;
+
+            await blockBlob.UploadFromByteArrayAsync(anexo.Conteudo, 0, anexo.Conteudo.Length);
         }
 
         public Uri GetFileUri(string nomeArquivo)

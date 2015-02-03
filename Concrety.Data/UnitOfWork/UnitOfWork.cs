@@ -36,7 +36,9 @@ namespace Concrety.Data.UnitOfWork
             {
                 _repositories = new Hashtable();
             }
+                        
             var type = typeof(TEntity).Name;
+
             if (_repositories.ContainsKey(type))
             {
                 return (IRepositoryBase<TEntity>)_repositories[type];
@@ -45,7 +47,7 @@ namespace Concrety.Data.UnitOfWork
             _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context, _user));
             return (IRepositoryBase<TEntity>)_repositories[type];
         }
-        
+
         public Task<int> SaveChangesAsync()
         {
             return _context.SaveChangesAsync();

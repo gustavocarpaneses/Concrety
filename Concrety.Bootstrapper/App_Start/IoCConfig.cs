@@ -20,7 +20,7 @@ namespace Concrety.Bootstrapper
             const string nameOrConnectionString = "name=Concrety";
 
             builder.RegisterApiControllers(typeof(WebApiApplication).Assembly);
-            builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
+            builder.RegisterModule(new RepositoryModule());
             builder.RegisterModule(new ServiceModule());
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             builder.Register<IEntitiesContext>(b =>

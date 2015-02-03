@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, anexosService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -78,15 +78,16 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
     };
 
     $scope.adicionarArquivo = function () {
-        var file = document.getElementById('file').files[0],
-            reader = new FileReader();
+        var file = document.getElementById('file').files[0];
+        var reader = new FileReader();
 
         reader.onloadend = function (e) {
-            var data = e.target.result;
-
-            //send you binary data via $http or $resource or do anything else with it
+            var anexo = {
+                conteudoString: e.target.result
+            };
+            anexosService.create(anexo);
         }
-        reader.readAsBinaryString(file);
+        reader.readAsDataURL(file);
     }
 
     function salvoSucesso(response) {

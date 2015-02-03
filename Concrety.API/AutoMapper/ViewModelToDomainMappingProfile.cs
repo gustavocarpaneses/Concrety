@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
+using System;
 
 namespace Concrety.API.AutoMapper
 {
@@ -43,6 +44,20 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<OcorrenciaViewModel, Ocorrencia>();
             Mapper.CreateMap<PatologiaViewModel, Patologia>();
             Mapper.CreateMap<SolucaoViewModel, Solucao>();
+            Mapper.CreateMap<AnexoViewModel, Anexo>()
+                .AfterMap(
+                (viewModel, model) =>
+                {
+                    var indiceInicioContentType = viewModel.ConteudoString.IndexOf(":") + 1;
+                    var indiceFimContentType = viewModel.ConteudoString.IndexOf(";");
+                    var indiceInicioConteudo = viewModel.ConteudoString.IndexOf(",") + 1;
+
+                    var contentType = viewModel.ConteudoString.Substring(indiceInicioContentType, indiceFimContentType - indiceInicioContentType);
+
+                    model.Extensao = contentType.Substring(contentType.IndexOf("/") + 1);
+                    model.ContentType = contentType;
+                    model.Conteudo = Convert.FromBase64String(viewModel.ConteudoString.Substring(indiceInicioConteudo));
+                });
         }
     }
 }

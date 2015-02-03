@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -21,7 +22,6 @@ namespace Concrety.Bootstrapper
         {
             builder.RegisterType(typeof(ApplicationUserManager)).As(typeof(IApplicationUserManager)).InstancePerRequest();
             builder.RegisterType(typeof(ApplicationRoleManager)).As(typeof(IApplicationRoleManager)).InstancePerRequest();
-            builder.RegisterType(typeof(ApplicationIdentityUser)).As(typeof(IUser<int>)).InstancePerRequest();
             builder.Register(b => b.Resolve<IEntitiesContext>() as DbContext).InstancePerRequest();
             builder.Register(b =>
             {
@@ -36,6 +36,22 @@ namespace Concrety.Bootstrapper
             }).InstancePerRequest();
             builder.Register(b => IdentityFactory.CreateRoleManager(b.Resolve<DbContext>())).InstancePerRequest();
             builder.Register(b => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register<IUser<int>>(b =>
+            {
+                var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+                var nameIdentifierClaim = authenticationManager.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+                if (nameIdentifierClaim == null)
+                    return null;
+
+                var idUsuario = Convert.ToInt32(nameIdentifierClaim.Value);
+
+                return new ApplicationIdentityUser
+                {
+                    Id = idUsuario
+                };
+            }).InstancePerRequest();
+
         }
     }
 }

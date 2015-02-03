@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="App_Start\IdentityModule.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="App_Start\RepositoryModule.cs" />
     <Compile Include="App_Start\ServiceModule.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

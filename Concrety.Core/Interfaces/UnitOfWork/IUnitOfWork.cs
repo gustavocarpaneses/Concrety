@@ -18,6 +18,5 @@ namespace Concrety.Core.Interfaces.UnitOfWork
         Task<int> SaveChangesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<int> CommitAsync();
-
     }
 }

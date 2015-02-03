@@ -76,6 +76,7 @@
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
+    <Compile Include="Interfaces\Repositories\IAnexoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialUnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialQueries.cs" />
     <Compile Include="Interfaces\Repositories\FornecedorQueries.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Interfaces\Services\IItemVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoService.cs" />
+    <Compile Include="Interfaces\Services\IAnexoService.cs" />
     <Compile Include="Interfaces\Services\IOcorrenciaService.cs" />
     <Compile Include="Interfaces\Services\IPatologiaService.cs" />
     <Compile Include="Interfaces\Services\IServicoUnidadeService.cs" />
