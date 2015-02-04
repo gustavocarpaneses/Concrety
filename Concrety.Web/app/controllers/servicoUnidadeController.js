@@ -172,7 +172,6 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                 {
                     command: [{
                     text: "Editar",
-                    //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
                     click: editarOcorrencia
                      }],
                     title: "Ações"
