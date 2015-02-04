@@ -64,10 +64,11 @@ margin: 0 auto;
     margin-top:5px;
     width:200px;
     margin-bottom:5px;
+    float:right;
 }
 
 .dados_concrety{
-    margin:2px 2px 2px 2px;
+    margin:2px 5px 2px 2px;
 }
 
 .tabela_servicos{
@@ -107,6 +108,7 @@ margin: 0 auto;
     margin:0 auto;
 }
 
+
 #grid_ocorrencias{
     padding-top:5px;
 }
@@ -115,9 +117,15 @@ margin: 0 auto;
     margin-top:15px;
     padding-top:5px;
     border-top:thin;
+    padding-left:3px;
     border-top-style:dashed;
     border-color:gray;
     margin-bottom:5px;
+    clear:right;
+}
+
+.tabela_servicos{
+    padding-bottom:5px;
 }
 
 /*página diário de obra*/
@@ -163,3 +171,10 @@ margin: 0 auto;
 }
 
 /*página modal ocorrências*/
+#btn_salvar{
+    width:150px;
+}
+
+.k-widget k-dropdown k-header ng-dirty ng-valid ng-valid-required {
+    width:500px;
+}
