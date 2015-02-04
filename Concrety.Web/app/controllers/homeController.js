@@ -32,6 +32,14 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
 
 
         var columns = [
+                 {
+                command: [{
+                    text: "Editar",
+                    //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
+                    click: editarOcorrencia
+                }],
+                title: "Ações"
+                },
                 {
                     field: "nomeUnidade",
                     title: "Unidade"
@@ -61,14 +69,6 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
                 {
                     field: "nomePatologia",
                     title: "Patologia"
-                },
-                {
-                    command: [{
-                        text: "Editar",
-                        //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
-                        click: editarOcorrencia
-                    }],
-                    title: "&nbsp;"
                 }];
 
         var model = kendo.data.Model.define({
