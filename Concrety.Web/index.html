@@ -25,9 +25,6 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-left" data-ng-hide="!authentication.isAuth">
-                    <li>
-                        <a href="#/diarioObra">Diário da Obra</a>
-                    </li>
 
                     <li class="dropdown" dropdown>
                         <a role="button" class="dropdown-toggle" dropdown-toggle aria-haspopup="true" aria-expanded="false">
@@ -49,6 +46,10 @@
                                 <a href="#/materiais/{{nivel.id}}">{{nivel.nome}}</a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a href="#/diarioObra">Diário da Obra</a>
                     </li>
                 </ul>
 
