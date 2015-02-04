@@ -31,7 +31,7 @@
         <select kendo-drop-down-list required
                 k-options="dropDownPatologiasOptions"
                 ng-model="ocorrencia.idPatologia"
-                style="width: auto"></select> 
+                style="width: 200px"></select> 
     </div>
     <div ng-if="ocorrencia.patologia">
         <div class="k-edit-label">
@@ -46,7 +46,7 @@
         <label>Descrição</label>
     </div>
     <div class="k-edit-field">
-        <textarea kendo-editor style="width:550px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
+        <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
     </div>
     
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
