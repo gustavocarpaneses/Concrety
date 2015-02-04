@@ -21,6 +21,7 @@ namespace Concrety.Bootstrapper
             builder.RegisterType(typeof(FornecedorService)).As(typeof(IFornecedorService)).InstancePerRequest();
             builder.RegisterType(typeof(OcorrenciaService)).As(typeof(IOcorrenciaService)).InstancePerRequest();
             builder.RegisterType(typeof(PatologiaService)).As(typeof(IPatologiaService)).InstancePerRequest();
+            builder.RegisterType(typeof(AnexoService)).As(typeof(IAnexoService)).InstancePerRequest();
         }
     }
 }

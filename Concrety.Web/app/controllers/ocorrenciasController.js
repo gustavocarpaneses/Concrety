@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, anexosService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -77,6 +77,39 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
     };
 
+    $scope.anexoSelecionado = function () {
+
+        var anexos = document.getElementById('file').files;
+
+        angular.forEach(anexos, function (anexo, index) {
+
+            var filtro = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
+            if (!filtro.test(anexo.type)) {
+                $scope.mensagem = "Por favor, selecione apenas anexos de imagem (bmp, gif, jpg, jpeg, png ou tiff)";
+            }
+            else {
+                var reader = new FileReader();
+
+                reader.onloadend = function (e) {
+
+                    $scope.ocorrencia.anexos.push({
+                        nome: anexo.name,
+                        tamanho: bytesToSize(anexo.size),
+                        tipo: anexo.type,
+                        conteudo: e.target.result,
+                        novoUpload: true
+                    });
+
+                }
+                reader.readAsDataURL(anexo);
+            }
+        });
+    };
+
+    $scope.excluirAnexo = function (anexo) {
+        anexo.excluido = true;
+    };
+
     function salvoSucesso(response) {
         $scope.salvoComSucesso = true;
         if ($scope.isNew()) {
@@ -101,4 +134,11 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         $scope.mensagem = errors.join(' ');
     }
 
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB'];
+        if (bytes == 0) return 'n/a';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+    };
+    
 });

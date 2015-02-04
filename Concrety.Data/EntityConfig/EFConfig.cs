@@ -20,6 +20,8 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(255));
 
+
+            modelBuilder.Configurations.Add(new AnexoConfiguration());
             modelBuilder.Configurations.Add(new CondicaoClimaticaConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoDiarioConfiguration());

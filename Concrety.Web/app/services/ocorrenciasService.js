@@ -42,11 +42,16 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
         });
     }
 
+    var _uploadArquivo = function (data) {
+
+    };
+
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
     ocorrenciasServiceFactory.create = _create;
     ocorrenciasServiceFactory.update = _update;
     ocorrenciasServiceFactory.obterDoServicoUnidade = _obterDoServicoUnidade;
     ocorrenciasServiceFactory.obterPendentes = _obterPendentes;
+    ocorrenciasServiceFactory.uploadArquivo = _uploadArquivo;
 
     return ocorrenciasServiceFactory;
 }]);

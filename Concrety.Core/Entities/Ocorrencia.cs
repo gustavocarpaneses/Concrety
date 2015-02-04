@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Entities.Enumerators;
 using System;
+using System.Collections.Generic;
 
 namespace Concrety.Core.Entities
 {
@@ -19,8 +20,6 @@ namespace Concrety.Core.Entities
         public virtual Patologia Patologia { get; set; }
         public int IdPatologia { get; set; }
 
-        //TODO: Decidir entre armazenar as Imagens em Blob ou algum serviço de Streaming
-        //public virtual ICollection<string> Evidencias { get; set; }
-        //public virtual ICollection<object[]> Evidencias { get; set; }
+        public virtual ICollection<Anexo> Anexos { get; set; }
     }
 }

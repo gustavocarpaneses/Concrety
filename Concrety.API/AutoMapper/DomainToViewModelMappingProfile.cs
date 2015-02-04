@@ -76,6 +76,7 @@ namespace Concrety.API.AutoMapper
                     });
             Mapper.CreateMap<Patologia, PatologiaViewModel>();
             Mapper.CreateMap<Solucao, SolucaoViewModel>();
+            Mapper.CreateMap<Anexo, AnexoViewModel>();
         }
     }
 }
