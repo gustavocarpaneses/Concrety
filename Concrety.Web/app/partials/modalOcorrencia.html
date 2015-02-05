@@ -69,7 +69,7 @@
                     <td>{{anexo.nome}}</td>
                     <td>{{anexo.tamanhoFormatado}}</td>
                     <td>{{anexo.tipo}}</td>
-                    <td><img ng-src="{{anexo.conteudoDataURL}}" height="100" /></td>
+                    <td><a href="{{anexo.conteudoDataURL}}" target="_blank"><img ng-src="{{anexo.conteudoDataURL}}" height="100" /></a></td>
                     <td><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
                 </tr>
             </tbody>

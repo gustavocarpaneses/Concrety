@@ -12,7 +12,7 @@ namespace Concrety.Core.Entities
 
         public string ObterNomeBlobComExtensao()
         {
-            return string.Format("{0}.{1}", NomeBlob, Extensao);
+            return NomeBlob + Extensao;
         }
 
         public byte[] Conteudo { get; set; }

@@ -128,7 +128,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
 
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html',
+            templateUrl: '/app/partials/modalOcorrencia.html?v=3',
             controller: 'ocorrenciasController',
             size: 'lg',
             resolve: {

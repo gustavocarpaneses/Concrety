@@ -4,6 +4,7 @@ using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Services.Base;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -47,11 +48,9 @@ namespace Concrety.Services
 
             await base.AddAsync(ocorrencia);
 
-            var anexoService = new AnexoService(UnitOfWork, _anexoRepository);
-
             foreach (var anexo in ocorrencia.Anexos)
             {
-                await anexoService.Criar(anexo);
+                _anexoRepository.AdicionarArquivo(anexo);
             }
 
             return await Task.Factory.StartNew(() =>
@@ -77,17 +76,15 @@ namespace Concrety.Services
 
             await base.UpdateAsync(ocorrencia);
 
-            var anexoService = new AnexoService(UnitOfWork, _anexoRepository);
-
             foreach (var anexo in ocorrencia.Anexos)
             {
                 if (anexo.Excluido)
                 {
-                    await anexoService.Excluir(anexo);
+                    _anexoRepository.RemoverArquivo(anexo);
                 }
                 else
                 {
-                    await anexoService.Criar(anexo);
+                    _anexoRepository.AdicionarArquivo(anexo);
                 }
             }
 
@@ -104,6 +101,14 @@ namespace Concrety.Services
         {
             ocorrencia.ItemVerificacao = null;
             ocorrencia.Patologia = null;
+
+            foreach (var anexo in ocorrencia.Anexos)
+            {
+                if (anexo.Id == 0)
+                {
+                    anexo.NomeBlob = DateTime.Now.Ticks.ToString();
+                }
+            }
 
             return null;
         }

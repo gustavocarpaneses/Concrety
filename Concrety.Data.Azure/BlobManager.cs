@@ -9,7 +9,7 @@ namespace Concrety.Data.Azure
     public class BlobManager
     {
 
-        public async void UploadOcorrencia(Anexo anexo)
+        public void UploadOcorrencia(Anexo anexo)
         {
             var container = GetOcorrenciasContainer();
 
@@ -17,16 +17,16 @@ namespace Concrety.Data.Azure
 
             blockBlob.Properties.ContentType = anexo.Tipo;
 
-            await blockBlob.UploadFromByteArrayAsync(anexo.Conteudo, 0, anexo.Conteudo.Length);
+            blockBlob.UploadFromByteArray(anexo.Conteudo, 0, anexo.Conteudo.Length);
         }
 
-        public async void RemoverOcorrencia(Anexo anexo)
+        public void RemoverOcorrencia(Anexo anexo)
         {
             var container = GetOcorrenciasContainer();
 
             var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeBlobComExtensao());
 
-            await blockBlob.DeleteIfExistsAsync();
+            blockBlob.DeleteIfExistsAsync();
         }
         
         private CloudBlobContainer GetOcorrenciasContainer()

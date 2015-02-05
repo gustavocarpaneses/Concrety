@@ -2,6 +2,7 @@
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
 using System;
+using System.IO;
 
 namespace Concrety.API.AutoMapper
 {
@@ -48,11 +49,12 @@ namespace Concrety.API.AutoMapper
                 .AfterMap(
                 (viewModel, model) =>
                 {
-                    var indiceInicioExtensao = viewModel.Tipo.IndexOf("/") + 1;
-                    var indiceInicioConteudo = viewModel.ConteudoDataURL.IndexOf(",") + 1;
-
-                    model.Extensao = viewModel.Tipo.Substring(indiceInicioExtensao);
-                    model.Conteudo = Convert.FromBase64String(viewModel.ConteudoDataURL.Substring(indiceInicioConteudo));
+                    model.Extensao = Path.GetExtension(viewModel.Nome);
+                    if (viewModel.NovoUpload)
+                    {
+                        var indiceInicioConteudo = viewModel.ConteudoDataURL.IndexOf(",") + 1;
+                        model.Conteudo = Convert.FromBase64String(viewModel.ConteudoDataURL.Substring(indiceInicioConteudo));
+                    }
                 });
         }
     }

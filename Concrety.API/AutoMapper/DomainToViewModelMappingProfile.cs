@@ -82,10 +82,9 @@ namespace Concrety.API.AutoMapper
                 .AfterMap(
                 (model, viewModel) =>
                 {
-                    var url = Path.Combine(
-                        ConfigurationManager.AppSettings["ConcretyStorageUrl"],
-                        OcorrenciaMessages.OCORRENCIAS_CONTAINER,
-                        model.ObterNomeBlobComExtensao());
+                    var url = ConfigurationManager.AppSettings["ConcretyStorageUrl"] +
+                        OcorrenciaMessages.OCORRENCIAS_CONTAINER + "/" +
+                        model.ObterNomeBlobComExtensao();
 
                     viewModel.ConteudoDataURL = url;
                 });
