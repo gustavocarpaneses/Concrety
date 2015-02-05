@@ -2,7 +2,7 @@
     <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
     <h3 class="modal-title">Ocorrência</h3>
 </div>
-<div class="modal-body" style="height:1100px">
+<div class="modal-body" style="height:auto">
     <div class="k-edit-label">
         <label>Data Abertura</label>
     </div>
@@ -31,7 +31,7 @@
         <select kendo-drop-down-list required
                 k-options="dropDownPatologiasOptions"
                 ng-model="ocorrencia.idPatologia"
-                style="width: 200px"></select> 
+                style="width: 350px"></select> 
     </div>
     <div ng-if="ocorrencia.patologia">
         <div class="k-edit-label">
@@ -48,12 +48,11 @@
     <div class="k-edit-field">
         <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
     </div>
-    
     <div>
-
-        <h3>Imagens</h3>
+        <div class="ocorrencias_imagem_evidencia">
+            <h3><b>Fotos de evidência</b></h3>
+        </div>
         <input type="file" id="file" name="file" multiple ng-change="anexoSelecionado" />
-
         <table>
             <thead>
                 <tr>
@@ -74,7 +73,6 @@
                 </tr>
             </tbody>
         </table>
-
     </div>
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
