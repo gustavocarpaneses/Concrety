@@ -33,7 +33,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
     $scope.novaOcorrencia = function (itemVerificacao) {
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html',
+            templateUrl: '/app/partials/modalOcorrencia.html?v=2',
             controller: 'ocorrenciasController',
             size: 'lg',
             resolve: {
@@ -161,7 +161,8 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
             dataConclusao: '',
             status: 10,
             itemVerificacao: itemVerificacao,
-            idItemVerificacaoUnidade: itemVerificacao.id
+            idItemVerificacaoUnidade: itemVerificacao.id,
+            anexos: []
         };
     }
 

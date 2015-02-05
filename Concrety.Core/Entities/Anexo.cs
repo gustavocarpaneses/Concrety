@@ -5,14 +5,16 @@ namespace Concrety.Core.Entities
     public class Anexo : EntityBase
     {
         public string Nome { get; set; }
+        public string NomeBlob { get; set; }
+        public int Tamanho { get; set; }
+        public string Tipo { get; set; }
         public string Extensao { get; set; }
 
-        public string ObterNomeComExtensao()
+        public string ObterNomeBlobComExtensao()
         {
-            return string.Format("{0}.{1}", Nome, Extensao);
+            return string.Format("{0}.{1}", NomeBlob, Extensao);
         }
 
-        public string ContentType { get; set; }
         public byte[] Conteudo { get; set; }
     }
 }

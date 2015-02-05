@@ -1,5 +1,6 @@
 ﻿using Concrety.Core.Entities.Enumerators;
 using System;
+using System.Collections.Generic;
 
 namespace Concrety.API.ViewModels
 {
@@ -28,8 +29,6 @@ namespace Concrety.API.ViewModels
         public virtual PatologiaViewModel Patologia { get; set; }
         public int IdPatologia { get; set; }
 
-        //TODO: Decidir entre armazenar as Imagens em Blob ou algum serviço de Streaming
-        //public virtual ICollection<string> Evidencias { get; set; }
-        //public virtual ICollection<object[]> Evidencias { get; set; }
+        public ICollection<AnexoViewModel> Anexos { get; set; }
     }
 }

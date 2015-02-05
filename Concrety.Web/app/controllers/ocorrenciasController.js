@@ -77,9 +77,9 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
     };
 
-    $scope.anexoSelecionado = function () {
-
-        var anexos = document.getElementById('file').files;
+    $scope.anexoSelecionado = function (element) {
+        
+        var anexos = element.files;
 
         angular.forEach(anexos, function (anexo, index) {
 
@@ -94,11 +94,15 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
 
                     $scope.ocorrencia.anexos.push({
                         nome: anexo.name,
-                        tamanho: bytesToSize(anexo.size),
+                        tamanho: anexo.size,
+                        tamanhoFormatado: bytesToSize(anexo.size),
                         tipo: anexo.type,
-                        conteudo: e.target.result,
-                        novoUpload: true
+                        conteudoDataURL: e.target.result,
+                        novoUpload: true,
+                        excluido: false
                     });
+
+                    $scope.$apply();
 
                 }
                 reader.readAsDataURL(anexo);

@@ -41,10 +41,16 @@ namespace Concrety.Bootstrapper
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 var nameIdentifierClaim = authenticationManager.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
-                if (nameIdentifierClaim == null)
-                    return null;
+                int idUsuario;
 
-                var idUsuario = Convert.ToInt32(nameIdentifierClaim.Value);
+                if (nameIdentifierClaim == null)
+                {
+                    idUsuario = 0;
+                }
+                else
+                {
+                    idUsuario = Convert.ToInt32(nameIdentifierClaim.Value);
+                }
 
                 return new ApplicationIdentityUser
                 {

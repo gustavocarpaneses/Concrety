@@ -5,7 +5,6 @@ using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Services.Base;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Concrety.Services
@@ -22,7 +21,7 @@ namespace Concrety.Services
 
         public async Task<EntityResultBase> Criar(Anexo anexo)
         {
-            anexo.Nome = DateTime.Now.Ticks.ToString();
+            anexo.NomeBlob = DateTime.Now.Ticks.ToString();
 
             await base.AddAsync(anexo);
 
@@ -37,9 +36,18 @@ namespace Concrety.Services
         }
 
 
-        public Task<EntityResultBase> Excluir(Anexo anexo)
+        public async Task<EntityResultBase> Excluir(Anexo anexo)
         {
-            throw new NotImplementedException();
+            await base.RemoveAsync(anexo);
+
+            _repository.RemoverArquivo(anexo);
+
+            return await Task.Factory.StartNew(() =>
+            {
+                return new EntityResultBase(
+                    null,
+                    true);
+            });
         }
     }
 }
