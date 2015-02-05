@@ -2,9 +2,11 @@
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
 using Concrety.Core.Extensions;
+using Concrety.Core.Messages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
+using System.IO;
 
 namespace Concrety.API.AutoMapper
 {
@@ -76,7 +78,17 @@ namespace Concrety.API.AutoMapper
                     });
             Mapper.CreateMap<Patologia, PatologiaViewModel>();
             Mapper.CreateMap<Solucao, SolucaoViewModel>();
-            Mapper.CreateMap<Anexo, AnexoViewModel>();
+            Mapper.CreateMap<Anexo, AnexoViewModel>()
+                .AfterMap(
+                (model, viewModel) =>
+                {
+                    var url = Path.Combine(
+                        ConfigurationManager.AppSettings["ConcretyStorageUrl"],
+                        OcorrenciaMessages.OCORRENCIAS_CONTAINER,
+                        model.ObterNomeBlobComExtensao());
+
+                    viewModel.ConteudoDataURL = url;
+                });
         }
     }
 }

@@ -114,6 +114,7 @@
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Messages\EmpreendimentoDiarioMessages.cs" />
+    <Compile Include="Messages\OcorrenciaMessages.cs" />
     <Compile Include="Messages\ServicoMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

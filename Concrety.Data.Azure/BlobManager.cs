@@ -1,4 +1,5 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Messages;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
@@ -37,7 +38,7 @@ namespace Concrety.Data.Azure
             var blobClient = storageAccount.CreateCloudBlobClient();
 
             // Retrieve reference to a previously created container.
-            return blobClient.GetContainerReference("ocorrencias");
+            return blobClient.GetContainerReference(OcorrenciaMessages.OCORRENCIAS_CONTAINER);
         }
 
     }
