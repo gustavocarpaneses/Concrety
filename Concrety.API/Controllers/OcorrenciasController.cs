@@ -5,6 +5,7 @@ using Concrety.Core.Entities.Enumerators;
 using Concrety.Core.Extensions;
 using Concrety.Core.Interfaces.Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -52,6 +53,8 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            ocorrenciaViewModel.Anexos = ocorrenciaViewModel.Anexos.Where(a => !a.Excluido).ToList();
+
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
             var resultado = await _ocorrenciaService.Criar(ocorrencia);
@@ -74,6 +77,11 @@ namespace Concrety.API.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            ocorrenciaViewModel.Anexos = ocorrenciaViewModel.Anexos.Where(a => 
+                (a.NovoUpload && !a.Excluido)
+                ||
+                (!a.NovoUpload && a.Excluido)).ToList();
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 

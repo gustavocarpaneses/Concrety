@@ -52,7 +52,6 @@ namespace Concrety.API.AutoMapper
                     var indiceInicioConteudo = viewModel.ConteudoDataURL.IndexOf(",") + 1;
 
                     model.Extensao = viewModel.Tipo.Substring(indiceInicioExtensao);
-                    model.ContentType = viewModel.Tipo;
                     model.Conteudo = Convert.FromBase64String(viewModel.ConteudoDataURL.Substring(indiceInicioConteudo));
                 });
         }

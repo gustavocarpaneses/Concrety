@@ -10,9 +10,9 @@ namespace Concrety.Data.EntityConfig
             ToTable("Anexos");
 
             Property(a => a.Extensao).HasMaxLength(10);
+            Property(a => a.Tipo).HasMaxLength(50);
 
             Ignore(a => a.Conteudo);
-            Ignore(a => a.ContentType);
         }
     }
 }

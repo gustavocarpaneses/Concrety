@@ -3,11 +3,6 @@ using Concrety.Core.Interfaces.Repositories;
 using Concrety.Data.Azure;
 using Concrety.Data.Context;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Concrety.Data.Repositories
 {
@@ -23,6 +18,12 @@ namespace Concrety.Data.Repositories
         public void AdicionarArquivo(Anexo anexo)
         {
             new BlobManager().UploadOcorrencia(anexo);
+        }
+
+
+        public void RemoverArquivo(Anexo anexo)
+        {
+            new BlobManager().RemoverOcorrencia(anexo);
         }
     }
 }

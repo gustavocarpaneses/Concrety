@@ -1,9 +1,7 @@
 ﻿using Concrety.Core.Entities;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using System;
 using System.Configuration;
-using System.Threading.Tasks;
 
 namespace Concrety.Data.Azure
 {
@@ -14,24 +12,22 @@ namespace Concrety.Data.Azure
         {
             var container = GetOcorrenciasContainer();
 
-            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeComExtensao());
+            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeBlobComExtensao());
 
-            blockBlob.Properties.ContentType = anexo.ContentType;
+            blockBlob.Properties.ContentType = anexo.Tipo;
 
             await blockBlob.UploadFromByteArrayAsync(anexo.Conteudo, 0, anexo.Conteudo.Length);
         }
 
-        public Uri GetFileUri(string nomeArquivo)
+        public async void RemoverOcorrencia(Anexo anexo)
         {
-            var container = GetOcorrenciasContainer();            
+            var container = GetOcorrenciasContainer();
 
-            // Retrieve reference to a blob named "myblob".
-            var blockBlob = container.GetBlockBlobReference(nomeArquivo);
+            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeBlobComExtensao());
 
-            // Create or overwrite the "myblob" blob with contents from a local file.
-            return blockBlob.Uri;
+            await blockBlob.DeleteIfExistsAsync();
         }
-
+        
         private CloudBlobContainer GetOcorrenciasContainer()
         {
             // Retrieve storage account from connection string.

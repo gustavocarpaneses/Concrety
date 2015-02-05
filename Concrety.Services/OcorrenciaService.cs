@@ -17,8 +17,9 @@ namespace Concrety.Services
         private IRepositoryBase<ServicoUnidade> _servicoUnidadeRepository;
         private IRepositoryBase<Servico> _servicoRepository;
         private IRepositoryBase<Nivel> _nivelRepository;
+        private IAnexoRepository _anexoRepository;
 
-        public OcorrenciaService(IUnitOfWork unitOfWork)
+        public OcorrenciaService(IUnitOfWork unitOfWork, IAnexoRepository anexoRepository)
             : base(unitOfWork)
         {
             _repository = UnitOfWork.Repository<Ocorrencia>();
@@ -27,6 +28,7 @@ namespace Concrety.Services
             _servicoUnidadeRepository = UnitOfWork.Repository<ServicoUnidade>();
             _servicoRepository = UnitOfWork.Repository<Servico>();
             _nivelRepository = UnitOfWork.Repository<Nivel>();
+            _anexoRepository = anexoRepository;
         }
 
 
@@ -44,6 +46,13 @@ namespace Concrety.Services
             }
 
             await base.AddAsync(ocorrencia);
+
+            var anexoService = new AnexoService(UnitOfWork, _anexoRepository);
+
+            foreach (var anexo in ocorrencia.Anexos)
+            {
+                await anexoService.Criar(anexo);
+            }
 
             return await Task.Factory.StartNew(() =>
             {
@@ -67,6 +76,20 @@ namespace Concrety.Services
             }
 
             await base.UpdateAsync(ocorrencia);
+
+            var anexoService = new AnexoService(UnitOfWork, _anexoRepository);
+
+            foreach (var anexo in ocorrencia.Anexos)
+            {
+                if (anexo.Excluido)
+                {
+                    await anexoService.Excluir(anexo);
+                }
+                else
+                {
+                    await anexoService.Criar(anexo);
+                }
+            }
 
             return await Task.Factory.StartNew(() =>
             {
