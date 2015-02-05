@@ -161,7 +161,8 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
             dataConclusao: '',
             status: 10,
             itemVerificacao: itemVerificacao,
-            idItemVerificacaoUnidade: itemVerificacao.id
+            idItemVerificacaoUnidade: itemVerificacao.id,
+            anexos: []
         };
     }
 

@@ -52,7 +52,7 @@
     <div>
 
         <h3>Imagens</h3>
-        <input type="file" id="file" name="file" multiple ng-change="anexoSelecionado" />
+        <input type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
 
         <table>
             <thead>
@@ -67,9 +67,9 @@
             <tbody>
                 <tr ng-repeat="anexo in ocorrencia.anexos" ng-hide="anexo.excluido">
                     <td>{{anexo.nome}}</td>
-                    <td>{{anexo.tamanho}}</td>
+                    <td>{{anexo.tamanhoFormatado}}</td>
                     <td>{{anexo.tipo}}</td>
-                    <td><img src="anexo.conteudo" /></td>
+                    <td><img ng-src="{{anexo.conteudo}}" height="100" /></td>
                     <td><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
                 </tr>
             </tbody>

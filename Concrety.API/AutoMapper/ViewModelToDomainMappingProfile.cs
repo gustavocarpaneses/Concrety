@@ -48,15 +48,12 @@ namespace Concrety.API.AutoMapper
                 .AfterMap(
                 (viewModel, model) =>
                 {
-                    var indiceInicioContentType = viewModel.ConteudoString.IndexOf(":") + 1;
-                    var indiceFimContentType = viewModel.ConteudoString.IndexOf(";");
-                    var indiceInicioConteudo = viewModel.ConteudoString.IndexOf(",") + 1;
+                    var indiceInicioExtensao = viewModel.Tipo.IndexOf("/") + 1;
+                    var indiceInicioConteudo = viewModel.ConteudoDataURL.IndexOf(",") + 1;
 
-                    var contentType = viewModel.ConteudoString.Substring(indiceInicioContentType, indiceFimContentType - indiceInicioContentType);
-
-                    model.Extensao = contentType.Substring(contentType.IndexOf("/") + 1);
-                    model.ContentType = contentType;
-                    model.Conteudo = Convert.FromBase64String(viewModel.ConteudoString.Substring(indiceInicioConteudo));
+                    model.Extensao = viewModel.Tipo.Substring(indiceInicioExtensao);
+                    model.ContentType = viewModel.Tipo;
+                    model.Conteudo = Convert.FromBase64String(viewModel.ConteudoDataURL.Substring(indiceInicioConteudo));
                 });
         }
     }

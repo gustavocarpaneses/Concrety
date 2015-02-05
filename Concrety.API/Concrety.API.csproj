@@ -92,7 +92,6 @@
     <Compile Include="Controllers\DiariosObraController.cs" />
     <Compile Include="Controllers\MaterialUnidadeController.cs" />
     <Compile Include="Controllers\MateriaisController.cs" />
-    <Compile Include="Controllers\AnexosController.cs" />
     <Compile Include="Controllers\PatologiasController.cs" />
     <Compile Include="Controllers\OcorrenciasController.cs" />
     <Compile Include="Controllers\ServicoUnidadeController.cs" />
