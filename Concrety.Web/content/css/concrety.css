@@ -178,3 +178,8 @@ margin: 0 auto;
 .k-widget k-dropdown k-header ng-dirty ng-valid ng-valid-required {
     width:500px;
 }
+
+.ocorrencias_imagem_evidencia{
+    clear:right;
+    padding-top:5px;
+}
