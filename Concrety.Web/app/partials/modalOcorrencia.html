@@ -52,25 +52,25 @@
         <div class="ocorrencias_imagem_evidencia">
             <h3><b>Fotos de evidência</b></h3>
         </div>
-        <input type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
+        <input class="input_foto_evidencia" type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
 
         <table>
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Tamanho</th>
-                    <th>Tipo</th>
-                    <th>Preview</th>
-                    <th></th>
+                    <th class="th_foto_preview">Preview</th>
+                    <th class="th_foto_nome">Nome</th>
+                    <th class="th_foto_tamanho">Tamanho</th>
+                    <th class="th_foto_tipo">Tipo</th>
+                    <th class="th_foto_acao">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="anexo in ocorrencia.anexos" ng-hide="anexo.excluido">
-                    <td>{{anexo.nome}}</td>
-                    <td>{{anexo.tamanhoFormatado}}</td>
-                    <td>{{anexo.tipo}}</td>
-                    <td><a href="{{anexo.conteudoDataURL}}" target="_blank"><img ng-src="{{anexo.conteudoDataURL}}" height="100" /></a></td>
-                    <td><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
+                    <td class="td_foto_preview"><a href="{{anexo.conteudoDataURL}}" target="_blank"><img ng-src="{{anexo.conteudoDataURL}}" height="100" /></a></td>
+                    <td class="td_foto_nome">{{anexo.nome}}</td>
+                    <td class="td_foto_tamanho">{{anexo.tamanhoFormatado}}</td>
+                    <td class="td_foto_tipo">{{anexo.tipo}}</td>
+                    <td class="td_foto_acao"><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
                 </tr>
             </tbody>
         </table>

@@ -14,6 +14,10 @@ margin: 0 auto;
 
 }
 
+.logo_concrety{
+float:left;
+padding-right:15px;
+}
 
 /*barra superior - menu*/
 .navbar-default{
@@ -182,4 +186,17 @@ margin: 0 auto;
 .ocorrencias_imagem_evidencia{
     clear:right;
     padding-top:5px;
+}
+
+.th_foto_preview, .th_foto_nome, .th_foto_tamanho, .th_foto_tipo, .th_foto_acao{
+    padding-left:10px;
+}
+
+.td_foto_preview, .td_foto_nome, .td_foto_tamanho, .td_foto_tipo, .td_foto_acao{
+    padding-bottom:5px;
+    padding-left:5px;
+}
+
+.input_foto_evidencia{
+    padding-bottom:5px;
 }

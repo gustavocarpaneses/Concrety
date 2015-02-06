@@ -95,6 +95,7 @@
     <Content Include="content\css\Default\loading-image.gif" />
     <Content Include="content\css\Default\loading.gif" />
     <Content Include="content\css\Default\loading_2x.gif" />
+    <Content Include="content\css\Default\logo_concrety.png" />
     <Content Include="content\css\Default\markers.png" />
     <Content Include="content\css\Default\markers_2x.png" />
     <Content Include="content\css\Default\slider-h.gif" />
