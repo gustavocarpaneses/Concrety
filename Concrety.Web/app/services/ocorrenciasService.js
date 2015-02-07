@@ -42,8 +42,10 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
         });
     }
 
-    var _uploadArquivo = function (data) {
-
+    var _removerAnexo = function (anexo) {
+        return $http.post(serviceBase + 'api/ocorrenciasAnexos/remover', anexo).then(function (response) {
+            return response;
+        });
     };
 
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
@@ -51,7 +53,7 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
     ocorrenciasServiceFactory.update = _update;
     ocorrenciasServiceFactory.obterDoServicoUnidade = _obterDoServicoUnidade;
     ocorrenciasServiceFactory.obterPendentes = _obterPendentes;
-    ocorrenciasServiceFactory.uploadArquivo = _uploadArquivo;
+    ocorrenciasServiceFactory.removerAnexo = _removerAnexo;
 
     return ocorrenciasServiceFactory;
 }]);

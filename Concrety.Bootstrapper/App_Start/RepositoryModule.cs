@@ -9,7 +9,7 @@ namespace Concrety.Bootstrapper
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
-            builder.RegisterType(typeof(AnexoRepository)).As(typeof(IAnexoRepository)).InstancePerRequest();
+            builder.RegisterType(typeof(AnexoBlobRepository)).As(typeof(IAnexoBlobRepository)).InstancePerRequest();
         }
     }
 }

@@ -45,17 +45,8 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<OcorrenciaViewModel, Ocorrencia>();
             Mapper.CreateMap<PatologiaViewModel, Patologia>();
             Mapper.CreateMap<SolucaoViewModel, Solucao>();
-            Mapper.CreateMap<AnexoViewModel, Anexo>()
-                .AfterMap(
-                (viewModel, model) =>
-                {
-                    model.Extensao = Path.GetExtension(viewModel.Nome);
-                    if (viewModel.NovoUpload)
-                    {
-                        var indiceInicioConteudo = viewModel.ConteudoDataURL.IndexOf(",") + 1;
-                        model.Conteudo = Convert.FromBase64String(viewModel.ConteudoDataURL.Substring(indiceInicioConteudo));
-                    }
-                });
+            Mapper.CreateMap<AnexoViewModel, Anexo>();
+            Mapper.CreateMap<OcorrenciaAnexoViewModel, OcorrenciaAnexo>();
         }
     }
 }

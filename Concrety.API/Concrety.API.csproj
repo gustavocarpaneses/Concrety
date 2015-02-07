@@ -92,6 +92,8 @@
     <Compile Include="Controllers\DiariosObraController.cs" />
     <Compile Include="Controllers\MaterialUnidadeController.cs" />
     <Compile Include="Controllers\MateriaisController.cs" />
+    <Compile Include="Controllers\AnexosController.cs" />
+    <Compile Include="Controllers\OcorrenciasAnexosController.cs" />
     <Compile Include="Controllers\PatologiasController.cs" />
     <Compile Include="Controllers\OcorrenciasController.cs" />
     <Compile Include="Controllers\ServicoUnidadeController.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="ViewModels\MacroServicoViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoViewModel.cs" />
     <Compile Include="ViewModels\AnexoViewModel.cs" />
+    <Compile Include="ViewModels\OcorrenciaAnexoViewModel.cs" />
     <Compile Include="ViewModels\OcorrenciaViewModel.cs" />
     <Compile Include="ViewModels\PatologiaViewModel.cs" />
     <Compile Include="ViewModels\ServicoUnidadeViewModel.cs" />

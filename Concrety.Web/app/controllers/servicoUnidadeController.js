@@ -33,7 +33,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
     $scope.novaOcorrencia = function (itemVerificacao) {
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html?v=2',
+            templateUrl: '/app/partials/modalOcorrencia.html?v=' + new Date(),
             controller: 'ocorrenciasController',
             size: 'lg',
             resolve: {
@@ -128,7 +128,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
 
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html?v=3',
+            templateUrl: '/app/partials/modalOcorrencia.html?v=' + new Date(),
             controller: 'ocorrenciasController',
             size: 'lg',
             resolve: {

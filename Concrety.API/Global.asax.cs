@@ -7,7 +7,7 @@ namespace Concrety.API
     {
         protected void Application_Start()
         {
-            AutoMapperConfig.RegisterMappings();
+            //AutoMapperConfig.RegisterMappings();
         }
     }
 }

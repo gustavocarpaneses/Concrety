@@ -13,7 +13,7 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
         var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
 
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalOcorrencia.html',
+            templateUrl: '/app/partials/modalOcorrencia.html?v=' + new Date(),
             controller: 'ocorrenciasController',
             size: 'lg',
             resolve: {

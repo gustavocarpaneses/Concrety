@@ -39,6 +39,7 @@
     <Compile Include="EntityConfig\FichaVerificacaoMaterialUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ItemVerificacaoMaterialConfiguration.cs" />
     <Compile Include="EntityConfig\ItemVerificacaoMaterialUnidadeConfiguration.cs" />
+    <Compile Include="EntityConfig\OcorrenciaAnexoConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoConfiguration.cs" />
     <Compile Include="EntityConfig\UnidadeConfiguration.cs" />
@@ -57,7 +58,7 @@
     <Compile Include="EntityConfig\FichaVerificacaoServicoUnidadeConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AnexoRepository.cs" />
+    <Compile Include="Repositories\AnexoBlobRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

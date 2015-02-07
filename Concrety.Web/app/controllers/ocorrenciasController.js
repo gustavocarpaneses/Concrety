@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, anexosService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, concretySettings, localStorageService, accountService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -77,41 +77,51 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
     };
 
-    $scope.anexoSelecionado = function (element) {
+    $scope.anexoSelecionado = function (e) {
         
-        var anexos = element.files;
+        angular.forEach(e.files, function (anexo, index) {
 
-        angular.forEach(anexos, function (anexo, index) {
-
-            var filtro = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
-            if (!filtro.test(anexo.type)) {
+            var filtro = /^(.bmp|.gif|.jpg|.jpeg|.png|.tiff)$/i;
+            if (!filtro.test(anexo.extension)) {
                 $scope.mensagem = "Por favor, selecione apenas anexos de imagem (bmp, gif, jpg, jpeg, png ou tiff)";
-            }
-            else {
-                var reader = new FileReader();
-
-                reader.onloadend = function (e) {
-
-                    $scope.ocorrencia.anexos.push({
-                        nome: anexo.name,
-                        tamanho: anexo.size,
-                        tamanhoFormatado: bytesToSize(anexo.size),
-                        tipo: anexo.type,
-                        conteudoDataURL: e.target.result,
-                        novoUpload: true,
-                        excluido: false
-                    });
-
-                    $scope.$apply();
-
-                }
-                reader.readAsDataURL(anexo);
+                e.preventDefault();
             }
         });
     };
 
-    $scope.excluirAnexo = function (anexo) {
-        anexo.excluido = true;
+    $scope.uploadIniciado = function (e) {
+
+        var saveUrl = concretySettings.apiServiceBaseUri + 'api/anexos/create';
+        e.sender.options.async.saveUrl = saveUrl + "?idObra=" + accountService.empreendimentoAtual.id;
+
+        var xhr = e.XMLHttpRequest;
+        if (xhr) {
+            xhr.addEventListener("readystatechange", function (e) {
+                if (xhr.readyState == 1 /* OPENED */) {
+                    var authData = localStorageService.get('authorizationData');
+                    if (authData) {
+                        xhr.setRequestHeader("Authorization", 'Bearer ' + authData.token);
+                    }
+                }
+            });
+        }
+    };
+
+    $scope.uploadConcluido = function (e) {
+        if (e.operation == "upload") {
+            $scope.ocorrencia.anexos.push({
+                idOcorrencia: $scope.ocorrencia.id,
+                anexo: e.response,
+                idAnexo: e.response.id
+            });
+            $scope.$apply();
+        }
+    };
+
+    $scope.excluirAnexo = function (ocorrenciaAnexo) {
+        $scope.ocorrencia.anexos.remove(ocorrenciaAnexo);
+        ocorrenciaAnexo.anexo.idObra = accountService.empreendimentoAtual.id;
+        ocorrenciasService.removerAnexo(ocorrenciaAnexo);
     };
 
     function salvoSucesso(response) {
@@ -137,12 +147,5 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
         $scope.mensagem = errors.join(' ');
     }
-
-    function bytesToSize(bytes) {
-        var sizes = ['Bytes', 'KB', 'MB'];
-        if (bytes == 0) return 'n/a';
-        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-        return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-    };
-    
+ 
 });

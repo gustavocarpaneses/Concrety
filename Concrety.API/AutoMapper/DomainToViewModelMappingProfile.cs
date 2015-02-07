@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 
 namespace Concrety.API.AutoMapper
 {
@@ -74,20 +75,11 @@ namespace Concrety.API.AutoMapper
                         nomesUnidades.Reverse();
 
                         viewModel.NomeUnidade = String.Join(" - ", nomesUnidades);
-
                     });
             Mapper.CreateMap<Patologia, PatologiaViewModel>();
             Mapper.CreateMap<Solucao, SolucaoViewModel>();
-            Mapper.CreateMap<Anexo, AnexoViewModel>()
-                .AfterMap(
-                (model, viewModel) =>
-                {
-                    var url = ConfigurationManager.AppSettings["ConcretyStorageUrl"] +
-                        OcorrenciaMessages.OCORRENCIAS_CONTAINER + "/" +
-                        model.ObterNomeBlobComExtensao();
-
-                    viewModel.ConteudoDataURL = url;
-                });
+            Mapper.CreateMap<Anexo, AnexoViewModel>();
+            Mapper.CreateMap<OcorrenciaAnexo, OcorrenciaAnexoViewModel>();
         }
     }
 }

@@ -41,6 +41,8 @@
     <Compile Include="FichaVerificacaoServicoService.cs" />
     <Compile Include="MacroServicoService.cs" />
     <Compile Include="FichaVerificacaoMaterialUnidadeService.cs" />
+    <Compile Include="AnexoService.cs" />
+    <Compile Include="OcorrenciaAnexoService.cs" />
     <Compile Include="OcorrenciaService.cs" />
     <Compile Include="PatologiaService.cs" />
     <Compile Include="ServicoUnidadeService.cs" />

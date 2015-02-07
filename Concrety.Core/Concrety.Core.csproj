@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
+    <Compile Include="Entities\OcorrenciaAnexo.cs" />
     <Compile Include="Entities\Results\EntityResultBase.cs" />
     <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="Interfaces\Entities\IEntityBase.cs" />
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
-    <Compile Include="Interfaces\Repositories\IAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAnexoBlobRepository.cs" />
     <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialUnidadeQueries.cs" />
     <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialQueries.cs" />
     <Compile Include="Interfaces\Repositories\FornecedorQueries.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="Interfaces\Services\IItemVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoUnidadeService.cs" />
     <Compile Include="Interfaces\Services\IFichaVerificacaoServicoService.cs" />
+    <Compile Include="Interfaces\Services\IAnexoService.cs" />
+    <Compile Include="Interfaces\Services\IOcorrenciaAnexoService.cs" />
     <Compile Include="Interfaces\Services\IOcorrenciaService.cs" />
     <Compile Include="Interfaces\Services\IPatologiaService.cs" />
     <Compile Include="Interfaces\Services\IServicoUnidadeService.cs" />
@@ -113,7 +116,6 @@
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Messages\EmpreendimentoDiarioMessages.cs" />
-    <Compile Include="Messages\OcorrenciaMessages.cs" />
     <Compile Include="Messages\ServicoMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

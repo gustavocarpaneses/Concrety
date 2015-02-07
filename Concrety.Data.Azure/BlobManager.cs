@@ -3,42 +3,47 @@ using Concrety.Core.Messages;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
+using System.IO;
 
 namespace Concrety.Data.Azure
 {
     public class BlobManager
     {
 
-        public void UploadOcorrencia(Anexo anexo)
+        public void Upload(Anexo anexo)
         {
-            var container = GetOcorrenciasContainer();
+            var container = GetContainer(anexo.IdObra);
 
-            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeBlobComExtensao());
+            var blockBlob = container.GetBlockBlobReference(anexo.NomeBlob);
 
             blockBlob.Properties.ContentType = anexo.Tipo;
 
-            blockBlob.UploadFromByteArray(anexo.Conteudo, 0, anexo.Conteudo.Length);
+            blockBlob.UploadFromFile(anexo.NomeArquivoUpload, FileMode.Open);
+
+            anexo.UrlPrimaria = blockBlob.StorageUri.PrimaryUri.ToString();
+            anexo.UrlSecundaria = blockBlob.StorageUri.SecondaryUri.ToString();
         }
 
-        public void RemoverOcorrencia(Anexo anexo)
+        public void Remover(Anexo anexo)
         {
-            var container = GetOcorrenciasContainer();
+            var container = GetContainer(anexo.IdObra);
 
-            var blockBlob = container.GetBlockBlobReference(anexo.ObterNomeBlobComExtensao());
+            var blockBlob = container.GetBlockBlobReference(anexo.NomeBlob);
 
             blockBlob.DeleteIfExistsAsync();
         }
         
-        private CloudBlobContainer GetOcorrenciasContainer()
+        private CloudBlobContainer GetContainer(int idObra)
         {
-            // Retrieve storage account from connection string.
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["ConcretyStorage"]);
 
-            // Create the blob client.
             var blobClient = storageAccount.CreateCloudBlobClient();
 
-            // Retrieve reference to a previously created container.
-            return blobClient.GetContainerReference(OcorrenciaMessages.OCORRENCIAS_CONTAINER);
+            var container = blobClient.GetContainerReference("obra-" + idObra.ToString());
+
+            container.CreateIfNotExists(BlobContainerPublicAccessType.Blob);
+
+            return container;
         }
 
     }

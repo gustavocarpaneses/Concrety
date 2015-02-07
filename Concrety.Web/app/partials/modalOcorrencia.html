@@ -50,9 +50,31 @@
     </div>
     <div>
         <div class="ocorrencias_imagem_evidencia">
-            <h3><b>Fotos de evidência</b></h3>
+            <h3><b>Fotos de evidências</b></h3>
         </div>
-        <input class="input_foto_evidencia" type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
+
+        <div style="height: 305px" ng-hide="ocorrencia.anexos.length == 0">
+            <carousel>
+                <slide ng-repeat="item in ocorrencia.anexos" ng-if="!item.excluido">
+                    <img ng-src="{{item.anexo.urlPrimaria}}" style="margin:auto;height:300px;">
+                    <div class="carousel-caption">
+                        <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
+                    </div>
+                </slide>
+            </carousel>
+        </div>
+
+        <input class="input_foto_evidencia"
+               name="files"
+               type="file"
+               id="file"
+               kendo-upload
+               k-async="{ saveUrl: 'save', autoUpload: true }"
+               k-select="anexoSelecionado"
+               k-upload="uploadIniciado"
+               k-success="uploadConcluido" />
+
+        <!--<input class="input_foto_evidencia" type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
 
         <table>
             <thead>
@@ -73,7 +95,7 @@
                     <td class="td_foto_acao"><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
                 </tr>
             </tbody>
-        </table>
+        </table>-->
     </div>
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">

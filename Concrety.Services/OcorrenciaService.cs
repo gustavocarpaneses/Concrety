@@ -13,14 +13,14 @@ namespace Concrety.Services
     public class OcorrenciaService : ServiceBase<Ocorrencia>, IOcorrenciaService
     {
         private IRepositoryBase<Ocorrencia> _repository;
+        private IRepositoryBase<OcorrenciaAnexo> _ocorrenciaAnexoRepository;
         private IRepositoryBase<ItemVerificacaoServicoUnidade> _itemVerificacaoServicoUnidadeRepository;
         private IRepositoryBase<FichaVerificacaoServicoUnidade> _fichaVerificacaoServicoUnidadeRepository;
         private IRepositoryBase<ServicoUnidade> _servicoUnidadeRepository;
         private IRepositoryBase<Servico> _servicoRepository;
         private IRepositoryBase<Nivel> _nivelRepository;
-        private IAnexoRepository _anexoRepository;
 
-        public OcorrenciaService(IUnitOfWork unitOfWork, IAnexoRepository anexoRepository)
+        public OcorrenciaService(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
             _repository = UnitOfWork.Repository<Ocorrencia>();
@@ -29,7 +29,7 @@ namespace Concrety.Services
             _servicoUnidadeRepository = UnitOfWork.Repository<ServicoUnidade>();
             _servicoRepository = UnitOfWork.Repository<Servico>();
             _nivelRepository = UnitOfWork.Repository<Nivel>();
-            _anexoRepository = anexoRepository;
+            _ocorrenciaAnexoRepository = UnitOfWork.Repository<OcorrenciaAnexo>();
         }
 
 
@@ -47,11 +47,6 @@ namespace Concrety.Services
             }
 
             await base.AddAsync(ocorrencia);
-
-            foreach (var anexo in ocorrencia.Anexos)
-            {
-                _anexoRepository.AdicionarArquivo(anexo);
-            }
 
             return await Task.Factory.StartNew(() =>
             {
@@ -74,20 +69,16 @@ namespace Concrety.Services
                 });
             }
 
-            await base.UpdateAsync(ocorrencia);
-
-            foreach (var anexo in ocorrencia.Anexos)
+            foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
             {
-                if (anexo.Excluido)
+                if (ocorrenciaAnexo.Id == 0)
                 {
-                    _anexoRepository.RemoverArquivo(anexo);
-                }
-                else
-                {
-                    _anexoRepository.AdicionarArquivo(anexo);
+                    _ocorrenciaAnexoRepository.Add(ocorrenciaAnexo);
                 }
             }
 
+            await base.UpdateAsync(ocorrencia);
+            
             return await Task.Factory.StartNew(() =>
             {
                 return new EntityResultBase(
@@ -102,14 +93,11 @@ namespace Concrety.Services
             ocorrencia.ItemVerificacao = null;
             ocorrencia.Patologia = null;
 
-            foreach (var anexo in ocorrencia.Anexos)
+            foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
             {
-                if (anexo.Id == 0)
-                {
-                    anexo.NomeBlob = DateTime.Now.Ticks.ToString();
-                }
+                ocorrenciaAnexo.Anexo = null;
             }
-
+            
             return null;
         }
 

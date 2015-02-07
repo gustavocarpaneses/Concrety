@@ -20,6 +20,6 @@ namespace Concrety.Core.Entities
         public virtual Patologia Patologia { get; set; }
         public int IdPatologia { get; set; }
 
-        public virtual ICollection<Anexo> Anexos { get; set; }
+        public virtual ICollection<OcorrenciaAnexo> Anexos { get; set; }
     }
 }

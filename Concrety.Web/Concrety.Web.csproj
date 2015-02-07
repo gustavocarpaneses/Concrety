@@ -65,7 +65,6 @@
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
     <Content Include="app\services\materiaisService.js" />
-    <Content Include="app\services\anexosService.js" />
     <Content Include="app\services\patologiasService.js" />
     <Content Include="app\services\ocorrenciasService.js" />
     <Content Include="app\services\servicoUnidadeService.js" />

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using Concrety.API.AutoMapper;
+using Newtonsoft.Json.Serialization;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
@@ -10,6 +11,7 @@ namespace Concrety.Bootstrapper
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            AutoMapperConfig.RegisterMappings();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -24,4 +26,5 @@ namespace Concrety.Bootstrapper
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
+    
 }

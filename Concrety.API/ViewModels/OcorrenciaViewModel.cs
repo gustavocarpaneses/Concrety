@@ -29,6 +29,6 @@ namespace Concrety.API.ViewModels
         public virtual PatologiaViewModel Patologia { get; set; }
         public int IdPatologia { get; set; }
 
-        public ICollection<AnexoViewModel> Anexos { get; set; }
+        public ICollection<OcorrenciaAnexoViewModel> Anexos { get; set; }
     }
 }

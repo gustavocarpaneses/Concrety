@@ -37,6 +37,7 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new MacroServicoConfiguration());
             modelBuilder.Configurations.Add(new NivelConfiguration());
             modelBuilder.Configurations.Add(new OcorrenciaConfiguration());
+            modelBuilder.Configurations.Add(new OcorrenciaAnexoConfiguration());
             modelBuilder.Configurations.Add(new PatologiaConfiguration());
             modelBuilder.Configurations.Add(new ServicoConfiguration());
             modelBuilder.Configurations.Add(new ServicoUnidadeConfiguration());
