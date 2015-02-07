@@ -24,7 +24,7 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
         });
 
         modalInstance.result.then(function (ocorrencia) {
-            $scope.ocorrenciasGrid.refresh();
+            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.read();
         });
     }
 

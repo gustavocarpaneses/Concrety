@@ -7,7 +7,6 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
     //Sugestão: se não for atual, setTimeout pra carregar
 
     $scope.servicoUnidade = [];
-    $scope.ocorrenciasGrid = [];
     $scope.ocorrenciasGridOptions = [];
     $scope.salvoComSucesso = false;
     $scope.mensagem = "";
@@ -45,6 +44,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
         modalInstance.result.then(function (ocorrencia) {
             itemVerificacao.quantidadeOcorrencias++;
+            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.read();
         });
     };
 
@@ -139,7 +139,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         });
 
         modalInstance.result.then(function (ocorrencia) {
-            $scope.ocorrenciasGrid.refresh();
+            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.read();
         });
     }
 
