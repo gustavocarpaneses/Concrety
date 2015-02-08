@@ -17,6 +17,7 @@ margin: 0 auto;
 .logo_concrety{
 float:left;
 padding-right:15px;
+padding-top:13px;
 }
 
 /*barra superior - menu*/
@@ -199,4 +200,19 @@ padding-right:15px;
 
 .input_foto_evidencia{
     padding-bottom:5px;
+}
+
+
+.btn_excluir_carousel{
+    position:relative!important;
+    left:45.5%!important;
+    padding-top:3px!important;
+}
+
+.k-file-success .k-progress{
+    background-color:#009933!important;
+}
+
+.carousel-indicators{
+    bottom:30px!important;
 }
