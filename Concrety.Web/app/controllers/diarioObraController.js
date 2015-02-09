@@ -53,11 +53,11 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
                 },
                 {
                     field: "temperaturaMinima",
-                    title: "Temperatura Mínima"
+                    title: "Temp. Mínima"
                 },
                 {
                     field: "temperaturaMaxima",
-                    title: "Temperatura Máxima"
+                    title: "Temp. Máxima"
                 },
                 {
                     field: "idCondicaoClimatica",
