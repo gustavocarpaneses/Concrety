@@ -12,7 +12,14 @@
                     <label for="data">Data</label>
                 </div>
                 <div class="k-edit-field">
-                    <datepicker ng-model="dataItem.dataDiario"></datepicker>
+                    <!--<datepicker ng-model="dataItem.dataDiario"></datepicker>-->
+                    <input type="text"
+                           datepicker-popup
+                           ng-model="dataItem.dataDiario"
+                           is-open="dataItem.dataDiarioOpened"
+                           ng-click="dataItem.dataDiarioOpened = true"
+                           ng-change="dataItem.dirty = true"
+                           class="input-md" /> 
                 </div>
                 <div class="k-edit-label">
                     <label for="houveTrabalho">Houve Trabalho?</label>

@@ -74,8 +74,8 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                dataDiario: { type: "date" },
-                houveTrabalho: { type: "boolean" },
+                dataDiario: { type: "date", defaultValue: new Date() },
+                houveTrabalho: { type: "boolean", defaultValue: true },
                 temperaturaMinima: { type: "number" },
                 temperaturaMaxima: { type: "number" },
                 idCondicaoClimatica: { type: "number" }

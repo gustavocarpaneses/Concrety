@@ -76,11 +76,7 @@ namespace Concrety.Services
         private async Task<IEnumerable<string>> Validar(EmpreendimentoDiario empreendimentoDiario)
         {
 
-            //para eliminar qualquer informação de hora/minuto/segundo
-            empreendimentoDiario.Data = new DateTime(
-                empreendimentoDiario.Data.Year,
-                empreendimentoDiario.Data.Month,
-                empreendimentoDiario.Data.Day);
+            empreendimentoDiario.Data = empreendimentoDiario.Data.Date;
 
             var existeNaData = await Task.Factory.StartNew(() => 
             {

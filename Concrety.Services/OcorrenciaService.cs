@@ -93,6 +93,12 @@ namespace Concrety.Services
             ocorrencia.ItemVerificacao = null;
             ocorrencia.Patologia = null;
 
+            ocorrencia.DataAbertura = ocorrencia.DataAbertura.Date;
+            if (ocorrencia.DataConclusao.HasValue)
+            {
+                ocorrencia.DataConclusao = ocorrencia.DataConclusao.Value.Date;
+            }
+
             foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
             {
                 ocorrenciaAnexo.Anexo = null;

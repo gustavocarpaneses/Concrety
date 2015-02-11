@@ -7,13 +7,23 @@
         <label>Data Abertura</label>
     </div>
     <div class="k-edit-field">
-        <datepicker ng-model="ocorrencia.dataAbertura" required></datepicker>
+        <input type="text"
+               datepicker-popup
+               ng-model="ocorrencia.dataAbertura"
+               is-open="ocorrencia.dataAberturaOpened"
+               ng-click="ocorrencia.dataAberturaOpened = true"
+               class="input-md" /> 
     </div>
     <div class="k-edit-label">
         <label>Data Conclusão</label>
     </div>
     <div class="k-edit-field">
-        <datepicker ng-model="ocorrencia.dataConclusao"></datepicker>
+        <input type="text"
+               datepicker-popup
+               ng-model="ocorrencia.dataConclusao"
+               is-open="ocorrencia.dataConclusaoOpened"
+               ng-click="ocorrencia.dataConclusaoOpened = true"
+               class="input-md" /> 
     </div>
     <div class="k-edit-label">
         <label>Status</label>
