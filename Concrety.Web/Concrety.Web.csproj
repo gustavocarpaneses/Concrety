@@ -88,6 +88,7 @@
     <Content Include="content\css\Bootstrap\sprite_kpi.png" />
     <Content Include="content\css\Bootstrap\sprite_kpi_2x.png" />
     <Content Include="content\css\concrety.css" />
+    <Content Include="content\css\Default\close.png" />
     <Content Include="content\css\Default\editor.png" />
     <Content Include="content\css\Default\imagebrowser.png" />
     <Content Include="content\css\Default\indeterminate.gif" />
@@ -97,6 +98,8 @@
     <Content Include="content\css\Default\logo_concrety.png" />
     <Content Include="content\css\Default\markers.png" />
     <Content Include="content\css\Default\markers_2x.png" />
+    <Content Include="content\css\Default\next.png" />
+    <Content Include="content\css\Default\prev.png" />
     <Content Include="content\css\Default\slider-h.gif" />
     <Content Include="content\css\Default\slider-v.gif" />
     <Content Include="content\css\Default\sprite.png" />
@@ -108,6 +111,7 @@
     <Content Include="content\css\kendo.common.min.css" />
     <Content Include="content\css\kendo.dataviz.bootstrap.min.css" />
     <Content Include="content\css\kendo.dataviz.min.css" />
+    <Content Include="content\css\lightbox.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
@@ -117,8 +121,10 @@
     <Content Include="scripts\angular-sanitize.min.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\cultures\kendo.culture.pt-BR.min.js" />
+    <Content Include="scripts\jquery-1.11.0.min.js" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\kendo.all.min.js" />
+    <Content Include="scripts\lightbox.min.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\messages\angular-locale_pt-br.js" />
     <Content Include="scripts\messages\kendo.messages.pt-BR.min.js" />

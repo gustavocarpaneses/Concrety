@@ -124,6 +124,7 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         ocorrenciasService.removerAnexo(ocorrenciaAnexo);
     };
 
+
     function salvoSucesso(response) {
         $scope.salvoComSucesso = true;
         if ($scope.isNew()) {
@@ -147,5 +148,5 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         }
         $scope.mensagem = errors.join(' ');
     }
- 
+
 });
