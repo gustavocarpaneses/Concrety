@@ -46,9 +46,13 @@
                         <label for="data">Data</label>
                     </div>
                     <div class="k-edit-field">
-                        <datepicker ng-model="fvm.dataFicha"></datepicker>
-                        <!--<input name="data" type="text" datepicker-popup ng-model="fvm.dataFicha" required
-                               is-open="fvm.dataOpened" ng-click="fvm.dataOpened = true" />-->
+                        <!--<datepicker ng-model="fvm.dataFicha"></datepicker>-->
+                        <input type="text"
+                               datepicker-popup
+                               ng-model="fvm.dataFicha"
+                               is-open="fvm.dataFichaOpened"
+                               ng-click="fvm.dataFichaOpened = true"
+                               class="input-md" /> 
                     </div>
                     <div class="k-edit-label">
                         <label for="fornecedor">Fornecedor</label>

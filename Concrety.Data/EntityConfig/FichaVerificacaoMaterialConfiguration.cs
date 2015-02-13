@@ -9,7 +9,8 @@ namespace Concrety.Data.EntityConfig
         {
             ToTable("FichasVerificacaoMaterial");
 
-            Property(f => f.CriterioAceite).IsRequired();
+            Property(f => f.CriterioAceite).IsRequired().HasColumnType("varchar(max)");
+
             Property(f => f.Material).IsRequired();
             Property(f => f.Nome).IsRequired();
 

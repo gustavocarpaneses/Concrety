@@ -60,7 +60,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                dataFicha: { type: "date" },
+                dataFicha: { type: "date", defaultValue: new Date() },
                 aprovado: { type: "boolean" },
                 idFichaVerificacaoMaterial: { type: "number" },
                 idFornecedor: { type: "number" }
