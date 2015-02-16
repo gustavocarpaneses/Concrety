@@ -30,12 +30,12 @@
                 <div class="k-edit-label">
                     <label for="condicaoClimatica">Condição Climática</label>
                 </div>
-                <div class="k-edit-field">
-                    <select kendo-drop-down-list required
+                <div id="myform" class="k-edit-field">
+                    <select kendo-drop-down-list required data-required-msg="Campo fornecedor deve ser preenchido"
                             name="condicaoClimatica"
                             k-options="dropDownCondicoesClimaticasOptions"
                             ng-model="dataItem.idCondicaoClimatica"
-                            style="width: auto"></select>
+                            style="width: auto; background-color:white!important;"></select>
                 </div>
                 <div class="k-edit-label">
                     <label for="temperaturaMinima">Temperatura Mínima</label>

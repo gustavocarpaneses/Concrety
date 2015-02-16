@@ -35,11 +35,11 @@
                     <label for="fichas">Fichas</label>
                 </div>
                 <div class="k-edit-field" ng-hide="!fvm.isNew()">
-                    <select kendo-drop-down-list
-                        name="fichas"
-                        k-options="dropDownFichasOptions"
-                        ng-model="fvm.idFichaVerificacaoMaterial"
-                        style="width: 300px"></select>
+                    <select kendo-drop-down-list required data-required-msg="Selecione uma ficha"
+                            name="fichas"
+                            k-options="dropDownFichasOptions"
+                            ng-model="fvm.idFichaVerificacaoMaterial"
+                            style="width: 300px; background-color:white!important;"></select>
                 </div>
                 <div ng-if="fvm.idFichaVerificacaoMaterial">
                     <div class="k-edit-label">
@@ -58,35 +58,35 @@
                         <label for="fornecedor">Fornecedor</label>
                     </div>
                     <div class="k-edit-field">
-                        <select kendo-drop-down-list required
-                            name="fornecedor"
-                            k-options="dropDownFornecedoresOptions"
-                            ng-model="fvm.idFornecedor"
-                            style="width: 200px"></select>
+                        <select kendo-drop-down-list required data-required-msg="Campo fornecedor deve ser preenchido"
+                                name="fornecedor"
+                                k-options="dropDownFornecedoresOptions"
+                                ng-model="fvm.idFornecedor"
+                                style="width: auto; background-color:white!important;"></select>
                     </div>
                     <div class="k-edit-label">
                         <label for="numeroPedido">Número do Pedido</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="numeroPedido" ng-model="fvm.numeroPedido" required ng-change="fvm.dirty=true" />
+                        <input type="text" name="numeroPedido" ng-model="fvm.numeroPedido" required data-required-msg="Campo número do pedido deve ser preenchido" ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="notaFiscal">Nota Fiscal</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="notaFiscal" ng-model="fvm.notaFiscal" required ng-change="fvm.dirty=true" />
+                        <input type="text" name="notaFiscal" ng-model="fvm.notaFiscal" required data-required-msg="Campo nota fiscal deve ser preenchido" ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="quantidadeTotal">Qtde. Total</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="quantidadeTotal" ng-model="fvm.quantidadeTotal" required ng-change="fvm.dirty=true" />
+                        <input type="text" name="quantidadeTotal" ng-model="fvm.quantidadeTotal" required data-required-msg="Campo quantidade total deve ser preenchido" ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="amostraValidacao">Amostra</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required ng-change="fvm.dirty=true" />
+                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required data-required-msg="Campo amostra deve ser preenchido"  ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="observacoes">Observações</label>
@@ -119,7 +119,7 @@
                         {{mensagem}}
                     </div>
             </div>
-
+</div>
         </script>
     </div>
 </div>

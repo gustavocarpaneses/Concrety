@@ -134,6 +134,9 @@ padding-top:13px;
 }
 
 /*página diário de obra*/
+.k-widget.k-tooltip-validation {
+    position:relative!important;
+}
 
 
 /*botões date picker*/
