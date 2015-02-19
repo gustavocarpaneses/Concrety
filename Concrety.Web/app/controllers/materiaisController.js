@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('materiaisController', function ($scope, $routeParams, unidadesService, niveisService, materiaisService, fornecedoresService) {
+app.controller('materiaisController', function ($scope, $routeParams, $sce, unidadesService, niveisService, materiaisService, fornecedoresService) {
 
     var idNivel = $routeParams.id;
 
@@ -19,7 +19,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
     obterNiveis(idNivel);
     obterFichas(idNivel);
     obterFornecedores();
-    
+
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
         if (!newValue) {
             return;

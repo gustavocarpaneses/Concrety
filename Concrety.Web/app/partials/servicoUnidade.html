@@ -34,8 +34,8 @@
                 <thead>
                     <tr>
                         <th class="th_servicos">Serviço</th>
+                        <th class="th_descricao">Etapa</th>
                         <th class="th_validacao">Validação</th>
-                        <th class="th_descricao">Descrição</th>
                         <th class="th_resultado">Resultado</th>
                         <th class="th_ocorrencias">Ocorrências</th>
                         <th class="th_abrir_ocorrencia">Abrir ocorrência</th>
@@ -44,8 +44,8 @@
                 <tbody>
                     <tr ng-repeat="item in fvs.itens" id="linhas_fvs">
                         <td class="td_servicos">{{item.itemVerificacao.nome}}</td>
-                        <td class="td_validacao">{{item.itemVerificacao.validacao}}</td>
                         <td class="td_descricao">{{item.itemVerificacao.descricao}}</td>
+                        <td class="td_validacao">{{item.itemVerificacao.validacao}}</td>
                         <td class="td_resultados">
                             <select kendo-drop-down-list
                                     k-options="dropDownResultadoOptions"

@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, concretySettings, localStorageService, accountService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, concretySettings, localStorageService, accountService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -124,6 +124,18 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
         ocorrenciasService.removerAnexo(ocorrenciaAnexo);
     };
 
+    $scope.abrirModalNorma = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalNorma.html',
+            controller: 'modalNormasController',
+            size: 'lg',
+            resolve: {
+                servico: function () {
+                    return $scope.ocorrencia.patologia.solucoes[0];
+                }
+            }
+        });
+    };
 
     function salvoSucesso(response) {
         $scope.salvoComSucesso = true;

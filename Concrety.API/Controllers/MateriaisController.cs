@@ -34,10 +34,13 @@ namespace Concrety.API.Controllers
         }
 
         [Route("CriterioAceite")]
-        public async Task<string> GetCriterioAceite(int idFichaVerificacaoMaterial)
+        public async Task<dynamic> GetCriterioAceite(int idFichaVerificacaoMaterial)
         {
             var fvm = await _fvmService.GetByIdAsync(idFichaVerificacaoMaterial);
-            return fvm.CriterioAceite;
+            return new
+            {
+                fvm.CriterioAceite
+            };
         }
     }
 }
