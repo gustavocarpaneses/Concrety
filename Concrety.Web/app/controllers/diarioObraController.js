@@ -1,8 +1,9 @@
 ﻿'use strict';
 app.controller('diarioObraController', function ($scope, $q, $http, diariosObraService, condicoesClimaticasService, accountService) {
+
     $scope.mensagem = "";
     $scope.empreendimentoAtual = accountService.empreendimentoAtual;
-    
+
     $scope.condicoesClimaticas = [];
     $scope.dropDownCondicoesClimaticasOptions = [];
 
