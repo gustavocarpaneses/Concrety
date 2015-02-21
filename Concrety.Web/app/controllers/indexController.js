@@ -1,11 +1,9 @@
 ﻿'use strict';
-app.controller('indexController',
-    ['$scope', '$location', 'authService', 'accountService', 'niveisService',
-        function ($scope, $location, authService, accountService, niveisService) {
+app.controller('indexController', function ($scope, $location, $modal, authService, accountService, niveisService) {
 
     $scope.logOut = function () {
         authService.logOut();
-        $location.path('/home');
+        $location.path('/login');
     }
 
     $scope.alterarEmpreendimento = function (empreendimentoAtual) {
@@ -23,6 +21,14 @@ app.controller('indexController',
     $scope.$on('loginEvent', function (event, args) {
         carregarDadosComLogin();
     });
+
+    $scope.abrirModalFeedback = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalFeedback.html?v=' + new Date(),
+            controller: 'modalFeedbackController',
+            size: 'lg'
+        });
+    };
 
     function carregarDadosComLogin() {
         $scope.empreendimentosUsuario = accountService.getEmpreendimentosUsuario();
@@ -43,4 +49,4 @@ app.controller('indexController',
         });
     }
 
-}]);
+});

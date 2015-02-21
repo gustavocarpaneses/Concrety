@@ -43,6 +43,7 @@
     <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\materialUnidadeController.js" />
+    <Content Include="app\controllers\modalFeedbackController.js" />
     <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
@@ -51,6 +52,7 @@
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\partials\diarioObra.html" />
+    <Content Include="app\partials\modalFeedback.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
