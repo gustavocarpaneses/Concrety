@@ -61,7 +61,7 @@ namespace Concrety.API.AutoMapper
                         viewModel.NomeFichaVerificacaoServico = model.ItemVerificacao.FichaVerificacaoUnidade.FichaVerificacaoServico.Nome;
                         viewModel.NomeItemVerificacaoServico = model.ItemVerificacao.ItemVerificacao.Nome;
                         viewModel.NomePatologia = model.Patologia.Nome;
-                        viewModel.DescricaoStatus = model.Status.GetDescription();
+                        //viewModel.DescricaoStatus = model.Status.GetDescription();
 
                         var nomesUnidades = new List<string>();
                         var unidadeAtual = model.ItemVerificacao.FichaVerificacaoUnidade.Servico.Unidade;

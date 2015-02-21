@@ -10,11 +10,24 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
     $scope.ocorrenciasGridOptions = [];
     $scope.salvoComSucesso = false;
     $scope.mensagem = "";
+    
+    ocorrenciasService.obterPossiveisStatus().then(function (response) {
 
-    servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
-        $scope.servicoUnidade = response.data;
-        LimparDatas();
-        configurarGridOcorrencias();
+        $scope.possiveisStatusOcorrencias = [];
+
+        angular.forEach(response.data, function (status, index) {
+            this.push({
+                text: status.nome,
+                value: status.id
+            });
+        }, $scope.possiveisStatusOcorrencias);
+
+        servicoUnidadeService.obter($scope.unidadeSelecionada, $scope.servico.id).then(function (response) {
+            $scope.servicoUnidade = response.data;
+            LimparDatas();
+            configurarGridOcorrencias();
+        });
+
     });
     
     $scope.abrirModalNorma = function () {
@@ -196,8 +209,9 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                     format: "{0:dd/MM/yyyy}"
                 },
                 {
-                    field: "descricaoStatus",
-                    title: "Status"
+                    field: "status",
+                    title: "Status",
+                    values: $scope.possiveisStatusOcorrencias
                 },
                 {
                     field: "nomePatologia",
@@ -212,7 +226,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                 nomeItemVerificacaoServico: { type: "string" },
                 dataAbertura: { type: "date" },
                 dataConclusao: { type: "date" },
-                descricaoStatus: { type: "string" },
+                status: { type: "number" },
                 nomePatologia: { type: "string" }
             }
         });
