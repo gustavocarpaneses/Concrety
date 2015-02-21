@@ -1,4 +1,5 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Entities.Enumerators;
 using System.Linq;
 
 namespace Concrety.Core.Interfaces.Repositories
@@ -12,8 +13,9 @@ namespace Concrety.Core.Interfaces.Repositories
             var query = from su in servicoUnidadeRepository.GetQuery()
                         where
                             su.IdUnidade == idUnidade &&
+                            (su.Status == StatusServicoUnidade.NaoIniciada || su.Status == StatusServicoUnidade.EmAndamento) &&
                             su.Ativo && !su.Excluido
-                        orderby su.Servico.Nome descending
+                        orderby su.Servico.Nome
                         select su;
 
             return query.FirstOrDefault();
