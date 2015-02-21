@@ -20,10 +20,12 @@ namespace Concrety.API.Controllers
     {
 
         private IFichaVerificacaoMaterialUnidadeService _fvmUnidadeService;
+        private IFornecedorService _fornecedorService;
 
-        public MaterialUnidadeController(IFichaVerificacaoMaterialUnidadeService fvmUnidadeService)
+        public MaterialUnidadeController(IFichaVerificacaoMaterialUnidadeService fvmUnidadeService, IFornecedorService fornecedorService)
         {
             _fvmUnidadeService = fvmUnidadeService;
+            _fornecedorService = fornecedorService;
         }
 
         [Route("Unidade")]
@@ -57,6 +59,8 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            await AssociarNovoFornecedor(fvmViewModel);
+
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
             var resultado = await _fvmUnidadeService.Criar(fvm);
@@ -68,16 +72,7 @@ namespace Concrety.API.Controllers
                 return errorResult;
             }
 
-            //fvmViewModel = Mapper.Map<FichaVerificacaoMaterialUnidade, FichaVerificacaoMaterialUnidadeViewModel>(fvm);
-
-            fvmViewModel.Id = fvm.Id;
-            fvmViewModel.Ativo = fvm.Ativo;
-            for (int i = 0; i < fvm.Itens.Count; i++)
-            {
-                fvmViewModel.Itens.ElementAt(i).Id = fvm.Itens.ElementAt(i).Id;
-                fvmViewModel.Itens.ElementAt(i).Ativo = fvm.Itens.ElementAt(i).Ativo;
-                fvmViewModel.Itens.ElementAt(i).IdFichaVerificacaoMaterialUnidade = fvm.Id;
-            }
+            fvmViewModel = Mapper.Map<FichaVerificacaoMaterialUnidade, FichaVerificacaoMaterialUnidadeViewModel>(fvm);
 
             return Ok(fvmViewModel);
         }
@@ -91,6 +86,8 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            await AssociarNovoFornecedor(fvmViewModel);
+
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
             var resultado = await _fvmUnidadeService.Atualizar(fvm);
@@ -103,6 +100,19 @@ namespace Concrety.API.Controllers
             }
 
             return Ok();
+        }
+        
+        private async Task AssociarNovoFornecedor(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
+        {
+            if (fvmViewModel.IdFornecedor == 0)
+            {
+                var fornecedor = new Fornecedor
+                {
+                    Nome = fvmViewModel.NomeNovoFornecedor
+                };
+                await _fornecedorService.AddAsync(fornecedor);
+                fvmViewModel.IdFornecedor = fornecedor.Id;
+            }
         }
 
     }

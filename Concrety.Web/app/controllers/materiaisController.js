@@ -76,15 +76,19 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
                     });
                 },
                 update: function (o) {
+                    PrepararNovoFornecedor(o.data.models[0]);
                     materiaisService.update(o.data.models[0]).then(function (response) {
+                        obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
                     });
                 },
                 create: function (o) {
+                    PrepararNovoFornecedor(o.data.models[0]);
                     o.data.models[0].idUnidade = $scope.unidadeSelecionada;
                     materiaisService.create(o.data.models[0]).then(function (response) {
+                        obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -121,6 +125,13 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
             }
         };
 
+    }
+
+    function PrepararNovoFornecedor(fvm) {
+        if (isNaN(fvm.idFornecedor)) {
+            fvm.nomeNovoFornecedor = fvm.idFornecedor;
+            fvm.idFornecedor = 0;
+        }
     }
 
     function ObterErros(data) {
@@ -163,6 +174,8 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
     function obterFornecedores() {
         fornecedoresService.get().then(function (response) {
 
+            $scope.fornecedores = [];
+
             angular.forEach(response.data, function (fornecedor, index) {
                 this.push({
                     text: fornecedor.nome,
@@ -173,7 +186,7 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
             $scope.dropDownFornecedoresOptions = {
                 dataTextField: "text",
                 dataValueField: "value",
-                optionLabel: "Selecione...",
+                placeholder: "Selecione...",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {
