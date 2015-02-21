@@ -19,7 +19,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
     
     $scope.abrirModalNorma = function () {
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalNorma.html',
+            templateUrl: '/app/partials/modalNorma.html?v=' + new Date(),
             controller: 'modalNormasController',
             size: 'lg',
             resolve: {
