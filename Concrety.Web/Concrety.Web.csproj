@@ -40,38 +40,109 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\app.min.js">
+      <DependentUpon>app.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\diarioObraController.js" />
+    <Content Include="app\controllers\diarioObraController.min.js">
+      <DependentUpon>diarioObraController.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\homeController.min.js">
+      <DependentUpon>homeController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\indexController.min.js">
+      <DependentUpon>indexController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\loginController.min.js">
+      <DependentUpon>loginController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\materiaisController.min.js">
+      <DependentUpon>materiaisController.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\materialUnidadeController.js" />
+    <Content Include="app\controllers\materialUnidadeController.min.js">
+      <DependentUpon>materialUnidadeController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\modalNormasController.min.js">
+      <DependentUpon>modalNormasController.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
+    <Content Include="app\controllers\ocorrenciasController.min.js">
+      <DependentUpon>ocorrenciasController.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\servicosController.min.js">
+      <DependentUpon>servicosController.js</DependentUpon>
+    </Content>
     <Content Include="app\controllers\servicoUnidadeController.js" />
     <Content Include="app\controllers\servicosController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\servicoUnidadeController.min.js">
+      <DependentUpon>servicoUnidadeController.js</DependentUpon>
+    </Content>
     <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
     <Content Include="app\partials\servicoUnidade.html" />
     <Content Include="app\partials\servicos.html" />
+    <Content Include="app\services\accountService.min.js">
+      <DependentUpon>accountService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\accountService.js" />
+    <Content Include="app\services\authInterceptorService.min.js">
+      <DependentUpon>authInterceptorService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\authService.js" />
+    <Content Include="app\services\authService.min.js">
+      <DependentUpon>authService.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\condicoesClimaticasService.min.js">
+      <DependentUpon>condicoesClimaticasService.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\diariosObraService.min.js">
+      <DependentUpon>diariosObraService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\fornecedoresService.js" />
     <Content Include="app\services\condicoesClimaticasService.js" />
     <Content Include="app\services\diariosObraService.js" />
     <Content Include="app\partials\home.html" />
     <Content Include="app\partials\login.html" />
+    <Content Include="app\services\fornecedoresService.min.js">
+      <DependentUpon>fornecedoresService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\materiaisService.js" />
+    <Content Include="app\services\materiaisService.min.js">
+      <DependentUpon>materiaisService.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\niveisService.min.js">
+      <DependentUpon>niveisService.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\ocorrenciasService.min.js">
+      <DependentUpon>ocorrenciasService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\patologiasService.js" />
     <Content Include="app\services\ocorrenciasService.js" />
+    <Content Include="app\services\patologiasService.min.js">
+      <DependentUpon>patologiasService.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\servicosService.min.js">
+      <DependentUpon>servicosService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\servicoUnidadeService.js" />
     <Content Include="app\services\servicosService.js" />
+    <Content Include="app\services\servicoUnidadeService.min.js">
+      <DependentUpon>servicoUnidadeService.js</DependentUpon>
+    </Content>
     <Content Include="app\services\unidadesService.js" />
     <Content Include="app\services\niveisService.js" />
-    <Content Include="content\css\bootstrap.css" />
+    <Content Include="app\services\unidadesService.min.js">
+      <DependentUpon>unidadesService.js</DependentUpon>
+    </Content>
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\Bootstrap\editor.png" />
     <Content Include="content\css\Bootstrap\imagebrowser.png" />
@@ -88,6 +159,9 @@
     <Content Include="content\css\Bootstrap\sprite_kpi.png" />
     <Content Include="content\css\Bootstrap\sprite_kpi_2x.png" />
     <Content Include="content\css\concrety.css" />
+    <Content Include="content\css\concrety.min.css">
+      <DependentUpon>concrety.css</DependentUpon>
+    </Content>
     <Content Include="content\css\Default\close.png" />
     <Content Include="content\css\Default\editor.png" />
     <Content Include="content\css\Default\imagebrowser.png" />
@@ -112,8 +186,10 @@
     <Content Include="content\css\kendo.dataviz.bootstrap.min.css" />
     <Content Include="content\css\kendo.dataviz.min.css" />
     <Content Include="content\css\lightbox.css" />
+    <Content Include="content\css\lightbox.min.css">
+      <DependentUpon>lightbox.css</DependentUpon>
+    </Content>
     <Content Include="content\css\loading-bar.min.css" />
-    <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
@@ -140,6 +216,78 @@
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\app.min.js.map">
+      <DependentUpon>app.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\diarioObraController.min.js.map">
+      <DependentUpon>diarioObraController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\homeController.min.js.map">
+      <DependentUpon>homeController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\indexController.min.js.map">
+      <DependentUpon>indexController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\loginController.min.js.map">
+      <DependentUpon>loginController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\materiaisController.min.js.map">
+      <DependentUpon>materiaisController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\materialUnidadeController.min.js.map">
+      <DependentUpon>materialUnidadeController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\modalNormasController.min.js.map">
+      <DependentUpon>modalNormasController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\ocorrenciasController.min.js.map">
+      <DependentUpon>ocorrenciasController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\servicosController.min.js.map">
+      <DependentUpon>servicosController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers\servicoUnidadeController.min.js.map">
+      <DependentUpon>servicoUnidadeController.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\accountService.min.js.map">
+      <DependentUpon>accountService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\authInterceptorService.min.js.map">
+      <DependentUpon>authInterceptorService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\authService.min.js.map">
+      <DependentUpon>authService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\condicoesClimaticasService.min.js.map">
+      <DependentUpon>condicoesClimaticasService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\diariosObraService.min.js.map">
+      <DependentUpon>diariosObraService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\fornecedoresService.min.js.map">
+      <DependentUpon>fornecedoresService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\materiaisService.min.js.map">
+      <DependentUpon>materiaisService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\niveisService.min.js.map">
+      <DependentUpon>niveisService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\ocorrenciasService.min.js.map">
+      <DependentUpon>ocorrenciasService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\patologiasService.min.js.map">
+      <DependentUpon>patologiasService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\servicosService.min.js.map">
+      <DependentUpon>servicosService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\servicoUnidadeService.min.js.map">
+      <DependentUpon>servicoUnidadeService.min.js</DependentUpon>
+    </Content>
+    <Content Include="app\services\unidadesService.min.js.map">
+      <DependentUpon>unidadesService.min.js</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
   </ItemGroup>
   <ItemGroup>
