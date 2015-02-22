@@ -28,9 +28,9 @@ namespace Concrety.API.Controllers
             _anexoService = anexoService;
         }
 
-        [Route("Create")]
+        [Route("")]
         [HttpPost]
-        public async Task<IHttpActionResult> Create(int idObra)
+        public async Task<IHttpActionResult> Criar(int idObra)
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -53,7 +53,7 @@ namespace Concrety.API.Controllers
                 {
                     anexo.NomeArquivoUpload = file.LocalFileName;
                     anexo.Tipo = file.Headers.ContentType.MediaType;
-                    await _anexoService.Criar(anexo);
+                    await _anexoService.CriarAsync(anexo);
                     File.Delete(file.LocalFileName);
                 }
 

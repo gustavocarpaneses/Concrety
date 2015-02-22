@@ -20,7 +20,7 @@ namespace Concrety.Services
             _anexoBlobRepository = anexoBlobRepository;
         }
 
-        public async Task<EntityResultBase> Criar(Anexo anexo)
+        public new async Task<EntityResultBase> CriarAsync(Anexo anexo)
         {
             var indiceInicioExtensao = anexo.Tipo.IndexOf("/") + 1;
             var extensao = anexo.Tipo.Substring(indiceInicioExtensao);
@@ -29,30 +29,13 @@ namespace Concrety.Services
             
             _anexoBlobRepository.Adicionar(anexo);
 
-            await base.AddAsync(anexo);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
+            return await base.CriarAsync(anexo);
         }
-        
-        
 
-        public async Task<EntityResultBase> Remover(Anexo anexo)
+        public new async Task<EntityResultBase> RemoverAsync(Anexo anexo)
         {
             _anexoBlobRepository.Remover(anexo);
-
-            await base.RemoveAsync(anexo);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
+            return await base.RemoverAsync(anexo);
         }
     }
 }

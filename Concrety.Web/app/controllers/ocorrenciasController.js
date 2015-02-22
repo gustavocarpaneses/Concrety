@@ -91,7 +91,7 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $mod
 
     $scope.uploadIniciado = function (e) {
 
-        var saveUrl = concretySettings.apiServiceBaseUri + 'api/anexos/create';
+        var saveUrl = concretySettings.apiServiceBaseUri + 'api/anexos';
         e.sender.options.async.saveUrl = saveUrl + "?idObra=" + accountService.empreendimentoAtual.id;
 
         var xhr = e.XMLHttpRequest;
@@ -119,7 +119,7 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $mod
     };
 
     $scope.excluirAnexo = function (ocorrenciaAnexo) {
-        $scope.ocorrencia.anexos.remove(ocorrenciaAnexo);
+        ocorrenciaAnexo.excluido = true;
         ocorrenciaAnexo.anexo.idObra = accountService.empreendimentoAtual.id;
         ocorrenciasService.removerAnexo(ocorrenciaAnexo);
     };

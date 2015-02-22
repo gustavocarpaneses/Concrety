@@ -23,7 +23,7 @@ namespace Concrety.API.Controllers
             _ocorrenciaAnexoService = ocorrenciaAnexoService;
         }
 
-        [Route("Remover")]
+        [Route("Delete")]
         [HttpPost]
         public async Task<IHttpActionResult> Remover(OcorrenciaAnexoViewModel ocorrenciaAnexoViewModel)
         {

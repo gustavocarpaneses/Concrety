@@ -26,15 +26,17 @@ namespace Concrety.API.Controllers
             _servicoService = servicoService;
         }
 
-        [Route("Unidade")]
-        public async Task<IEnumerable<ServicoViewModel>> GetDaUnidade(int idUnidade, int idNivel)
+        [Route("GetByUnidade")]
+        [HttpGet]
+        public async Task<IEnumerable<ServicoViewModel>> ObterDaUnidade(int idUnidade, int idNivel)
         {
             var servicos = await _servicoService.ObterDaUnidade(idUnidade, idNivel);
             return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(servicos);
         }
 
-        [Route("PossiveisStatus")]
-        public async Task<IEnumerable<StatusServicoViewModel>> GetPossiveisStatus()
+        [Route("GetPossiveisStatus")]
+        [HttpGet]
+        public async Task<IEnumerable<StatusServicoViewModel>> ObterPossiveisStatus()
         {
             return await Task.Factory.StartNew(() =>
             {
@@ -59,8 +61,9 @@ namespace Concrety.API.Controllers
             });
         }
 
-        [Route("PossiveisResultados")]
-        public async Task<IEnumerable<StatusResultadoViewModel>> GetPossiveisResultados()
+        [Route("GetPossiveisResultados")]
+        [HttpGet]
+        public async Task<IEnumerable<StatusResultadoViewModel>> ObterPossiveisResultados()
         {
             return await Task.Factory.StartNew(() =>
             {

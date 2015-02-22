@@ -1,8 +1,9 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class UnidadeQueries
     {
@@ -10,7 +11,7 @@ namespace Concrety.Core.Interfaces.Repositories
             this IRepositoryBase<Unidade> unidadeRepository, 
             int idNivel)
         {
-            var query = from u in unidadeRepository.GetQuery()
+            var query = from u in unidadeRepository.ObterQuery()
                         where
                             u.IdNivel == idNivel &&
                             u.Ativo && !u.Excluido

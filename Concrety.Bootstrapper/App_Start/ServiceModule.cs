@@ -23,6 +23,7 @@ namespace Concrety.Bootstrapper
             builder.RegisterType(typeof(PatologiaService)).As(typeof(IPatologiaService)).InstancePerRequest();
             builder.RegisterType(typeof(AnexoService)).As(typeof(IAnexoService)).InstancePerRequest();
             builder.RegisterType(typeof(OcorrenciaAnexoService)).As(typeof(IOcorrenciaAnexoService)).InstancePerRequest();
+            builder.RegisterType(typeof(EmailService)).As(typeof(IEmailService)).InstancePerRequest();
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Concrety.Core.Entities;
 using Concrety.Core.Entities.Enumerators;
+using Concrety.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class OcorrenciaQueries
     {
@@ -13,7 +14,7 @@ namespace Concrety.Core.Interfaces.Repositories
             IQueryable<FichaVerificacaoServicoUnidade> fichasVerificacao, 
             int idServicoUnidade)
         {
-            var query = from o in ocorrenciaRepository.GetQuery()
+            var query = from o in ocorrenciaRepository.ObterQuery()
                         join i in itensVerificacao on o.IdItemVerificacaoUnidade equals i.Id
                         join f in fichasVerificacao on i.IdFichaVerificacaoServicoUnidade equals f.Id
                         where
@@ -35,7 +36,7 @@ namespace Concrety.Core.Interfaces.Repositories
             IQueryable<Nivel> niveis,
             int idMacroServico)
         {
-            var query = from o in ocorrenciaRepository.GetQuery()
+            var query = from o in ocorrenciaRepository.ObterQuery()
                         join i in itensVerificacao on o.IdItemVerificacaoUnidade equals i.Id
                         join f in fichasVerificacao on i.IdFichaVerificacaoServicoUnidade equals f.Id
                         join su in servicosUnidades on f.IdServicoUnidade equals su.Id

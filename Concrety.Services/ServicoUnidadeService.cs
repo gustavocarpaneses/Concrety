@@ -5,6 +5,7 @@ using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Core.Messages;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace Concrety.Services
                 });
             }
             
-            var servicoUnidadeDB = await base.GetByIdAsync(servicoUnidade.Id);
+            var servicoUnidadeDB = await base.ObterPeloIdAsync(servicoUnidade.Id);
 
             servicoUnidadeDB.DataInicio = servicoUnidade.DataInicio == DateTime.MinValue ? null : servicoUnidade.DataInicio;
             servicoUnidadeDB.DataFim = servicoUnidade.DataFim == DateTime.MinValue ? null : servicoUnidade.DataFim;
@@ -69,7 +70,7 @@ namespace Concrety.Services
                 }
             }
 
-            await base.UpdateAsync(servicoUnidadeDB);
+            await base.AtualizarAsync(servicoUnidadeDB);
 
             return await Task.Factory.StartNew(() =>
             {
@@ -132,7 +133,7 @@ namespace Concrety.Services
                     Status = StatusServicoUnidade.NaoIniciada
                 };
 
-                _repository.Add(servicoUnidade);
+                _repository.Criar(servicoUnidade);
 
                 await new FichaVerificacaoServicoUnidadeService(UnitOfWork).Criar(servicoUnidade);
 

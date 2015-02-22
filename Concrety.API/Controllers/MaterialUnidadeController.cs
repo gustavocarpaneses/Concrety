@@ -28,31 +28,33 @@ namespace Concrety.API.Controllers
             _fornecedorService = fornecedorService;
         }
 
-        [Route("Unidade")]
-        public async Task<IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>> GetDaUnidade(int idUnidade)
+        [Route("GetByUnidade")]
+        [HttpGet]
+        public async Task<IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>> ObterDaUnidade(int idUnidade)
         {
             var fvms = await _fvmUnidadeService.ObterDaUnidade(idUnidade);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterialUnidade>, IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>>(fvms);
         }
 
-        [Route("CriarItens")]
+        [Route("GetNewItens")]
         [HttpGet]
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> CriarItens(int idFichaVerificacaoMaterial)
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterNovosItens(int idFichaVerificacaoMaterial)
         {
             var itens = await _fvmUnidadeService.CriarItens(idFichaVerificacaoMaterial);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
-        [Route("Itens")]
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> GetItens(int idFichaVerificacaoMaterialUnidade)
+        [Route("GetItens")]
+        [HttpGet]
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterItens(int idFichaVerificacaoMaterialUnidade)
         {
             var itens = await _fvmUnidadeService.ObterItens(idFichaVerificacaoMaterialUnidade);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
-        [Route("Create")]
+        [Route("")]
         [HttpPost]
-        public async Task<IHttpActionResult> Create(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
+        public async Task<IHttpActionResult> Criar(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace Concrety.API.Controllers
 
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
-            var resultado = await _fvmUnidadeService.Criar(fvm);
+            var resultado = await _fvmUnidadeService.CriarAsync(fvm);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -77,9 +79,9 @@ namespace Concrety.API.Controllers
             return Ok(fvmViewModel);
         }
 
-        [Route("Update")]
-        [HttpPost]
-        public async Task<IHttpActionResult> Update(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
+        [Route("")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Atualizar(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +92,7 @@ namespace Concrety.API.Controllers
 
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
-            var resultado = await _fvmUnidadeService.Atualizar(fvm);
+            var resultado = await _fvmUnidadeService.AtualizarAsync(fvm);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -110,7 +112,7 @@ namespace Concrety.API.Controllers
                 {
                     Nome = fvmViewModel.NomeNovoFornecedor
                 };
-                await _fornecedorService.AddAsync(fornecedor);
+                await _fornecedorService.CriarAsync(fornecedor);
                 fvmViewModel.IdFornecedor = fornecedor.Id;
             }
         }

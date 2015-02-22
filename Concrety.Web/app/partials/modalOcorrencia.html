@@ -66,12 +66,13 @@
             <carousel>
                 <slide ng-repeat="item in ocorrencia.anexos" ng-if="!item.excluido">
                     <a href="{{item.anexo.urlPrimaria}}" data-lightbox="fotos"><img ng-src="{{item.anexo.urlPrimaria}}" style=" margin:auto;height:300px;"></a>
+
+                    <!--<div class="carousel-caption">
+                    </div>-->
+                    <div class="btn_excluir_carousel">
+                        <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
+                    </div>
                 </slide>
-                <div class="carousel-caption">
-                </div>
-                <div class="btn_excluir_carousel">
-                    <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
-                </div>
             </carousel>
          
         </div>

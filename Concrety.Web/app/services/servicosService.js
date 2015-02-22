@@ -6,7 +6,7 @@ app.factory('servicosService', ['$http', 'concretySettings', function ($http, co
 
     var _obterDaUnidade = function (idUnidade, idNivel) {
 
-        return $http.get(serviceBase + 'api/servicos/unidade', {
+        return $http.get(serviceBase + 'api/servicos/getByUnidade', {
             params: {
                 idNivel: idNivel,
                 idUnidade: idUnidade
@@ -19,7 +19,7 @@ app.factory('servicosService', ['$http', 'concretySettings', function ($http, co
     
     var _obterPossiveisStatus = function () {
 
-        return $http.get(serviceBase + 'api/servicos/possiveisStatus').then(function (response) {
+        return $http.get(serviceBase + 'api/servicos/getPossiveisStatus').then(function (response) {
             return response;
         });
 
@@ -27,7 +27,7 @@ app.factory('servicosService', ['$http', 'concretySettings', function ($http, co
 
     var _obterPossiveisResultados = function () {
 
-        return $http.get(serviceBase + 'api/servicos/possiveisResultados').then(function (response) {
+        return $http.get(serviceBase + 'api/servicos/getPossiveisResultados').then(function (response) {
             return response;
         });
 

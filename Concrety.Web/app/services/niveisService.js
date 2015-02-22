@@ -6,7 +6,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     var _obterNiveisDeServico = function (idMacroServico) {
 
-        return $http.get(serviceBase + 'api/niveis/servico', {
+        return $http.get(serviceBase + 'api/niveis/getOfServico', {
             params: {
                 idMacroServico: idMacroServico
             }
@@ -18,7 +18,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     var _obterNiveisDeVerificacaoDeMaterial = function (idMacroServico) {
 
-        return $http.get(serviceBase + 'api/niveis/verificacaomaterial', {
+        return $http.get(serviceBase + 'api/niveis/getOfMaterial', {
             params: {
                 idMacroServico: idMacroServico
             }
@@ -30,7 +30,7 @@ app.factory('niveisService', ['$http', 'concretySettings', function ($http, conc
 
     var _obterNiveisAcima = function (idNivel) {
 
-        return $http.get(serviceBase + 'api/niveis/acima', {
+        return $http.get(serviceBase + 'api/niveis/getAcima', {
             params: {
                 idNivel: idNivel
             }

@@ -6,7 +6,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     var _obterDaUnidade = function (idUnidade) {
 
-        return $http.get(serviceBase + 'api/materialUnidade/unidade', {
+        return $http.get(serviceBase + 'api/materialUnidade/getByUnidade', {
             params: {
                 idUnidade: idUnidade
             }
@@ -18,7 +18,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     var _criarItens = function (idFichaVerificacaoMaterial) {
 
-        return $http.get(serviceBase + 'api/materialUnidade/criarItens', {
+        return $http.get(serviceBase + 'api/materialUnidade/getNewItens', {
             params: {
                 idFichaVerificacaoMaterial: idFichaVerificacaoMaterial
             }
@@ -30,7 +30,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     var _obterItens = function (idFichaVerificacaoMaterialUnidade) {
 
-        return $http.get(serviceBase + 'api/materialUnidade/itens', {
+        return $http.get(serviceBase + 'api/materialUnidade/getItens', {
             params: {
                 idFichaVerificacaoMaterialUnidade: idFichaVerificacaoMaterialUnidade
             }
@@ -42,7 +42,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     var _obterCriterioAceite = function (idFichaVerificacaoMaterial) {
 
-        return $http.get(serviceBase + 'api/materiais/criterioAceite', {
+        return $http.get(serviceBase + 'api/materiais/getCriterioAceite', {
             params: {
                 idFichaVerificacaoMaterial: idFichaVerificacaoMaterial
             }
@@ -54,7 +54,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
 
     var _obterDoNivel = function (idNivel) {
 
-        return $http.get(serviceBase + 'api/materiais/nivel', {
+        return $http.get(serviceBase + 'api/materiais/getByNivel', {
             params: {
                 idNivel: idNivel
             }
@@ -65,13 +65,13 @@ app.factory('materiaisService', function ($http, concretySettings) {
     };
 
     var _update = function (fvm) {
-        return $http.post(serviceBase + 'api/materialUnidade/update', fvm).then(function (response) {
+        return $http.put(serviceBase + 'api/materialUnidade', fvm).then(function (response) {
             return response;
         });
     };
 
     var _create = function (fvm) {
-        return $http.post(serviceBase + 'api/materialUnidade/create', fvm).then(function (response) {
+        return $http.post(serviceBase + 'api/materialUnidade', fvm).then(function (response) {
             return response;
         });
     };

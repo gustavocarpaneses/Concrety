@@ -24,16 +24,21 @@ namespace Concrety.Services
         
         public async Task<EntityResultBase> RemoverAnexo(OcorrenciaAnexo ocorrenciaAnexo)
         {
-            await _anexoService.Remover(ocorrenciaAnexo.Anexo);
+            var resultado = await _anexoService.RemoverAsync(ocorrenciaAnexo.Anexo);
 
-            await base.RemoveAsync(ocorrenciaAnexo);
-
-            return await Task.Factory.StartNew(() =>
+            if (!resultado.Sucesso)
             {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
+                return resultado;
+            }
+
+            if (ocorrenciaAnexo.Id > 0)
+            {
+                return await base.RemoverAsync(ocorrenciaAnexo);
+            }
+            else
+            {
+                return resultado;
+            }
         }
     }
 }

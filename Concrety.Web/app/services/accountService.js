@@ -21,7 +21,7 @@ app.factory('accountService', ['$http', '$q', 'localStorageService', 'concretySe
 
         var deferred = $q.defer();
 
-        $http.get(serviceBase + 'api/account/empreendimentos').then(function (response) {
+        $http.get(serviceBase + 'api/account/getEmpreendimentos').then(function (response) {
 
             localStorageService.set('empreendimentoAtual', response.data[0]);
             fillEmpreendimentoAtual(response.data[0]);

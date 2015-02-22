@@ -31,7 +31,7 @@ namespace Concrety.Services
                     IdFichaVerificacaoServico = fvs.Id
                 };
 
-                await base.AddAsync(fvsUnidade);
+                await base.CriarAsync(fvsUnidade);
 
                 await new ItemVerificacaoServicoUnidadeService(UnitOfWork).Criar(fvs, fvsUnidade);
             }

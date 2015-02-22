@@ -1,8 +1,9 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class PatologiaQueries
     {
@@ -11,7 +12,7 @@ namespace Concrety.Core.Interfaces.Repositories
             this IRepositoryBase<Patologia> patologiaRepository,
             int idItemVerificacaoServico)
         {
-            var query = from p in patologiaRepository.GetQuery()
+            var query = from p in patologiaRepository.ObterQuery()
                         where
                             p.IdItemVerificacaoServico == idItemVerificacaoServico &&
                             p.Ativo && !p.Excluido

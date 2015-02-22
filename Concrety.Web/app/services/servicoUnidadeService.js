@@ -6,7 +6,7 @@ app.factory('servicoUnidadeService', ['$http', 'concretySettings', function ($ht
 
     var _obter = function (idUnidade, idServico) {
 
-        return $http.get(serviceBase + 'api/servicounidade/get', {
+        return $http.get(serviceBase + 'api/servicounidade/getByUnidadeServico', {
             params: {
                 idServico: idServico,
                 idUnidade: idUnidade
@@ -19,7 +19,7 @@ app.factory('servicoUnidadeService', ['$http', 'concretySettings', function ($ht
 
     var _salvar = function (servicoUnidade) {
 
-        return $http.post(serviceBase + 'api/servicounidade/post', servicoUnidade).then(function (response) {
+        return $http.put(serviceBase + 'api/servicounidade', servicoUnidade).then(function (response) {
             return response;
         });
         

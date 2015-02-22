@@ -9,12 +9,13 @@ namespace Concrety.Core.Interfaces.Repositories
     public interface IRepositoryBase<TEntity> : IDisposable
         where TEntity : IEntityBase
     {
-        void Add(TEntity obj);
-        TEntity GetById(int id);
-        Task<TEntity> GetByIdAsync(int id);
-        IEnumerable<TEntity> GetAll();
-        IQueryable<TEntity> GetQuery();
-        void Update(TEntity obj);
-        void Remove(TEntity obj);
+        void Criar(TEntity obj);
+        TEntity ObterPeloId(int id);
+        Task<TEntity> ObterPeloIdAsync(int id);
+        IEnumerable<TEntity> ObterTodos();
+        Task<IEnumerable<TEntity>> ObterTodosAsync();
+        IQueryable<TEntity> ObterQuery();
+        void Atualizar(TEntity obj);
+        void Remover(TEntity obj);
     }
 }

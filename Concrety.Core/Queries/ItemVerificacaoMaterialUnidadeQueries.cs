@@ -1,8 +1,9 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class ItemVerificacaoMaterialUnidadeQueries
     {
@@ -11,7 +12,7 @@ namespace Concrety.Core.Interfaces.Repositories
             this IRepositoryBase<ItemVerificacaoMaterialUnidade> itemFvmRepository,
             int idFichaVerificacaoMaterialUnidade)
         {
-            var query = from item in itemFvmRepository.GetQuery()
+            var query = from item in itemFvmRepository.ObterQuery()
                         where
                             item.IdFichaVerificacaoMaterialUnidade == idFichaVerificacaoMaterialUnidade &&
                             item.Ativo && !item.Excluido

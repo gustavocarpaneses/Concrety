@@ -3,6 +3,7 @@ using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,75 +22,31 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<FichaVerificacaoMaterialUnidade>();
             _itemVerificacaoMaterialRepository = UnitOfWork.Repository<ItemVerificacaoMaterial>();
             _itemVerificacaoMaterialUnidadeRepository = UnitOfWork.Repository<ItemVerificacaoMaterialUnidade>();
+
+            base.PreAtualizar = PreAtualizar;
         }
 
         public async Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidade(int idUnidade)
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDaUnidade(idUnidade); });
         }
-
-
-        public async Task<EntityResultBase> Criar(FichaVerificacaoMaterialUnidade fvm)
+        
+        public new async Task<EntityResultBase> CriarAsync(FichaVerificacaoMaterialUnidade fvm)
         {
-            var erros = await Validar(fvm);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
             foreach (var item in fvm.Itens)
             {
                 item.ItemVerificacao = null;
             }
 
-            await base.AddAsync(fvm);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
-        }
-
-        public async Task<EntityResultBase> Atualizar(FichaVerificacaoMaterialUnidade fvm)
-        {
-            var erros = await Validar(fvm);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
-            _repository.Update(fvm);
-
-            new ItemVerificacaoMaterialUnidadeService(UnitOfWork).Atualizar(fvm);
-
-            await UnitOfWork.SaveChangesAsync();
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
-        }
-
-        private async Task<IEnumerable<string>> Validar(FichaVerificacaoMaterialUnidade fvm)
-        {
-            return null;
+            return await base.CriarAsync(fvm);
         }
 
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterialUnidade)
         {
-            return await Task.Factory.StartNew(() => { return _itemVerificacaoMaterialUnidadeRepository.ObterDaFichaVerificacaoMaterialUnidade(idFichaVerificacaoMaterialUnidade); });
+            return await Task.Factory.StartNew(() => 
+            { 
+                return _itemVerificacaoMaterialUnidadeRepository.ObterDaFichaVerificacaoMaterialUnidade(idFichaVerificacaoMaterialUnidade); 
+            });
         }
         
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> CriarItens(int idFichaVerificacaoMaterial)
@@ -110,5 +67,11 @@ namespace Concrety.Services
             return itensUnidade;
 
         }
+
+        private void PreAtualizar(FichaVerificacaoMaterialUnidade fvm)
+        {
+            new ItemVerificacaoMaterialUnidadeService(UnitOfWork).Atualizar(fvm);
+        }
+
     }
 }
