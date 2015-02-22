@@ -140,8 +140,15 @@ padding-top:13px;
 
 #msg_alerta_ocorrencia{
     display:inline-block;
+    left:50%;
+    text-align:center;
 }
 
+
+/*página feedback*/
+#body_msg_feedback{
+    height:320px;
+}
 
 /*botões date picker*/
 

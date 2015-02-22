@@ -1,13 +1,13 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
-    <h3 class="modal-title">Feedback</h3>
+    <h3 class="modal-title">Feedback - Sua opinião é importante!</h3>
 </div>
-<div class="modal-body">
-    <div class="k-edit-label">
-        Mensagem
+<div class="modal-body" id="body_msg_feedback">
+    <div class="k-edit-label" style="text-align:left!important;margin-left:0!important;width:700px;">
+        Queremos melhorar a sua experiência com o sistema! Mande sua opinião ou sugestão de melhoria!
     </div>
-    <div class="k-edit-field">
-        <textarea kendo-editor style="width:500px;" ng-model="feedback.mensagem" k-encoded="false"></textarea>
+    <div class="k-edit-field" style="float:none!important;">
+        <textarea kendo-editor style="width:600px;" ng-model="feedback.mensagem" k-encoded="false"></textarea>
     </div>
     
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
