@@ -1,7 +1,9 @@
 ﻿using Concrety.Core.Entities.Base;
+using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,55 +22,160 @@ namespace Concrety.Services.Base
             _repository = UnitOfWork.Repository<TEntity>();
         }
 
-        public void Add(TEntity obj)
+        public EntityResultBase Criar(TEntity obj)
         {
-            _repository.Add(obj);
-            UnitOfWork.SaveChanges();
+            if (ValidarAsync != null)
+            {
+                var erros = ValidarAsync(obj).Result;
+
+                if (erros != null)
+                {
+                    return new EntityResultBase(erros, false);
+                }
+            }
+
+            if (PreCriar != null)
+            {
+                PreCriar(obj);
+            }
+
+            _repository.Criar(obj);
+
+            var qtdeRegistros = UnitOfWork.SaveChanges();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_CRIADO }, false);
+            }
+
+            return new EntityResultBase(null, true);
         }
 
-        public async Task<int> AddAsync(TEntity obj)
+        public async Task<EntityResultBase> CriarAsync(TEntity obj)
         {
-            _repository.Add(obj);
-            return await UnitOfWork.SaveChangesAsync();
+            if (ValidarAsync != null)
+            {
+                var erros = await ValidarAsync(obj);
+
+                if (erros != null)
+                {
+                    return new EntityResultBase(erros, false);
+                }
+            }
+
+            if (PreCriar != null)
+            {
+                PreCriar(obj);
+            }
+
+            _repository.Criar(obj);
+            
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_CRIADO }, false);
+            }
+
+            return new EntityResultBase(null, true);
         }
 
-        public TEntity GetById(int id)
+        public EntityResultBase Atualizar(TEntity obj)
         {
-            return _repository.GetById(id);
+            if (ValidarAsync != null)
+            {
+                var erros = ValidarAsync(obj).Result;
+
+                if (erros != null)
+                {
+                    return new EntityResultBase(erros, false);
+                }
+            }
+
+            if (PreAtualizar != null)
+            {
+                PreAtualizar(obj);
+            }
+
+            _repository.Atualizar(obj);
+
+            var qtdeRegistros = UnitOfWork.SaveChanges();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_ATUALIZADO }, false);
+            }
+
+            return new EntityResultBase(null, true);
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public async Task<EntityResultBase> AtualizarAsync(TEntity obj)
         {
-            return await _repository.GetByIdAsync(id);
+            if (ValidarAsync != null)
+            {
+                var erros = await ValidarAsync(obj);
+
+                if (erros != null)
+                {
+                    return new EntityResultBase(erros, false);
+                }
+            }
+
+            if (PreAtualizar != null)
+            {
+                PreAtualizar(obj);
+            }
+
+            _repository.Atualizar(obj);
+
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_ATUALIZADO }, false);
+            }
+
+            return new EntityResultBase(null, true);   
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public EntityResultBase Remover(TEntity obj)
         {
-            return _repository.GetAll();
+            _repository.Remover(obj);
+            var qtdeRegistros = UnitOfWork.SaveChanges();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_EXCLUIDO}, false);
+            }
+
+            return new EntityResultBase(null, true);
         }
 
-        public void Update(TEntity obj)
+        public async Task<EntityResultBase> RemoverAsync(TEntity obj)
         {
-            _repository.Update(obj);
-            UnitOfWork.SaveChanges();
+            _repository.Remover(obj);
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            if (qtdeRegistros == 0)
+            {
+                return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_EXCLUIDO }, false);
+            }
+
+            return new EntityResultBase(null, true);
         }
 
-        public async Task<int> UpdateAsync(TEntity obj)
+        public TEntity ObterPeloId(int id)
         {
-            _repository.Update(obj);
-            return await UnitOfWork.SaveChangesAsync();
+            return _repository.ObterPeloId(id);
         }
 
-        public void Remove(TEntity obj)
+        public async Task<TEntity> ObterPeloIdAsync(int id)
         {
-            _repository.Remove(obj);
-            UnitOfWork.SaveChanges();
+            return await _repository.ObterPeloIdAsync(id);
         }
 
-        public async Task<int> RemoveAsync(TEntity obj)
+        public IEnumerable<TEntity> ObterTodos()
         {
-            _repository.Remove(obj);
-            return await UnitOfWork.SaveChangesAsync();
+            return _repository.ObterTodos();
+        }
+
+        public async Task<IEnumerable<TEntity>> ObterTodosAsync()
+        {
+            return await _repository.ObterTodosAsync();
         }
 
         public void Dispose()
@@ -85,5 +192,21 @@ namespace Concrety.Services.Base
             }
             _disposed = true;
         }
+        
+        /// <summary>
+        /// Ação a ser executada antes dos métodos de criação e atualização (sync e async)
+        /// </summary>
+        protected Func<TEntity, Task<IEnumerable<string>>> ValidarAsync;
+
+        /// <summary>
+        /// Ação a ser executada antes de criar um objeto (sync e async)
+        /// </summary>
+        protected Action<TEntity> PreCriar;
+
+        /// <summary>
+        /// Ação a ser executada antes de atualizar um objeto (sync e async)
+        /// </summary>
+        protected Action<TEntity> PreAtualizar;
+
     }
 }

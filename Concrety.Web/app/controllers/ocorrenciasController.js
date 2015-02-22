@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, concretySettings, localStorageService, accountService) {
+app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $modalInstance, ocorrencia, ocorrenciasService, patologiasService, concretySettings, localStorageService, accountService) {
 
     $scope.patologias = [];
     $scope.ocorrencia = ocorrencia;
@@ -91,7 +91,7 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
 
     $scope.uploadIniciado = function (e) {
 
-        var saveUrl = concretySettings.apiServiceBaseUri + 'api/anexos/create';
+        var saveUrl = concretySettings.apiServiceBaseUri + 'api/anexos';
         e.sender.options.async.saveUrl = saveUrl + "?idObra=" + accountService.empreendimentoAtual.id;
 
         var xhr = e.XMLHttpRequest;
@@ -119,11 +119,23 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modalInstan
     };
 
     $scope.excluirAnexo = function (ocorrenciaAnexo) {
-        $scope.ocorrencia.anexos.remove(ocorrenciaAnexo);
+        ocorrenciaAnexo.excluido = true;
         ocorrenciaAnexo.anexo.idObra = accountService.empreendimentoAtual.id;
         ocorrenciasService.removerAnexo(ocorrenciaAnexo);
     };
 
+    $scope.abrirModalNorma = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalNorma.html?v=' + new Date(),
+            controller: 'modalNormasController',
+            size: 'lg',
+            resolve: {
+                servico: function () {
+                    return $scope.ocorrencia.patologia.solucoes[0];
+                }
+            }
+        });
+    };
 
     function salvoSucesso(response) {
         $scope.salvoComSucesso = true;

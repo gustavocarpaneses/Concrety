@@ -7,8 +7,6 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface IOcorrenciaService : IServiceBase<Ocorrencia>
     {
-        Task<EntityResultBase> Criar(Ocorrencia ocorrencia);
-        Task<EntityResultBase> Atualizar(Ocorrencia ocorrencia);
         Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidade(int idServicoUnidade);
         Task<IEnumerable<Ocorrencia>> ObterPendentes(int idMacroServico);
     }

@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
+    <Compile Include="Entities\EmailFeedback.cs" />
     <Compile Include="Entities\OcorrenciaAnexo.cs" />
     <Compile Include="Entities\Results\EntityResultBase.cs" />
     <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />
@@ -78,21 +79,21 @@
     <Compile Include="Interfaces\Identity\IApplicationRoleManager.cs" />
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
     <Compile Include="Interfaces\Repositories\IAnexoBlobRepository.cs" />
-    <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialUnidadeQueries.cs" />
-    <Compile Include="Interfaces\Repositories\ItemVerificacaoMaterialQueries.cs" />
-    <Compile Include="Interfaces\Repositories\FornecedorQueries.cs" />
-    <Compile Include="Interfaces\Repositories\CondicaoClimaticaQueries.cs" />
-    <Compile Include="Interfaces\Repositories\EmpreendimentoDiarioQueries.cs" />
-    <Compile Include="Interfaces\Repositories\FichaVerificacaoMaterialQueries.cs" />
-    <Compile Include="Interfaces\Repositories\FichaVerificacaoServicoQueries.cs" />
+    <Compile Include="Messages\ServiceBaseMessages.cs" />
+    <Compile Include="Queries\ItemVerificacaoMaterialUnidadeQueries.cs" />
+    <Compile Include="Queries\ItemVerificacaoMaterialQueries.cs" />
+    <Compile Include="Queries\EmpreendimentoDiarioQueries.cs" />
+    <Compile Include="Queries\FichaVerificacaoMaterialQueries.cs" />
+    <Compile Include="Queries\FichaVerificacaoServicoQueries.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
-    <Compile Include="Interfaces\Repositories\FichaVerificacaoMaterialUnidadeQueries.cs" />
-    <Compile Include="Interfaces\Repositories\OcorrenciaQueries.cs" />
-    <Compile Include="Interfaces\Repositories\PatologiaQueries.cs" />
-    <Compile Include="Interfaces\Repositories\ServicoUnidadeQueries.cs" />
-    <Compile Include="Interfaces\Repositories\ServicoQueries.cs" />
-    <Compile Include="Interfaces\Repositories\UnidadeQueries.cs" />
-    <Compile Include="Interfaces\Repositories\NivelQueries.cs" />
+    <Compile Include="Queries\FichaVerificacaoMaterialUnidadeQueries.cs" />
+    <Compile Include="Queries\OcorrenciaQueries.cs" />
+    <Compile Include="Queries\PatologiaQueries.cs" />
+    <Compile Include="Queries\ServicoUnidadeQueries.cs" />
+    <Compile Include="Queries\ServicoQueries.cs" />
+    <Compile Include="Queries\UnidadeQueries.cs" />
+    <Compile Include="Queries\NivelQueries.cs" />
+    <Compile Include="Interfaces\Services\IEmailService.cs" />
     <Compile Include="Interfaces\Services\IFornecedorService.cs" />
     <Compile Include="Interfaces\Services\ICondicaoClimaticaService.cs" />
     <Compile Include="Interfaces\Services\IEmpreendimentoDiarioService.cs" />

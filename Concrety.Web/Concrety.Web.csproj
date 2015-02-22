@@ -43,6 +43,7 @@
     <Content Include="app\controllers\diarioObraController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\materialUnidadeController.js" />
+    <Content Include="app\controllers\modalFeedbackController.js" />
     <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
@@ -51,6 +52,7 @@
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\partials\diarioObra.html" />
+    <Content Include="app\partials\modalFeedback.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
@@ -113,7 +115,6 @@
     <Content Include="content\css\kendo.dataviz.min.css" />
     <Content Include="content\css\lightbox.css" />
     <Content Include="content\css\loading-bar.min.css" />
-    <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
@@ -140,12 +141,7 @@
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="scripts\jquery.min.map" />
-    <Content Include="scripts\kendo.all.min.js.map" />
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
-    <Content Include="scripts\angular-route.min.js.map" />
-    <Content Include="scripts\angular.min.js.map" />
-    <Content Include="scripts\angular-sanitize.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\directives\" />

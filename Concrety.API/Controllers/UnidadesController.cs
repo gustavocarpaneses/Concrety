@@ -24,8 +24,9 @@ namespace Concrety.API.Controllers
             _unidadeService = unidadeService;
         }
 
-        [Route("ObterDoNivel")]
-        public async Task<IEnumerable<UnidadeViewModel>> GetDoNivel(int idNivel)
+        [Route("GetByNivel")]
+        [HttpGet]
+        public async Task<IEnumerable<UnidadeViewModel>> ObterDoNivel(int idNivel)
         {
             var unidades = await _unidadeService.ObterDoNivel(idNivel);
             return Mapper.Map<IEnumerable<Unidade>, IEnumerable<UnidadeViewModel>>(unidades);

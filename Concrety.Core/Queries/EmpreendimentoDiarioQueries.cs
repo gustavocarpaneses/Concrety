@@ -1,9 +1,10 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class EmpreendimentoDiarioQueries
     {
@@ -11,7 +12,7 @@ namespace Concrety.Core.Interfaces.Repositories
             this IRepositoryBase<EmpreendimentoDiario> empreendimentoDiarioRepository,
             int idEmpreendimento)
         {
-            var query = from d in empreendimentoDiarioRepository.GetQuery()
+            var query = from d in empreendimentoDiarioRepository.ObterQuery()
                         where
                             d.IdEmpreendimento == idEmpreendimento &&
                             d.Ativo && !d.Excluido
@@ -27,7 +28,7 @@ namespace Concrety.Core.Interfaces.Repositories
             int idEmpreendimentoDiario,
             DateTime data)
         {
-            var query = from d in empreendimentoDiarioRepository.GetQuery()
+            var query = from d in empreendimentoDiarioRepository.ObterQuery()
                         where
                             d.IdEmpreendimento == idEmpreendimento &&
                             d.Id != idEmpreendimentoDiario &&

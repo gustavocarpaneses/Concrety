@@ -1,32 +1,32 @@
 ﻿'use strict';
-app.factory('diariosObraService', function ($http, $q, concretySettings) {
+app.factory('diariosObraService', function ($http, concretySettings) {
 
     var serviceBase = concretySettings.apiServiceBaseUri;
     var diariosObraServiceFactory = {};
 
     var _get = function (idEmpreendimento) {
 
-        var deferred = $q.defer();
+        //var deferred = $q.defer();
 
-        $http.get(serviceBase + 'api/diariosObra/get', {
+        return $http.get(serviceBase + 'api/diariosObra/getByEmpreendimento', {
             params: {
                 idEmpreendimento: idEmpreendimento
             }
         }).then(function (response) {
-            deferred.resolve(response);
+            return response;
         });
 
-        return deferred.promise;
+        //return deferred.promise;
     };
 
     var _update = function (empreendimento) {
-        return $http.post(serviceBase + 'api/diariosObra/update', empreendimento).then(function (response) {
+        return $http.put(serviceBase + 'api/diariosObra', empreendimento).then(function (response) {
             return response;
         });
     };
 
     var _create = function (empreendimento) {
-        return $http.post(serviceBase + 'api/diariosObra/create', empreendimento).then(function (response) {
+        return $http.post(serviceBase + 'api/diariosObra', empreendimento).then(function (response) {
             return response;
         });
     };

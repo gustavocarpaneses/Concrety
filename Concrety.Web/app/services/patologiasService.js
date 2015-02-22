@@ -5,7 +5,7 @@ app.factory('patologiasService', ['$http', 'concretySettings', function ($http, 
     var patologiasServiceFactory = {};
     
     var _obter = function (idItemVerificacaoServico) {
-        return $http.get(serviceBase + 'api/patologias/get', {
+        return $http.get(serviceBase + 'api/patologias/getByItemVerificacaoServico', {
             params: {
                 idItemVerificacaoServico: idItemVerificacaoServico
             }

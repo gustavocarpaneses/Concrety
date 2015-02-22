@@ -26,45 +26,54 @@ namespace Concrety.Data.Repositories
             _dbEntitySet = _context.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        public void Criar(TEntity entity)
         {
-            ValidateUserArgument();
+            ValidarUsuarioLogado();
 
             entity.IdUsuarioCadastro = _user.Id;
             _context.SetAsAdded(entity);
         }
 
-        public TEntity GetById(int id)
+        public TEntity ObterPeloId(int id)
         {
             return _dbEntitySet.Find(id);
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> ObterPeloIdAsync(int id)
         {
             return await _dbEntitySet.FindAsync(id);
         }
 
-        public IQueryable<TEntity> GetQuery()
+        public IQueryable<TEntity> ObterQuery()
         {
             return _dbEntitySet.AsQueryable();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> ObterTodos()
         {
-            return _dbEntitySet.ToList();
+            return _dbEntitySet
+                .Where(e => e.Ativo && !e.Excluido)
+                .ToList();
         }
 
-        public void Update(TEntity entity)
+        public async Task<IEnumerable<TEntity>> ObterTodosAsync()
         {
-            ValidateUserArgument();
+            return await _dbEntitySet
+                .Where(e => e.Ativo && !e.Excluido)
+                .ToListAsync();
+        }
+
+        public void Atualizar(TEntity entity)
+        {
+            ValidarUsuarioLogado();
 
             entity.IdUsuarioUltimaAtualizacao = _user.Id;
             _context.SetAsModified(entity);
         }
 
-        public void Remove(TEntity entity)
+        public void Remover(TEntity entity)
         {
-            ValidateUserArgument();
+            ValidarUsuarioLogado();
 
             entity.IdUsuarioExclusao = _user.Id;
             _context.SetAsDeleted(entity);
@@ -85,7 +94,7 @@ namespace Concrety.Data.Repositories
             _disposed = true;
         }
 
-        private void ValidateUserArgument()
+        private void ValidarUsuarioLogado()
         {
             if (_user == null)
             {

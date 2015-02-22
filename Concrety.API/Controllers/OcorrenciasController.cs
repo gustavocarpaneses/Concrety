@@ -23,8 +23,9 @@ namespace Concrety.API.Controllers
             _ocorrenciaService = ocorrenciaService;
         }
 
-        [Route("PossiveisStatus")]
-        public async Task<IEnumerable<StatusOcorrenciaViewModel>> GetPossiveisStatus()
+        [Route("GetPossiveisStatus")]
+        [HttpGet]
+        public async Task<IEnumerable<StatusOcorrenciaViewModel>> ObterPossiveisStatus()
         {
             return await Task.Factory.StartNew(() =>
             {
@@ -44,9 +45,9 @@ namespace Concrety.API.Controllers
             });
         }
 
-        [Route("Create")]
+        [Route("")]
         [HttpPost]
-        public async Task<IHttpActionResult> Create(OcorrenciaViewModel ocorrenciaViewModel)
+        public async Task<IHttpActionResult> Criar(OcorrenciaViewModel ocorrenciaViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +56,7 @@ namespace Concrety.API.Controllers
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
-            var resultado = await _ocorrenciaService.Criar(ocorrencia);
+            var resultado = await _ocorrenciaService.CriarAsync(ocorrencia);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -67,9 +68,9 @@ namespace Concrety.API.Controllers
             return Ok();
         }
 
-        [Route("Update")]
-        [HttpPost]
-        public async Task<IHttpActionResult> Update(OcorrenciaViewModel ocorrenciaViewModel)
+        [Route("")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Atualizar(OcorrenciaViewModel ocorrenciaViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -78,7 +79,7 @@ namespace Concrety.API.Controllers
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
-            var resultado = await _ocorrenciaService.Atualizar(ocorrencia);
+            var resultado = await _ocorrenciaService.AtualizarAsync(ocorrencia);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -90,15 +91,17 @@ namespace Concrety.API.Controllers
             return Ok();
         }
 
-        [Route("ObterDoServicoUnidade")]
-        public async Task<IEnumerable<OcorrenciaViewModel>> GetDoServicoUnidade(int idServicoUnidade)
+        [Route("GetByServicoUnidade")]
+        [HttpGet]
+        public async Task<IEnumerable<OcorrenciaViewModel>> ObterDoServicoUnidade(int idServicoUnidade)
         {
             var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidade(idServicoUnidade);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
 
-        [Route("ObterPendentes")]
-        public async Task<IEnumerable<OcorrenciaViewModel>> GetPendentes(int idMacroServico)
+        [Route("GetPendentes")]
+        [HttpGet]
+        public async Task<IEnumerable<OcorrenciaViewModel>> ObterPendentes(int idMacroServico)
         {
             var ocorrencias = await _ocorrenciaService.ObterPendentes(idMacroServico);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);

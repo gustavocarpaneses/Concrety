@@ -43,12 +43,12 @@
                 ng-model="ocorrencia.idPatologia"
                 style="width: 350px"></select> 
     </div>
-    <div ng-if="ocorrencia.patologia">
+    <div ng-if="ocorrencia.patologia.solucoes.length > 0">
         <div class="k-edit-label">
             <label>Solução</label>
         </div>
         <div class="k-edit-field">
-            {{ocorrencia.patologia.solucoes[0].nome}} - {{ocorrencia.patologia.solucoes[0].descricao}}
+            <button id="btn_norma" class="btn btn-default" ng-click="abrirModalNorma()">Consultar Procedimento de Execução</button>
         </div>
     </div>
     <div class="k-edit-label">
@@ -66,12 +66,13 @@
             <carousel>
                 <slide ng-repeat="item in ocorrencia.anexos" ng-if="!item.excluido">
                     <a href="{{item.anexo.urlPrimaria}}" data-lightbox="fotos"><img ng-src="{{item.anexo.urlPrimaria}}" style=" margin:auto;height:300px;"></a>
+
+                    <!--<div class="carousel-caption">
+                    </div>-->
+                    <div class="btn_excluir_carousel">
+                        <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
+                    </div>
                 </slide>
-                <div class="carousel-caption">
-                </div>
-                <div class="btn_excluir_carousel">
-                    <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
-                </div>
             </carousel>
          
         </div>

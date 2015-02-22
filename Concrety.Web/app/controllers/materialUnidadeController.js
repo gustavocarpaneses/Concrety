@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('materialUnidadeController', function ($scope, materiaisService) {
+app.controller('materialUnidadeController', function ($scope, $sce, materiaisService) {
 
     $scope.$watch("fvm.idFichaVerificacaoMaterial", function (newValue, oldValue) {
 
@@ -12,7 +12,7 @@ app.controller('materialUnidadeController', function ($scope, materiaisService) 
             }
 
             materiaisService.obterCriterioAceite($scope.fvm.idFichaVerificacaoMaterial).then(function (response) {
-                $scope.criterioAceite = response.data;
+                $scope.criterioAceite = response.data.criterioAceite; //$sce.trustAsHtml(response.data);
             });
 
         }

@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('materiaisController', function ($scope, $routeParams, unidadesService, niveisService, materiaisService, fornecedoresService) {
+app.controller('materiaisController', function ($scope, $routeParams, $sce, unidadesService, niveisService, materiaisService, fornecedoresService) {
 
     var idNivel = $routeParams.id;
 
@@ -19,7 +19,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
     obterNiveis(idNivel);
     obterFichas(idNivel);
     obterFornecedores();
-    
+
     $scope.$watch('unidadeSelecionada', function (newValue, oldValue) {
         if (!newValue) {
             return;
@@ -76,15 +76,19 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
                     });
                 },
                 update: function (o) {
+                    PrepararNovoFornecedor(o.data.models[0]);
                     materiaisService.update(o.data.models[0]).then(function (response) {
+                        obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
                     });
                 },
                 create: function (o) {
+                    PrepararNovoFornecedor(o.data.models[0]);
                     o.data.models[0].idUnidade = $scope.unidadeSelecionada;
                     materiaisService.create(o.data.models[0]).then(function (response) {
+                        obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -121,6 +125,13 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             }
         };
 
+    }
+
+    function PrepararNovoFornecedor(fvm) {
+        if (isNaN(fvm.idFornecedor)) {
+            fvm.nomeNovoFornecedor = fvm.idFornecedor;
+            fvm.idFornecedor = 0;
+        }
     }
 
     function ObterErros(data) {
@@ -163,6 +174,8 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
     function obterFornecedores() {
         fornecedoresService.get().then(function (response) {
 
+            $scope.fornecedores = [];
+
             angular.forEach(response.data, function (fornecedor, index) {
                 this.push({
                     text: fornecedor.nome,
@@ -173,7 +186,7 @@ app.controller('materiaisController', function ($scope, $routeParams, unidadesSe
             $scope.dropDownFornecedoresOptions = {
                 dataTextField: "text",
                 dataValueField: "value",
-                optionLabel: "Selecione...",
+                placeholder: "Selecione...",
                 dataSource: new kendo.data.DataSource({
                     type: "json",
                     transport: {

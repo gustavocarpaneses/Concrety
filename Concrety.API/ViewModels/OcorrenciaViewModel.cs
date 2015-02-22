@@ -15,7 +15,7 @@ namespace Concrety.API.ViewModels
         public DateTime DataAbertura { get; set; }
         public DateTime? DataConclusao { get; set; }
 
-        public string DescricaoStatus { get; set; }
+        //public string DescricaoStatus { get; set; }
         public StatusOcorrencia Status { get; set; }
 
         public string NomeFichaVerificacaoServico { get; set; }

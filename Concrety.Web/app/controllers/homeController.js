@@ -6,7 +6,7 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
     }
 
     configurarGridOcorrencias();
-
+    
     function editarOcorrencia(e) {
         e.preventDefault();
 
@@ -63,10 +63,6 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
                     format: "{0:dd/MM/yyyy}"
                 },
                 {
-                    field: "descricaoStatus",
-                    title: "Status"
-                },
-                {
                     field: "nomePatologia",
                     title: "Patologia"
                 }];
@@ -80,7 +76,6 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
                 nomeItemVerificacaoServico: { type: "string" },
                 dataAbertura: { type: "date" },
                 dataConclusao: { type: "date" },
-                descricaoStatus: { type: "string" },
                 nomePatologia: { type: "string" }
             }
         });

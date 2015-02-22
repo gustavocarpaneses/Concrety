@@ -25,15 +25,17 @@ namespace Concrety.API.Controllers
             _servicoUnidadeService = servicoUnidadeService;
         }
 
-        [Route("Get")]
-        public async Task<ServicoUnidadeViewModel> Get(int idUnidade, int idServico)
+        [Route("GetByUnidadeServico")]
+        [HttpGet]
+        public async Task<ServicoUnidadeViewModel> ObterDaUnidadeServico(int idUnidade, int idServico)
         {
             var servicoUnidade = await _servicoUnidadeService.Obter(idUnidade, idServico);
             return Mapper.Map<ServicoUnidade, ServicoUnidadeViewModel>(servicoUnidade);
         }
 
-        [Route("Post")]
-        public async Task<IHttpActionResult> Post(ServicoUnidadeViewModel servicoUnidadeViewModel)
+        [Route("")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Atualizar(ServicoUnidadeViewModel servicoUnidadeViewModel)
         {
             if (!ModelState.IsValid)
             {

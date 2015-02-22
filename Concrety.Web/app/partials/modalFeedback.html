@@ -1,0 +1,20 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
+    <h3 class="modal-title">Feedback</h3>
+</div>
+<div class="modal-body">
+    <div class="k-edit-label">
+        Mensagem
+    </div>
+    <div class="k-edit-field">
+        <textarea kendo-editor style="width:500px;" ng-model="feedback.mensagem" k-encoded="false"></textarea>
+    </div>
+    
+    <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
+        {{mensagem}}
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="btn_salvar" class="btn btn-primary" ng-click="salvar()">Salvar</button>
+    <button id="btn_fechar" class="btn" ng-click="fechar()">Fechar</button>
+</div>

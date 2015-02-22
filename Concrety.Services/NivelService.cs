@@ -2,6 +2,7 @@
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Concrety.Services
         public async Task<IEnumerable<Nivel>> ObterNiveisDeServico(int idMacroServico)
         {
             var query = _repository.ObterNiveisDeServico(
-                _servicoRepository.GetQuery(),
+                _servicoRepository.ObterQuery(),
                 idMacroServico);
 
             return await Task.Factory.StartNew(() => { return query; });
@@ -37,7 +38,7 @@ namespace Concrety.Services
         public async Task<IEnumerable<Nivel>> ObterNiveisDeVerificacaoDeMaterial(int idMacroServico)
         {
             var query = _repository.ObterNiveisDeVerificacaoDeMaterial(
-                _fichaVerificacaoMaterialRepository.GetQuery(),
+                _fichaVerificacaoMaterialRepository.ObterQuery(),
                 idMacroServico);
 
             return await Task.Factory.StartNew(() => { return query; });
@@ -48,7 +49,7 @@ namespace Concrety.Services
         {
             var niveis = new List<Nivel>();
 
-            var nivel = await _repository.GetByIdAsync(idNivel);
+            var nivel = await _repository.ObterPeloIdAsync(idNivel);
 
             do
             {

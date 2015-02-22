@@ -1,8 +1,9 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Concrety.Core.Interfaces.Repositories
+namespace Concrety.Core.Queries
 {
     public static class NivelQueries
     {
@@ -11,7 +12,7 @@ namespace Concrety.Core.Interfaces.Repositories
             IQueryable<Servico> servicos, 
             int idMacroServico)
         {
-            var query = from n in nivelRepository.GetQuery()
+            var query = from n in nivelRepository.ObterQuery()
                         join s in servicos on n.Id equals s.IdNivel
                         where
                             n.IdMacroServico == idMacroServico &&
@@ -29,7 +30,7 @@ namespace Concrety.Core.Interfaces.Repositories
             IQueryable<FichaVerificacaoMaterial> fichasVerificacao, 
             int idMacroServico)
         {
-            var query = from n in nivelRepository.GetQuery()
+            var query = from n in nivelRepository.ObterQuery()
                         join fvm in fichasVerificacao on n.Id equals fvm.IdNivel
                         where
                             n.IdMacroServico == idMacroServico &&

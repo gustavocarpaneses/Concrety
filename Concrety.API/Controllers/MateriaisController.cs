@@ -26,18 +26,23 @@ namespace Concrety.API.Controllers
             _fvmService = fvmService;
         }
 
-        [Route("Nivel")]
-        public async Task<IEnumerable<FichaVerificacaoMaterialViewModel>> GetDoNivel(int idNivel)
+        [Route("GetByNivel")]
+        [HttpGet]
+        public async Task<IEnumerable<FichaVerificacaoMaterialViewModel>> ObterDoNivel(int idNivel)
         {
             var fvms = await _fvmService.ObterDoNivel(idNivel);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterial>, IEnumerable<FichaVerificacaoMaterialViewModel>>(fvms);
         }
 
-        [Route("CriterioAceite")]
-        public async Task<string> GetCriterioAceite(int idFichaVerificacaoMaterial)
+        [Route("GetCriterioAceite")]
+        [HttpGet]
+        public async Task<dynamic> ObterCriterioAceite(int idFichaVerificacaoMaterial)
         {
-            var fvm = await _fvmService.GetByIdAsync(idFichaVerificacaoMaterial);
-            return fvm.CriterioAceite;
+            var fvm = await _fvmService.ObterPeloIdAsync(idFichaVerificacaoMaterial);
+            return new
+            {
+                fvm.CriterioAceite
+            };
         }
     }
 }

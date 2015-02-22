@@ -21,6 +21,7 @@ namespace Concrety.API.ViewModels
 
         //public virtual FornecedorViewModel Fornecedor { get; set; }
         public int IdFornecedor { get; set; }
+        public string NomeNovoFornecedor { get; set; }
 
         //public virtual FichaVerificacaoMaterialViewModel FichaVerificacaoMaterial { get; set; }
         public int IdFichaVerificacaoMaterial { get; set; }

@@ -3,6 +3,7 @@ using Concrety.Core.Entities.Enumerators;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Linq;

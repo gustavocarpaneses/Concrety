@@ -4,6 +4,7 @@ using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Core.Messages;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Concrety.Services
             : base(unitOfWork)
         {
             _repository = UnitOfWork.Repository<EmpreendimentoDiario>();
+            base.ValidarAsync = ValidarAsync;
         }
 
         public async Task<IEnumerable<EmpreendimentoDiario>> ObterDoEmpreendimento(int idEmpreendimento)
@@ -27,55 +29,8 @@ namespace Concrety.Services
             return await Task.Factory.StartNew(() => { return _repository.ObterDoEmpreendimento(idEmpreendimento); });
         }
         
-        public async Task<EntityResultBase> Criar(EmpreendimentoDiario empreendimentoDiario)
+        private async Task<IEnumerable<string>> ValidarAsync(EmpreendimentoDiario empreendimentoDiario)
         {
-
-            var erros = await Validar(empreendimentoDiario);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
-            await base.AddAsync(empreendimentoDiario);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
-        }
-        
-        public async Task<EntityResultBase> Atualizar(EmpreendimentoDiario empreendimentoDiario)
-        {
-
-            var erros = await Validar(empreendimentoDiario);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
-            await base.UpdateAsync(empreendimentoDiario);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
-        }
-
-        private async Task<IEnumerable<string>> Validar(EmpreendimentoDiario empreendimentoDiario)
-        {
-
             empreendimentoDiario.Data = empreendimentoDiario.Data.Date;
 
             var existeNaData = await Task.Factory.StartNew(() => 

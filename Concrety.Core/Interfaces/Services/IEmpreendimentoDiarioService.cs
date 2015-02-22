@@ -8,7 +8,5 @@ namespace Concrety.Core.Interfaces.Services
     public interface IEmpreendimentoDiarioService : IServiceBase<EmpreendimentoDiario>
     {
         Task<IEnumerable<EmpreendimentoDiario>> ObterDoEmpreendimento(int idEmpreendimento);
-        Task<EntityResultBase> Criar(EmpreendimentoDiario empreendimentoDiario);
-        Task<EntityResultBase> Atualizar(EmpreendimentoDiario empreendimentoDiario);
     }
 }

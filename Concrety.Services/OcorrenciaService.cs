@@ -3,9 +3,11 @@ using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Concrety.Services
@@ -30,65 +32,30 @@ namespace Concrety.Services
             _servicoRepository = UnitOfWork.Repository<Servico>();
             _nivelRepository = UnitOfWork.Repository<Nivel>();
             _ocorrenciaAnexoRepository = UnitOfWork.Repository<OcorrenciaAnexo>();
+
+            base.ValidarAsync = ValidarAsync;
+            base.PreAtualizar = PreAtualizar;
+            base.PreCriar = PreCriar;
+        }
+        
+        private void PreCriar(Ocorrencia ocorrencia)
+        {
+            //remove anexos que foram excluídos antes da ocorrência ser salva
+            ocorrencia.Anexos = ocorrencia.Anexos.Where(oa => !oa.Excluido).ToList();
         }
 
-
-        public async Task<EntityResultBase> Criar(Ocorrencia ocorrencia)
+        private void PreAtualizar(Ocorrencia ocorrencia)
         {
-
-            var erros = await Validar(ocorrencia);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
-            await base.AddAsync(ocorrencia);
-
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
-        }
-
-        public async Task<EntityResultBase> Atualizar(Ocorrencia ocorrencia)
-        {
-
-            var erros = await Validar(ocorrencia);
-
-            if (erros != null)
-            {
-                return await Task.Factory.StartNew(() =>
-                {
-                    return new EntityResultBase(erros, false);
-                });
-            }
-
             foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
             {
                 if (ocorrenciaAnexo.Id == 0)
                 {
-                    _ocorrenciaAnexoRepository.Add(ocorrenciaAnexo);
+                    _ocorrenciaAnexoRepository.Criar(ocorrenciaAnexo);
                 }
             }
-
-            await base.UpdateAsync(ocorrencia);
-            
-            return await Task.Factory.StartNew(() =>
-            {
-                return new EntityResultBase(
-                    null,
-                    true);
-            });
         }
 
-
-        private async Task<IEnumerable<string>> Validar(Ocorrencia ocorrencia)
+        private async Task<IEnumerable<string>> ValidarAsync(Ocorrencia ocorrencia)
         {
             ocorrencia.ItemVerificacao = null;
             ocorrencia.Patologia = null;
@@ -106,15 +73,14 @@ namespace Concrety.Services
             
             return null;
         }
-
-
+        
         public async Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidade(int idServicoUnidade)
         {
             return await Task.Factory.StartNew(() =>
             {
                 return _repository.ObterDoServicoUnidade(
-                    _itemVerificacaoServicoUnidadeRepository.GetQuery(),
-                    _fichaVerificacaoServicoUnidadeRepository.GetQuery(),
+                    _itemVerificacaoServicoUnidadeRepository.ObterQuery(),
+                    _fichaVerificacaoServicoUnidadeRepository.ObterQuery(),
                     idServicoUnidade);
             });
         }
@@ -125,11 +91,11 @@ namespace Concrety.Services
             return await Task.Factory.StartNew(() =>
             {
                 return _repository.ObterPendentes(
-                    _itemVerificacaoServicoUnidadeRepository.GetQuery(),
-                    _fichaVerificacaoServicoUnidadeRepository.GetQuery(),
-                    _servicoUnidadeRepository.GetQuery(),
-                    _servicoRepository.GetQuery(),
-                    _nivelRepository.GetQuery(),
+                    _itemVerificacaoServicoUnidadeRepository.ObterQuery(),
+                    _fichaVerificacaoServicoUnidadeRepository.ObterQuery(),
+                    _servicoUnidadeRepository.ObterQuery(),
+                    _servicoRepository.ObterQuery(),
+                    _nivelRepository.ObterQuery(),
                     idMacroServico);
             });
         }

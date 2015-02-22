@@ -8,7 +8,7 @@ app.factory('unidadesService', ['$http', '$q', 'concretySettings', function ($ht
 
         var deferred = $q.defer();
 
-        $http.get(serviceBase + 'api/unidades/ObterDoNivel', {
+        $http.get(serviceBase + 'api/unidades/getByNivel', {
             params: {
                 idNivel: idNivel
             }

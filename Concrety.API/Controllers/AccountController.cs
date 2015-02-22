@@ -49,8 +49,9 @@ namespace Concrety.API.Controllers
         }
 
         [Authorize]
-        [Route("Empreendimentos")]
-        public async Task<IEnumerable<EmpreendimentoViewModel>> GetEmpreendimentos()
+        [Route("GetEmpreendimentos")]
+        [HttpGet]
+        public async Task<IEnumerable<EmpreendimentoViewModel>> ObterEmpreendimentos()
         {
             var user = await _userManager.FindByIdAsync(User.Identity.GetUserId());
             return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos);

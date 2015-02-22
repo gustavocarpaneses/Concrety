@@ -2,6 +2,7 @@
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
+using Concrety.Core.Queries;
 using Concrety.Services.Base;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +22,10 @@ namespace Concrety.Services
 
         internal async Task<IEnumerable<FichaVerificacaoServico>> ObterDoServico(int idServico)
         {
-            return await Task.Factory.StartNew(() => { return _repository.ObterDoServico(idServico); });
+            return await Task.Factory.StartNew(() => 
+            { 
+                return _repository.ObterDoServico(idServico); 
+            });
         }
     }
 }

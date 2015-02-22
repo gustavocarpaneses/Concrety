@@ -23,7 +23,7 @@ namespace Concrety.Services
         {
             foreach (var item in fvmUnidade.Itens)
             {
-                _repository.Update(item);
+                _repository.Atualizar(item);
             }
         }
 

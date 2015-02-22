@@ -22,8 +22,9 @@ namespace Concrety.API.Controllers
             _patologiaService = patologiaService;
         }
 
-        [Route("Get")]
-        public async Task<IEnumerable<PatologiaViewModel>> Get(int idItemVerificacaoServico)
+        [Route("GetByItemVerificacaoServico")]
+        [HttpGet]
+        public async Task<IEnumerable<PatologiaViewModel>> ObterDoItemVerificacaoServico(int idItemVerificacaoServico)
         {
             var patologias = await _patologiaService.ObterDoItemVerificacao(idItemVerificacaoServico);
             return Mapper.Map<IEnumerable<Patologia>, IEnumerable<PatologiaViewModel>>(patologias);

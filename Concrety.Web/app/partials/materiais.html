@@ -28,7 +28,7 @@
 
         <script type="text/x-kendo-template" id="editTemplate">
             <div ng-controller="materialUnidadeController"
-                ng-init="fvm=dataItem"
+                 ng-init="fvm=dataItem"
                  ng-if="dataItem">
 
                 <div class="k-edit-label" ng-hide="!fvm.isNew()">
@@ -52,13 +52,13 @@
                                ng-model="fvm.dataFicha"
                                is-open="fvm.dataFichaOpened"
                                ng-click="fvm.dataFichaOpened = true"
-                               class="input-md" /> 
+                               class="input-md" />
                     </div>
                     <div class="k-edit-label">
                         <label for="fornecedor">Fornecedor</label>
                     </div>
                     <div class="k-edit-field">
-                        <select kendo-drop-down-list required data-required-msg="Campo fornecedor deve ser preenchido"
+                        <select kendo-combo-box required data-required-msg="Campo fornecedor deve ser preenchido"
                                 name="fornecedor"
                                 k-options="dropDownFornecedoresOptions"
                                 ng-model="fvm.idFornecedor"
@@ -86,7 +86,7 @@
                         <label for="amostraValidacao">Amostra</label>
                     </div>
                     <div class="k-edit-field">
-                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required data-required-msg="Campo amostra deve ser preenchido"  ng-change="fvm.dirty=true" />
+                        <input type="text" name="amostraValidacao" ng-model="fvm.amostraValidacao" required data-required-msg="Campo amostra deve ser preenchido" ng-change="fvm.dirty=true" />
                     </div>
                     <div class="k-edit-label">
                         <label for="observacoes">Observações</label>
@@ -111,15 +111,14 @@
                         </div>
                     </span>
 
-                    <div class="k-edit-field">
-                        <p ng-bind-html="criterioAceite"></p>
+                    <div class="k-edit-label" style="width:750px;" ng-bind-html="criterioAceite">
                     </div>
 
                     <div data-ng-hide="mensagem == ''" class="alert alert-danger">
                         {{mensagem}}
                     </div>
+                </div>
             </div>
-</div>
         </script>
     </div>
 </div>

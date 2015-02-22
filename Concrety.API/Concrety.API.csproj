@@ -90,6 +90,7 @@
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\CondicoesClimaticasController.cs" />
     <Compile Include="Controllers\DiariosObraController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\MaterialUnidadeController.cs" />
     <Compile Include="Controllers\MateriaisController.cs" />
     <Compile Include="Controllers\AnexosController.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CondicaoClimaticaViewModel.cs" />
+    <Compile Include="ViewModels\EmailFeedbackViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoDiarioViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoMaterialViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoMaterialUnidadeViewModel.cs" />
