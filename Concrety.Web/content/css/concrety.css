@@ -138,6 +138,10 @@ padding-top:13px;
     position:relative!important;
 }
 
+#msg_alerta_ocorrencia{
+    display:inline-block;
+}
+
 
 /*botões date picker*/
 

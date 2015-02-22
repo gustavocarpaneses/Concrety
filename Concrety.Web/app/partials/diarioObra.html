@@ -21,6 +21,9 @@
                            ng-change="dataItem.dirty = true"
                            class="input-md" /> 
                 </div>
+                <div id="msg_alerta_ocorrencia" data-ng-hide="mensagem == ''" class="alert alert-danger">
+                    {{mensagem}}
+                </div>
                 <div class="k-edit-label">
                     <label for="houveTrabalho">Houve Trabalho?</label>
                 </div>
@@ -151,9 +154,7 @@
                 <div class="k-edit-field">
                     <input kendo-numeric-text-box name="totalDemitidos" ng-model="dataItem.totalDemitidos" options="optionsTotais" ng-change="dataItem.dirty = true" />
                 </div>
-                <div data-ng-hide="mensagem == ''" class="alert alert-danger">
-                    {{mensagem}}
-                </div>
+                
             </div>
         </script>
     </div>
