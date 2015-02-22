@@ -66,9 +66,6 @@
             <carousel>
                 <slide ng-repeat="item in ocorrencia.anexos" ng-if="!item.excluido">
                     <a href="{{item.anexo.urlPrimaria}}" data-lightbox="fotos"><img ng-src="{{item.anexo.urlPrimaria}}" style=" margin:auto;height:300px;"></a>
-
-                    <!--<div class="carousel-caption">
-                    </div>-->
                     <div class="btn_excluir_carousel">
                         <button class="btn btn-default" ng-click="excluirAnexo(item)">Excluir</button>
                     </div>
@@ -87,28 +84,6 @@
                    k-upload="uploadIniciado"
                    k-success="uploadConcluido"/>
         </div>
-        <!--<input class="input_foto_evidencia" type="file" id="file" name="file" multiple onchange="angular.element(this).scope().anexoSelecionado(this)" />
-
-        <table>
-            <thead>
-                <tr>
-                    <th class="th_foto_preview">Preview</th>
-                    <th class="th_foto_nome">Nome</th>
-                    <th class="th_foto_tamanho">Tamanho</th>
-                    <th class="th_foto_tipo">Tipo</th>
-                    <th class="th_foto_acao">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="anexo in ocorrencia.anexos" ng-hide="anexo.excluido">
-                    <td class="td_foto_preview"><a href="{{anexo.conteudoDataURL}}" target="_blank"><img ng-src="{{anexo.conteudoDataURL}}" height="100" /></a></td>
-                    <td class="td_foto_nome">{{anexo.nome}}</td>
-                    <td class="td_foto_tamanho">{{anexo.tamanhoFormatado}}</td>
-                    <td class="td_foto_tipo">{{anexo.tipo}}</td>
-                    <td class="td_foto_acao"><button class="btn btn-default" ng-click="excluirAnexo(anexo)">Excluir</button></td>
-                </tr>
-            </tbody>
-        </table>-->
     </div>
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
