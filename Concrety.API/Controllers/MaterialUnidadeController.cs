@@ -32,7 +32,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>> ObterDaUnidade(int idUnidade)
         {
-            var fvms = await _fvmUnidadeService.ObterDaUnidade(idUnidade);
+            var fvms = await _fvmUnidadeService.ObterDaUnidadeAsync(idUnidade);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterialUnidade>, IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>>(fvms);
         }
 
@@ -40,7 +40,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterNovosItens(int idFichaVerificacaoMaterial)
         {
-            var itens = await _fvmUnidadeService.CriarItens(idFichaVerificacaoMaterial);
+            var itens = await _fvmUnidadeService.CriarItensAsync(idFichaVerificacaoMaterial);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
@@ -48,7 +48,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterItens(int idFichaVerificacaoMaterialUnidade)
         {
-            var itens = await _fvmUnidadeService.ObterItens(idFichaVerificacaoMaterialUnidade);
+            var itens = await _fvmUnidadeService.ObterItensAsync(idFichaVerificacaoMaterialUnidade);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 

@@ -6,6 +6,6 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface IFichaVerificacaoMaterialService : IServiceBase<FichaVerificacaoMaterial>
     {
-        Task<IEnumerable<FichaVerificacaoMaterial>> ObterDoNivel(int idNivel);
+        Task<IEnumerable<FichaVerificacaoMaterial>> ObterDoNivelAsync(int idNivel);
     }
 }

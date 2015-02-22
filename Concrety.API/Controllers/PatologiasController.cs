@@ -26,7 +26,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<PatologiaViewModel>> ObterDoItemVerificacaoServico(int idItemVerificacaoServico)
         {
-            var patologias = await _patologiaService.ObterDoItemVerificacao(idItemVerificacaoServico);
+            var patologias = await _patologiaService.ObterDoItemVerificacaoAsync(idItemVerificacaoServico);
             return Mapper.Map<IEnumerable<Patologia>, IEnumerable<PatologiaViewModel>>(patologias);
         }
                 

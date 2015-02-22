@@ -30,7 +30,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ServicoViewModel>> ObterDaUnidade(int idUnidade, int idNivel)
         {
-            var servicos = await _servicoService.ObterDaUnidade(idUnidade, idNivel);
+            var servicos = await _servicoService.ObterDaUnidadeAsync(idUnidade, idNivel);
             return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(servicos);
         }
 

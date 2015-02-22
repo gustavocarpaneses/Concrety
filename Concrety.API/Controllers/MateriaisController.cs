@@ -30,7 +30,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<FichaVerificacaoMaterialViewModel>> ObterDoNivel(int idNivel)
         {
-            var fvms = await _fvmService.ObterDoNivel(idNivel);
+            var fvms = await _fvmService.ObterDoNivelAsync(idNivel);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterial>, IEnumerable<FichaVerificacaoMaterialViewModel>>(fvms);
         }
 

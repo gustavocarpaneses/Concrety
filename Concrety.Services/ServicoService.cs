@@ -23,7 +23,7 @@ namespace Concrety.Services
             _servicoUnidadeRepository = UnitOfWork.Repository<ServicoUnidade>();
         }
 
-        public async Task<IEnumerable<Servico>> ObterDaUnidade(int idUnidade, int idNivel)
+        public async Task<IEnumerable<Servico>> ObterDaUnidadeAsync(int idUnidade, int idNivel)
         {
             var servicos = await Task.Factory.StartNew(() => { return _repository.ObterDoNivel(idNivel); });
 

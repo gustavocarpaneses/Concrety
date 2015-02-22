@@ -6,6 +6,6 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface IServicoService : IServiceBase<Servico>
     {
-        Task<IEnumerable<Servico>> ObterDaUnidade(int idUnidade, int idNivel);
+        Task<IEnumerable<Servico>> ObterDaUnidadeAsync(int idUnidade, int idNivel);
     }
 }

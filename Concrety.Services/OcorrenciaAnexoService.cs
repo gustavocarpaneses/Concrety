@@ -22,7 +22,7 @@ namespace Concrety.Services
             _anexoService = anexoService;
         }
         
-        public async Task<EntityResultBase> RemoverAnexo(OcorrenciaAnexo ocorrenciaAnexo)
+        public new async Task<EntityResultBase> RemoverAsync(OcorrenciaAnexo ocorrenciaAnexo)
         {
             var resultado = await _anexoService.RemoverAsync(ocorrenciaAnexo.Anexo);
 

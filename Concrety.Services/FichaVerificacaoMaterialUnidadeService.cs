@@ -26,7 +26,7 @@ namespace Concrety.Services
             base.PreAtualizar = PreAtualizar;
         }
 
-        public async Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidade(int idUnidade)
+        public async Task<IEnumerable<FichaVerificacaoMaterialUnidade>> ObterDaUnidadeAsync(int idUnidade)
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDaUnidade(idUnidade); });
         }
@@ -41,7 +41,7 @@ namespace Concrety.Services
             return await base.CriarAsync(fvm);
         }
 
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItens(int idFichaVerificacaoMaterialUnidade)
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItensAsync(int idFichaVerificacaoMaterialUnidade)
         {
             return await Task.Factory.StartNew(() => 
             { 
@@ -49,7 +49,7 @@ namespace Concrety.Services
             });
         }
         
-        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> CriarItens(int idFichaVerificacaoMaterial)
+        public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> CriarItensAsync(int idFichaVerificacaoMaterial)
         {
             var itens = await Task.Factory.StartNew(() => { return _itemVerificacaoMaterialRepository.ObterDaFichaVerificacaoMaterial(idFichaVerificacaoMaterial); });
 
@@ -68,7 +68,7 @@ namespace Concrety.Services
 
         }
 
-        private void PreAtualizar(FichaVerificacaoMaterialUnidade fvm)
+        private new void PreAtualizar(FichaVerificacaoMaterialUnidade fvm)
         {
             new ItemVerificacaoMaterialUnidadeService(UnitOfWork).Atualizar(fvm);
         }

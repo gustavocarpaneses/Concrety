@@ -29,7 +29,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<ServicoUnidadeViewModel> ObterDaUnidadeServico(int idUnidade, int idServico)
         {
-            var servicoUnidade = await _servicoUnidadeService.Obter(idUnidade, idServico);
+            var servicoUnidade = await _servicoUnidadeService.ObterAsync(idUnidade, idServico);
             return Mapper.Map<ServicoUnidade, ServicoUnidadeViewModel>(servicoUnidade);
         }
 

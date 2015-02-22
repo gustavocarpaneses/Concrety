@@ -24,12 +24,12 @@ namespace Concrety.Services
             base.ValidarAsync = ValidarAsync;
         }
 
-        public async Task<IEnumerable<EmpreendimentoDiario>> ObterDoEmpreendimento(int idEmpreendimento)
+        public async Task<IEnumerable<EmpreendimentoDiario>> ObterDoEmpreendimentoAsync(int idEmpreendimento)
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDoEmpreendimento(idEmpreendimento); });
         }
         
-        private async Task<IEnumerable<string>> ValidarAsync(EmpreendimentoDiario empreendimentoDiario)
+        private new async Task<IEnumerable<string>> ValidarAsync(EmpreendimentoDiario empreendimentoDiario)
         {
             empreendimentoDiario.Data = empreendimentoDiario.Data.Date;
 

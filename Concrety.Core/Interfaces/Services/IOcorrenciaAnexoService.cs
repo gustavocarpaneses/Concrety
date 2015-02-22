@@ -7,6 +7,5 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface IOcorrenciaAnexoService : IServiceBase<OcorrenciaAnexo>
     {
-        Task<EntityResultBase> RemoverAnexo(OcorrenciaAnexo ocorrenciaAnexo);
     }
 }

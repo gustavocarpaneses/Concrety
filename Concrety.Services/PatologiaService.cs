@@ -19,7 +19,7 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<Patologia>();
         }
 
-        public async Task<IEnumerable<Patologia>> ObterDoItemVerificacao(int idItemVerificacaoServico)
+        public async Task<IEnumerable<Patologia>> ObterDoItemVerificacaoAsync(int idItemVerificacaoServico)
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDoItemVerificacao(idItemVerificacaoServico); });
         }

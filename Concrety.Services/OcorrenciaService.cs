@@ -38,13 +38,13 @@ namespace Concrety.Services
             base.PreCriar = PreCriar;
         }
         
-        private void PreCriar(Ocorrencia ocorrencia)
+        private new void PreCriar(Ocorrencia ocorrencia)
         {
             //remove anexos que foram excluídos antes da ocorrência ser salva
             ocorrencia.Anexos = ocorrencia.Anexos.Where(oa => !oa.Excluido).ToList();
         }
 
-        private void PreAtualizar(Ocorrencia ocorrencia)
+        private new void PreAtualizar(Ocorrencia ocorrencia)
         {
             foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
             {
@@ -55,7 +55,7 @@ namespace Concrety.Services
             }
         }
 
-        private async Task<IEnumerable<string>> ValidarAsync(Ocorrencia ocorrencia)
+        private new async Task<IEnumerable<string>> ValidarAsync(Ocorrencia ocorrencia)
         {
             ocorrencia.ItemVerificacao = null;
             ocorrencia.Patologia = null;
@@ -74,7 +74,7 @@ namespace Concrety.Services
             return null;
         }
         
-        public async Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidade(int idServicoUnidade)
+        public async Task<IEnumerable<Ocorrencia>> ObterDoServicoUnidadeAsync(int idServicoUnidade)
         {
             return await Task.Factory.StartNew(() =>
             {
@@ -86,7 +86,7 @@ namespace Concrety.Services
         }
 
 
-        public async Task<IEnumerable<Ocorrencia>> ObterPendentes(int idMacroServico)
+        public async Task<IEnumerable<Ocorrencia>> ObterPendentesAsync(int idMacroServico)
         {
             return await Task.Factory.StartNew(() =>
             {

@@ -28,7 +28,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<EmpreendimentoDiarioViewModel>> ObterDoEmpreendimento(int idEmpreendimento)
         {
-            var diarios = await _empreendimentoDiarioService.ObterDoEmpreendimento(idEmpreendimento);
+            var diarios = await _empreendimentoDiarioService.ObterDoEmpreendimentoAsync(idEmpreendimento);
             return Mapper.Map<IEnumerable<EmpreendimentoDiario>, IEnumerable<EmpreendimentoDiarioViewModel>>(diarios);
         }
 

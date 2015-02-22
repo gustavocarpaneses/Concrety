@@ -21,7 +21,7 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<FichaVerificacaoMaterial>();
         }
 
-        public async Task<IEnumerable<FichaVerificacaoMaterial>> ObterDoNivel(int idNivel)
+        public async Task<IEnumerable<FichaVerificacaoMaterial>> ObterDoNivelAsync(int idNivel)
         {
             return await Task.Factory.StartNew(() => { return _repository.ObterDoNivel(idNivel); });
         }

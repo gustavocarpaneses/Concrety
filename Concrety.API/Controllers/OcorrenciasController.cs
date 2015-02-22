@@ -95,7 +95,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<OcorrenciaViewModel>> ObterDoServicoUnidade(int idServicoUnidade)
         {
-            var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidade(idServicoUnidade);
+            var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidadeAsync(idServicoUnidade);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
 
@@ -103,7 +103,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<OcorrenciaViewModel>> ObterPendentes(int idMacroServico)
         {
-            var ocorrencias = await _ocorrenciaService.ObterPendentes(idMacroServico);
+            var ocorrencias = await _ocorrenciaService.ObterPendentesAsync(idMacroServico);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
         
