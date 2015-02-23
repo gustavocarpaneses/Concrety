@@ -59,6 +59,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AnexoBlobRepository.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\Concrety.Core\Concrety.Core.csproj">
       <Project>{8ecdf78e-2747-41d4-a681-f4003acb8fac}</Project>
       <Name>Concrety.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Concrety.Data.API\Concrety.Data.API.csproj">
+      <Project>{9e542330-37ed-413a-ae1e-290f4526a3a8}</Project>
+      <Name>Concrety.Data.API</Name>
     </ProjectReference>
     <ProjectReference Include="..\Concrety.Data.Azure\Concrety.Data.Azure.csproj">
       <Project>{cea7b452-fc66-4fa0-8e94-15a72bd18495}</Project>

@@ -6,8 +6,8 @@
     <div class="k-edit-label" style="text-align:left!important;margin-left:0!important;width:700px;">
         Queremos melhorar a sua experiência com o sistema! Mande sua opinião ou sugestão de melhoria!
     </div>
-    <div class="k-edit-field" style="float:none!important;">
-        <textarea kendo-editor style="width:600px;" ng-model="feedback.mensagem" k-encoded="false"></textarea>
+    <div class="k-edit-field" style="float:none!important;width:100%;">
+        <textarea kendo-editor ng-model="feedback.mensagem" k-encoded="false"></textarea>
     </div>
     
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
@@ -15,6 +15,6 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button id="btn_salvar" class="btn btn-primary" ng-click="salvar()">Salvar</button>
+    <button id="btn_salvar" class="btn btn-primary" ng-click="enviar()">Enviar</button>
     <button id="btn_fechar" class="btn" ng-click="fechar()">Fechar</button>
 </div>

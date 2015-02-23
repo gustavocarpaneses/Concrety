@@ -30,6 +30,8 @@ namespace Concrety.API.Controllers
 
             var emailFeedback = Mapper.Map<EmailFeedbackViewModel, EmailFeedback>(emailFeedbackViewModel);
 
+            emailFeedback.IdUsuario = User.Identity.GetUserId();
+
             var resultado = await _emailService.EnviarEmailFeedback(emailFeedback);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);

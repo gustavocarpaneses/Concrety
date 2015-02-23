@@ -1,7 +1,9 @@
 ﻿'use strict';
-app.controller('modalFeedbackController', function ($scope, $timeout, $modal, $modalInstance) {
+app.controller('modalFeedbackController', function ($scope, $timeout, $modalInstance, emailService) {
 
-    $scope.feedback = [];
+    $scope.feedback = {
+        mensagem: ''
+    };
 
     $scope.salvoComSucesso = false;
     $scope.mensagem = "";
@@ -10,7 +12,8 @@ app.controller('modalFeedbackController', function ($scope, $timeout, $modal, $m
         $modalInstance.dismiss();
     };
 
-    $scope.salvar = function () {
+    $scope.enviar = function () {
+        emailService.enviarFeedback($scope.feedback).then(salvoSucesso, erroSalvar);
     };
 
     function salvoSucesso(response) {

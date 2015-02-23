@@ -10,6 +10,7 @@ namespace Concrety.Bootstrapper
         {
             builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>)).InstancePerRequest();
             builder.RegisterType(typeof(AnexoBlobRepository)).As(typeof(IAnexoBlobRepository)).InstancePerRequest();
+            builder.RegisterType(typeof(EmailRepository)).As(typeof(IEmailRepository)).InstancePerRequest();
         }
     }
 }

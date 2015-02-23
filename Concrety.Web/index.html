@@ -76,7 +76,7 @@
                     <li data-ng-hide="authentication.isAuth">
                         <a href="#/login">Login</a>
                     </li>
-                    <li>
+                    <li data-ng-hide="!authentication.isAuth">
                         <a href="" ng-click="abrirModalFeedback()" title="Envie sua dúvida ou sugestão">
                             <i class="glyphicon glyphicon-envelope"></i>
                         </a>
@@ -123,6 +123,7 @@
     <script src="app/services/fornecedoresService.js?v=1"></script>
     <script src="app/services/ocorrenciasService.js?v=1"></script>
     <script src="app/services/patologiasService.js?v=1"></script>
+    <script src="app/services/emailService.js?v=1"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js?v=1"></script>
     <script src="app/controllers/homeController.js?v=2"></script>
