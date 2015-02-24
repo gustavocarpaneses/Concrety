@@ -6,6 +6,12 @@
         </div>
         <div kendo-grid k-options="diariosObraGridOptions"
              k-ng-delay="diariosObraGridOptions"></div>
+        <script type="text/x-kendo-template" id="toolbarTemplate">
+            <a class='k-button k-button-icontext k-grid-add' href='#'>Inserir</a>
+            <a href="" ng-click="gerarRelatorio()" title="Gerar Relatório">
+                <i class="glyphicon glyphicon-print"></i>
+            </a>
+        </script>
         <script type="text/x-kendo-template" id="editTemplate">
             <div ng-if="dataItem">
                 <div class="k-edit-label">
@@ -19,7 +25,7 @@
                            is-open="dataItem.dataDiarioOpened"
                            ng-click="dataItem.dataDiarioOpened = true"
                            ng-change="dataItem.dirty = true"
-                           class="input-md" /> 
+                           class="input-md" />
                 </div>
                 <div class="k-edit-label">
                     <label for="houveTrabalho">Houve Trabalho?</label>

@@ -126,7 +126,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
             filterable: {
                 extra: false
             },
-            toolbar: ["create"],
+            toolbar: kendo.template(angular.element("#toolbarTemplate").html()),
             columns: columns,
             editable: {
                 mode: "popup",
@@ -189,5 +189,13 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
         return deferred.promise;
 
     }
+
+    $scope.gerarRelatorio = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/modalRelatorioDiarioObra.html?v=' + new Date(),
+            controller: 'modalFeedbackController',
+            size: 'lg'
+        });
+    };
 
 });
