@@ -37,7 +37,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'concretySetti
 
         localStorageService.remove('authorizationData');
         localStorageService.remove('empreendimentoAtual');
-
+        localStorageService.remove('empreendimentosUsuario');
+        
         _authentication.isAuth = false;
         _authentication.userName = "";
 
@@ -53,10 +54,21 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'concretySetti
 
     }
 
+    var _saveRegistration = function (registration) {
+
+        _logOut();
+
+        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+            return response;
+        });
+
+    };
+
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
+    authServiceFactory.saveRegistration = _saveRegistration;
 
     return authServiceFactory;
 }]);

@@ -16,8 +16,11 @@ app.controller('loginController', function ($rootScope, $scope, $location, authS
 
             accountService.fillEmpreendimentosUsuario().then(function () {
                 $rootScope.$broadcast('loginEvent', []);
-            });
-            $location.path('/home');
+                $location.path('/home');
+            }, function (err) {
+                $scope.message = err;
+                authService.logOut();
+            });            
 
         }, function (err) {
              $scope.message = err.error_description;

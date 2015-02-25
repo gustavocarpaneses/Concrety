@@ -9,7 +9,12 @@ app.controller('indexController', function ($scope, $location, $modal, authServi
     $scope.alterarEmpreendimento = function (empreendimentoAtual) {
         accountService.alterarEmpreendimentoAtual(empreendimentoAtual);
         recarregarEmpreendimentoAtual();
-        $location.path('/home');
+        if ($location.path() === '/home') {
+            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.read();
+        }
+        else {
+            $location.path('/home');
+        }
     }
 
     $scope.authentication = authService.authentication;

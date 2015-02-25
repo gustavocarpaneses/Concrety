@@ -23,16 +23,22 @@ app.factory('accountService', ['$http', '$q', 'localStorageService', 'concretySe
 
         $http.get(serviceBase + 'api/account/getEmpreendimentos').then(function (response) {
 
-            localStorageService.set('empreendimentoAtual', response.data[0]);
-            fillEmpreendimentoAtual(response.data[0]);
+            if (response.data.length) {
 
-            localStorageService.set('macroServicoAtual', response.data[0].macrosServicos[0]);
-            fillMacroServicoAtual(response.data[0].macrosServicos[0]);
+                localStorageService.set('empreendimentoAtual', response.data[0]);
+                fillEmpreendimentoAtual(response.data[0]);
 
-            localStorageService.set('empreendimentosUsuario', response.data);
-            _empreendimentosUsuario = response.data;
+                localStorageService.set('macroServicoAtual', response.data[0].macrosServicos[0]);
+                fillMacroServicoAtual(response.data[0].macrosServicos[0]);
 
-            deferred.resolve();
+                localStorageService.set('empreendimentosUsuario', response.data);
+                _empreendimentosUsuario = response.data;
+
+                deferred.resolve();
+            }
+            else {
+                deferred.reject("Este usuário não possui nenhuma obra associada");
+            }
 
         }, function (err, status) {
             deferred.reject(err);

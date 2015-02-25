@@ -27,6 +27,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/partials/materiais.html"
     });
 
+    $routeProvider.when("/signup", {
+        controller: "signupController",
+        templateUrl: "/app/partials/signup.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
