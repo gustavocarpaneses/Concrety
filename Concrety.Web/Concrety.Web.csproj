@@ -47,16 +47,19 @@
     <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
+    <Content Include="app\controllers\relatorios\diarioObraController.js" />
     <Content Include="app\controllers\servicoUnidadeController.js" />
     <Content Include="app\controllers\servicosController.js" />
     <Content Include="app\controllers\indexController.js" />
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\controllers\signupController.js" />
+    <Content Include="app\directives\printDiv.js" />
     <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\partials\modalFeedback.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
+    <Content Include="app\partials\relatorios\diarioObra.html" />
     <Content Include="app\partials\servicoUnidade.html" />
     <Content Include="app\partials\servicos.html" />
     <Content Include="app\partials\signup.html" />
@@ -147,7 +150,6 @@
     <None Include="Properties\PublishProfiles\Dropbox.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\directives\" />
     <Folder Include="app\filters\" />
   </ItemGroup>
   <PropertyGroup>

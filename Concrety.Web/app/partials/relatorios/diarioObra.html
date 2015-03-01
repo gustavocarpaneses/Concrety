@@ -1,0 +1,46 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
+    <h3 class="modal-title">Relatório - Diários de Obra</h3>
+</div>
+<div class="modal-body">
+    <div class="page" ng-repeat="diarioObra in diariosObra">
+        <h1 style="text-align:center;">
+            {{nomeEmpreendimento}}
+        </h1>
+
+        <p></p>
+
+        <p>
+            Data: {{diarioObra.dataDiario | date:'fullDate'}}
+        </p>
+        <span ng-if="diarioObra.houveTrabalho">
+            <p ng-repeat="condicaoClimatica in condicoesClimaticas | filter:{ value: diarioObra.idCondicaoClimatica }">
+                Condição Climática: {{condicaoClimatica.text}}
+            </p>
+            <p>
+                Temperaturas: Mínima {{diarioObra.temperaturaMinima}}ºC / Máxima: {{diarioObra.temperaturaMaxima}}ºC
+            </p>
+            <p>
+                Horas Trabalhadas: {{diarioObra.horasTrabalhadas}}
+            </p>
+            <p>
+                Horas Paradas: {{diarioObra.horasParadas}}
+            </p>
+            <h4>
+                Serviços Executados
+            </h4>
+            <p ng-bind-html="diarioObra.servicosExecutados">
+            </p>
+        </span>
+
+        <p ng-if="!diarioObra.houveTrabalho">
+            Não houve trabalho
+        </p>
+
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button id="btn_salvar" class="btn btn-primary" print-div=".modal-body">Imprimir</button>
+    <button id="btn_fechar" class="btn" ng-click="fechar()">Fechar</button>
+</div>

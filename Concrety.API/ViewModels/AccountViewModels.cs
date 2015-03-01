@@ -69,9 +69,9 @@ namespace Concrety.API.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "A senha tem que ter ao menos {2} caracteres.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0} tem que ter ao menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Senha")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

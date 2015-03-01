@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('diarioObraController', function ($scope, $q, $http, diariosObraService, condicoesClimaticasService, accountService) {
+app.controller('diarioObraController', function ($scope, $q, $http, $modal, diariosObraService, condicoesClimaticasService, accountService) {
 
     $scope.mensagem = "";
     $scope.empreendimentoAtual = accountService.empreendimentoAtual;
@@ -192,9 +192,21 @@ app.controller('diarioObraController', function ($scope, $q, $http, diariosObraS
 
     $scope.gerarRelatorio = function () {
         var modalInstance = $modal.open({
-            templateUrl: '/app/partials/modalRelatorioDiarioObra.html?v=' + new Date(),
-            controller: 'modalFeedbackController',
-            size: 'lg'
+            templateUrl: '/app/partials/relatorios/diarioObra.html?v=' + new Date(),
+            controller: 'relatoriosDiarioObraController',
+            size: 'lg',
+            resolve: {
+                diariosObra: function () {
+                    var dataSource = $scope.diariosObraGrid.dataSource;
+                    var filters = dataSource.filter();
+                    var allData = dataSource.data();
+                    var query = new kendo.data.Query(allData);
+                    return query.filter(filters).data;
+                },
+                condicoesClimaticas: function () {
+                    return $scope.condicoesClimaticas;
+                }
+            }
         });
     };
 
