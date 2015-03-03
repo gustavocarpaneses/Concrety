@@ -31,6 +31,54 @@
             </h4>
             <p ng-bind-html="diarioObra.servicosExecutados">
             </p>
+            <h4>
+                Mão de Obra
+            </h4>
+            <p>
+                Montadores: {{diarioObra.totalMontadores}}
+            </p>
+            <p>
+                Armadores: {{diarioObra.totalArmadores}}
+            </p>            
+            <p>
+                Carpinteiros: {{diarioObra.totalCarpinteiros}}
+            </p>            
+            <p>
+                Eletricistas: {{diarioObra.totalEletricistas}}
+            </p>            
+            <p>
+                Encanadores: {{diarioObra.totalEncanadores}}
+            </p>
+            <p>
+                Encarregados: {{diarioObra.totalEncarregados}}
+            </p>
+            <p>
+                Mestres: {{diarioObra.totalMestres}}
+            </p>
+            <p>
+                Pedreiros: {{diarioObra.totalPedreiros}}
+            </p>
+            <p>
+                Ajudantes: {{diarioObra.totalAjudantes}}
+            </p>
+            <h4>
+                Totais
+            </h4>
+            <p>
+                Faltas: {{diarioObra.totalFaltas}}
+            </p>
+            <p>
+                Acidentados: {{diarioObra.totalAcidentados}}
+            </p>
+            <p>
+                Novos Funcionários: {{diarioObra.totalNovosFuncionarios}}
+            </p>
+            <p>
+                Doentes: {{diarioObra.totalDoentes}}
+            </p>
+            <p>
+                Demitidos: {{diarioObra.totalDemitidos}}
+            </p>
         </span>
 
         <p ng-if="!diarioObra.houveTrabalho">
