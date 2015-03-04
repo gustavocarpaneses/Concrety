@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('materiaisController', function ($scope, $routeParams, $sce, unidadesService, niveisService, materiaisService, fornecedoresService) {
+app.controller('materiaisController', function ($scope, $routeParams, $sce, $modal, unidadesService, niveisService, materiaisService, fornecedoresService) {
 
     var idNivel = $routeParams.id;
 
@@ -27,6 +27,23 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
 
         CarregarMateriais();
     });
+
+    $scope.gerarRelatorio = function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/app/partials/relatorios/materiais.html?v=' + new Date(),
+            controller: 'relatoriosMateriaisController',
+            size: 'lg',
+            resolve: {
+                fvms: function () {
+                    var dataSource = angular.element("#materiaisGrid").data("kendoGrid").dataSource;
+                    var filters = dataSource.filter();
+                    var allData = dataSource.data();
+                    var query = new kendo.data.Query(allData);
+                    return query.filter(filters).data;
+                }
+            }
+        });
+    };
 
     function CarregarMateriais() {
         var columns = [
@@ -111,7 +128,7 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, unid
             filterable: {
                 extra: false
             },
-            toolbar: ["create"],
+            toolbar: kendo.template(angular.element("#toolbarTemplate").html()),
             columns: columns,
             editable: {
                 mode: "popup",

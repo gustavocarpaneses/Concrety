@@ -47,6 +47,7 @@
     <Content Include="app\controllers\ocorrenciasController.js" />
     <Content Include="app\controllers\modalNormasController.js" />
     <Content Include="app\controllers\materiaisController.js" />
+    <Content Include="app\controllers\relatorios\materiaisController.js" />
     <Content Include="app\controllers\relatorios\diarioObraController.js" />
     <Content Include="app\controllers\servicoUnidadeController.js" />
     <Content Include="app\controllers\servicosController.js" />
@@ -59,6 +60,7 @@
     <Content Include="app\partials\modalOcorrencia.html" />
     <Content Include="app\partials\modalNorma.html" />
     <Content Include="app\partials\materiais.html" />
+    <Content Include="app\partials\relatorios\materiais.html" />
     <Content Include="app\partials\relatorios\diarioObra.html" />
     <Content Include="app\partials\servicoUnidade.html" />
     <Content Include="app\partials\servicos.html" />

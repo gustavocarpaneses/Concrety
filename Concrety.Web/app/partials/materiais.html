@@ -22,7 +22,14 @@
             </ul>
         </div>
 
-        <div kendo-grid k-options="materiaisGridOptions"
+        <script type="text/x-kendo-template" id="toolbarTemplate">
+            <a class='k-button k-button-icontext k-grid-add' href=''>Inserir</a>
+            <a href="" ng-click="gerarRelatorio()" title="Gerar Relatório">
+                <i class="glyphicon glyphicon-print"></i>
+            </a>
+        </script>
+
+        <div id="materiaisGrid" kendo-grid k-options="materiaisGridOptions"
              k-ng-delay="materiaisGridOptions"
              ng-if="unidadeSelecionada"></div>
 
