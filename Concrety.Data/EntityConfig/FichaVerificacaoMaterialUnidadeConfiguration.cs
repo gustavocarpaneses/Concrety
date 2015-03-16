@@ -16,6 +16,9 @@ namespace Concrety.Data.EntityConfig
             Property(f => f.NumeroPedido).IsRequired();
             Property(f => f.QuantidadeTotal).IsRequired();
 
+            Property(f => f.Observacoes).HasColumnType("text");
+            Property(f => f.Observacoes).IsMaxLength();
+
             HasRequired(f => f.Unidade)
                 .WithMany(u => u.FichasVerificacaoMaterial)
                 .HasForeignKey(f => f.IdUnidade);

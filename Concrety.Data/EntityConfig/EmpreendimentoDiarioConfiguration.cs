@@ -10,8 +10,9 @@ namespace Concrety.Data.EntityConfig
             ToTable("EmpreendimentoDiarios");
 
             Property(d => d.Data).IsRequired();
-
+            
             Property(d => d.ServicosExecutados).HasColumnType("text");
+            Property(d => d.ServicosExecutados).IsMaxLength();
 
             HasRequired(d => d.Empreendimento)
                 .WithMany(e => e.Diarios)                

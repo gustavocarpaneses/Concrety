@@ -12,6 +12,7 @@ namespace Concrety.Data.EntityConfig
             Property(s => s.Nome).IsRequired();
             Property(s => s.Descricao).IsRequired();
             Property(s => s.Norma).IsRequired().HasColumnType("text");
+            Property(s => s.Norma).IsMaxLength();
             Ignore(s => s.Atual);
             Ignore(s => s.Desabilitado);
 

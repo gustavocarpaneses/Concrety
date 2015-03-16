@@ -12,6 +12,9 @@ namespace Concrety.Data.EntityConfig
             Property(o => o.DataAbertura).IsRequired();
             Property(o => o.Status).IsRequired();
 
+            Property(o => o.Descricao).HasColumnType("text");
+            Property(o => o.Descricao).IsMaxLength();
+
             HasRequired(o => o.ItemVerificacao)
                 .WithMany(i => i.Ocorrencias)
                 .HasForeignKey(o => o.IdItemVerificacaoUnidade);
