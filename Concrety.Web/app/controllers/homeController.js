@@ -58,11 +58,6 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
                     format: "{0:dd/MM/yyyy}"
                 },
                 {
-                    field: "dataConclusao",
-                    title: "Data Conclusão",
-                    format: "{0:dd/MM/yyyy}"
-                },
-                {
                     field: "nomePatologia",
                     title: "Patologia"
                 }];
@@ -75,7 +70,6 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
                 nomeFichaVerificacaoServico: { type: "string" },
                 nomeItemVerificacaoServico: { type: "string" },
                 dataAbertura: { type: "date" },
-                dataConclusao: { type: "date" },
                 nomePatologia: { type: "string" }
             }
         });

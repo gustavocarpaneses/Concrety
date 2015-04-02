@@ -100,12 +100,15 @@
     <Content Include="content\css\concrety.css" />
     <Content Include="content\css\Default\close.png" />
     <Content Include="content\css\Default\editor.png" />
+    <Content Include="content\css\Default\grafico1_teste.png" />
+    <Content Include="content\css\Default\grafico2_teste.png" />
     <Content Include="content\css\Default\imagebrowser.png" />
     <Content Include="content\css\Default\indeterminate.gif" />
     <Content Include="content\css\Default\loading-image.gif" />
     <Content Include="content\css\Default\loading.gif" />
     <Content Include="content\css\Default\loading_2x.gif" />
     <Content Include="content\css\Default\logo_concrety.png" />
+    <Content Include="content\css\Default\LOGO_EXEMPLO.png" />
     <Content Include="content\css\Default\markers.png" />
     <Content Include="content\css\Default\markers_2x.png" />
     <Content Include="content\css\Default\next.png" />

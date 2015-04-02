@@ -1,9 +1,24 @@
 ﻿
 
 /*tela de login*/
-.login_lado_esq{
-max-width:500px;
+.login_concrety {
+max-width: 700px;
 margin: 0 auto;
+}
+
+.logo_concrety_login
+{
+position:relative;
+float:left;
+width:60%;
+}
+
+.login_form_direito
+{
+position:relative;
+float:right;
+width:40%;
+margin-top:-20px;
 }
 
 .alert-danger{
@@ -13,6 +28,13 @@ margin: 0 auto;
     font-weight:bolder;
 
 }
+
+
+/*Home*/
+.img_teste{
+    max-width:400px;
+}
+
 
 .logo_concrety{
 float:left;
@@ -44,6 +66,16 @@ padding-top:13px;
     padding-top:5px;
 }
 
+.pesquisa ul{
+    list-style-type:none;
+}
+
+li.ng-isolate-scope{
+    border-color:#0099CC;
+    border-width:1px;
+    border-style:solid
+}
+
 .pesquisa h4{
     font-weight:bold;
 }
@@ -56,13 +88,11 @@ padding-top:13px;
     margin-left:0px!important;
 }
 
-#btn_norma{
-    left:5px;
-}
-
 .detalhes_servicos{
     padding-top:5px;
     padding-bottom:3px;
+    font-weight:bold;
+    padding-left:5px;
 }
 
 #salvar_servico{
@@ -144,6 +174,11 @@ padding-top:13px;
     text-align:center;
 }
 
+.btn_impressao_diario_obra{
+    float:right;
+    padding-right:20px;
+    padding-top:8px
+}
 
 /*página feedback*/
 #body_msg_feedback{
