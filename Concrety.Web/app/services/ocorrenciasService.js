@@ -22,6 +22,12 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
         });
     };
 
+    var _delete = function (ocorrencia) {
+        return $http.delete(serviceBase + 'api/ocorrencias?id=' + ocorrencia.id).then(function (response) {
+            return response;
+        });
+    };
+
     var _obterDoServicoUnidade = function (idServicoUnidade) {
         return $http.get(serviceBase + 'api/ocorrencias/getByServicoUnidade', {
             params: {
@@ -51,6 +57,7 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;
     ocorrenciasServiceFactory.create = _create;
     ocorrenciasServiceFactory.update = _update;
+    ocorrenciasServiceFactory.delete = _delete;
     ocorrenciasServiceFactory.obterDoServicoUnidade = _obterDoServicoUnidade;
     ocorrenciasServiceFactory.obterPendentes = _obterPendentes;
     ocorrenciasServiceFactory.removerAnexo = _removerAnexo;

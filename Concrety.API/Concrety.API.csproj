@@ -109,6 +109,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CondicaoClimaticaViewModel.cs" />
     <Compile Include="ViewModels\EmailFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\EmpreendimentoDiarioPeriodoViewModel.cs" />
+    <Compile Include="ViewModels\EmpreendimentoPeriodoViewModel.cs" />
     <Compile Include="ViewModels\EmpreendimentoDiarioViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoMaterialViewModel.cs" />
     <Compile Include="ViewModels\FichaVerificacaoMaterialUnidadeViewModel.cs" />

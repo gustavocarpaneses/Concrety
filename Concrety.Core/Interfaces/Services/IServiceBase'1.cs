@@ -13,7 +13,10 @@ namespace Concrety.Core.Interfaces.Services
         
         EntityResultBase Atualizar(TEntity obj);
         Task<EntityResultBase> AtualizarAsync(TEntity obj);
-        
+
+        EntityResultBase Remover(int id);
+        Task<EntityResultBase> RemoverAsync(int id);
+
         EntityResultBase Remover(TEntity obj);
         Task<EntityResultBase> RemoverAsync(TEntity obj);
 

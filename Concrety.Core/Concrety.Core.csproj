@@ -32,6 +32,8 @@
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
     <Compile Include="Entities\EmailFeedback.cs" />
+    <Compile Include="Entities\EmpreendimentoPeriodo.cs" />
+    <Compile Include="Entities\EmpreendimentoDiarioPeriodo.cs" />
     <Compile Include="Entities\OcorrenciaAnexo.cs" />
     <Compile Include="Entities\Results\EntityResultBase.cs" />
     <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />

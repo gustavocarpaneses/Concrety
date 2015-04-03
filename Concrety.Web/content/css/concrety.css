@@ -264,3 +264,16 @@ li.ng-isolate-scope{
 .carousel-indicators{
     bottom:30px!important;
 }
+
+/* Botões do Grid para ficarem da largura do ícone */
+.k-grid-edit{
+    min-width:0px !important;
+}
+
+.k-grid-view{
+    min-width:0px !important;
+}
+
+.k-grid-delete{
+    min-width:0px !important;
+}

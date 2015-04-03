@@ -28,15 +28,36 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
         });
     }
 
+    function excluirOcorrencia(e) {
+        e.preventDefault();
+
+        if (confirm("Deseja realmente excluir esse registro?")) {
+            var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
+            ocorrenciasService.delete(ocorrencia);
+            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.remove(ocorrencia);
+        }
+    }
+
     function configurarGridOcorrencias() {
 
 
         var columns = [
                  {
                 command: [{
-                    text: "Editar",
-                    //template: '<a class="k-button k-button-icontext k-grid-edit"><span class="k-icon k-edit"></span>Editar</a>',
+                    name: "edit",
+                    iconClass: "glyphicon glyphicon-pencil",
+                    text: "",
                     click: editarOcorrencia
+                }, {
+                    name: "view",
+                    iconClass: "glyphicon glyphicon-search",
+                    text: "",
+                    click: editarOcorrencia
+                }, {
+                    name: "delete",
+                    iconClass: "glyphicon glyphicon-trash",
+                    text: "",
+                    click: excluirOcorrencia
                 }],
                 title: "Ações"
                 },

@@ -134,6 +134,18 @@ namespace Concrety.Services.Base
             return new EntityResultBase(null, true);   
         }
 
+        public EntityResultBase Remover(int id)
+        {
+            var obj = ObterPeloId(id);
+            return Remover(obj);
+        }
+
+        public async Task<EntityResultBase> RemoverAsync(int id)
+        {
+            var obj = await ObterPeloIdAsync(id);
+            return await RemoverAsync(obj);
+        }
+
         public EntityResultBase Remover(TEntity obj)
         {
             _repository.Remover(obj);

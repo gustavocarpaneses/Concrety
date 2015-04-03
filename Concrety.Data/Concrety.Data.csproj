@@ -36,6 +36,8 @@
     <Compile Include="EntityConfig\AnexoConfiguration.cs" />
     <Compile Include="EntityConfig\CondicaoClimaticaConfiguration.cs" />
     <Compile Include="EntityConfig\EFConfig.cs" />
+    <Compile Include="EntityConfig\EmpreendimentoDiarioPeriodoConfiguration.cs" />
+    <Compile Include="EntityConfig\EmpreendimentoPeriodoConfiguration.cs" />
     <Compile Include="EntityConfig\FichaVerificacaoMaterialUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ItemVerificacaoMaterialConfiguration.cs" />
     <Compile Include="EntityConfig\ItemVerificacaoMaterialUnidadeConfiguration.cs" />

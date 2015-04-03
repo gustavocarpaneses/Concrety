@@ -22,7 +22,9 @@ namespace Concrety.API.AutoMapper
                 (viewModel, model) =>
                 {
                     model.Data = viewModel.DataDiario;
-                }); 
+                });
+            Mapper.CreateMap<EmpreendimentoDiarioPeriodoViewModel, EmpreendimentoDiarioPeriodo>();
+            Mapper.CreateMap<EmpreendimentoPeriodoViewModel, EmpreendimentoPeriodo>();
             Mapper.CreateMap<MacroServicoViewModel, MacroServico>();
             Mapper.CreateMap<NivelViewModel, Nivel>();
             Mapper.CreateMap<UnidadeViewModel, Unidade>();

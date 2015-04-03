@@ -91,6 +91,22 @@ namespace Concrety.API.Controllers
             return Ok();
         }
 
+        [Route("")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Excluir(int id)
+        {
+            var resultado = await _ocorrenciaService.RemoverAsync(id);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
         [Route("GetByServicoUnidade")]
         [HttpGet]
         public async Task<IEnumerable<OcorrenciaViewModel>> ObterDoServicoUnidade(int idServicoUnidade)

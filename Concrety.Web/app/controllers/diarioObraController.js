@@ -45,44 +45,44 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     field: "dataDiario",
                     title: "Data",
                     format: "{0:dd/MM/yyyy}"
-                },
-                {
-                    field: "houveTrabalho",
-                    title: "Houve Trabalho?",
-                    template: '<input type="checkbox" #= houveTrabalho ? "checked=checked" : "" # disabled="disabled" ></input>'
-                },
-                {
-                    field: "temperaturaMinima",
-                    title: "Temp. Mínima"
-                },
-                {
-                    field: "temperaturaMaxima",
-                    title: "Temp. Máxima"
-                },
-                {
-                    field: "idCondicaoClimatica",
-                    title: "Condição Climática",
-                    values: $scope.condicoesClimaticas
-                },
-                {
-                    field: "efetivoTotal",
-                    title: "Efetivo Total",
-                    template: "#= efetivoTotal() #"
+                //},
+                //{
+                //    field: "houveTrabalho",
+                //    title: "Houve Trabalho?",
+                //    template: '<input type="checkbox" #= houveTrabalho ? "checked=checked" : "" # disabled="disabled" ></input>'
+                //},
+                //{
+                //    field: "temperaturaMinima",
+                //    title: "Temp. Mínima"
+                //},
+                //{
+                //    field: "temperaturaMaxima",
+                //    title: "Temp. Máxima"
+                //},
+                //{
+                //    field: "idCondicaoClimatica",
+                //    title: "Condição Climática",
+                //    values: $scope.condicoesClimaticas
+                //},
+                //{
+                //    field: "efetivoTotal",
+                //    title: "Efetivo Total",
+                //    template: "#= efetivoTotal() #"
                 }];
 
         var model = kendo.data.Model.define({
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                dataDiario: { type: "date", defaultValue: new Date() },
-                houveTrabalho: { type: "boolean", defaultValue: true },
-                temperaturaMinima: { type: "number" },
-                temperaturaMaxima: { type: "number" },
-                idCondicaoClimatica: { type: "number" }
-            },
-            efetivoTotal: function () {
-                return this.get("totalMontadores") + this.get("totalArmadores") + this.get("totalCarpinteiros") + this.get("totalEletricistas")
-                + this.get("totalEncanadores") + this.get("totalEncarregados") + this.get("totalMestres") + this.get("totalAjudantes") + this.get("totalPedreiros");
+                dataDiario: { type: "date", defaultValue: new Date() }
+                //houveTrabalho: { type: "boolean", defaultValue: true },
+                //temperaturaMinima: { type: "number" },
+                //temperaturaMaxima: { type: "number" },
+                //idCondicaoClimatica: { type: "number" }
+            //},
+            //efetivoTotal: function () {
+            //    return this.get("totalMontadores") + this.get("totalArmadores") + this.get("totalCarpinteiros") + this.get("totalEletricistas")
+            //    + this.get("totalEncanadores") + this.get("totalEncarregados") + this.get("totalMestres") + this.get("totalAjudantes") + this.get("totalPedreiros");
             }
         });
 

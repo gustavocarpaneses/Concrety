@@ -25,6 +25,8 @@ namespace Concrety.Data.EntityConfig
             modelBuilder.Configurations.Add(new CondicaoClimaticaConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoConfiguration());
             modelBuilder.Configurations.Add(new EmpreendimentoDiarioConfiguration());
+            modelBuilder.Configurations.Add(new EmpreendimentoDiarioPeriodoConfiguration());
+            modelBuilder.Configurations.Add(new EmpreendimentoPeriodoConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoMaterialConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoMaterialUnidadeConfiguration());
             modelBuilder.Configurations.Add(new FichaVerificacaoServicoConfiguration());
