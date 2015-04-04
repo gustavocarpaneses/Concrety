@@ -17,7 +17,7 @@ namespace Concrety.Data.EntityConfig
                 .WithMany()
                 .HasForeignKey(d => d.IdEmpreendimentoPeriodo);
 
-            HasRequired(d => d.CondicaoClimatica)
+            HasOptional(d => d.CondicaoClimatica)
                 .WithMany()
                 .HasForeignKey(d => d.IdCondicaoClimatica);
         }

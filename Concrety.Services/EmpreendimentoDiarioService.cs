@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
@@ -22,6 +21,8 @@ namespace Concrety.Services
         {
             _repository = UnitOfWork.Repository<EmpreendimentoDiario>();
             base.ValidarAsync = ValidarAsync;
+            base.PreCriar = PreCriar;
+            base.PreAtualizar = PreAtualizar;
         }
 
         public async Task<IEnumerable<EmpreendimentoDiario>> ObterDoEmpreendimentoAsync(int idEmpreendimento)
@@ -31,7 +32,7 @@ namespace Concrety.Services
         
         private new async Task<IEnumerable<string>> ValidarAsync(EmpreendimentoDiario empreendimentoDiario)
         {
-            empreendimentoDiario.Data = empreendimentoDiario.Data.Date;
+            empreendimentoDiario.Data = DateTime.SpecifyKind(empreendimentoDiario.Data.Date, DateTimeKind.Unspecified);
 
             var existeNaData = await Task.Factory.StartNew(() => 
             {
@@ -48,5 +49,19 @@ namespace Concrety.Services
 
             return null;
         }
+
+        private new void PreCriar(EmpreendimentoDiario diario)
+        {
+            foreach (var periodo in diario.DiariosPeriodos)
+            {
+                periodo.EmpreendimentoPeriodo = null;
+            }
+        }
+
+        private new void PreAtualizar(EmpreendimentoDiario diario)
+        {
+            new EmpreendimentoDiarioPeriodoService(UnitOfWork).Atualizar(diario);
+        }
+
     }
 }

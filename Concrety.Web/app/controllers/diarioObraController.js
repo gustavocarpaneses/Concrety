@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('diarioObraController', function ($scope, $q, $http, $modal, diariosObraService, condicoesClimaticasService, accountService) {
+app.controller('diarioObraController', function ($scope, $q, $http, $modal, diariosObraService, periodosDiariosObraService, condicoesClimaticasService, accountService) {
 
     $scope.mensagem = "";
     $scope.empreendimentoAtual = accountService.empreendimentoAtual;
@@ -31,10 +31,12 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
     };
 
     obterCondicoesClimaticas().then(function () {
-        configurarGrid();
+        obterPeriodosDiarioObra().then(function (periodos) {
+            configurarGrid(periodos);
+        });
     });
 
-    function configurarGrid() {
+    function configurarGrid(periodos) {
 
         var columns = [
                 {
@@ -45,11 +47,11 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     field: "dataDiario",
                     title: "Data",
                     format: "{0:dd/MM/yyyy}"
-                //},
-                //{
-                //    field: "houveTrabalho",
-                //    title: "Houve Trabalho?",
-                //    template: '<input type="checkbox" #= houveTrabalho ? "checked=checked" : "" # disabled="disabled" ></input>'
+                },
+                {
+                    field: "houveTrabalho",
+                    title: "Houve Trabalho?",
+                    template: '#= houveTrabalho() #'
                 //},
                 //{
                 //    field: "temperaturaMinima",
@@ -63,26 +65,52 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                 //    field: "idCondicaoClimatica",
                 //    title: "Condição Climática",
                 //    values: $scope.condicoesClimaticas
-                //},
-                //{
-                //    field: "efetivoTotal",
-                //    title: "Efetivo Total",
-                //    template: "#= efetivoTotal() #"
+                },
+                {
+                    field: "efetivoTotal",
+                    title: "Efetivo Total",
+                    template: "#= efetivoTotal() #"
                 }];
 
         var model = kendo.data.Model.define({
             id: "id",
             fields: {
                 id: { type: "number", defaultValue: 0 },
-                dataDiario: { type: "date", defaultValue: new Date() }
-                //houveTrabalho: { type: "boolean", defaultValue: true },
-                //temperaturaMinima: { type: "number" },
-                //temperaturaMaxima: { type: "number" },
-                //idCondicaoClimatica: { type: "number" }
-            //},
-            //efetivoTotal: function () {
-            //    return this.get("totalMontadores") + this.get("totalArmadores") + this.get("totalCarpinteiros") + this.get("totalEletricistas")
-            //    + this.get("totalEncanadores") + this.get("totalEncarregados") + this.get("totalMestres") + this.get("totalAjudantes") + this.get("totalPedreiros");
+                dataDiario: { type: "date", defaultValue: new Date() },
+                diariosPeriodos: { defaultValue: periodos }
+            },
+            houveTrabalho: function() {
+                var houveTrabalho = "";
+                var periodos = this.get("diariosPeriodos");
+
+                for (var i = 0; i < periodos.length; i++) {
+                    if (periodos[i].get("houveTrabalho")) {
+                        houveTrabalho += periodos[i].empreendimentoPeriodo.nome + ", ";
+                    }
+                }
+
+                if (houveTrabalho) {
+                    houveTrabalho = houveTrabalho.substring(0, houveTrabalho.length - 2);
+                }
+                else {
+                    houveTrabalho = "Não";
+                }
+
+                return houveTrabalho;
+            },
+            efetivoTotal: function () {
+
+                var total = 0;
+                var periodos = this.get("diariosPeriodos");
+
+                for(var i=0; i<periodos.length; i++)
+                {
+                    total += periodos[i].get("totalMontadores") + periodos[i].get("totalArmadores") + periodos[i].get("totalCarpinteiros") + 
+                        periodos[i].get("totalEletricistas") + periodos[i].get("totalEncanadores") + periodos[i].get("totalEncarregados") + 
+                        periodos[i].get("totalMestres") + periodos[i].get("totalAjudantes") + periodos[i].get("totalPedreiros");
+                }
+
+                return total;
             }
         });
 
@@ -96,6 +124,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                 },
                 update: function (o) {
                     diariosObraService.update(o.data.models[0]).then(function (response) {
+                        $scope.mensagem = '';
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -104,6 +133,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                 create: function (o) {
                     o.data.models[0].idEmpreendimento = $scope.empreendimentoAtual.id;
                     diariosObraService.create(o.data.models[0]).then(function (response) {
+                        $scope.mensagem = '';
                         o.success(response.data);
                     }, function (response) {
                         ObterErros(response.data);
@@ -188,6 +218,16 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
 
         return deferred.promise;
 
+    }
+
+    function obterPeriodosDiarioObra() {
+        var deferred = $q.defer();
+
+        periodosDiariosObraService.get($scope.empreendimentoAtual.id).then(function (response) {
+            deferred.resolve(response.data);
+        });
+
+        return deferred.promise;
     }
 
     $scope.gerarRelatorio = function () {

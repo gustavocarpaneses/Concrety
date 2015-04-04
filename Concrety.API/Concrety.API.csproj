@@ -87,6 +87,7 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\PeriodosDiarioObraController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\CondicoesClimaticasController.cs" />
     <Compile Include="Controllers\DiariosObraController.cs" />

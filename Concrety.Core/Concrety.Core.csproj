@@ -82,7 +82,9 @@
     <Compile Include="Interfaces\Identity\IApplicationUserManager.cs" />
     <Compile Include="Interfaces\Repositories\IAnexoBlobRepository.cs" />
     <Compile Include="Interfaces\Repositories\IEmailRepository.cs" />
+    <Compile Include="Interfaces\Services\IEmpreendimentoDiarioPeriodoService.cs" />
     <Compile Include="Messages\ServiceBaseMessages.cs" />
+    <Compile Include="Queries\EmpreendimentoPeriodoQueries.cs" />
     <Compile Include="Queries\ItemVerificacaoMaterialUnidadeQueries.cs" />
     <Compile Include="Queries\ItemVerificacaoMaterialQueries.cs" />
     <Compile Include="Queries\EmpreendimentoDiarioQueries.cs" />

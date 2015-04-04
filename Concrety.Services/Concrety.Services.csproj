@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Base\ServiceBase.cs" />
     <Compile Include="EmailService.cs" />
+    <Compile Include="EmpreendimentoDiarioPeriodoService.cs" />
     <Compile Include="FornecedorService.cs" />
     <Compile Include="CondicaoClimaticaService.cs" />
     <Compile Include="EmpreendimentoDiarioService.cs" />

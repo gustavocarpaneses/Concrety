@@ -1,5 +1,4 @@
 ﻿using Concrety.Core.Entities.Base;
-using System;
 
 namespace Concrety.Core.Entities
 {
@@ -35,6 +34,6 @@ namespace Concrety.Core.Entities
         public int TotalDemitidos { get; set; }
         
         public virtual CondicaoClimatica CondicaoClimatica { get; set; }
-        public int IdCondicaoClimatica { get; set; }
+        public int? IdCondicaoClimatica { get; set; }
     }
 }

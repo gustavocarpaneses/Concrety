@@ -1,6 +1,4 @@
 ﻿
-using System;
-using System.Collections.Generic;
 namespace Concrety.API.ViewModels
 {
     public class EmpreendimentoDiarioPeriodoViewModel
@@ -34,7 +32,7 @@ namespace Concrety.API.ViewModels
 
         public int IdEmpreendimentoDiario { get; set; }
 
-        public int IdCondicaoClimatica { get; set; }
+        public int? IdCondicaoClimatica { get; set; }
 
         public EmpreendimentoPeriodoViewModel EmpreendimentoPeriodo { get; set; }
         public int IdEmpreendimentoPeriodo { get; set; }

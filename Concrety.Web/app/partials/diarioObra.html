@@ -41,124 +41,126 @@
                             <label>Houve Trabalho?</label>
                         </div>
                         <div class="k-edit-field">
-                            <input type="checkbox" ng-model="periodo.houveTrabalho">
+                            <input type="checkbox" ng-model="periodo.houveTrabalho" ng-change="dataItem.dirty = true">
                         </div>
                         <div class="k-edit-label">
                             <label>Condição Climática</label>
                         </div>
                         <div id="myform" class="k-edit-field">
-                            <select kendo-drop-down-list required data-required-msg="Campo condição climática deve ser preenchido"
+                            <!--required data-required-msg="Campo condição climática deve ser preenchido"-->
+                            <select kendo-drop-down-list 
                                     k-options="dropDownCondicoesClimaticasOptions"
                                     ng-model="periodo.idCondicaoClimatica"
+                                    ng-change="dataItem.dirty = true"
                                     style="width: auto; background-color:white!important;"></select>
                         </div>
                         <div class="k-edit-label">
                             <label>Temperatura Mínima</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.temperaturaMinima" options="optionsTemperatura" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.temperaturaMinima" options="optionsTemperatura" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Temperatura Máxima</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.temperaturaMaxima" options="optionsTemperatura" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.temperaturaMaxima" options="optionsTemperatura" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Horas Trabalhadas</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.horasTrabalhadas" options="optionsHoras" ng-change="periodo.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.horasTrabalhadas" options="optionsHoras" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Horas Paradas</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.horasParadas" options="optionsHoras" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.horasParadas" options="optionsHoras" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Montadores</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalMontadores" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalMontadores" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Armadores</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalArmadores" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalArmadores" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Carpinteiros</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalCarpinteiros" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalCarpinteiros" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Eletricistas</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalEletricistas" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalEletricistas" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Encarregados</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalEncarregados" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalEncarregados" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Encanadores</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalEncanadores" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalEncanadores" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Mestres</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalMestres" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalMestres" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Ajudantes</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalAjudantes" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalAjudantes" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Pedreiros</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalPedreiros" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalPedreiros" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Faltas</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalFaltas" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalFaltas" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Acidentados</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalAcidentados" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalAcidentados" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Novos Funcionários</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalNovosFuncionarios" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalNovosFuncionarios" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Doentes</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalDoentes" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalDoentes" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                         <div class="k-edit-label">
                             <label>Total Demitidos</label>
                         </div>
                         <div class="k-edit-field">
-                            <input kendo-numeric-text-box k-ng-model="periodo.totalDemitidos" options="optionsTotais" ng-change="dataItem.dirty = true" />
+                            <input kendo-numeric-text-box k-ng-model="periodo.totalDemitidos" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
                     </tab>
                 </tabset>
