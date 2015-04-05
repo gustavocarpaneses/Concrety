@@ -42,18 +42,18 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
 
 
         var columns = [
-                 {
-                command: [{
+                {
+                     command: [{
+                         name: "view",
+                         iconClass: "glyphicon glyphicon-search",
+                         text: "",
+                         click: editarOcorrencia
+                },{
                     name: "edit",
                     iconClass: "glyphicon glyphicon-pencil",
                     text: "",
                     click: editarOcorrencia
-                }, {
-                    name: "view",
-                    iconClass: "glyphicon glyphicon-search",
-                    text: "",
-                    click: editarOcorrencia
-                }, {
+                },{
                     name: "delete",
                     iconClass: "glyphicon glyphicon-trash",
                     text: "",

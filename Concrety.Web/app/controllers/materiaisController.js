@@ -48,7 +48,7 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
     function CarregarMateriais() {
         var columns = [
                      {
-                         command: ["edit"],
+                         command: ["edit","destroy"],
                          title: "Ações"
                      },
                     {
@@ -133,7 +133,7 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
             editable: {
                 mode: "popup",
                 template: kendo.template(angular.element("#editTemplate").html()),
-                destroy: false,
+                destroy: true,
                 window: {
                     title: "Ficha de Verificação de Material",
                     width: "800px",
