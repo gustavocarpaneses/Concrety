@@ -32,11 +32,12 @@
                 </div>
                 <div class="k-edit-field">
                     <textarea kendo-editor name="servicosExecutados" style="width:550px;" ng-model="dataItem.servicosExecutados" k-encoded="false" ng-change="dataItem.dirty = true"></textarea>
-
                 </div>
-
                 <tabset type="pills" justified="true">
-                    <tab ng-repeat="periodo in dataItem.diariosPeriodos" ng-if="!periodo.excluido" heading="{{periodo.empreendimentoPeriodo.nome}}">
+                    <div class="k-edit-label">
+                        <label>Selecione o período</label>
+                    </div>    
+                        <tab class="diario_obra_periodo" ng-repeat="periodo in dataItem.diariosPeriodos" ng-if="!periodo.excluido" heading="{{periodo.empreendimentoPeriodo.nome}}"></tab>
                         <div class="k-edit-label">
                             <label>Houve Trabalho?</label>
                         </div>
@@ -162,7 +163,7 @@
                         <div class="k-edit-field">
                             <input kendo-numeric-text-box k-ng-model="periodo.totalDemitidos" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
-                    </tab>
+                   
                 </tabset>
                 <div id="msg_alerta_ocorrencia" data-ng-hide="mensagem == ''" class="alert alert-danger col-md-12">
                     {{mensagem}}

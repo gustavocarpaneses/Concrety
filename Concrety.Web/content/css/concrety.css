@@ -180,6 +180,11 @@ li.ng-isolate-scope{
     padding-top:8px
 }
 
+
+.diario_obra_periodo{
+ left:25px;
+}
+
 /*página feedback*/
 #body_msg_feedback{
     height:320px;
