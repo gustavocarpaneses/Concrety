@@ -8,9 +8,9 @@
              k-ng-delay="diariosObraGridOptions"></div>
         <script type="text/x-kendo-template" id="toolbarTemplate">
             <a class='k-button k-button-icontext k-grid-add' href=''>Inserir</a>
-            <a class="btn_impressao_diario_obra" href="" ng-click="gerarRelatorio()" title="Gerar Relatório">
+            <!--<a class="btn_impressao_diario_obra" href="" ng-click="gerarRelatorio()" title="Gerar Relatório">
                 <i class="glyphicon glyphicon-print"></i>
-            </a>
+            </a>-->
         </script>
         <script type="text/x-kendo-template" id="editTemplate">
             <div ng-if="dataItem">
@@ -18,7 +18,6 @@
                     <label for="data">Data</label>
                 </div>
                 <div class="k-edit-field">
-                    <!--<datepicker ng-model="dataItem.dataDiario"></datepicker>-->
                     <input type="text"
                            datepicker-popup
                            ng-model="dataItem.dataDiario"
@@ -37,7 +36,7 @@
                     <div class="k-edit-label">
                         <label>Selecione o período</label>
                     </div>    
-                        <tab class="diario_obra_periodo" ng-repeat="periodo in dataItem.diariosPeriodos" ng-if="!periodo.excluido" heading="{{periodo.empreendimentoPeriodo.nome}}"></tab>
+                    <tab class="diario_obra_periodo" ng-repeat="periodo in dataItem.diariosPeriodos" ng-if="!periodo.excluido" heading="{{periodo.empreendimentoPeriodo.nome}}">
                         <div class="k-edit-label">
                             <label>Houve Trabalho?</label>
                         </div>
@@ -48,7 +47,6 @@
                             <label>Condição Climática</label>
                         </div>
                         <div id="myform" class="k-edit-field">
-                            <!--required data-required-msg="Campo condição climática deve ser preenchido"-->
                             <select kendo-drop-down-list
                                     k-options="dropDownCondicoesClimaticasOptions"
                                     ng-model="periodo.idCondicaoClimatica"
@@ -163,7 +161,7 @@
                         <div class="k-edit-field">
                             <input kendo-numeric-text-box k-ng-model="periodo.totalDemitidos" options="optionsTotais" k-ng-change="dataItem.dirty = true" />
                         </div>
-                   
+                    </tab>
                 </tabset>
                 <div id="msg_alerta_ocorrencia" data-ng-hide="mensagem == ''" class="alert alert-danger col-md-12">
                     {{mensagem}}

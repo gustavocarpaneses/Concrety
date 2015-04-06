@@ -40,7 +40,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
 
         var columns = [
                 {
-                    command: ["edit","destroy"],
+                    command: ["edit"],
                     title: "Ações"
                 },
                 {
