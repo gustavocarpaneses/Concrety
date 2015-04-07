@@ -70,6 +70,10 @@ padding-top:13px;
     padding-top:5px;
 }
 
+.itens_verificacao{
+    margin-top:15px;
+}
+
 .pesquisa ul{
     list-style-type:none;
 }
@@ -97,7 +101,10 @@ li.ng-isolate-scope{
     padding-bottom:3px;
     font-weight:bold;
     padding-left:5px;
+    color:#0099CC;
+    font-size:medium;
 }
+
 
 #salvar_servico{
     margin-top:5px;
