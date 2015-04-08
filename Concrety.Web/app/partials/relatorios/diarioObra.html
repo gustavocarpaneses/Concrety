@@ -1,16 +1,150 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="fechar()" aria-hidden="true">×</button>
-    <h3 class="modal-title">Relatório - Diários de Obra</h3>
+    <h4 class="modal-title">Relatório - Diários de Obra</h4>
 </div>
 <div class="modal-body">
     <div class="page" ng-repeat="diarioObra in diariosObra">
-        <h1 style="text-align:center;">
-            {{nomeEmpreendimento}}
-        </h1>
-
-        <p></p>
-
-        <p>
+        <h4 class="h4_titulo">
+            <b>
+                <!--{{nomeEmpreendimento}}-->
+                Impressão - Diário de Obra
+            </b>
+        </h4>
+        <br />
+        <table style="width:100%" border="1">
+            <tr>
+                <th rowspan="5" style="width:20%" scope="col"><img src="/logo_impressao.png" width="195" height="106" /></th>
+                <th colspan="2" style="width:40%" rowspan="5" scope="col">Obra {{nomeEmpreendimento}}</th>
+                <th colspan="4" scope="col" style="text-align:center;">DATA: {{diarioObra.dataDiario | date:'fullDate'}}</th>
+            </tr>
+            <tr>
+                <th scope="col" style="text-align:center;">Período</th>
+                <th scope="col" style="text-align:center;">Condição Climática</th>
+                <th scope="col" style="width:5%;text-align:center;">Temperatura Mínima</th>
+                <th scope="col" style="width:5%;text-align:center;">Temperatura Máxima</th>
+            </tr>
+            <tr>
+                <th scope="col" style="text-align:center;">Manhã</th>
+                <th scope="col"><!--condição climática--></th>
+                <th scope="col"><!--temp minima--></th>
+                <th scope="col"><!--temp maxima--></th>
+            </tr>
+            <tr>
+                <th scope="col" style="text-align:center;">Tarde</th>
+                <th scope="col"><!--condição climática--></th>
+                <th scope="col"><!--temp minima--></th>
+                <th scope="col"><!--temp maxima--></th>
+            </tr>
+            <tr>
+                <th scope="col" style="text-align:center;">Noite</th>
+                <th scope="col"><!--condição climática--></th>
+                <th scope="col"><!--temp minima--></th>
+                <th scope="col"><!--temp maxima--></th>
+            </tr>
+            <tr>
+                <td colspan="3"><b>SERVIÇOS EXECUTADOS</b></td>
+                <td colspan="4" style="text-align:center;"><b>EFETIVO DO PESSOAL</b></td>
+            </tr>
+            <tr>
+                <td colspan="3" rowspan="12"><p ng-bind-html ="diarioObra.servicosExecutados"></p></td>
+                <td colspan="2" align="center" style="width:25%"><b>Categoria</b></td>
+                <td colspan="2" align="center" style="width:25%"><b>Quantidade</b></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Montador</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalMontadores}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Armador</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalArmadores}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Carpinteiro</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalCarpinteiros}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Eletricista</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalEletricistas}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Encarregado</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalEncarregados}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Encanador</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalEncanadores}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Mestre</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalMestres}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Ajudante</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalAjudantes}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Pedreiro</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalPedreiros}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%"><b>TOTAL</b></td>
+                <td colspan="2" align="center" style="width:25%"><!--falta calcular total de pessoas--></td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center" style="width:25%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>OCORRÊNCIAS</b></td>
+                <td colspan="4" align="center" style="width:25%"><span style="text-align:center;"><b>EFETIVO DO DIA</b></span></td>
+            </tr>
+            <tr>
+                <td colspan="3" rowspan="11">&nbsp;</td>
+                <td colspan="2" align="center" style="width:25%">Número de faltas</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalFaltas}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Número de acidentados</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalAcidentados}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Funcionários novos</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalNovosFuncionarios}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Doentes</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalDoentes}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Demitidos</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalDemitidos}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%"><b>EFETIVO TOTAL</b></td>
+                <td colspan="2" align="center" style="width:25%"><!--falta calcular total--></td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center" style="width:25%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center" style="width:25%"><b>PERÍODO DE TRABALHO</b></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Horas de trabalho</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.horasTrabalhadas}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="width:25%">Horas paradas</td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.horasParadas}}</td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center" style="width:25%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="7" align="center"style="font-size:small;">Concrety - Gestão e Controle</td>
+            </tr>
+        </table>
+        
+        <!--<p>
             Data: {{diarioObra.dataDiario | date:'fullDate'}}
         </p>
         <span ng-if="diarioObra.houveTrabalho">
@@ -84,7 +218,7 @@
         <p ng-if="!diarioObra.houveTrabalho">
             Não houve trabalho
         </p>
-
+        -->
     </div>
 
 </div>
