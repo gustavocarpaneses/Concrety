@@ -25,7 +25,9 @@
             </tr>
             <tr>
                 <th scope="col" style="text-align:center;">Manhã</th>
-                <th scope="col"><!--condição climática--></th>
+                <th scope="col"><!--<p ng-repeat="condicaoClimatica in condicoesClimaticas | filter:{ value: diarioObra.idCondicaoClimatica }">
+                Condição Climática: {{condicaoClimatica.text}}-->
+                </p></th>
                 <th scope="col"><!--temp minima--></th>
                 <th scope="col"><!--temp maxima--></th>
             </tr>
