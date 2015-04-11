@@ -14,22 +14,12 @@
                ng-click="ocorrencia.dataAberturaOpened = true"
                class="input-md" /> 
     </div>
-    <div class="k-edit-label">
-        <label>Data Conclusão</label>
-    </div>
-    <div class="k-edit-field">
-        <input type="text"
-               datepicker-popup
-               ng-model="ocorrencia.dataConclusao"
-               is-open="ocorrencia.dataConclusaoOpened"
-               ng-click="ocorrencia.dataConclusaoOpened = true"
-               class="input-md" /> 
-    </div>
+    
     <div class="k-edit-label">
         <label>Status</label>
     </div>
     <div class="k-edit-field">
-        <select kendo-drop-down-list required
+        <select kendo-drop-down-list required 
                 k-options="dropDownStatusOptions"
                 ng-model="ocorrencia.status"
                 style="width: auto"></select>
@@ -38,7 +28,7 @@
         <label>Patologia</label>
     </div>
     <div class="k-edit-field" ng-if="dropDownPatologiasOptions">
-        <select kendo-drop-down-list required
+        <select kendo-drop-down-list required data-required-msg="Selecione uma patologia" <!--não está funcionando msg de validação-->
                 k-options="dropDownPatologiasOptions"
                 ng-model="ocorrencia.idPatologia"
                 style="width: 350px"></select> 
@@ -56,6 +46,17 @@
     </div>
     <div class="k-edit-field">
         <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
+    </div>
+    <div class="k-edit-label">
+        <label>Data Conclusão</label>
+    </div>
+    <div class="k-edit-field">
+        <input type="text"
+               datepicker-popup
+               ng-model="ocorrencia.dataConclusao"
+               is-open="ocorrencia.dataConclusaoOpened"
+               ng-click="ocorrencia.dataConclusaoOpened = true"
+               class="input-md" />
     </div>
     <div>
         <div class="ocorrencias_imagem_evidencia">
