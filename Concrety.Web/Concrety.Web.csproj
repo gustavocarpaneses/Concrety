@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\diarioObraController.js" />
+    <Content Include="app\controllers\relatorios\graficosController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\materialUnidadeController.js" />
     <Content Include="app\controllers\modalFeedbackController.js" />
@@ -68,6 +69,7 @@
     <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\accountService.js" />
     <Content Include="app\services\authService.js" />
+    <Content Include="app\services\graficosService.js" />
     <Content Include="app\services\periodosDiariosObraService.js" />
     <Content Include="app\services\emailService.js" />
     <Content Include="app\services\fornecedoresService.js" />

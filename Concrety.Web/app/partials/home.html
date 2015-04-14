@@ -1,15 +1,25 @@
 ﻿<div class="row">
-    <div class="col-md-4">
+    <div ng-controller="graficosController" class="col-md-4">
         <h2>Visão macro</h2>
-        <img class="img_teste" src="../../content/css/Default/grafico1_teste.png" />
+        <div kendo-chart
+                k-title="{ text: 'Condições Climáticas', position: 'top' }"
+                k-series-defaults="{ type: 'pie' }"
+                k-series="[{
+                    field: 'quantidade',
+                    categoryField: 'condicaoClimatica',
+                    padding: 0
+                    }]"
+                k-data-source="condicoesClimaticas"></div>
+
+        <!--<img class="img_teste" src="../../content/css/Default/grafico1_teste.png" />
         <br />
         <br />
-        <img class="img_teste" src="../../content/css/Default/grafico2_teste.png" />
+        <img class="img_teste" src="../../content/css/Default/grafico2_teste.png" />-->
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-7">
         <h2>Ocorrências em Aberto</h2>
         <div id="grid_ocorrencias" kendo-grid k-options="ocorrenciasGridOptions"
-             ng-if="ocorrenciasGridOptions"></div>
+                ng-if="ocorrenciasGridOptions"></div>
     </div>
 </div>

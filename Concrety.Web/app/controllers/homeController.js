@@ -6,6 +6,8 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
     }
 
     configurarGridOcorrencias();
+
+    configurarGraficos();
     
     function editarOcorrencia(e) {
         e.preventDefault();
@@ -124,6 +126,14 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
 
     }
 
+    function configurarGraficos() {
 
+        configurarGraficoCondicoesClimaticas();
+
+    }
+
+    function configurarGraficoCondicoesClimaticas() {
+
+    }
 
 });
