@@ -6,6 +6,7 @@ namespace Concrety.API.ViewModels
 
         public int Id { get; set; }
         public bool Ativo { get; set; }
+        public bool Excluido { get; set; }
 
         //O campo não pode se chamar Data, pois dá erro no Kendo Grid
         public bool HouveTrabalho { get; set; }
@@ -32,6 +33,7 @@ namespace Concrety.API.ViewModels
 
         public int IdEmpreendimentoDiario { get; set; }
 
+        public CondicaoClimaticaViewModel CondicaoClimatica { get; set; }
         public int? IdCondicaoClimatica { get; set; }
 
         public EmpreendimentoPeriodoViewModel EmpreendimentoPeriodo { get; set; }

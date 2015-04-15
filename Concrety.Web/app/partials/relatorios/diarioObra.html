@@ -23,25 +23,11 @@
                 <th scope="col" style="width:5%;text-align:center;">Temperatura Mínima</th>
                 <th scope="col" style="width:5%;text-align:center;">Temperatura Máxima</th>
             </tr>
-            <tr>
-                <th scope="col" style="text-align:center;">Manhã</th>
-                <th scope="col"><!--<p ng-repeat="condicaoClimatica in condicoesClimaticas | filter:{ value: diarioObra.idCondicaoClimatica }">
-                Condição Climática: {{condicaoClimatica.text}}-->
-                </p></th>
-                <th scope="col"><!--temp minima--></th>
-                <th scope="col"><!--temp maxima--></th>
-            </tr>
-            <tr>
-                <th scope="col" style="text-align:center;">Tarde</th>
-                <th scope="col"><!--condição climática--></th>
-                <th scope="col"><!--temp minima--></th>
-                <th scope="col"><!--temp maxima--></th>
-            </tr>
-            <tr>
-                <th scope="col" style="text-align:center;">Noite</th>
-                <th scope="col"><!--condição climática--></th>
-                <th scope="col"><!--temp minima--></th>
-                <th scope="col"><!--temp maxima--></th>
+            <tr ng-repeat="periodo in diarioObra.diariosPeriodos" ng-if="!periodo.excluido">
+                <th scope="col" style="text-align:center;">{{periodo.empreendimentoPeriodo.nome}}</th>
+                <th scope="col">{{periodo.condicaoClimatica.descricao}}</th>
+                <th scope="col">{{periodo.temperaturaMinima}}</th>
+                <th scope="col">{{periodo.temperaturaMaxima}}</th>
             </tr>
             <tr>
                 <td colspan="3"><b>SERVIÇOS EXECUTADOS</b></td>
@@ -90,7 +76,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="center" style="width:25%"><b>TOTAL</b></td>
-                <td colspan="2" align="center" style="width:25%"><!--falta calcular total de pessoas--></td>
+                <td colspan="2" align="center" style="width:25%">{{diarioObra.totalGeral}}</td>
             </tr>
             <tr>
                 <td colspan="4" align="center" style="width:25%">&nbsp;</td>
