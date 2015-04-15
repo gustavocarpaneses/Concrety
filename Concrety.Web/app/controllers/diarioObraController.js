@@ -161,7 +161,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
             editable: {
                 mode: "popup",
                 template: kendo.template(angular.element("#editTemplate").html()),
-                destroy: false,
+                destroy: true,
                 window: {
                     title: "Diário da Obra",
                     width: "800px",
