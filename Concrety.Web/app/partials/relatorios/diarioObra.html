@@ -25,16 +25,16 @@
             </tr>
             <tr ng-repeat="periodo in diarioObra.diariosPeriodos" ng-if="!periodo.excluido">
                 <th scope="col" style="text-align:center;">{{periodo.empreendimentoPeriodo.nome}}</th>
-                <th scope="col">{{periodo.condicaoClimatica.descricao}}</th>
-                <th scope="col">{{periodo.temperaturaMinima}}</th>
-                <th scope="col">{{periodo.temperaturaMaxima}}</th>
+                <th scope="col" style="text-align:center;">{{periodo.condicaoClimatica.descricao}}</th>
+                <th scope="col" style="text-align:center;">{{periodo.temperaturaMinima}}</th>
+                <th scope="col" style="text-align:center;">{{periodo.temperaturaMaxima}}</th>
             </tr>
             <tr>
                 <td colspan="3"><b>SERVIÇOS EXECUTADOS</b></td>
                 <td colspan="4" style="text-align:center;"><b>EFETIVO DO PESSOAL</b></td>
             </tr>
             <tr>
-                <td colspan="3" rowspan="12"><p ng-bind-html ="diarioObra.servicosExecutados"></p></td>
+                <td colspan="3" rowspan="12" valign="top";<p ng-bind-html="diarioObra.servicosExecutados"></p></td>
                 <td colspan="2" align="center" style="width:25%"><b>Categoria</b></td>
                 <td colspan="2" align="center" style="width:25%"><b>Quantidade</b></td>
             </tr>
