@@ -48,6 +48,12 @@
         <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.descricao" k-encoded="false"></textarea>
     </div>
     <div class="k-edit-label">
+        <label>Solução</label>
+    </div>
+    <div class="k-edit-field">
+        <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.solucao" k-encoded="false"></textarea>
+    </div>
+    <div class="k-edit-label">
         <label>Data Conclusão</label>
     </div>
     <div class="k-edit-field">
@@ -72,7 +78,6 @@
                     </div>
                 </slide>
             </carousel>
-         
         </div>
         <div>
             <input class="input_foto_evidencia"
@@ -87,12 +92,7 @@
         </div>
     </div>
 
-    <div class="k-edit-label">
-        <label>Solução</label>
-    </div>
-    <div class="k-edit-field">
-        <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.solucao" k-encoded="false"></textarea>
-    </div>
+    
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">
         {{mensagem}}
