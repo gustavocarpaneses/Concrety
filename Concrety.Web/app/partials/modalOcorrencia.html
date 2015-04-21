@@ -35,7 +35,7 @@
     </div>
     <div ng-if="ocorrencia.patologia.solucoes.length > 0">
         <div class="k-edit-label">
-            <label>Solução</label>
+            <label>Solução Proposta</label>
         </div>
         <div class="k-edit-field">
             <button id="btn_norma" class="btn btn-default" ng-click="abrirModalNorma()">Consultar Procedimento de Execução</button>
@@ -85,6 +85,13 @@
                    k-upload="uploadIniciado"
                    k-success="uploadConcluido"/>
         </div>
+    </div>
+
+    <div class="k-edit-label">
+        <label>Solução</label>
+    </div>
+    <div class="k-edit-field">
+        <textarea kendo-editor style="width:500px;" ng-model="ocorrencia.solucao" k-encoded="false"></textarea>
     </div>
 
     <div data-ng-hide="mensagem == ''" data-ng-class="(salvoComSucesso) ? 'alert alert-success' : 'alert alert-danger'">

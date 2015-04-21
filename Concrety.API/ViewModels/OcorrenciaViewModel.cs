@@ -30,5 +30,7 @@ namespace Concrety.API.ViewModels
         public int IdPatologia { get; set; }
 
         public ICollection<OcorrenciaAnexoViewModel> Anexos { get; set; }
+
+        public string Solucao { get; set; }
     }
 }

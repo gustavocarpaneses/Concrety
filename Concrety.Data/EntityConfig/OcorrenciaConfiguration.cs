@@ -15,6 +15,9 @@ namespace Concrety.Data.EntityConfig
             Property(o => o.Descricao).HasColumnType("text");
             Property(o => o.Descricao).IsMaxLength();
 
+            Property(o => o.Solucao).HasColumnType("text");
+            Property(o => o.Solucao).IsMaxLength();
+
             HasRequired(o => o.ItemVerificacao)
                 .WithMany(i => i.Ocorrencias)
                 .HasForeignKey(o => o.IdItemVerificacaoUnidade);

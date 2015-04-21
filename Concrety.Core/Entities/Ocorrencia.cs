@@ -21,5 +21,7 @@ namespace Concrety.Core.Entities
         public int IdPatologia { get; set; }
 
         public virtual ICollection<OcorrenciaAnexo> Anexos { get; set; }
+
+        public string Solucao { get; set; }
     }
 }
