@@ -103,6 +103,23 @@ namespace Concrety.API.Controllers
 
             return Ok();
         }
+
+        [Route("")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Excluir(int id)
+        {
+            var resultado = await _fvmUnidadeService.RemoverAsync(id);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
         
         private async Task AssociarNovoFornecedor(FichaVerificacaoMaterialUnidadeViewModel fvmViewModel)
         {

@@ -45,11 +45,33 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
         });
     };
 
+    /*will: exclusão de FVM do grid de Materiais*/
+    function excluirFVM(e) {
+        e.preventDefault();
+        if (confirm("Deseja realmente excluir esse registro?")) {
+            var fvm = this.dataItem(angular.element(e.currentTarget).closest("tr"));
+            materiaisService.delete(fvm);
+            angular.element("#materiaisGrid").data("kendoGrid").dataSource.remove(fvm);
+        }
+    }
+
     function CarregarMateriais() {
         var columns = [
                      {
-                         command: ["edit","destroy"],
+                         command: [{
+                             name: "edit",
+                             iconClass: "glyphicon glyphicon-pencil",
+                             /*text: "",
+                             click: edit*/
+                         }, {
+                             name: "delete",
+                             iconClass: "glyphicon glyphicon-trash",
+                             text: "",
+                             click: excluirFVM
+                         }],
                          title: "Ações"
+                         /*command: ["edit","destroy"],
+                         title: "Ações"*/
                      },
                     {
                         field: "idFichaVerificacaoMaterial",

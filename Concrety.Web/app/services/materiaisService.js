@@ -76,6 +76,12 @@ app.factory('materiaisService', function ($http, concretySettings) {
         });
     };
 
+    var _delete = function (fvm) {
+        return $http.delete(serviceBase + 'api/materialUnidade?id=' + fvm.id).then(function (response) {
+            return response;
+        });
+    };
+
     materiaisServiceFactory.obterDaUnidade = _obterDaUnidade;
     materiaisServiceFactory.obterDoNivel = _obterDoNivel;
     materiaisServiceFactory.criarItens = _criarItens;
@@ -83,6 +89,7 @@ app.factory('materiaisService', function ($http, concretySettings) {
     materiaisServiceFactory.obterCriterioAceite = _obterCriterioAceite;
     materiaisServiceFactory.update = _update;
     materiaisServiceFactory.create = _create;
+    materiaisServiceFactory.delete = _delete;
 
 
     return materiaisServiceFactory;
