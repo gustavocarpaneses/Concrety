@@ -105,6 +105,7 @@
     <Content Include="content\css\Default\editor.png" />
     <Content Include="content\css\Default\grafico1_teste.png" />
     <Content Include="content\css\Default\grafico2_teste.png" />
+    <Content Include="content\css\Default\grafico3_teste.png" />
     <Content Include="content\css\Default\imagebrowser.png" />
     <Content Include="content\css\Default\indeterminate.gif" />
     <Content Include="content\css\Default\loading-image.gif" />
