@@ -81,10 +81,15 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
         }, function (response) {
             LimparDatas();
             var errors = [];
-            for (var key in response.data.modelState) {
-                for (var i = 0; i < response.data.modelState[key].length; i++) {
-                    errors.push(response.data.modelState[key][i]);
+            if(response.data.modelState){
+                for (var key in response.data.modelState) {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
                 }
+            }
+            else{
+                errors.push("Ocorreu um erro ao salvar os dados. Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
             }
             $scope.mensagem = errors.join(' ');
         });
@@ -184,8 +189,11 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
 
         if (confirm("Deseja realmente excluir esse registro?")) {
             var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
-            ocorrenciasService.delete(ocorrencia);
-            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.remove(ocorrencia);
+            ocorrenciasService.delete(ocorrencia).then(function (response) {
+                angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.remove(ocorrencia);
+            }, function (response) {
+                alert("Ocorreu um erro ao excluir o registro. Por favor, tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
+            });
         }
     }
 

@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
-using System;
-using System.IO;
 
 namespace Concrety.API.AutoMapper
 {
@@ -22,6 +20,14 @@ namespace Concrety.API.AutoMapper
                 (viewModel, model) =>
                 {
                     model.Data = viewModel.DataDiario;
+                    model.DiariosPeriodos.Each(p =>
+                    {
+                        if (p.CondicaoClimatica != null)
+                        {
+                            //por algum motivo desconhecido, o Kendo está perdendo essa propriedade do Model
+                            p.IdCondicaoClimatica = p.CondicaoClimatica.Id;
+                        }
+                    });
                 });
             Mapper.CreateMap<EmpreendimentoDiarioPeriodoViewModel, EmpreendimentoDiarioPeriodo>();
             Mapper.CreateMap<EmpreendimentoPeriodoViewModel, EmpreendimentoPeriodo>();
@@ -40,7 +46,7 @@ namespace Concrety.API.AutoMapper
                 (viewModel, model) =>
                 {
                     model.Data = viewModel.DataFicha;
-                }); 
+                });
             Mapper.CreateMap<ItemVerificacaoMaterialViewModel, ItemVerificacaoMaterial>();
             Mapper.CreateMap<ItemVerificacaoMaterialUnidadeViewModel, ItemVerificacaoMaterialUnidade>();
             Mapper.CreateMap<FornecedorViewModel, Fornecedor>();

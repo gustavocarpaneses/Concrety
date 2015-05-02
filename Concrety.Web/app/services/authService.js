@@ -58,9 +58,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'concretySetti
 
         _logOut();
 
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
-            return response;
-        });
+        return $http.post(serviceBase + 'api/account/register', registration);
 
     };
 

@@ -35,8 +35,11 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
 
         if (confirm("Deseja realmente excluir esse registro?")) {
             var ocorrencia = this.dataItem(angular.element(e.currentTarget).closest("tr"));
-            ocorrenciasService.delete(ocorrencia);
-            angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.remove(ocorrencia);
+            ocorrenciasService.delete(ocorrencia).then(function (response) {
+                angular.element("#grid_ocorrencias").data("kendoGrid").dataSource.remove(ocorrencia);
+            }, function (response) {
+                alert("Ocorreu um erro ao excluir o registro. Por favor, tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
+            });
         }
     }
 
@@ -45,23 +48,23 @@ app.controller('homeController', function ($scope, $location, $modal, authServic
 
         var columns = [
                 {
-                     command: [{
-                         name: "view",
-                         iconClass: "glyphicon glyphicon-search",
-                         text: "",
-                         click: editarOcorrencia
-                },{
-                    name: "edit",
-                    iconClass: "glyphicon glyphicon-pencil",
-                    text: "",
-                    click: editarOcorrencia
-                },{
-                    name: "delete",
-                    iconClass: "glyphicon glyphicon-trash",
-                    text: "",
-                    click: excluirOcorrencia
-                }],
-                title: "Ações"
+                    command: [{
+                        name: "view",
+                        iconClass: "glyphicon glyphicon-search",
+                        text: "",
+                        click: editarOcorrencia
+                    },{
+                        name: "edit",
+                        iconClass: "glyphicon glyphicon-pencil",
+                        text: "",
+                        click: editarOcorrencia
+                    },{
+                        name: "delete",
+                        iconClass: "glyphicon glyphicon-trash",
+                        text: "",
+                        click: excluirOcorrencia
+                    }],
+                    title: "Ações"
                 },
                 {
                     field: "nomeUnidade",

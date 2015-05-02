@@ -121,7 +121,12 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $mod
     $scope.excluirAnexo = function (ocorrenciaAnexo) {
         ocorrenciaAnexo.excluido = true;
         ocorrenciaAnexo.anexo.idObra = accountService.empreendimentoAtual.id;
-        ocorrenciasService.removerAnexo(ocorrenciaAnexo);
+        ocorrenciasService.removerAnexo(ocorrenciaAnexo).then(function (response) {
+            //não precisa avisar que deu certo, pois a imagem já é removida
+        }, function (response) {
+            ocorrenciaAnexo.excluido = false;
+            alert("Ocorreu um erro ao excluir o anexo. Por favor, tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
+        });
     };
 
     $scope.abrirModalNorma = function () {
@@ -153,10 +158,16 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $mod
 
     function erroSalvar(response) {
         var errors = [];
-        for (var key in response.data.modelState) {
-            for (var i = 0; i < response.data.modelState[key].length; i++) {
-                errors.push(response.data.modelState[key][i]);
+
+        if (response.data.modelState) {
+            for (var key in response.data.modelState) {
+                for (var i = 0; i < response.data.modelState[key].length; i++) {
+                    errors.push(response.data.modelState[key][i]);
+                }
             }
+        }
+        else {
+            errors.push("Ocorreu um erro ao salvar os dados. Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
         }
         $scope.mensagem = errors.join(' ');
     }

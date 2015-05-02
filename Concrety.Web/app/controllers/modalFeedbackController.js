@@ -27,10 +27,16 @@ app.controller('modalFeedbackController', function ($scope, $timeout, $modalInst
 
     function erroSalvar(response) {
         var errors = [];
-        for (var key in response.data.modelState) {
-            for (var i = 0; i < response.data.modelState[key].length; i++) {
-                errors.push(response.data.modelState[key][i]);
+
+        if (response.data.modelState) {
+            for (var key in response.data.modelState) {
+                for (var i = 0; i < response.data.modelState[key].length; i++) {
+                    errors.push(response.data.modelState[key][i]);
+                }
             }
+        }
+        else {
+            errors.push("Ocorreu um erro ao enviar o Feedback. Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato através do e-mail: suporte@concrety.com.br");
         }
         $scope.mensagem = errors.join(' ');
     }

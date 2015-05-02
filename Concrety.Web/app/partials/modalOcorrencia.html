@@ -30,7 +30,7 @@
     <div class="k-edit-field" ng-if="dropDownPatologiasOptions">
         <select kendo-drop-down-list required data-required-msg="Selecione uma patologia"
                 k-options="dropDownPatologiasOptions"
-                ng-model="ocorrencia.idPatologia"
+                k-ng-model="ocorrencia.idPatologia"
                 style="width: 350px"></select> 
     </div>
     <div ng-if="ocorrencia.patologia.solucoes.length > 0">

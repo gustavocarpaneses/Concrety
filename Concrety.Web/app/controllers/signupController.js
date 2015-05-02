@@ -21,10 +21,15 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         },
          function (response) {
              var errors = [];
-             for (var key in response.data.modelState) {
-                 for (var i = 0; i < response.data.modelState[key].length; i++) {
-                     errors.push(response.data.modelState[key][i]);
+             if (response.data.modelState) {
+                 for (var key in response.data.modelState) {
+                     for (var i = 0; i < response.data.modelState[key].length; i++) {
+                         errors.push(response.data.modelState[key][i]);
+                     }
                  }
+             }
+             else {
+                 errors.push("Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
              }
              $scope.mensagem = "Falha ao registrar o usuário:" + errors.join(' ');
          });

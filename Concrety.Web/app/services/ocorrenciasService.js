@@ -11,21 +11,15 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
     };
 
     var _update = function (ocorrencia) {
-        return $http.put(serviceBase + 'api/ocorrencias', ocorrencia).then(function (response) {
-            return response;
-        });
+        return $http.put(serviceBase + 'api/ocorrencias', ocorrencia);
     };
 
     var _create = function (ocorrencia) {
-        return $http.post(serviceBase + 'api/ocorrencias', ocorrencia).then(function (response) {
-            return response;
-        });
+        return $http.post(serviceBase + 'api/ocorrencias', ocorrencia);
     };
 
     var _delete = function (ocorrencia) {
-        return $http.delete(serviceBase + 'api/ocorrencias?id=' + ocorrencia.id).then(function (response) {
-            return response;
-        });
+        return $http.delete(serviceBase + 'api/ocorrencias?id=' + ocorrencia.id);
     };
 
     var _obterDoServicoUnidade = function (idServicoUnidade) {
@@ -49,9 +43,7 @@ app.factory('ocorrenciasService', ['$http', 'concretySettings', function ($http,
     }
 
     var _removerAnexo = function (anexo) {
-        return $http.post(serviceBase + 'api/ocorrenciasAnexos/delete', anexo).then(function (response) {
-            return response;
-        });
+        return $http.post(serviceBase + 'api/ocorrenciasAnexos/delete', anexo);
     };
 
     ocorrenciasServiceFactory.obterPossiveisStatus = _obterPossiveisStatus;

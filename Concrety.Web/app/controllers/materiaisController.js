@@ -45,34 +45,37 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
         });
     };
 
-    /*will: exclusão de FVM do grid de Materiais*/
     function excluirFVM(e) {
         e.preventDefault();
         if (confirm("Deseja realmente excluir esse registro?")) {
             var fvm = this.dataItem(angular.element(e.currentTarget).closest("tr"));
-            materiaisService.delete(fvm);
-            angular.element("#materiaisGrid").data("kendoGrid").dataSource.remove(fvm);
+            materiaisService.delete(fvm).then(function (response) {
+                angular.element("#materiaisGrid").data("kendoGrid").dataSource.remove(fvm);
+            }, function (response) {
+                alert("Ocorreu um erro ao excluir o registro. Por favor, tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
+            });
         }
     }
 
     function CarregarMateriais() {
         var columns = [
-                     {
-                         command: [{
-                             name: "edit",
-                             iconClass: "glyphicon glyphicon-pencil",
-                             /*text: "",
-                             click: edit*/
-                         }, {
-                             name: "delete",
-                             iconClass: "glyphicon glyphicon-trash",
-                             text: "",
-                             click: excluirFVM
-                         }],
-                         title: "Ações"
-                         /*command: ["edit","destroy"],
-                         title: "Ações"*/
-                     },
+                    {
+                        command: [{
+                            name: "edit",
+                            iconClass: "glyphicon glyphicon-search",
+                            text: ""
+                        },{
+                            name: "edit",
+                            iconClass: "glyphicon glyphicon-pencil",
+                            text: ""
+                        },{
+                            name: "delete",
+                            iconClass: "glyphicon glyphicon-trash",
+                            text: "",
+                            click: excluirFVM
+                        }],
+                        title: "Ações"
+                    },
                     {
                         field: "idFichaVerificacaoMaterial",
                         title: "Material",
@@ -115,8 +118,8 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
                     });
                 },
                 update: function (o) {
-                    PrepararNovoFornecedor(o.data.models[0]);
-                    materiaisService.update(o.data.models[0]).then(function (response) {
+                    PrepararNovoFornecedor(o.data);
+                    materiaisService.update(o.data).then(function (response) {
                         obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
@@ -124,9 +127,9 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
                     });
                 },
                 create: function (o) {
-                    PrepararNovoFornecedor(o.data.models[0]);
-                    o.data.models[0].idUnidade = $scope.unidadeSelecionada;
-                    materiaisService.create(o.data.models[0]).then(function (response) {
+                    PrepararNovoFornecedor(o.data);
+                    o.data.idUnidade = $scope.unidadeSelecionada;
+                    materiaisService.create(o.data).then(function (response) {
                         obterFornecedores();
                         o.success(response.data);
                     }, function (response) {
@@ -134,7 +137,6 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
                     });
                 }
             },
-            batch: true,
             pageSize: 10,
             schema: {
                 model: model
@@ -155,7 +157,7 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
             editable: {
                 mode: "popup",
                 template: kendo.template(angular.element("#editTemplate").html()),
-                destroy: true,
+                destroy: false,
                 window: {
                     title: "Ficha de Verificação de Material",
                     width: "800px",
@@ -175,10 +177,15 @@ app.controller('materiaisController', function ($scope, $routeParams, $sce, $mod
 
     function ObterErros(data) {
         var errors = [];
-        for (var key in data.modelState) {
-            for (var i = 0; i < data.modelState[key].length; i++) {
-                errors.push(data.modelState[key][i]);
+        if (data.modelState) {
+            for (var key in data.modelState) {
+                for (var i = 0; i < data.modelState[key].length; i++) {
+                    errors.push(data.modelState[key][i]);
+                }
             }
+        }
+        else {
+            errors.push("Ocorreu um erro ao salvar os dados. Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
         }
         $scope.mensagem = errors.join(' ');
     }

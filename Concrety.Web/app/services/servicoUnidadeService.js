@@ -18,11 +18,7 @@ app.factory('servicoUnidadeService', ['$http', 'concretySettings', function ($ht
     };
 
     var _salvar = function (servicoUnidade) {
-
-        return $http.put(serviceBase + 'api/servicounidade', servicoUnidade).then(function (response) {
-            return response;
-        });
-        
+        return $http.put(serviceBase + 'api/servicounidade', servicoUnidade);
     };
     
     servicoUnidadeServiceFactory.salvar = _salvar;

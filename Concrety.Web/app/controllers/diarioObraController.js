@@ -36,11 +36,36 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
         });
     });
 
+    function excluirDiario(e) {
+        e.preventDefault();
+        if (confirm("Deseja realmente excluir esse registro?")) {
+            var diario = this.dataItem(angular.element(e.currentTarget).closest("tr"));
+            diariosObraService.delete(diario).then(function (response) {
+                angular.element("#diariosObraGrid").data("kendoGrid").dataSource.remove(diario);
+            }, function (response) {
+                alert("Ocorreu um erro ao excluir o registro. Por favor, tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
+            });
+        }
+    }
+
     function configurarGrid(periodos) {
 
         var columns = [
                 {
-                    command: ["edit"],
+                    command: [{
+                        name: "edit",
+                        iconClass: "glyphicon glyphicon-search",
+                        text: ""
+                    }, {
+                        name: "edit",
+                        iconClass: "glyphicon glyphicon-pencil",
+                        text: ""
+                    }, {
+                        name: "delete",
+                        iconClass: "glyphicon glyphicon-trash",
+                        text: "",
+                        click: excluirDiario
+                    }],
                     title: "Ações"
                 },
                 {
@@ -123,7 +148,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     });
                 },
                 update: function (o) {
-                    diariosObraService.update(o.data.models[0]).then(function (response) {
+                    diariosObraService.update(o.data).then(function (response) {
                         $scope.mensagem = '';
                         o.success(response.data);
                     }, function (response) {
@@ -131,8 +156,8 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     });
                 },
                 create: function (o) {
-                    o.data.models[0].idEmpreendimento = $scope.empreendimentoAtual.id;
-                    diariosObraService.create(o.data.models[0]).then(function (response) {
+                    o.data.idEmpreendimento = $scope.empreendimentoAtual.id;
+                    diariosObraService.create(o.data).then(function (response) {
                         $scope.mensagem = '';
                         o.success(response.data);
                     }, function (response) {
@@ -140,7 +165,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     });
                 }
             },
-            batch: true,
+            batch: false,
             pageSize: 10,
             schema: {
                 model: model
@@ -161,7 +186,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
             editable: {
                 mode: "popup",
                 template: kendo.template(angular.element("#editTemplate").html()),
-                destroy: true,
+                destroy: false,
                 window: {
                     title: "Diário da Obra",
                     width: "800px",
@@ -173,10 +198,15 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
 
     function ObterErros(data) {
         var errors = [];
-        for (var key in data.modelState) {
-            for (var i = 0; i < data.modelState[key].length; i++) {
-                errors.push(data.modelState[key][i]);
+        if (data.modelState) {
+            for (var key in data.modelState) {
+                for (var i = 0; i < data.modelState[key].length; i++) {
+                    errors.push(data.modelState[key][i]);
+                }
             }
+        }
+        else {
+            errors.push("Ocorreu um erro ao salvar os dados. Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente. Caso o erro persista, entre em contato conosco através da ferramenta de feedback (localizada no canto superior direito).");
         }
         $scope.mensagem = errors.join(' ');
     }

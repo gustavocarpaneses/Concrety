@@ -65,21 +65,15 @@ app.factory('materiaisService', function ($http, concretySettings) {
     };
 
     var _update = function (fvm) {
-        return $http.put(serviceBase + 'api/materialUnidade', fvm).then(function (response) {
-            return response;
-        });
+        return $http.put(serviceBase + 'api/materialUnidade', fvm);
     };
 
     var _create = function (fvm) {
-        return $http.post(serviceBase + 'api/materialUnidade', fvm).then(function (response) {
-            return response;
-        });
+        return $http.post(serviceBase + 'api/materialUnidade', fvm);
     };
 
     var _delete = function (fvm) {
-        return $http.delete(serviceBase + 'api/materialUnidade?id=' + fvm.id).then(function (response) {
-            return response;
-        });
+        return $http.delete(serviceBase + 'api/materialUnidade?id=' + fvm.id);
     };
 
     materiaisServiceFactory.obterDaUnidade = _obterDaUnidade;
