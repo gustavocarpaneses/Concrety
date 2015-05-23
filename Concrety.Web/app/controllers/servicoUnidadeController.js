@@ -177,11 +177,24 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
             descricao: '',
             dataAbertura: new Date(),
             dataConclusao: '',
+            nomeUnidade: obterNomeUnidadeSelecionada(),
             status: 10,
             itemVerificacao: itemVerificacao,
             idItemVerificacaoUnidade: itemVerificacao.id,
             anexos: []
         };
+    }
+
+    function obterNomeUnidadeSelecionada() {
+        var nomeUnidadeSelecionada = '';
+        angular.forEach($scope.niveis[1], function (nivel, index) {
+            if (index === $scope.niveis.length - 1) {
+                nomeUnidadeSelecionada += nivel.nome;
+            } else {
+                nomeUnidadeSelecionada += nivel.nome + ' - ';
+            }
+        });
+        return nomeUnidadeSelecionada;
     }
 
     function excluirOcorrencia(e) {
@@ -254,6 +267,7 @@ app.controller('servicoUnidadeController', function ($scope, $rootScope, $modal,
                 id: { type: "number" },
                 nomeFichaVerificacaoServico: { type: "string" },
                 nomeItemVerificacaoServico: { type: "string" },
+                nomeUnidade: {type: "string"},
                 dataAbertura: { type: "date" },
                 dataConclusao: { type: "date" },
                 status: { type: "number" },
