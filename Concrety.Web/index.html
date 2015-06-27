@@ -12,6 +12,7 @@
     <link href="content/css/kendo.dataviz.bootstrap.min.css" rel="stylesheet" />
     <link href="content/css/concrety.css?v=2" rel="stylesheet" />
     <link href="content/css/lightbox.css" rel="stylesheet" />
+    <link href="content/css/prettyPhoto.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
 <body>
@@ -28,7 +29,6 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-left" data-ng-hide="!authentication.isAuth">
-
                     <li class="dropdown" dropdown>
                         <a role="button" class="dropdown-toggle" dropdown-toggle aria-haspopup="true" aria-expanded="false">
                             Serviços <b class="caret"></b>
@@ -77,8 +77,13 @@
                         <a href="#/login">Login</a>
                     </li>
                     <li data-ng-hide="!authentication.isAuth">
+                        <a href="app/partials/ajuda.html?iframe=true&width=90%&height=100%" title="ajuda" rel="prettyPhoto[iframes]">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                        </a>
+                    </li>
+                    <li data-ng-hide="!authentication.isAuth">
                         <a href="" ng-click="abrirModalFeedback()" title="Envie sua dúvida ou sugestão">
-                            <i class="glyphicon glyphicon-envelope"></i>
+                            <i class="glyphicon glyphicon-bullhorn"></i>
                         </a>
                     </li>
                 </ul>
@@ -107,6 +112,7 @@
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
     <script src="scripts/lightbox.min.js"></script>
+    <script src="scripts/jquery.prettyPhoto.js"></script>
     <!-- Load app main script -->
     <script src="app/app.js?v=1"></script>
     <!-- Load services -->
@@ -144,5 +150,13 @@
     <script src="app/controllers/relatorios/graficosController.js?v=1"></script>
     <!-- Load directives -->
     <script src="app/directives/printDiv.js"></script>
+
+    <!--lightbox do help-->
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+    });
+    </script>
+
 </body>
 </html>

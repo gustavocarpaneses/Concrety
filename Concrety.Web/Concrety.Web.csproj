@@ -56,6 +56,7 @@
     <Content Include="app\controllers\loginController.js" />
     <Content Include="app\controllers\signupController.js" />
     <Content Include="app\directives\printDiv.js" />
+    <Content Include="app\partials\ajuda.html" />
     <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\partials\modalFeedback.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
@@ -130,7 +131,19 @@
     <Content Include="content\css\kendo.dataviz.min.css" />
     <Content Include="content\css\lightbox.css" />
     <Content Include="content\css\loading-bar.min.css" />
+    <Content Include="content\css\prettyPhoto.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\help\css\style.css" />
+    <Content Include="content\help\images\DiarioDeObra.jpg" />
+    <Content Include="content\help\images\home.jpg" />
+    <Content Include="content\help\images\Materiais.jpg" />
+    <Content Include="content\help\images\menuServicosObra.jpg" />
+    <Content Include="content\help\images\MenuServicosUnidades.jpg" />
+    <Content Include="content\help\images\MenuVerificacaoMaterial.jpg" />
+    <Content Include="content\help\images\Obra.jpg" />
+    <Content Include="content\help\images\Unidades.jpg" />
+    <Content Include="content\help\images\Unidades2.jpg" />
+    <Content Include="content\help\images\Unidades3.jpg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
     <Content Include="scripts\angular-route.min.js" />
@@ -138,6 +151,7 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\cultures\kendo.culture.pt-BR.min.js" />
     <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\jquery.prettyPhoto.js" />
     <Content Include="scripts\kendo.all.min.js" />
     <Content Include="scripts\lightbox.min.js" />
     <Content Include="scripts\loading-bar.min.js" />
@@ -149,8 +163,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="content\less\bootswatch.less" />
-    <Content Include="content\less\variables.less" />
+    <Content Include="content\sass\less\bootswatch.less" />
+    <Content Include="content\sass\less\variables.less" />
     <Content Include="content\sass\_bootswatch.scss" />
     <Content Include="content\sass\_variables.scss" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
