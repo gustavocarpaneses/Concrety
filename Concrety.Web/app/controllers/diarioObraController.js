@@ -267,7 +267,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
             size: 'lg',
             resolve: {
                 diariosObra: function () {
-                    var dataSource = $scope.diariosObraGrid.dataSource;
+                    var dataSource = angular.element("#diariosObraGrid").data("kendoGrid").dataSource;
                     var filters = dataSource.filter();
                     var allData = dataSource.data();
                     var query = new kendo.data.Query(allData);
