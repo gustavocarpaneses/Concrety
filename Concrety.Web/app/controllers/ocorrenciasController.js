@@ -68,12 +68,19 @@ app.controller('ocorrenciasController', function ($scope, $timeout, $modal, $mod
         $modalInstance.dismiss();
     };
 
-    $scope.salvar = function () {
-        if ($scope.isNew()) {
-            ocorrenciasService.create($scope.ocorrencia).then(salvoSucesso, erroSalvar);
+    $scope.salvar = function (event) {
+        event.preventDefault();
+
+        if ($scope.validator.validate()) {
+            if ($scope.isNew()) {
+                ocorrenciasService.create($scope.ocorrencia).then(salvoSucesso, erroSalvar);
+            }
+            else {
+                ocorrenciasService.update($scope.ocorrencia).then(salvoSucesso, erroSalvar);
+            }
         }
         else {
-            ocorrenciasService.update($scope.ocorrencia).then(salvoSucesso, erroSalvar);
+            $scope.mensagem = "Por favor, verifique se todos os campos estão preenchidos corretamente e tente novamente.";
         }
     };
 
