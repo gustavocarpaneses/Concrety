@@ -40,6 +40,9 @@
                 <li>
                     <a onclick="irdiario()">Diário de Obra</a>
                 </li>
+                <li>
+                    <a onclick="irdashboard()">Dashboard</a>
+                </li>
 
             </ul>
         </nav>
@@ -48,7 +51,7 @@
     <section class="centro">
         <article>
             <div id="txtdescricao">
-                Na home do Concrety, você pode acompanhar quais ocorrências estão em aberto, editá-las, visualizá-las e excluí-las, de acordo com sua necessidade.Os gráficos estarão disponíveis em breve e você poderá acompanhar todas as informações de forma simples e rápida!
+                Na home do Concrety, você pode acompanhar quais ocorrências estão em aberto, editá-las, visualizá-las e excluí-las, de acordo com sua necessidade.
             </div>
             <div id="fundoimagens" style="background-image:url(../../content/help/images/home.jpg);">
             </div>
@@ -59,7 +62,7 @@
     <script type="text/javascript">
 				function irhome(){
 					var home = document.getElementById("fundoimagens").style.backgroundImage = "url('../../content/help/images/home.jpg')";
-					var txthome = document.getElementById("txtdescricao").innerHTML = "Na home do Concrety, você pode acompanhar quais ocorrências estão em aberto, editá-las, visualizá-las e excluí-las, de acordo com sua necessidade.Os gráficos estarão disponíveis em breve e você poderá acompanhar todas as informações de forma simples e rápida!"
+					var txthome = document.getElementById("txtdescricao").innerHTML = "Na home do Concrety, você pode acompanhar quais ocorrências estão em aberto, editá-las, visualizá-las e excluí-las, de acordo com sua necessidade."
 
 				}
 
@@ -112,6 +115,11 @@
 
 				}
 
+				function irdashboard() {
+				    var home = document.getElementById("fundoimagens").style.backgroundImage = "url('../../content/help/images/dashboard.jpg')";
+				    var txtdiario = document.getElementById("txtdescricao").innerHTML = "Os gráficos estarão disponíveis em breve e permitirá uma visão gerencial sobre todos as informações controladas no Concrety. Você poderá acompanhar todas as informações de forma simples e rápida!"
+
+				}
     </script>
 
 </body>

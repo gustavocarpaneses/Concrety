@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\diarioObraController.js" />
+    <Content Include="app\controllers\dashboardController.js" />
     <Content Include="app\controllers\relatorios\graficosController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\materialUnidadeController.js" />
@@ -57,6 +58,7 @@
     <Content Include="app\controllers\signupController.js" />
     <Content Include="app\directives\printDiv.js" />
     <Content Include="app\partials\ajuda.html" />
+    <Content Include="app\partials\dashboard.html" />
     <Content Include="app\partials\diarioObra.html" />
     <Content Include="app\partials\modalFeedback.html" />
     <Content Include="app\partials\modalOcorrencia.html" />
@@ -134,6 +136,7 @@
     <Content Include="content\css\prettyPhoto.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="content\help\css\style.css" />
+    <Content Include="content\help\images\dashboard.jpg" />
     <Content Include="content\help\images\DiarioDeObra.jpg" />
     <Content Include="content\help\images\home.jpg" />
     <Content Include="content\help\images\Materiais.jpg" />

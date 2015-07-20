@@ -17,6 +17,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/partials/diarioObra.html"
     });
 
+    $routeProvider.when("/dashboard", {
+        controller: "dashboardController",
+        templateUrl: "/app/partials/dashboard.html"
+    });
+
     $routeProvider.when("/servicos/:id", {
         controller: "servicosController",
         templateUrl: "/app/partials/servicos.html"
