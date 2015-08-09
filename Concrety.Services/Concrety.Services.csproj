@@ -46,6 +46,7 @@
     <Compile Include="AnexoService.cs" />
     <Compile Include="OcorrenciaAnexoService.cs" />
     <Compile Include="OcorrenciaService.cs" />
+    <Compile Include="DashboardService.cs" />
     <Compile Include="PatologiaService.cs" />
     <Compile Include="ServicoUnidadeService.cs" />
     <Compile Include="UnidadeService.cs" />
