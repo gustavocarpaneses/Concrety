@@ -31,14 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
-    <Compile Include="Entities\Dashboard\GraficoLinha.cs" />
-    <Compile Include="Entities\Dashboard\EixoCategoria.cs" />
-    <Compile Include="Entities\Dashboard\EixoValor.cs" />
-    <Compile Include="Entities\Dashboard\Serie.cs" />
     <Compile Include="Entities\EmailFeedback.cs" />
     <Compile Include="Entities\EmpreendimentoPeriodo.cs" />
     <Compile Include="Entities\EmpreendimentoDiarioPeriodo.cs" />
     <Compile Include="Entities\OcorrenciaAnexo.cs" />
+    <Compile Include="Entities\Relatorio.cs" />
     <Compile Include="Entities\Results\EntityResultBase.cs" />
     <Compile Include="Entities\Results\ServicoUnidadeResult.cs" />
     <Compile Include="Entities\Base\EntityBase.cs" />
@@ -87,7 +84,7 @@
     <Compile Include="Interfaces\Repositories\IAnexoBlobRepository.cs" />
     <Compile Include="Interfaces\Repositories\IEmailRepository.cs" />
     <Compile Include="Interfaces\Services\IEmpreendimentoDiarioPeriodoService.cs" />
-    <Compile Include="Interfaces\Services\IDashboardService.cs" />
+    <Compile Include="Interfaces\Services\IRelatorioService.cs" />
     <Compile Include="Messages\ServiceBaseMessages.cs" />
     <Compile Include="Queries\EmpreendimentoPeriodoQueries.cs" />
     <Compile Include="Queries\ItemVerificacaoMaterialUnidadeQueries.cs" />

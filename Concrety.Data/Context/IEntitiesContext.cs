@@ -1,5 +1,6 @@
 ﻿using Concrety.Core.Entities.Base;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,5 +20,6 @@ namespace Concrety.Data.Context
         int Commit();
         void Rollback();
         Task<int> CommitAsync();
+        Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters);
     }
 }

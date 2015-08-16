@@ -44,6 +44,7 @@
     <Compile Include="EntityConfig\OcorrenciaAnexoConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoUnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\ServicoConfiguration.cs" />
+    <Compile Include="EntityConfig\RelatorioConfiguration.cs" />
     <Compile Include="EntityConfig\UnidadeConfiguration.cs" />
     <Compile Include="EntityConfig\SolucaoConfiguration.cs" />
     <Compile Include="EntityConfig\ItemVerificacaoServicoUnidadeConfiguration.cs" />

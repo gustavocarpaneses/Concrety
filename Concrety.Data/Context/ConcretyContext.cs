@@ -4,6 +4,7 @@ using Concrety.Data.EntityConfig;
 using Concrety.Identity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
@@ -107,6 +108,11 @@ namespace Concrety.Data.Context
             var saveChangesAsync = SaveChangesAsync();
             _transaction.Commit();
             return saveChangesAsync;
+        }
+
+        public Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters)
+        {
+            return base.Database.SqlQuery<dynamic>(query, parameters).ToListAsync();
         }
 
         private void UpdateEntityState<TEntity>(TEntity entity, EntityState entityState) where TEntity : EntityBase

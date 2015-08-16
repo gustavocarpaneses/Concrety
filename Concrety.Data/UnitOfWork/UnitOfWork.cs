@@ -6,6 +6,7 @@ using Concrety.Data.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -76,6 +77,11 @@ namespace Concrety.Data.UnitOfWork
         public Task<int> CommitAsync()
         {
             return _context.CommitAsync();
+        }
+
+        public Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters)
+        {
+            return _context.ExecuteSqlQueryAsync(query, parameters);
         }
 
         public void Dispose()

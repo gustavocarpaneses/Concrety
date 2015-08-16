@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Entities.Base;
 using Concrety.Core.Interfaces.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,5 +19,7 @@ namespace Concrety.Core.Interfaces.UnitOfWork
         Task<int> SaveChangesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<int> CommitAsync();
+
+        Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters);
     }
 }
