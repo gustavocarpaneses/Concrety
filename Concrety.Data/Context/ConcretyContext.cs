@@ -110,9 +110,47 @@ namespace Concrety.Data.Context
             return saveChangesAsync;
         }
 
-        public Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters)
+        public async Task<IEnumerable<object[]>> ExecuteSqlQueryAsync(string query, params object[] parameters)
         {
-            return base.Database.SqlQuery<dynamic>(query, parameters).ToListAsync();
+
+            using (var cmd = base.Database.Connection.CreateCommand())
+            {
+                await base.Database.Connection.OpenAsync();
+
+                cmd.CommandText = query;
+
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    var dbParameter = cmd.CreateParameter();
+                    dbParameter.ParameterName = "@p" + i;
+                    dbParameter.Value = parameters[i];
+                    cmd.Parameters.Add(dbParameter);
+                }
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    return await ReadAsync(reader);
+                }
+            }
+        }
+
+        private async static Task<IEnumerable<object[]>> ReadAsync(DbDataReader reader)
+        {
+            var fieldCount = reader.FieldCount;
+
+            var returnList = new List<object[]>();
+
+            while (await reader.ReadAsync())
+            {
+                var values = new List<object>();
+                for (int i = 0; i < fieldCount; i++)
+                {
+                    values.Add(reader.GetValue(i));
+                }
+                returnList.Add(values.ToArray());
+            }
+
+            return returnList;
         }
 
         private void UpdateEntityState<TEntity>(TEntity entity, EntityState entityState) where TEntity : EntityBase

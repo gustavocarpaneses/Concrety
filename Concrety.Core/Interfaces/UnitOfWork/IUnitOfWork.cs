@@ -20,6 +20,6 @@ namespace Concrety.Core.Interfaces.UnitOfWork
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task<int> CommitAsync();
 
-        Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters);
+        Task<IEnumerable<object[]>> ExecuteSqlQueryAsync(string query, params object[] parameters);
     }
 }

@@ -6,6 +6,6 @@ namespace Concrety.Core.Interfaces.Services
 {
     public interface IRelatorioService : IServiceBase<Relatorio>
     {
-        Task<List<dynamic>> ObterAsync(int id, params object[] parametros);
+        Task<IEnumerable<object[]>> ObterAsync(int id, params object[] parametros);
     }
 }

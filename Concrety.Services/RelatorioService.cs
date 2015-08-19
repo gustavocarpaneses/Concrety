@@ -18,7 +18,7 @@ namespace Concrety.Services
             _repository = UnitOfWork.Repository<Relatorio>();
         }
 
-        public Task<List<dynamic>> ObterAsync(int id, params object[] parametros)
+        public Task<IEnumerable<object[]>> ObterAsync(int id, params object[] parametros)
         {
             var relatorio = _repository.ObterPeloId(id);
 

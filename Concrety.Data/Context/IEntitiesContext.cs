@@ -20,6 +20,6 @@ namespace Concrety.Data.Context
         int Commit();
         void Rollback();
         Task<int> CommitAsync();
-        Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters);
+        Task<IEnumerable<object[]>> ExecuteSqlQueryAsync(string query, params object[] parameters);
     }
 }

@@ -79,7 +79,7 @@ namespace Concrety.Data.UnitOfWork
             return _context.CommitAsync();
         }
 
-        public Task<List<dynamic>> ExecuteSqlQueryAsync(string query, params object[] parameters)
+        public Task<IEnumerable<object[]>> ExecuteSqlQueryAsync(string query, params object[] parameters)
         {
             return _context.ExecuteSqlQueryAsync(query, parameters);
         }
