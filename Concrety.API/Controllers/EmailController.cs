@@ -19,6 +19,7 @@ namespace Concrety.API.Controllers
             _emailService = emailService;
         }
 
+        [Authorize]
         [Route("PostFeedback")]
         [HttpPost]
         public async Task<IHttpActionResult> EnviarFeedback(EmailFeedbackViewModel emailFeedbackViewModel)
@@ -41,6 +42,30 @@ namespace Concrety.API.Controllers
                 return errorResult;
             }
 
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("PostContato")]
+        [HttpPost]
+        public async Task<IHttpActionResult> EnviarContato(EmailContatoViewModel emailContatoViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var emailContato = Mapper.Map<EmailContatoViewModel, EmailContato>(emailContatoViewModel);
+            
+            var resultado = await _emailService.EnviarEmailContato(emailContato);
+
+            IHttpActionResult errorResult = GetErrorResult(resultado);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+            
             return Ok();
         }
 

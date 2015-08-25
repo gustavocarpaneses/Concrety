@@ -56,6 +56,7 @@ namespace Concrety.API.AutoMapper
             Mapper.CreateMap<AnexoViewModel, Anexo>();
             Mapper.CreateMap<OcorrenciaAnexoViewModel, OcorrenciaAnexo>();
             Mapper.CreateMap<EmailFeedbackViewModel, EmailFeedback>();
+            Mapper.CreateMap<EmailContatoViewModel, EmailContato>();
         }
     }
 }

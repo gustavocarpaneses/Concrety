@@ -87,6 +87,7 @@
     <Content Include="app\services\servicosService.js" />
     <Content Include="app\services\unidadesService.js" />
     <Content Include="app\services\niveisService.js" />
+    <Content Include="contato.html" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\Bootstrap\editor.png" />

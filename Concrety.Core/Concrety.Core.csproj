@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
+    <Compile Include="Entities\EmailContato.cs" />
     <Compile Include="Entities\EmailFeedback.cs" />
     <Compile Include="Entities\EmpreendimentoPeriodo.cs" />
     <Compile Include="Entities\EmpreendimentoDiarioPeriodo.cs" />
