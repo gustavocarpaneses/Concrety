@@ -1,6 +1,376 @@
-﻿<div class="row">
+﻿<link href="../../content/css/kendo.common.min.css" rel="stylesheet" />
+<link href="../../content/css/kendo.default.min.css" rel="stylesheet" />
+<script src="js/jquery.min.js"></script>
+<script src="js/kendo.all.min.js"></script>
+
+<div class="row">
     <h4 class="h4_titulo"><b>Dashboard - Visão Gerencial</b></h4>
-    <div class="col-md-4"><img style="max-width:360px;" class="img_teste" src="../../content/css/Default/grafico1_teste.png" /></div>
-    <div class="col-md-4"><img style="max-width:360px;" class="img_teste" src="../../content/css/Default/grafico2_teste.png" /></div>
-    <div class="col-md-4"><img style="max-width:360px;" class="img_teste" src="../../content/css/Default/grafico3_teste.png" /></div>
+    <div class="col-md-12">
+        <div id="grafico1_Efetivo">
+            <div class="demo-section k-content">
+                <div id="chart1"></div>
+            </div>
+            <script>
+                function createChart() {
+                    $("#chart1").kendoChart({
+                        title: {
+                            text: "Efetivo total"
+                        },
+                        legend: {
+                            position: "bottom"
+                        },
+                        chartArea: {
+                            background: ""
+                        },
+                        seriesDefaults: {
+                            type: "line",
+                            style: "smooth"
+                        },
+                        series: [{
+                            name: "Efetivo",
+                            data: [100, 99, 100, 100, 99, 98, 100, 100, 100, 100],
+                            color: "#00BFFF"
+                        }, {
+                            name: "Faltas",
+                            data: [0, 1, 0, 0, 1, 2, 0, 0, 0, 0],
+                            color: "#556B2F"
+                        }, {
+                            name: "Acidentados",
+                            data: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                            color: "#FF0000"
+                        }],
+                        valueAxis: {
+                            labels: {
+                                format: "{0}"
+                            },
+                            line: {
+                                visible: false
+                            },
+                            axisCrossingValue: -10
+                        },
+                        categoryAxis: {
+                            categories: ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"],
+                            majorGridLines: {
+                                visible: false
+                            },
+                            labels: {
+                                rotation: "auto"
+                            }
+                        },
+                        tooltip: {
+                            visible: true,
+                            format: "{0}",
+                            template: "#= series.name #: #= value #"
+                        }
+                    });
+                }
+
+                $(document).ready(createChart);
+                $(document).bind("kendo:skinChange", createChart);
+            </script>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <br />
+        </div>
+        <div class="col-md-6">
+            <div id="grafico7_Maodeobra">
+                <div class="demo-section k-content">
+                    <div id="chart7"></div>
+                </div>
+                <script>
+                    function createChart() {
+                        $("#chart7").kendoChart({
+                            title: {
+                                position: "top",
+                                text: "Mão de obra - especialidades"
+                            },
+                            legend: {
+                                visible: false
+                            },
+                            chartArea: {
+                                background: ""
+                            },
+                            seriesDefaults: {
+                                labels: {
+                                    visible: true,
+                                    background: "transparent",
+                                    template: "#= category #: \n #= value#"
+                                }
+                            },
+                            series: [{
+                                type: "pie",
+                                startAngle: 150,
+                                data: [{
+                                    category: "Montadores",
+                                    value: 10,
+                                    color: "#FFD700"
+                                }, {
+                                    category: "Armadores",
+                                    value: 5,
+                                    color: "#FF8C00"
+                                }, {
+                                    category: "Carpinteiros",
+                                    value: 5,
+                                    color: "#8B4513"
+                                }, {
+                                    category: "Eletricistas",
+                                    value: 10,
+                                    color: "#FFFF00"
+                                }, {
+                                    category: "Encarregados",
+                                    value: 3,
+                                    color: "#2F4F4F"
+                                }, {
+                                    category: "Mestres",
+                                    value: 3,
+                                    color: "#8B4513"
+                                }, {
+                                    category: "Encanadores",
+                                    value: 10,
+                                    color: "#1E90FF"
+                                }, {
+                                    category: "Ajudantes",
+                                    value: 5,
+                                    color: "#32CD32"
+                                }, {
+                                    category: "Pedreiros",
+                                    value: 50,
+                                    color: "#696969"
+                                }]
+                            }],
+                            tooltip: {
+                                visible: true,
+                                format: "{0}"
+                            }
+                        });
+                    }
+
+                    $(document).ready(createChart);
+                    $(document).bind("kendo:skinChange", createChart);
+                </script>
+            </div>
+        </div>
+    <div class="col-md-6">
+        <div id="grafico4_CondicoesClimaticas">
+            <div class="demo-section k-content">
+                <div id="chart4"></div>
+            </div>
+            <script>
+                function createChart() {
+                    $("#chart4").kendoChart({
+                        title: {
+                            position: "top",
+                            text: "Condições climáticas durante a obra"
+                        },
+                        legend: {
+                            visible: false
+                        },
+                        chartArea: {
+                            background: ""
+                        },
+                        seriesDefaults: {
+                            labels: {
+                                visible: true,
+                                background: "transparent",
+                                template: "#= category #: \n #= value#%"
+                            }
+                        },
+                        series: [{
+                            type: "pie",
+                            startAngle: 150,
+                            data: [{
+                                category: "Ensolarado",
+                                value: 70,
+                                color: "#FFD700"
+                            }, {
+                                category: "Nublado",
+                                value: 10,
+                                color: "#B0C4DE"
+                            }, {
+                                category: "Parcialmente chuvoso",
+                                value: 10,
+                                color: "#708090"
+                            }, {
+                                category: "Chuvoso",
+                                value: 10,
+                                color: "#483D8B"
+                            }]
+                        }],
+                        tooltip: {
+                            visible: true,
+                            format: "{0}%"
+                        }
+                    });
+                }
+
+                $(document).ready(createChart);
+                $(document).bind("kendo:skinChange", createChart);
+            </script>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br />
+        <br />
+    </div>
+    <div class="col-md-12">
+        <div id="grafico3_PES">
+            <div class="demo-section k-content">
+                <div id="chart3"></div>
+            </div>
+            <script>
+                function createChart() {
+                    $("#chart3").kendoChart({
+                        title: {
+                            text: "PES - Procedimentos de Execução"
+                        },
+                        legend: {
+                            visible: false
+                        },
+                        seriesDefaults: {
+                            type: "bar"
+                        },
+                        series: [{
+                            name: "Concluídas",
+                            data: [70, 30, 10, 0, 0, 0],
+                            color: "#008000"
+                        }, {
+                            name: "Em andamento",
+                            data: [30, 40, 5, 0, 0, 0],
+                            color: "#0000CD"
+                        }],
+                        valueAxis: {
+                            max: 1000,
+                            line: {
+                                visible: false
+                            },
+                            minorGridLines: {
+                                visible: true
+                            },
+                            labels: {
+                                rotation: "auto"
+                            }
+                        },
+                        categoryAxis: {
+                            categories: ["PES2", "PES3", "PES4", "PES5", "PES6", "PES7", "PES8", "PES9", "PES10"],
+                            majorGridLines: {
+                                visible: false
+                            }
+                        },
+                        tooltip: {
+                            visible: true,
+                            template: "#= series.name #: #= value #"
+                        }
+                    });
+                }
+
+                $(document).ready(createChart);
+                $(document).bind("kendo:skinChange", createChart);
+            </script>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br />
+        <br />
+    </div>
+    <div class="col-md-6">
+        <div id="grafico5_ControleUnidades">
+            <div class="demo-section k-content">
+                <div id="chart5"></div>
+            </div>
+            <script>
+                function createChart() {
+                    $("#chart5").kendoChart({
+                        title: {
+                            text: "Controle de Unidades"
+                        },
+                        legend: {
+                            position: "top"
+                        },
+                        seriesDefaults: {
+                            labels: {
+                                template: "#= category # - #= kendo.format('{0}', value)#",
+                                position: "outsideEnd",
+                                visible: true,
+                                background: "transparent"
+                            }
+                        },
+                        series: [{
+                            type: "pie",
+                            data: [{
+                                category: "Em andamento",
+                                value: 50,
+                                color: "#FF8C00"
+                            }, {
+                                category: "Concluídas",
+                                value: 30,
+                                color: "#008000"
+                            }, {
+                                category: "Não iniciadas",
+                                value: 20,
+                                color: "#5F9EA0"
+                            }]
+                        }],
+                        tooltip: {
+                            visible: true,
+                            template: "#= category # - #= kendo.format('{0}', value) #"
+                        }
+                    });
+                }
+
+                $(document).ready(function () {
+                    createChart();
+                    $(document).bind("kendo:skinChange", createChart);
+                });
+            </script>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="grafico6_Ocorrencias">
+            <div class="demo-section k-content">
+                <div id="chart6"></div>
+            </div>
+            <script>
+                function createChart() {
+                    $("#chart6").kendoChart({
+                        title: {
+                            text: "Controle de Ocorrências"
+                        },
+                        legend: {
+                            position: "top"
+                        },
+                        seriesDefaults: {
+                            labels: {
+                                template: "#= category # - #= kendo.format('{0}', value)#",
+                                position: "outsideEnd",
+                                visible: true,
+                                background: "transparent"
+                            }
+                        },
+                        series: [{
+                            type: "pie",
+                            data: [{
+                                category: "Pendentes",
+                                value: 10,
+                                color: "#FF0000"
+                            }, {
+                                category: "Concluídas",
+                                value: 90,
+                                color: "#008000"
+                            }]
+                        }],
+                        tooltip: {
+                            visible: true,
+                            template: "#= category # - #= kendo.format('{0}', value) #"
+                        }
+                    });
+                }
+
+                $(document).ready(function () {
+                    createChart();
+                    $(document).bind("kendo:skinChange", createChart);
+                });
+            </script>
+        </div>
+    </div>
 </div>

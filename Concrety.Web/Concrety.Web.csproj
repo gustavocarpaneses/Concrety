@@ -132,6 +132,7 @@
     <Content Include="content\css\kendo.common.min.css" />
     <Content Include="content\css\kendo.dataviz.bootstrap.min.css" />
     <Content Include="content\css\kendo.dataviz.min.css" />
+    <Content Include="content\css\kendo.default.min.css" />
     <Content Include="content\css\lightbox.css" />
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\prettyPhoto.css" />

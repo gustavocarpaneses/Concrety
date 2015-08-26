@@ -5,16 +5,5 @@ app.controller('dashboardController', function ($scope, $location, $modal, authS
         $location.path('/login');
     }
 
-    configurarGraficos();
- 
-    function configurarGraficos() {
-
-        configurarGraficoCondicoesClimaticas();
-
-    }
-
-    function configurarGraficoCondicoesClimaticas() {
-
-    }
 
 });

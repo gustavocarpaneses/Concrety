@@ -18,13 +18,13 @@ body{
 	width: 30%;
 	display: inline-block;;
 	float: left;
-	margin-top: -25px;
+	margin-top: 25px;
 }
 
 
 .esq ul li{
 	display: block;		
-	margin: 10px 0 10px 0;
+	margin: 10px 10px 10px 10px;
 	cursor: pointer;
 }
 
@@ -49,9 +49,6 @@ body{
 	display: block;
 
 }
-
-
-
 
 
 /*Conteúdo*/
