@@ -63,6 +63,10 @@ padding-top:13px;
     background-color:#0099CC    !important;
 }
 
+.nav>li>a{
+    padding:10px 10px!important;
+}
+
 
 /*página de serviços*/
 
