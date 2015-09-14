@@ -67,6 +67,21 @@ padding-top:13px;
     padding:10px 10px!important;
 }
 
+/*ícones grid*/
+
+.glyphicon-pencil   {
+     color:#009900!important;
+}
+
+.glyphicon-search{
+     color:#000099!important;
+}
+
+.glyphicon-trash {
+    color:#E00000!important;
+}
+
+
 
 /*página de serviços*/
 
@@ -198,7 +213,33 @@ li.ng-isolate-scope{
 
 .diario_obra_periodo{
  left:25px;
-}
+ width:850px;
+ border-color:red;
+ border-style:dashed;
+ }
+
+.diario_obra_periodo_container{
+ width:910px;
+ margin-top:5px;
+ }
+
+.diario_obra_periodo_primeiracoluna{
+ float:left;
+ width:300px;
+ }
+
+.diario_obra_periodo_segundacoluna{
+ float:left;
+ width:300px;
+ margin-left:10px;
+ }
+
+.diario_obra_periodo_terceiracoluna{
+ float:left;
+ width:290px;
+ margin-left:10px;
+ }
+
 
 /*página feedback*/
 #body_msg_feedback{
@@ -231,7 +272,7 @@ li.ng-isolate-scope{
 /*página de materiais*/
 
 .k-edit-form-container .k-edit-buttons{
-    width:750px!important;
+    width:950px!important;
 }
 
 .k-edit-form-container .k-button {

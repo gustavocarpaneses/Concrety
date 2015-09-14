@@ -55,7 +55,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                     command: [{
                         name: "edit",
                         iconClass: "glyphicon glyphicon-search",
-                        text: ""
+                        text: "",
                     }, {
                         name: "edit",
                         iconClass: "glyphicon glyphicon-pencil",
@@ -66,7 +66,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                         text: "",
                         click: excluirDiario
                     }],
-                    title: "Ações"
+                    title: "Ações",
                 },
                 {
                     field: "dataDiario",
@@ -189,7 +189,7 @@ app.controller('diarioObraController', function ($scope, $q, $http, $modal, diar
                 destroy: false,
                 window: {
                     title: "Diário da Obra",
-                    width: "800px",
+                    width: "1000px",
                     height: "600px"
                 }
             },
