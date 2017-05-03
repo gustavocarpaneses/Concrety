@@ -5,6 +5,8 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
     $scope.mensagem = "";
 
     $scope.registration = {
+        nome: "",
+        telefone: "",
         email: "",
         password: "",
         confirmPassword: ""
