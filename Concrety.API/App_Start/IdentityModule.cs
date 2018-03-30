@@ -11,7 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 
-namespace Concrety.Bootstrapper
+namespace Concrety.API
 {
     public class IdentityModule : Module
     {

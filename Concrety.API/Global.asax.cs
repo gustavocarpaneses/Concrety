@@ -1,5 +1,4 @@
-﻿using Concrety.API.AutoMapper;
-using System.Web;
+﻿using System.Web;
 
 namespace Concrety.API
 {

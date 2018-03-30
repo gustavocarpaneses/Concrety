@@ -1,21 +1,26 @@
 ﻿using Concrety.Core.Entities;
+using Concrety.Core.Interfaces.Blob;
 using Concrety.Core.Interfaces.Repositories;
-using Concrety.Data.Azure;
-using Concrety.Data.Context;
-using Microsoft.AspNet.Identity;
 
 namespace Concrety.Data.Repositories
 {
     public class AnexoBlobRepository : IAnexoBlobRepository
     {
+        private readonly IBlobManager _blobManager;
+
+        public AnexoBlobRepository(IBlobManager blobManager)
+        {
+            _blobManager = blobManager;
+        }
+
         public void Adicionar(Anexo anexo)
         {
-            new BlobManager().Upload(anexo);
+            _blobManager.Upload(anexo);
         }
 
         public void Remover(Anexo anexo)
         {
-            new BlobManager().Remover(anexo);
+            _blobManager.Remover(anexo);
         }
     }
 }

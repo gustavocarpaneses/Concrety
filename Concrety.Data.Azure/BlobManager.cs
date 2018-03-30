@@ -1,5 +1,5 @@
 ﻿using Concrety.Core.Entities;
-using Concrety.Core.Messages;
+using Concrety.Core.Interfaces.Blob;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Concrety.Data.Azure
 {
-    public class BlobManager
+    public class AzureBlobManager : IBlobManager
     {
 
         public void Upload(Anexo anexo)
