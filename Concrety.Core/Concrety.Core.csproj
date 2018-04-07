@@ -101,6 +101,7 @@
     <Compile Include="Queries\PatologiaQueries.cs" />
     <Compile Include="Queries\ServicoUnidadeQueries.cs" />
     <Compile Include="Queries\ServicoQueries.cs" />
+    <Compile Include="Queries\EmpreendimentoQueries.cs" />
     <Compile Include="Queries\UnidadeQueries.cs" />
     <Compile Include="Queries\NivelQueries.cs" />
     <Compile Include="Interfaces\Services\IEmailService.cs" />

@@ -7,6 +7,20 @@ namespace Concrety.Core.Queries
 {
     public static class NivelQueries
     {
+        public static IEnumerable<Nivel> ObterNiveisDoMacroServico(
+            this IRepositoryBase<Nivel> nivelRepository,
+            IQueryable<Servico> servicos,
+            int idMacroServico)
+        {
+            var query = from n in nivelRepository.ObterQuery()
+                        where
+                            n.IdMacroServico == idMacroServico &&
+                            n.Ativo && !n.Excluido
+                        select n;
+
+            return query;
+        }
+
         public static IEnumerable<Nivel> ObterNiveisDeServico(
             this IRepositoryBase<Nivel> nivelRepository, 
             IQueryable<Servico> servicos, 

@@ -24,7 +24,16 @@ namespace Concrety.Services
             _servicoRepository = UnitOfWork.Repository<Servico>();
             _fichaVerificacaoMaterialRepository = UnitOfWork.Repository<FichaVerificacaoMaterial>();
         }
-        
+
+        public async Task<IEnumerable<Nivel>> ObterNiveisDoMacroServicoAsync(int idMacroServico)
+        {
+            var query = _repository.ObterNiveisDoMacroServico(
+                _servicoRepository.ObterQuery(),
+                idMacroServico);
+
+            return await Task.Factory.StartNew(() => { return query; });
+        }
+
         public async Task<IEnumerable<Nivel>> ObterNiveisDeServicoAsync(int idMacroServico)
         {
             var query = _repository.ObterNiveisDeServico(
