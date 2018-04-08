@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pizolato\TorresDoBela\Common.cs" />
+    <Compile Include="Pizolato\TorresDoBela\Usuarios.cs" />
     <Compile Include="Pizolato\TorresDoBela\Servicos.cs" />
     <Compile Include="Pizolato\TorresDoBela\Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
