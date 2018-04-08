@@ -35,21 +35,26 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
         }
 
         [Test]
-        public async Task CriarEdificacoes()
+        public async Task CriarTudo()
         {
-            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Edificacoes.csv").ConfigureAwait(false);
+            await CriarEdificacoes().ConfigureAwait(false);
+            await CriarLineares().ConfigureAwait(false);
+            await CriarViarias().ConfigureAwait(false);
         }
 
-        [Test]
-        public async Task CriarLineares()
+        private async Task CriarEdificacoes()
         {
-            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Lineares.csv").ConfigureAwait(false);
+            await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Edificacoes.csv").ConfigureAwait(false);
         }
 
-        [Test]
-        public async Task CriarViarias()
+        private async Task CriarLineares()
         {
-            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Viarias.csv").ConfigureAwait(false);
+            await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Lineares.csv").ConfigureAwait(false);
+        }
+
+        private async Task CriarViarias()
+        {
+            await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Viarias.csv").ConfigureAwait(false);
         }
 
         private async Task Criar(string nomeArquivo)
@@ -62,6 +67,7 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
             var idMacroServico = empreendimento.MacrosServicos.FirstOrDefault().Id;
             var niveis = await new NivelService(_unitOfWork).ObterNiveisDoMacroServicoAsync(idMacroServico).ConfigureAwait(false);
 
+            var nivelAnterior = string.Empty;
             var nomeServicoAnterior = string.Empty;
 
             EntityResultBase result = null;
@@ -111,9 +117,11 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
 
                     var nomeServicoAtual = record.NomePES;
 
-                    if (!string.IsNullOrWhiteSpace(nomeServicoAtual) && nomeServicoAnterior != nomeServicoAtual)
+                    if (!string.IsNullOrWhiteSpace(nomeServicoAtual) && !string.IsNullOrWhiteSpace(nomeNivel)
+                        && (nomeServicoAnterior != nomeServicoAtual || nivelAnterior != nomeNivel))
                     {
                         nomeServicoAnterior = nomeServicoAtual;
+                        nivelAnterior = nomeNivel;
 
                         pes = new Servico
                         {
