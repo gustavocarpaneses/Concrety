@@ -34,13 +34,30 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
         }
 
         [Test]
-        public async Task Criar()
+        public async Task CriarEdificacoes()
+        {
+            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Edificacoes.csv").ConfigureAwait(false);
+        }
+
+        [Test]
+        public async Task CriarLineares()
+        {
+            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Lineares.csv").ConfigureAwait(false);
+        }
+
+        [Test]
+        public async Task CriarViarias()
+        {
+            //await Criar(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES_Viarias.csv").ConfigureAwait(false);
+        }
+
+        private async Task Criar(string nomeArquivo)
         {
             var pesService = new ServicoService(_unitOfWork);
             var fvsService = new FichaVerificacaoServicoService(_unitOfWork);
             var itemFvsService = new ItemVerificacaoServicoService(_unitOfWork);
 
-            var lines = File.ReadAllLines(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES.csv", Encoding.Default);
+            var lines = File.ReadAllLines(nomeArquivo, Encoding.Default);
 
             var empreendimento = (await new EmpreendimentoService(_unitOfWork).ObterPeloNomeAsync(Common.NOME_EMPREENDIMENTO).ConfigureAwait(false)).FirstOrDefault();
             var idMacroServico = empreendimento.MacrosServicos.FirstOrDefault().Id;
@@ -51,10 +68,11 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
             EntityResultBase result = null;
             Servico pes = null;
             FichaVerificacaoServico fvs = null;
+            Nivel nivel = null;
 
             for (int i = 1; i < lines.Length; i++)
             {
-                var fields = lines[i].Split('\t');
+                var fields = lines[i].Split(';');
 
                 if (fields.Length != 8)
                 {
@@ -63,11 +81,19 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
 
                 var nomeNivel = fields[4];
 
-                var nivel = niveis.FirstOrDefault(n => n.Nome.Equals(nomeNivel, StringComparison.InvariantCultureIgnoreCase));
+                if (!string.IsNullOrWhiteSpace(nomeNivel))
+                {
+                    nivel = niveis.FirstOrDefault(n => n.Nome.Equals(nomeNivel, StringComparison.InvariantCultureIgnoreCase));
+
+                    if (nivel == null)
+                    {
+                        throw new ApplicationException($"Linha {i} contém nível inválido");
+                    }
+                }
 
                 var nomeServicoAtual = fields[0];
 
-                if (nomeServicoAnterior != nomeServicoAtual)
+                if (!string.IsNullOrWhiteSpace(nomeServicoAtual) && nomeServicoAnterior != nomeServicoAtual)
                 {
                     nomeServicoAnterior = nomeServicoAtual;
 
