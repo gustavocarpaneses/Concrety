@@ -36,17 +36,27 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
         [Test]
         public async Task Criar()
         {
+            var pesService = new ServicoService(_unitOfWork);
+            var fvsService = new FichaVerificacaoServicoService(_unitOfWork);
+            var itemFvsService = new ItemVerificacaoServicoService(_unitOfWork);
+
             var lines = File.ReadAllLines(@"C:\Projetos\Concrety - Grupo Pizolato\Formato Concrety\PES.csv", Encoding.Default);
 
             var empreendimento = (await new EmpreendimentoService(_unitOfWork).ObterPeloNomeAsync(Common.NOME_EMPREENDIMENTO).ConfigureAwait(false)).FirstOrDefault();
             var idMacroServico = empreendimento.MacrosServicos.FirstOrDefault().Id;
             var niveis = await new NivelService(_unitOfWork).ObterNiveisDoMacroServicoAsync(idMacroServico).ConfigureAwait(false);
 
-            for (int i=1; i<= lines.Length; i++)
+            var nomeServicoAnterior = string.Empty;
+
+            EntityResultBase result = null;
+            Servico pes = null;
+            FichaVerificacaoServico fvs = null;
+
+            for (int i = 1; i < lines.Length; i++)
             {
                 var fields = lines[i].Split('\t');
 
-                if(fields.Length != 8)
+                if (fields.Length != 8)
                 {
                     throw new ApplicationException($"Linha {i} contém {fields.Length} campos, sendo que o esperado são 8 campos");
                 }
@@ -55,13 +65,48 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
 
                 var nivel = niveis.FirstOrDefault(n => n.Nome.Equals(nomeNivel, StringComparison.InvariantCultureIgnoreCase));
 
-                var servico = new Servico
+                var nomeServicoAtual = fields[0];
+
+                if (nomeServicoAnterior != nomeServicoAtual)
                 {
-                    
+                    nomeServicoAnterior = nomeServicoAtual;
+
+                    pes = new Servico
+                    {
+                        Nome = fields[0],
+                        Descricao = fields[1],
+                        Norma = "",
+                        Nivel = nivel,
+                        ProximoServico = null
+                    };
+
+                    result = await pesService.CriarAsync(pes).ConfigureAwait(false);
+                    Common.ValidarResult(result);
+
+                    fvs = new FichaVerificacaoServico
+                    {
+                        Nome = fields[2],
+                        Descricao = fields[3],
+                        Servico = pes
+                    };
+
+                    result = await fvsService.CriarAsync(fvs).ConfigureAwait(false);
+                    Common.ValidarResult(result);
+                }
+
+                var itemFvs = new ItemVerificacaoServico
+                {
+                    Nome = fields[5],
+                    Validacao = fields[6],
+                    Descricao = fields[7],
+                    FichaVerificacao = fvs
                 };
+
+                result = await itemFvsService.CriarAsync(itemFvs).ConfigureAwait(false);
+                Common.ValidarResult(result);
             }
         }
-        
+
         private void ValidarResult(EntityResultBase result)
         {
             if (!result.Sucesso)

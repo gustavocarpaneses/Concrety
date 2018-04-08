@@ -39,6 +39,7 @@
     <Compile Include="EmpreendimentoDiarioService.cs" />
     <Compile Include="FichaVerificacaoMaterialService.cs" />
     <Compile Include="ItemVerificacaoMaterialUnidadeService.cs" />
+    <Compile Include="ItemVerificacaoServicoService.cs" />
     <Compile Include="ItemVerificacaoServicoUnidadeService.cs" />
     <Compile Include="FichaVerificacaoServicoUnidadeService.cs" />
     <Compile Include="FichaVerificacaoServicoService.cs" />

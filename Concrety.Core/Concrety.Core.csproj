@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\Repositories\IAnexoBlobRepository.cs" />
     <Compile Include="Interfaces\Repositories\IEmailRepository.cs" />
     <Compile Include="Interfaces\Services\IEmpreendimentoDiarioPeriodoService.cs" />
+    <Compile Include="Interfaces\Services\IItemVerificacaoServicoService.cs" />
     <Compile Include="Interfaces\Services\IRelatorioService.cs" />
     <Compile Include="Messages\ServiceBaseMessages.cs" />
     <Compile Include="Queries\EmpreendimentoPeriodoQueries.cs" />
