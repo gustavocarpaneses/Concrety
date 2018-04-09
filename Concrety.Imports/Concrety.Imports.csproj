@@ -72,6 +72,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PES_Edificacoes.csv" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PES_Lineares.csv" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PES_Viarias.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Concrety.Core\Concrety.Core.csproj">
