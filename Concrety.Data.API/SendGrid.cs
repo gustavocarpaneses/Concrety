@@ -23,7 +23,7 @@ namespace Concrety.Data.API
 
             var transportWeb = new Web(credentials);
             
-            await transportWeb.DeliverAsync(sendGridMessage);
+            await transportWeb.DeliverAsync(sendGridMessage).ConfigureAwait(false);
 
             return;            
         }

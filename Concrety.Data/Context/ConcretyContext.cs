@@ -23,17 +23,15 @@ namespace Concrety.Data.Context
         private ObjectContext _objectContext;
         private DbTransaction _transaction;
 
-        public ConcretyContext()
-            : base("Concrety")
+        public ConcretyContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
         {
-
         }
 
         public ConcretyContext(string nameOrConnectionString, ILogger logger)
             : base(nameOrConnectionString)
         {
             Database.Log = logger.Log;
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -115,7 +113,7 @@ namespace Concrety.Data.Context
 
             using (var cmd = base.Database.Connection.CreateCommand())
             {
-                await base.Database.Connection.OpenAsync();
+                await base.Database.Connection.OpenAsync().ConfigureAwait(false);
 
                 cmd.CommandText = query;
 
@@ -127,9 +125,9 @@ namespace Concrety.Data.Context
                     cmd.Parameters.Add(dbParameter);
                 }
 
-                using (var reader = await cmd.ExecuteReaderAsync())
+                using (var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false))
                 {
-                    return await ReadAsync(reader);
+                    return await ReadAsync(reader).ConfigureAwait(false);
                 }
             }
         }
@@ -140,7 +138,7 @@ namespace Concrety.Data.Context
 
             var returnList = new List<object[]>();
 
-            while (await reader.ReadAsync())
+            while (await reader.ReadAsync().ConfigureAwait(false))
             {
                 var values = new List<object>();
                 for (int i = 0; i < fieldCount; i++)

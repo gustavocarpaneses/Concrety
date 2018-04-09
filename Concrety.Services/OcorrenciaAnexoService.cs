@@ -24,7 +24,7 @@ namespace Concrety.Services
         
         public new async Task<EntityResultBase> RemoverAsync(OcorrenciaAnexo ocorrenciaAnexo)
         {
-            var resultado = await _anexoService.RemoverAsync(ocorrenciaAnexo.Anexo);
+            var resultado = await _anexoService.RemoverAsync(ocorrenciaAnexo.Anexo).ConfigureAwait(false);
 
             if (!resultado.Sucesso)
             {
@@ -33,7 +33,7 @@ namespace Concrety.Services
 
             if (ocorrenciaAnexo.Id > 0)
             {
-                return await base.RemoverAsync(ocorrenciaAnexo);
+                return await base.RemoverAsync(ocorrenciaAnexo).ConfigureAwait(false);
             }
             else
             {

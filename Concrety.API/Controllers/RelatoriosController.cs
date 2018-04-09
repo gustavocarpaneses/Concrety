@@ -21,7 +21,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<object[]>> Obter(int id, [FromUri] params object[] p)
         {
-            return await _relatorioService.ObterAsync(id, p);
+            return await _relatorioService.ObterAsync(id, p).ConfigureAwait(false);
         }
                 
     }

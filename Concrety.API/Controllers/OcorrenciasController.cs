@@ -56,7 +56,7 @@ namespace Concrety.API.Controllers
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
-            var resultado = await _ocorrenciaService.CriarAsync(ocorrencia);
+            var resultado = await _ocorrenciaService.CriarAsync(ocorrencia).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -79,7 +79,7 @@ namespace Concrety.API.Controllers
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
-            var resultado = await _ocorrenciaService.AtualizarAsync(ocorrencia);
+            var resultado = await _ocorrenciaService.AtualizarAsync(ocorrencia).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -95,7 +95,7 @@ namespace Concrety.API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Excluir(int id)
         {
-            var resultado = await _ocorrenciaService.RemoverAsync(id);
+            var resultado = await _ocorrenciaService.RemoverAsync(id).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -111,7 +111,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<OcorrenciaViewModel>> ObterDoServicoUnidade(int idServicoUnidade)
         {
-            var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidadeAsync(idServicoUnidade);
+            var ocorrencias = await _ocorrenciaService.ObterDoServicoUnidadeAsync(idServicoUnidade).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
 
@@ -119,7 +119,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<OcorrenciaViewModel>> ObterPendentes(int idMacroServico)
         {
-            var ocorrencias = await _ocorrenciaService.ObterPendentesAsync(idMacroServico);
+            var ocorrencias = await _ocorrenciaService.ObterPendentesAsync(idMacroServico).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
         

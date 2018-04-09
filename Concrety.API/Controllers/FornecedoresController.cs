@@ -28,7 +28,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<FornecedorViewModel>> ObterTodos()
         {
-            var fornecedores = await _fornecedorService.ObterTodosAsync();
+            var fornecedores = await _fornecedorService.ObterTodosAsync().ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Fornecedor>, IEnumerable<FornecedorViewModel>>(fornecedores);
         }
     }

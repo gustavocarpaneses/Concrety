@@ -41,7 +41,7 @@ namespace Concrety.Identity
 
         public virtual async Task<EntityResultBase> DeleteAsync(int roleId)
         {
-            var identityRole = await _roleManager.FindByIdAsync(roleId);
+            var identityRole = await _roleManager.FindByIdAsync(roleId).ConfigureAwait(false);
             if (identityRole == null)
             {
                 return new EntityResultBase(new[] { "Invalid role Id" }, false);
@@ -85,7 +85,7 @@ namespace Concrety.Identity
 
         public virtual async Task<EntityResultBase> UpdateAsync(int roleId, string roleName)
         {
-            var identityRole = await _roleManager.FindByIdAsync(roleId);
+            var identityRole = await _roleManager.FindByIdAsync(roleId).ConfigureAwait(false);
             if (identityRole == null)
             {
                 return new EntityResultBase(new[] { "Invalid role Id" }, false);

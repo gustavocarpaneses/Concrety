@@ -28,7 +28,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<CondicaoClimaticaViewModel>> ObterTodos()
         {
-            var condicoes = await _condicaoClimaticaService.ObterTodosAsync();
+            var condicoes = await _condicaoClimaticaService.ObterTodosAsync().ConfigureAwait(false);
             return Mapper.Map<IEnumerable<CondicaoClimatica>, IEnumerable<CondicaoClimaticaViewModel>>(condicoes);
         }
     }

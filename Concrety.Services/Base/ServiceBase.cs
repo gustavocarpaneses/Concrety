@@ -54,7 +54,7 @@ namespace Concrety.Services.Base
         {
             if (ValidarAsync != null)
             {
-                var erros = await ValidarAsync(obj);
+                var erros = await ValidarAsync(obj).ConfigureAwait(false);
 
                 if (erros != null)
                 {
@@ -69,7 +69,7 @@ namespace Concrety.Services.Base
 
             _repository.Criar(obj);
             
-            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
             if (qtdeRegistros == 0)
             {
                 return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_CRIADO }, false);
@@ -110,7 +110,7 @@ namespace Concrety.Services.Base
         {
             if (ValidarAsync != null)
             {
-                var erros = await ValidarAsync(obj);
+                var erros = await ValidarAsync(obj).ConfigureAwait(false);
 
                 if (erros != null)
                 {
@@ -125,7 +125,7 @@ namespace Concrety.Services.Base
 
             _repository.Atualizar(obj);
 
-            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
             if (qtdeRegistros == 0)
             {
                 return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_ATUALIZADO }, false);
@@ -142,8 +142,8 @@ namespace Concrety.Services.Base
 
         public async Task<EntityResultBase> RemoverAsync(int id)
         {
-            var obj = await ObterPeloIdAsync(id);
-            return await RemoverAsync(obj);
+            var obj = await ObterPeloIdAsync(id).ConfigureAwait(false);
+            return await RemoverAsync(obj).ConfigureAwait(false);
         }
 
         public EntityResultBase Remover(TEntity obj)
@@ -161,7 +161,7 @@ namespace Concrety.Services.Base
         public async Task<EntityResultBase> RemoverAsync(TEntity obj)
         {
             _repository.Remover(obj);
-            var qtdeRegistros = await UnitOfWork.SaveChangesAsync();
+            var qtdeRegistros = await UnitOfWork.SaveChangesAsync().ConfigureAwait(false);
             if (qtdeRegistros == 0)
             {
                 return new EntityResultBase(new List<string>() { ServiceBaseMessages.NENHUM_REGISTRO_EXCLUIDO }, false);
@@ -177,7 +177,7 @@ namespace Concrety.Services.Base
 
         public async Task<TEntity> ObterPeloIdAsync(int id)
         {
-            return await _repository.ObterPeloIdAsync(id);
+            return await _repository.ObterPeloIdAsync(id).ConfigureAwait(false);
         }
 
         public IEnumerable<TEntity> ObterTodos()
@@ -187,7 +187,7 @@ namespace Concrety.Services.Base
 
         public async Task<IEnumerable<TEntity>> ObterTodosAsync()
         {
-            return await _repository.ObterTodosAsync();
+            return await _repository.ObterTodosAsync().ConfigureAwait(false);
         }
 
         public void Dispose()

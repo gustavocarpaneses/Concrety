@@ -38,7 +38,7 @@ namespace Concrety.Services
                 item.ItemVerificacao = null;
             }
 
-            return await base.CriarAsync(fvm);
+            return await base.CriarAsync(fvm).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidade>> ObterItensAsync(int idFichaVerificacaoMaterialUnidade)

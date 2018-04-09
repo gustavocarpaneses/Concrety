@@ -28,7 +28,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<NivelViewModel>> ObterAcima(int idNivel)
         {
-            var niveis = await _nivelService.ObterNiveisSuperioresAsync(idNivel);
+            var niveis = await _nivelService.ObterNiveisSuperioresAsync(idNivel).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Nivel>, IEnumerable<NivelViewModel>>(niveis);
         }
 
@@ -36,7 +36,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<NivelViewModel>> ObterDeServico(int idMacroServico)
         {
-            var niveis = await _nivelService.ObterNiveisDeServicoAsync(idMacroServico);
+            var niveis = await _nivelService.ObterNiveisDeServicoAsync(idMacroServico).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Nivel>, IEnumerable<NivelViewModel>>(niveis);
         }
 
@@ -44,7 +44,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<NivelViewModel>> ObterDeMaterial(int idMacroServico)
         {
-            var niveis = await _nivelService.ObterNiveisDeVerificacaoDeMaterialAsync(idMacroServico);
+            var niveis = await _nivelService.ObterNiveisDeVerificacaoDeMaterialAsync(idMacroServico).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Nivel>, IEnumerable<NivelViewModel>>(niveis);
         }
 

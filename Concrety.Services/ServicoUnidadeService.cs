@@ -30,7 +30,7 @@ namespace Concrety.Services
 
             if (servicoUnidade == null)
             {
-                await Criar(idUnidade, idServico);
+                await Criar(idUnidade, idServico).ConfigureAwait(false);
                 servicoUnidade = await Task.Factory.StartNew(() => { return _repository.Obter(idUnidade, idServico); });
             }
 
@@ -50,7 +50,7 @@ namespace Concrety.Services
                 });
             }
             
-            var servicoUnidadeDB = await base.ObterPeloIdAsync(servicoUnidade.Id);
+            var servicoUnidadeDB = await base.ObterPeloIdAsync(servicoUnidade.Id).ConfigureAwait(false);
 
             servicoUnidadeDB.DataInicio = servicoUnidade.DataInicio == DateTime.MinValue ? null : servicoUnidade.DataInicio;
             servicoUnidadeDB.DataFim = servicoUnidade.DataFim == DateTime.MinValue ? null : servicoUnidade.DataFim;
@@ -70,7 +70,7 @@ namespace Concrety.Services
                 }
             }
 
-            await base.AtualizarAsync(servicoUnidadeDB);
+            await base.AtualizarAsync(servicoUnidadeDB).ConfigureAwait(false);
 
             return await Task.Factory.StartNew(() =>
             {
@@ -135,9 +135,9 @@ namespace Concrety.Services
 
                 _repository.Criar(servicoUnidade);
 
-                await new FichaVerificacaoServicoUnidadeService(UnitOfWork).Criar(servicoUnidade);
+                await new FichaVerificacaoServicoUnidadeService(UnitOfWork).Criar(servicoUnidade).ConfigureAwait(false);
 
-                return await UnitOfWork.CommitAsync(); ;
+                return await UnitOfWork.CommitAsync().ConfigureAwait(false);
             }
             catch
             {

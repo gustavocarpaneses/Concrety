@@ -34,7 +34,7 @@ namespace Concrety.API.Controllers
 
             var ocorrenciaAnexo = Mapper.Map<OcorrenciaAnexoViewModel, OcorrenciaAnexo>(ocorrenciaAnexoViewModel);
 
-            var resultado = await _ocorrenciaAnexoService.RemoverAsync(ocorrenciaAnexo);
+            var resultado = await _ocorrenciaAnexoService.RemoverAsync(ocorrenciaAnexo).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 

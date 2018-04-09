@@ -21,7 +21,7 @@ namespace Concrety.Services
 
         internal async Task Criar(ServicoUnidade servicoUnidade)
         {
-            var fichasVerificacaoServico = await new FichaVerificacaoServicoService(UnitOfWork).ObterDoServico(servicoUnidade.IdServico);
+            var fichasVerificacaoServico = await new FichaVerificacaoServicoService(UnitOfWork).ObterDoServico(servicoUnidade.IdServico).ConfigureAwait(false);
 
             foreach (var fvs in fichasVerificacaoServico.ToList())
             {
@@ -31,9 +31,9 @@ namespace Concrety.Services
                     IdFichaVerificacaoServico = fvs.Id
                 };
 
-                await base.CriarAsync(fvsUnidade);
+                await base.CriarAsync(fvsUnidade).ConfigureAwait(false);
 
-                await new ItemVerificacaoServicoUnidadeService(UnitOfWork).Criar(fvs, fvsUnidade);
+                await new ItemVerificacaoServicoUnidadeService(UnitOfWork).Criar(fvs, fvsUnidade).ConfigureAwait(false);
             }
         }
 

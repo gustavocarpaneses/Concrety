@@ -8,7 +8,7 @@ namespace Concrety.Data.Repositories
     {
         public async Task EnviarAsync(MailMessage mensagem)
         {
-            await new SendGrid().EnviarEmailAsync(mensagem);
+            await new SendGrid().EnviarEmailAsync(mensagem).ConfigureAwait(false);
             return;
         }
     }

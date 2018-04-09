@@ -1,6 +1,7 @@
 ﻿using Concrety.Core.Entities;
 using Concrety.Core.Interfaces.Blob;
 using Concrety.Core.Interfaces.Repositories;
+using System.Threading.Tasks;
 
 namespace Concrety.Data.Repositories
 {
@@ -13,14 +14,14 @@ namespace Concrety.Data.Repositories
             _blobManager = blobManager;
         }
 
-        public void Adicionar(Anexo anexo)
+        public async Task AdicionarAsync(Anexo anexo)
         {
-            _blobManager.Upload(anexo);
+            await _blobManager.UploadAsync(anexo).ConfigureAwait(false);
         }
 
-        public void Remover(Anexo anexo)
+        public async Task RemoverAsync(Anexo anexo)
         {
-            _blobManager.Remover(anexo);
+            await _blobManager.RemoverAsync(anexo).ConfigureAwait(false);
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using Concrety.Core.Entities;
-using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.Repositories;
 using Concrety.Core.Interfaces.Services;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Core.Queries;
 using Concrety.Services.Base;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,20 +55,23 @@ namespace Concrety.Services
 
         private new async Task<IEnumerable<string>> ValidarAsync(Ocorrencia ocorrencia)
         {
-            ocorrencia.ItemVerificacao = null;
-            ocorrencia.Patologia = null;
-
-            ocorrencia.DataAbertura = ocorrencia.DataAbertura.Date;
-            if (ocorrencia.DataConclusao.HasValue)
+            await Task.Factory.StartNew(() =>
             {
-                ocorrencia.DataConclusao = ocorrencia.DataConclusao.Value.Date;
-            }
 
-            foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
-            {
-                ocorrenciaAnexo.Anexo = null;
-            }
-            
+                ocorrencia.ItemVerificacao = null;
+                ocorrencia.Patologia = null;
+
+                ocorrencia.DataAbertura = ocorrencia.DataAbertura.Date;
+                if (ocorrencia.DataConclusao.HasValue)
+                {
+                    ocorrencia.DataConclusao = ocorrencia.DataConclusao.Value.Date;
+                }
+
+                foreach (var ocorrenciaAnexo in ocorrencia.Anexos)
+                {
+                    ocorrenciaAnexo.Anexo = null;
+                }
+            });
             return null;
         }
         

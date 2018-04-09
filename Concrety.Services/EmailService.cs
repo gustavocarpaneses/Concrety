@@ -26,7 +26,7 @@ namespace Concrety.Services
         public async Task<EntityResultBase> EnviarEmailFeedback(EmailFeedback emailFeedback)
         {
 
-            var usuario = await _userManager.FindByIdAsync(emailFeedback.IdUsuario);
+            var usuario = await _userManager.FindByIdAsync(emailFeedback.IdUsuario).ConfigureAwait(false);
 
             var mensagem = new MailMessage();
 
@@ -37,7 +37,7 @@ namespace Concrety.Services
             mensagem.Body = emailFeedback.Mensagem;
             mensagem.IsBodyHtml = true;
 
-            await _emailRepository.EnviarAsync(mensagem);
+            await _emailRepository.EnviarAsync(mensagem).ConfigureAwait(false);
 
             return new EntityResultBase(null, true);
         }
@@ -61,7 +61,7 @@ namespace Concrety.Services
 
             mensagem.IsBodyHtml = true;
 
-            await _emailRepository.EnviarAsync(mensagem);
+            await _emailRepository.EnviarAsync(mensagem).ConfigureAwait(false);
 
             return new EntityResultBase(null, true);
         }

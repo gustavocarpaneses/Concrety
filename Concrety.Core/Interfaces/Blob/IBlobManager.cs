@@ -1,10 +1,11 @@
 ﻿using Concrety.Core.Entities;
+using System.Threading.Tasks;
 
 namespace Concrety.Core.Interfaces.Blob
 {
     public interface IBlobManager
     {
-        void Upload(Anexo anexo);
-        void Remover(Anexo anexo);
+        Task UploadAsync(Anexo anexo);
+        Task RemoverAsync(Anexo anexo);
     }
 }

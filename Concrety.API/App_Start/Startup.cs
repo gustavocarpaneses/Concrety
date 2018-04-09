@@ -1,4 +1,5 @@
-﻿using Autofac.Integration.WebApi;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
 using Concrety.API.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
@@ -6,6 +7,7 @@ using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
+using System.Data.Entity;
 using System.Web.Http;
 
 namespace Concrety.API
@@ -20,7 +22,7 @@ namespace Concrety.API
             ConfigureOAuth(app);
 
             var container = IocConfig.RegisterDependencies();
-            
+
             var config = new HttpConfiguration();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
@@ -35,7 +37,7 @@ namespace Concrety.API
         public void ConfigureOAuth(IAppBuilder app)
         {
             DataProtectionProvider = app.GetDataProtectionProvider();
-
+            
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,

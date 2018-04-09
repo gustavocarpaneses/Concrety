@@ -2,6 +2,9 @@
 using Concrety.Identity;
 using Concrety.Identity.Models;
 using Microsoft.Owin.Security.OAuth;
+using System;
+using System.Configuration;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -9,7 +12,6 @@ namespace Concrety.API.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
-
         public ApplicationOAuthProvider()
         {
         }
@@ -25,10 +27,10 @@ namespace Concrety.API.Providers
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            //TODO: Resolver via AutoFac
-            var userManager = IdentityFactory.CreateUserManager(new ConcretyContext());
+            //TODO: Pegar do IoC
+            var userManager = IdentityFactory.CreateUserManager(GetContext());
 
-            ApplicationIdentityUser user = await userManager.FindAsync(context.UserName, context.Password);
+            ApplicationIdentityUser user = await userManager.FindAsync(context.UserName, context.Password).ConfigureAwait(false);
 
             if (user == null)
             {
@@ -43,6 +45,20 @@ namespace Concrety.API.Providers
             //identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
+        }
+
+        private DbContext GetContext()
+        {
+            var useAWS = Convert.ToBoolean(ConfigurationManager.AppSettings["UseAWS"]);
+
+            string nameOrConnectionString;
+
+            if (useAWS)
+                nameOrConnectionString = "name=ConcretyAWS";
+            else
+                nameOrConnectionString = "name=ConcretyAzure";
+
+            return new ConcretyContext(nameOrConnectionString);
         }
     }
 }

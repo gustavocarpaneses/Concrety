@@ -214,7 +214,7 @@ namespace Concrety.Identity
 
         public virtual async Task<EntityResultBase> DeleteAsync(int userId)
         {
-            var applicationUser = await _userManager.FindByIdAsync(userId);
+            var applicationUser = await _userManager.FindByIdAsync(userId).ConfigureAwait(false);
             if (applicationUser == null)
             {
                 return new EntityResultBase(new[] { "Invalid user Id" }, false);
@@ -545,7 +545,7 @@ namespace Concrety.Identity
         {
             if (_userManager.SmsService != null)
             {
-                await _userManager.SmsService.SendAsync(message.ToIdentityMessage());
+                await _userManager.SmsService.SendAsync(message.ToIdentityMessage()).ConfigureAwait(false);
             }
         }
 

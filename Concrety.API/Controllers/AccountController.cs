@@ -36,7 +36,7 @@ namespace Concrety.API.Controllers
             }
 
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -53,7 +53,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<EmpreendimentoViewModel>> ObterEmpreendimentos()
         {
-            var user = await _userManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await _userManager.FindByIdAsync(User.Identity.GetUserId()).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos);
         }
         

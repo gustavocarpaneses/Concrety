@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data.Azure", "Conc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data.API", "Concrety.Data.API\Concrety.Data.API.csproj", "{9E542330-37ED-413A-AE1E-290F4526A3A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data.AWS", "Concrety.Data.AWS\Concrety.Data.AWS.csproj", "{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{9E542330-37ED-413A-AE1E-290F4526A3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E542330-37ED-413A-AE1E-290F4526A3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E542330-37ED-413A-AE1E-290F4526A3A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{80756397-E0DB-4A07-802A-AA3CCCB948B4} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 		{CEA7B452-FC66-4FA0-8E94-15A72BD18495} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 		{9E542330-37ED-413A-AE1E-290F4526A3A8} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
+		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18394D48-68F6-4703-A651-B72AA8BDDD6B}

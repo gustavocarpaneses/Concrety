@@ -29,7 +29,7 @@ namespace Concrety.Services
                     IdItemVerificacaoServico = item.Id
                 };
 
-                await base.CriarAsync(itemFvsUnidade);
+                await base.CriarAsync(itemFvsUnidade).ConfigureAwait(false);
             }
         }
 

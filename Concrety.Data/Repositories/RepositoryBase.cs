@@ -41,7 +41,7 @@ namespace Concrety.Data.Repositories
 
         public async Task<TEntity> ObterPeloIdAsync(int id)
         {
-            return await _dbEntitySet.FindAsync(id);
+            return await _dbEntitySet.FindAsync(id).ConfigureAwait(false);
         }
 
         public IQueryable<TEntity> ObterQuery()
@@ -60,7 +60,8 @@ namespace Concrety.Data.Repositories
         {
             return await _dbEntitySet
                 .Where(e => e.Ativo && !e.Excluido)
-                .ToListAsync();
+                .ToListAsync()
+                .ConfigureAwait(false);
         }
 
         public void Atualizar(TEntity entity)

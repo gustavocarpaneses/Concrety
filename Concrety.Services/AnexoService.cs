@@ -27,15 +27,15 @@ namespace Concrety.Services
 
             anexo.NomeBlob = Guid.NewGuid().ToString() + "." + extensao;
             
-            _anexoBlobRepository.Adicionar(anexo);
+            await _anexoBlobRepository.AdicionarAsync(anexo).ConfigureAwait(false);
 
-            return await base.CriarAsync(anexo);
+            return await base.CriarAsync(anexo).ConfigureAwait(false);
         }
 
         public new async Task<EntityResultBase> RemoverAsync(Anexo anexo)
         {
-            _anexoBlobRepository.Remover(anexo);
-            return await base.RemoverAsync(anexo);
+            await _anexoBlobRepository.RemoverAsync(anexo).ConfigureAwait(false);
+            return await base.RemoverAsync(anexo).ConfigureAwait(false);
         }
     }
 }

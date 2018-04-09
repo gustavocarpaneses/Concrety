@@ -29,7 +29,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<ServicoUnidadeViewModel> ObterDaUnidadeServico(int idUnidade, int idServico)
         {
-            var servicoUnidade = await _servicoUnidadeService.ObterAsync(idUnidade, idServico);
+            var servicoUnidade = await _servicoUnidadeService.ObterAsync(idUnidade, idServico).ConfigureAwait(false);
             return Mapper.Map<ServicoUnidade, ServicoUnidadeViewModel>(servicoUnidade);
         }
 
@@ -44,7 +44,7 @@ namespace Concrety.API.Controllers
 
             var servicoUnidade = Mapper.Map<ServicoUnidadeViewModel, ServicoUnidade>(servicoUnidadeViewModel);
 
-            var resultado = await _servicoUnidadeService.Salvar(servicoUnidade);
+            var resultado = await _servicoUnidadeService.Salvar(servicoUnidade).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 

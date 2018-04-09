@@ -31,7 +31,7 @@ namespace Concrety.Services
                 _servicoRepository.ObterQuery(),
                 idMacroServico);
 
-            return await Task.Factory.StartNew(() => { return query; });
+            return await Task.Factory.StartNew(() => { return query; }).ConfigureAwait(false);
 
         }
 
@@ -41,7 +41,7 @@ namespace Concrety.Services
                 _fichaVerificacaoMaterialRepository.ObterQuery(),
                 idMacroServico);
 
-            return await Task.Factory.StartNew(() => { return query; });
+            return await Task.Factory.StartNew(() => { return query; }).ConfigureAwait(false);
         }
 
 
@@ -49,7 +49,7 @@ namespace Concrety.Services
         {
             var niveis = new List<Nivel>();
 
-            var nivel = await _repository.ObterPeloIdAsync(idNivel);
+            var nivel = await _repository.ObterPeloIdAsync(idNivel).ConfigureAwait(false);
 
             do
             {

@@ -30,7 +30,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<FichaVerificacaoMaterialViewModel>> ObterDoNivel(int idNivel)
         {
-            var fvms = await _fvmService.ObterDoNivelAsync(idNivel);
+            var fvms = await _fvmService.ObterDoNivelAsync(idNivel).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterial>, IEnumerable<FichaVerificacaoMaterialViewModel>>(fvms);
         }
 
@@ -38,7 +38,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<dynamic> ObterCriterioAceite(int idFichaVerificacaoMaterial)
         {
-            var fvm = await _fvmService.ObterPeloIdAsync(idFichaVerificacaoMaterial);
+            var fvm = await _fvmService.ObterPeloIdAsync(idFichaVerificacaoMaterial).ConfigureAwait(false);
             return new
             {
                 fvm.CriterioAceite

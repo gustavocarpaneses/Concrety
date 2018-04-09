@@ -4,13 +4,14 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Concrety.Data.Azure
 {
-    public class AzureBlobManager : IBlobManager
+    public class BlobManager : IBlobManager
     {
 
-        public void Upload(Anexo anexo)
+        public async Task UploadAsync(Anexo anexo)
         {
             var container = GetContainer(anexo.IdObra);
 
@@ -18,24 +19,24 @@ namespace Concrety.Data.Azure
 
             blockBlob.Properties.ContentType = anexo.Tipo;
 
-            blockBlob.UploadFromFile(anexo.NomeArquivoUpload, FileMode.Open);
+            await blockBlob.UploadFromFileAsync(anexo.NomeArquivoUpload, FileMode.Open).ConfigureAwait(false);
 
             anexo.UrlPrimaria = blockBlob.StorageUri.PrimaryUri.ToString();
             anexo.UrlSecundaria = blockBlob.StorageUri.SecondaryUri.ToString();
         }
 
-        public void Remover(Anexo anexo)
+        public async Task RemoverAsync(Anexo anexo)
         {
             var container = GetContainer(anexo.IdObra);
 
             var blockBlob = container.GetBlockBlobReference(anexo.NomeBlob);
 
-            blockBlob.DeleteIfExistsAsync();
+            await blockBlob.DeleteIfExistsAsync().ConfigureAwait(false);
         }
         
         private CloudBlobContainer GetContainer(int idObra)
         {
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["ConcretyStorage"]);
+            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["AzureStorage"]);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 

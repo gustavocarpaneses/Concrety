@@ -32,7 +32,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>> ObterDaUnidade(int idUnidade)
         {
-            var fvms = await _fvmUnidadeService.ObterDaUnidadeAsync(idUnidade);
+            var fvms = await _fvmUnidadeService.ObterDaUnidadeAsync(idUnidade).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<FichaVerificacaoMaterialUnidade>, IEnumerable<FichaVerificacaoMaterialUnidadeViewModel>>(fvms);
         }
 
@@ -40,7 +40,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterNovosItens(int idFichaVerificacaoMaterial)
         {
-            var itens = await _fvmUnidadeService.CriarItensAsync(idFichaVerificacaoMaterial);
+            var itens = await _fvmUnidadeService.CriarItensAsync(idFichaVerificacaoMaterial).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
@@ -48,7 +48,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>> ObterItens(int idFichaVerificacaoMaterialUnidade)
         {
-            var itens = await _fvmUnidadeService.ObterItensAsync(idFichaVerificacaoMaterialUnidade);
+            var itens = await _fvmUnidadeService.ObterItensAsync(idFichaVerificacaoMaterialUnidade).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<ItemVerificacaoMaterialUnidade>, IEnumerable<ItemVerificacaoMaterialUnidadeViewModel>>(itens);
         }
 
@@ -61,11 +61,11 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            await AssociarNovoFornecedor(fvmViewModel);
+            await AssociarNovoFornecedor(fvmViewModel).ConfigureAwait(false);
 
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
-            var resultado = await _fvmUnidadeService.CriarAsync(fvm);
+            var resultado = await _fvmUnidadeService.CriarAsync(fvm).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -88,11 +88,11 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            await AssociarNovoFornecedor(fvmViewModel);
+            await AssociarNovoFornecedor(fvmViewModel).ConfigureAwait(false);
 
             var fvm = Mapper.Map<FichaVerificacaoMaterialUnidadeViewModel, FichaVerificacaoMaterialUnidade>(fvmViewModel);
 
-            var resultado = await _fvmUnidadeService.AtualizarAsync(fvm);
+            var resultado = await _fvmUnidadeService.AtualizarAsync(fvm).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -108,7 +108,7 @@ namespace Concrety.API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Excluir(int id)
         {
-            var resultado = await _fvmUnidadeService.RemoverAsync(id);
+            var resultado = await _fvmUnidadeService.RemoverAsync(id).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -129,7 +129,7 @@ namespace Concrety.API.Controllers
                 {
                     Nome = fvmViewModel.NomeNovoFornecedor
                 };
-                await _fornecedorService.CriarAsync(fornecedor);
+                await _fornecedorService.CriarAsync(fornecedor).ConfigureAwait(false);
                 fvmViewModel.IdFornecedor = fornecedor.Id;
             }
         }

@@ -24,7 +24,7 @@ namespace Concrety.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<EmpreendimentoDiarioViewModel>> ObterDoEmpreendimento(int idEmpreendimento)
         {
-            var diarios = await _empreendimentoDiarioService.ObterDoEmpreendimentoAsync(idEmpreendimento);
+            var diarios = await _empreendimentoDiarioService.ObterDoEmpreendimentoAsync(idEmpreendimento).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<EmpreendimentoDiario>, IEnumerable<EmpreendimentoDiarioViewModel>>(diarios);
         }
 
@@ -39,7 +39,7 @@ namespace Concrety.API.Controllers
 
             var diario = Mapper.Map<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>(diarioViewModel);
 
-            var resultado = await _empreendimentoDiarioService.CriarAsync(diario);
+            var resultado = await _empreendimentoDiarioService.CriarAsync(diario).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -64,7 +64,7 @@ namespace Concrety.API.Controllers
 
             var diario = Mapper.Map<EmpreendimentoDiarioViewModel, EmpreendimentoDiario>(diarioViewModel);
 
-            var resultado = await _empreendimentoDiarioService.AtualizarAsync(diario);
+            var resultado = await _empreendimentoDiarioService.AtualizarAsync(diario).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -80,7 +80,7 @@ namespace Concrety.API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Excluir(int id)
         {
-            var resultado = await _empreendimentoDiarioService.RemoverAsync(id);
+            var resultado = await _empreendimentoDiarioService.RemoverAsync(id).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 

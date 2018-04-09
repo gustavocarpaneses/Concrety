@@ -33,7 +33,7 @@ namespace Concrety.API.Controllers
 
             emailFeedback.IdUsuario = User.Identity.GetUserId();
 
-            var resultado = await _emailService.EnviarEmailFeedback(emailFeedback);
+            var resultado = await _emailService.EnviarEmailFeedback(emailFeedback).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 
@@ -57,7 +57,7 @@ namespace Concrety.API.Controllers
 
             var emailContato = Mapper.Map<EmailContatoViewModel, EmailContato>(emailContatoViewModel);
             
-            var resultado = await _emailService.EnviarEmailContato(emailContato);
+            var resultado = await _emailService.EnviarEmailContato(emailContato).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
 

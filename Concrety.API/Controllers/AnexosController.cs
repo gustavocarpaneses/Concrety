@@ -47,13 +47,13 @@ namespace Concrety.API.Controllers
 
                 var provider = new MultipartFormDataStreamProvider(Path.GetTempPath());
                             
-                await Request.Content.ReadAsMultipartAsync(provider);
+                await Request.Content.ReadAsMultipartAsync(provider).ConfigureAwait(false);
 
                 foreach (MultipartFileData file in provider.FileData)
                 {
                     anexo.NomeArquivoUpload = file.LocalFileName;
                     anexo.Tipo = file.Headers.ContentType.MediaType;
-                    await _anexoService.CriarAsync(anexo);
+                    await _anexoService.CriarAsync(anexo).ConfigureAwait(false);
                     File.Delete(file.LocalFileName);
                 }
 
