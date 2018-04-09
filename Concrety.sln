@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Business", "2 - Business", "{15DA778F-9454-4D1C-9866-BC562499F2E9}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data.API", "Concrety.Data.API\Concrety.Data.API.csproj", "{9E542330-37ED-413A-AE1E-290F4526A3A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Data.AWS", "Concrety.Data.AWS\Concrety.Data.AWS.csproj", "{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Tests", "0 - Tests", "{AB1E0898-9390-4085-80A9-9198DD9C61E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrety.Imports", "Concrety.Imports\Concrety.Imports.csproj", "{797E29B8-F7C6-473F-92CD-E1842B7D3DD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,10 @@ Global
 		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797E29B8-F7C6-473F-92CD-E1842B7D3DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797E29B8-F7C6-473F-92CD-E1842B7D3DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797E29B8-F7C6-473F-92CD-E1842B7D3DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797E29B8-F7C6-473F-92CD-E1842B7D3DD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +91,7 @@ Global
 		{CEA7B452-FC66-4FA0-8E94-15A72BD18495} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 		{9E542330-37ED-413A-AE1E-290F4526A3A8} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
 		{D7557196-40D9-4D7E-BF5A-C4B6B0CD2FA4} = {1CF5D584-6DEF-45F1-BD75-60B1ECD873DD}
+		{797E29B8-F7C6-473F-92CD-E1842B7D3DD2} = {AB1E0898-9390-4085-80A9-9198DD9C61E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18394D48-68F6-4703-A651-B72AA8BDDD6B}
