@@ -1,0 +1,21 @@
+NomeFVM;DescricaoFVM;Nivel;NomeItem
+8.6.1/ 01-01-40;Teste de Abatimento de Concreto;Obra;Preparo do material para realizar ensaio
+;;;Coleta da amostra de concreto
+;;;Realização do ensaio, enchimento do cone metálico
+;;;Teste do Flow
+;;;Resultado e Liberação para uso do concreto
+8.6.1/ 01-01-41;Moldagem de Corpos de Prova de Concreto;Obra;Preparo do material para realizar ensaio
+;;;Coleta de amostra do concreto
+;;;Realização do ensaio  e enchimento dos moldes metálicos
+;;;Identificação do corpo de prova
+;;;Armazenamento e transporte para laboratório
+8.6.1/ 01-01-42;Ensaio de Compressão de Corpo de Prova Cilíndrico;Obra;Verificações iniciais
+;;;Indentificação dos testemunhos de  concreto
+;;;Rompimneto do corpo-de prova
+;;;Resultados do ensaio
+;;;Considerações finais
+8.6.1/ 01-06-01;Dosagem de concreto em central;Obra;Recebimento do pedido de concreto e escolha do traço.
+;;;Dosagem de agregado
+;;;Dosagem do cimento
+;;;Dosagem o aditivo
+;;;Quantidade de água e resultado final
