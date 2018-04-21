@@ -15,12 +15,15 @@ namespace Concrety.API.Controllers
     [RoutePrefix("api/Ocorrencias")]
     public class OcorrenciasController : ApiControllerBase
     {
+        private readonly IOcorrenciaService _ocorrenciaService;
+        private readonly IPatologiaService _patologiaService;
 
-        private IOcorrenciaService _ocorrenciaService;
-
-        public OcorrenciasController(IOcorrenciaService ocorrenciaService)
+        public OcorrenciasController(
+            IOcorrenciaService ocorrenciaService,
+            IPatologiaService patologiaService)
         {
             _ocorrenciaService = ocorrenciaService;
+            _patologiaService = patologiaService;
         }
 
         [Route("GetPossiveisStatus")]
@@ -54,6 +57,8 @@ namespace Concrety.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            await AssociarNovaPatologiaAsync(ocorrenciaViewModel).ConfigureAwait(false);
+
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
             var resultado = await _ocorrenciaService.CriarAsync(ocorrencia).ConfigureAwait(false);
@@ -76,6 +81,8 @@ namespace Concrety.API.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            await AssociarNovaPatologiaAsync(ocorrenciaViewModel).ConfigureAwait(false);
 
             var ocorrencia = Mapper.Map<OcorrenciaViewModel, Ocorrencia>(ocorrenciaViewModel);
 
@@ -122,6 +129,19 @@ namespace Concrety.API.Controllers
             var ocorrencias = await _ocorrenciaService.ObterPendentesAsync(idMacroServico).ConfigureAwait(false);
             return Mapper.Map<IEnumerable<Ocorrencia>, IEnumerable<OcorrenciaViewModel>>(ocorrencias);
         }
-        
+
+        private async Task AssociarNovaPatologiaAsync(OcorrenciaViewModel ocorrenciaViewModel)
+        {
+            if (ocorrenciaViewModel.IdPatologia == 0)
+            {
+                var patologia = new Patologia
+                {
+                    Nome = ocorrenciaViewModel.NomePatologia,
+                    IdItemVerificacaoServico = ocorrenciaViewModel.ItemVerificacao.IdItemVerificacaoServico
+                };
+                await _patologiaService.CriarAsync(patologia).ConfigureAwait(false);
+                ocorrenciaViewModel.IdPatologia = patologia.Id;
+            }
+        }
     }
 }
