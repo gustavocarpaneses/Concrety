@@ -60,5 +60,10 @@ namespace Concrety.Services
 
             return servicos;            
         }
+
+        public async Task<IEnumerable<Servico>> ObterDoNivelAsync(int idNivel)
+        {
+            return await Task.Factory.StartNew(() => { return _repository.ObterDoNivel(idNivel); });
+        }
     }
 }

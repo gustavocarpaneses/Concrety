@@ -65,8 +65,9 @@
   <ItemGroup>
     <Compile Include="Pizolato\TorresDoBela\Common.cs" />
     <Compile Include="Pizolato\TorresDoBela\Materiais.cs" />
-    <Compile Include="Pizolato\TorresDoBela\Usuarios.cs" />
     <Compile Include="Pizolato\TorresDoBela\Servicos.cs" />
+    <Compile Include="Pizolato\TorresDoBela\Usuarios.cs" />
+    <Compile Include="Pizolato\TorresDoBela\NormasServicos.cs" />
     <Compile Include="Pizolato\TorresDoBela\Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +75,94 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Pizolato\TorresDoBela\Entrada\FVM.csv" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-01 LOCAÇÃO DE LOTE OU  PLATÔ.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-02 ESCAVAÇÃO E ATERRO %28MANUAL OU MECÂNICO%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-03 COMPATAÇÃO DE ATERRO %28MANUAL OU MECÂNICO%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-04 LOCAÇÃO DE FUNDAÇÃO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-05 EXECUÇÃO DE FUNDAÇÃO TIPO RADIER.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-06 EXECUÇÃO DE FUNDAÇÃO TIPO BROCA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-07 CORTE, DOBRA E MONTAGEM DE ARMADURA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-08 PREPARO EXECUÇÃO DE FORMA e  ARMAZENAMENTO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-09 PREPARO E EXECUÇÃO DE PAREDE DE CONCRETO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-10 EXECUÇÃO DE FUNDAÇÃO DE BLOCOS E VIGAS BALDRAMES.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-11 EXECUÇÃO DE ALVENARIA NÃO ESTRUTURAL.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-12 EXECUÇÃO DE ESTRUTURA DE CONCRETO %28PILARES, VIGAS E CINTAS%29 e pre-moldado.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-13 PREPARO E EXECUÇÃO DE LAJE %28PRÉ-MOLDADO OU MACIÇA%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-14 PREPARO E EXECUÇÃO DE ESTRUTURA DE COBERTURA %28MADEIRAMENTO OU  METÁLICA%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-15 EXECUÇÃO DE COBERTURA COM TELHA CERÂMICA OU GALVANIZADA OU C.A. OU PVC%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-16 EXECUÇÃO DE INSTALAÇÕES DE ESGOTO SANITARIO %28TUBULAÇÕES E CAIXAS%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-17 EXECUÇÃO DE INSTALAÇÕES HIDRAULICA %28TUBULAÇÕES E CAIXA D%27ÁGUA%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-18 EXECUÇÃO DE INSTALAÇÕES ELÉTRICA, LÓGICA E TELEFÔNICA %28TUBULAÇÕES E CAIXAS%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-19 ASSENTAMENTO DE BATENTES DE MADEIRA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-20  ASSENTAMENTO DE ESQUADRIAS METALICAS.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-21 PREPARO E EXECUÇÃO DE CONTRA PISO OU REGULARIZAÇÃO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-22 PREPARO E EXECUÇÃO DE REVESTIMENTO INTERNO %28PAREDE E TETO%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-23 PREPARO E EXECUÇÃO DE REVESTIMENTO EXTERNO %28PAREDE E TETO%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-24 EXECUÇÃO DE REVESTIMENTO CERAMICO EM PAREDES.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-25 EXECUÇÃO DE REVESTIMENTO CERAMICO - PISO INTERNO E EXTERNO- Luciano.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-26 EXECUÇÃO DE INSTALAÇÕES ELÉTRICA, LÓGICA %28FIAÇÕES, DISJUNTORES, LUMINÁRIAS E TOMADAS%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-27 EXECUÇÃO DE FORRO PVC.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-28 EXECUÇÃO DE INSTALAÇÕES HIDROSSANITÁRIA %28BANCADAS, LOUÇAS E METAIS%29.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-29 EMASSSAMENTO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-30 EXECUÇÃO DE PINTURA INTERNA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-31 EXECUÇÃO DE PINTURA EXTERNA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-32 EXECUÇÃO DE PINTURA DE ESQUADRIA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-33 EXECUÇÃO DE VERNIZ.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-34  EXECUÇÃO DE IMPERMEABILIZAÇÃO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-36 MONTAGEM DE CALHAS, RUFOS E CONDUTORES.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-37 Execução de portas e janelas em vidro temperado e vidro comum.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-38 EXECUÇÃO DE FOSSA SÉPTICA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-39 EXECUÇÃO DE CAIXA DE PASSAGEM.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-40 TESTE DE ABATIMENTO DE CONCRETO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-41 MOLDAGEM E CORPO DE PROVA DE CONCRETO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-42 ENSAIO DE COMPRESSÃO DE CORPO DE PROVA CILINDRICO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-43 EXECUÇÃO DE MURO DE ARRIMO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-01-44 EXECUÇÃO DE INSTALAÇÃO DE GÁS - GLP.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-01 Locação de obra.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-02 Terraplanagem corte.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-03 Terraplanagem aterro.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-04 Execução de fundação com trado manual ou mecânico.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-05 Rebaixamento do lençol freático.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-06 Execução de impermeabilização.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-07 Forma.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-08 Armadura.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-09 Concretagem de peça estrutural.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-03-10 Segurança do trabalho em obra localizada.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-01 LOCAÇÃO E ACOMPANHAMENTO TOPOGRAFICO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-02 LIMPEZA DO TERRENO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-03 TERRAPLANGEM CORTE.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-04 TERRAPLANGEM ATERRO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-05 TERRAPLANGEM EXPLORAÇÃO DE JAZIDAS.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-06 REGULARIZAÇÃO DO SUBLEITO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-07 ESTRUTURA DO PAVIMENTO BASE.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-08 IMPRIMAÇÃO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-09 PINTURA DE LIGAÇÃO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-10 REVESTIMENTO RÍGIDO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-11 REVESTIMENTO FLEXIVEL.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-12 RECUPERAÇÃO DE PAVIMENTOS.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-13 DRENAGEM SUPERCIAL SARJETA, MEIO FIO E BOCA DE LOBO.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-14 DRENAGEM SUPERCIAL DESCIDA D%27AGUA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-15 EXECUÇÃO DE DRENAGEM PROFUNDA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-16 CONTENÇÃO DE TALUDES.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-17 REVESTIMENTO VEGETAL.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-18 EXECUÇÃO DE CAIXAS E POÇOS DE VISITA.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-04-19 Segurança do trabalho em obra viaria.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1 01-06-01 CONCRETO DOSADO EM CENTRAL.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-01 - Locação de obra.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-02 - Escavação manual mecânica.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-03 - Escoramento para ancoragem.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-04 - Rebaixamento do lençol freático.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-05 - Execução de fundação para tubulação.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-06 - Assentamento de tubulação.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-07 - Galeria em seção aberta.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-08 - Galeria em seção fechada.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-09 - Execução de caixas e poços de visita.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-10 - Reaterros.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-11 - Reposição de pavimentação.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-12 - Ligação predial água potável.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-13 - Ligação predial esgotamento sanitário.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-14 - Ligação predial água pluvial.pdf" />
+    <None Include="Pizolato\TorresDoBela\Entrada\PDFs\PO 8.5.1-01-02-15 - Segurança do trabalho em obra lineares.pdf" />
     <None Include="Pizolato\TorresDoBela\Entrada\PES_Edificacoes.csv" />
     <None Include="Pizolato\TorresDoBela\Entrada\PES_Lineares.csv" />
     <None Include="Pizolato\TorresDoBela\Entrada\PES_Viarias.csv" />
@@ -86,6 +175,10 @@
     <ProjectReference Include="..\Concrety.Crosscutting.Logging\Concrety.Crosscutting.Logging.csproj">
       <Project>{80756397-E0DB-4A07-802A-AA3CCCB948B4}</Project>
       <Name>Concrety.Crosscutting.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Concrety.Data.Azure\Concrety.Data.Azure.csproj">
+      <Project>{CEA7B452-FC66-4FA0-8E94-15A72BD18495}</Project>
+      <Name>Concrety.Data.Azure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Concrety.Data\Concrety.Data.csproj">
       <Project>{D34C7F8E-D295-4B31-A39B-B13761376A16}</Project>
