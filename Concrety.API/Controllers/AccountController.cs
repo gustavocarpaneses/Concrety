@@ -18,7 +18,7 @@ namespace Concrety.API.Controllers
     public class AccountController : ApiControllerBase
     {
 
-        private IApplicationUserManager _userManager;
+        private readonly IApplicationUserManager _userManager;
 
         public AccountController(IApplicationUserManager userManager)
         {

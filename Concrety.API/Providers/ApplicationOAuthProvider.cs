@@ -5,6 +5,7 @@ using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Configuration;
 using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -24,7 +25,6 @@ namespace Concrety.API.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             //TODO: Pegar do IoC
@@ -41,8 +41,8 @@ namespace Concrety.API.Providers
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.UserName));
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+            identity.AddClaim(new Claim(ClaimTypes.Role, String.Join(",", user.Roles.Select(r => r.RoleId))));
             //identity.AddClaim(new Claim("sub", context.UserName));
-            //identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
         }

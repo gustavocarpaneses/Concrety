@@ -36,6 +36,7 @@
     <Compile Include="Entities\EmailFeedback.cs" />
     <Compile Include="Entities\EmpreendimentoPeriodo.cs" />
     <Compile Include="Entities\EmpreendimentoDiarioPeriodo.cs" />
+    <Compile Include="Entities\Enumerators\Roles.cs" />
     <Compile Include="Entities\OcorrenciaAnexo.cs" />
     <Compile Include="Entities\Relatorio.cs" />
     <Compile Include="Entities\Results\EntityResultBase.cs" />

@@ -3,6 +3,7 @@ using Concrety.API.ViewModels;
 using Concrety.Core.Entities;
 using Concrety.Core.Entities.Enumerators;
 using Concrety.Core.Extensions;
+using Concrety.Core.Interfaces.Identity;
 using Concrety.Core.Interfaces.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,18 @@ namespace Concrety.API.Controllers
     [RoutePrefix("api/Ocorrencias")]
     public class OcorrenciasController : ApiControllerBase
     {
+        private readonly IApplicationUserManager _userManager;
         private readonly IOcorrenciaService _ocorrenciaService;
         private readonly IPatologiaService _patologiaService;
 
         public OcorrenciasController(
             IOcorrenciaService ocorrenciaService,
-            IPatologiaService patologiaService)
+            IPatologiaService patologiaService,
+            IApplicationUserManager userManager)
         {
             _ocorrenciaService = ocorrenciaService;
             _patologiaService = patologiaService;
+            _userManager = userManager;
         }
 
         [Route("GetPossiveisStatus")]
@@ -102,6 +106,13 @@ namespace Concrety.API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Excluir(int id)
         {
+            var roles = await _userManager.GetRolesAsync(User.Identity.GetUserId()).ConfigureAwait(false);
+
+            if(!roles.Any(r => r == Roles.Administrador.ToString() || r == Roles.Escritorio.ToString()))
+            {
+                return BadRequest();
+            }
+
             var resultado = await _ocorrenciaService.RemoverAsync(id).ConfigureAwait(false);
 
             IHttpActionResult errorResult = GetErrorResult(resultado);
