@@ -3,7 +3,7 @@ using Concrety.Core.Entities;
 using Concrety.Core.Entities.Results;
 using Concrety.Core.Interfaces.UnitOfWork;
 using Concrety.Crosscutting.Logging;
-using Concrety.Data.Azure;
+using Concrety.Data.AWS;
 using Concrety.Data.Context;
 using Concrety.Data.UnitOfWork;
 using Concrety.Identity.Models;
@@ -26,7 +26,7 @@ namespace Concrety.Imports.Pizolato.TorresDoBela
         [SetUp]
         public void SetUp()
         {
-            var connectionString = "Server=tcp:concrety.database.windows.net,1433;Database=Concrety;User ID=concrety.sql;Password=Construcao@123;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;";
+            var connectionString = "Server=concrety.cybxdszlpy8b.us-east-1.rds.amazonaws.com,1433;Database=concrety_prod;User ID=concrety.sql;Password=Construcao@123;Trusted_Connection=False;Encrypt=False;Connection Timeout=30;";
             _unitOfWork = new UnitOfWork(
                 new ConcretyContext(connectionString, NLogLogger.Instance),
                 new ApplicationIdentityUser
