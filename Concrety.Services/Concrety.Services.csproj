@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Base\ServiceBase.cs" />
+    <Compile Include="HealthCheckService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="EmpreendimentoDiarioPeriodoService.cs" />
     <Compile Include="ItemVerificacaoMaterialService.cs" />

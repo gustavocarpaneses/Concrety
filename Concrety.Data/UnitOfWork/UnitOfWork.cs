@@ -95,9 +95,12 @@ namespace Concrety.Data.UnitOfWork
             if (!_disposed && disposing)
             {
                 _context.Dispose();
-                foreach (IDisposable repository in _repositories.Values)
+                if (_repositories != null)
                 {
-                    repository.Dispose();// dispose all repositries
+                    foreach (IDisposable repository in _repositories.Values)
+                    {
+                        repository.Dispose();// dispose all repositries
+                    }
                 }
             }
             _disposed = true;

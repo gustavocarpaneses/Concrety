@@ -26,6 +26,7 @@ namespace Concrety.API
             builder.RegisterType(typeof(OcorrenciaAnexoService)).As(typeof(IOcorrenciaAnexoService)).InstancePerRequest();
             builder.RegisterType(typeof(EmailService)).As(typeof(IEmailService)).InstancePerRequest();
             builder.RegisterType(typeof(RelatorioService)).As(typeof(IRelatorioService)).InstancePerRequest();
+            builder.RegisterType(typeof(HealthCheckService)).As(typeof(IHealthCheckService)).InstancePerRequest();
         }
     }
 }

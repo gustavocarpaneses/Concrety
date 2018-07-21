@@ -5,6 +5,7 @@ using Amazon.S3.Transfer;
 using Concrety.Core.Entities;
 using Concrety.Core.Interfaces.Blob;
 using System.Configuration;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Concrety.Data.AWS
@@ -25,6 +26,8 @@ namespace Concrety.Data.AWS
             };
 
             await transferUtility.UploadAsync(request).ConfigureAwait(false);
+            anexo.UrlPrimaria = Path.Combine("https://s3.amazonaws.com/", request.BucketName, request.Key);
+            anexo.UrlSecundaria = string.Empty;
         }
 
         public async Task RemoverAsync(Anexo anexo)

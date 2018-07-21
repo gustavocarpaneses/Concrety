@@ -54,7 +54,7 @@ namespace Concrety.API.Controllers
         public async Task<IEnumerable<EmpreendimentoViewModel>> ObterEmpreendimentos()
         {
             var user = await _userManager.FindByIdAsync(User.Identity.GetUserId()).ConfigureAwait(false);
-            return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos);
+            return Mapper.Map<IEnumerable<Empreendimento>, IEnumerable<EmpreendimentoViewModel>>(user.Empreendimentos.OrderByDescending(x => x.Id));
         }
         
     }
