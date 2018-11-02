@@ -19,7 +19,9 @@ namespace Concrety.Core.Entities.Enumerators
         [Description("Aprovado")]    
         Aprovado = 20,
         [Description("Reinspecionado e Aprovado")]
-        ReinspecionadoAprovado = 30
+        ReinspecionadoAprovado = 30,
+        [Description("Não Aplicável")]
+        NaoAplicavel = 40,
     }
 
     public enum StatusOcorrencia

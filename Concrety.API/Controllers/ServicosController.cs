@@ -83,6 +83,11 @@ namespace Concrety.API.Controllers
                     {
                         Id = (int)ResultadoServicoUnidade.ReinspecionadoAprovado,
                         Nome = ResultadoServicoUnidade.ReinspecionadoAprovado.GetDescription()
+                    },
+                    new StatusResultadoViewModel
+                    {
+                        Id = (int)ResultadoServicoUnidade.NaoAplicavel,
+                        Nome = ResultadoServicoUnidade.NaoAplicavel.GetDescription()
                     }
                 };
             });

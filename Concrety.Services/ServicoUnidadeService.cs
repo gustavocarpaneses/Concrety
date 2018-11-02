@@ -86,10 +86,10 @@ namespace Concrety.Services
             if (servicoUnidade.Status == StatusServicoUnidade.Concluida)
             {
                 if (servicoUnidade.FichasVerificacaoServico.Any(
-                    f => f.Itens.Any(
-                        i => i.Resultado != ResultadoServicoUnidade.Aprovado
-                        &&
-                        i.Resultado != ResultadoServicoUnidade.ReinspecionadoAprovado)))
+                    f => f.Itens.Any(i => 
+                        i.Resultado != ResultadoServicoUnidade.Aprovado &&
+                        i.Resultado != ResultadoServicoUnidade.ReinspecionadoAprovado &&
+                        i.Resultado != ResultadoServicoUnidade.NaoAplicavel)))
                 {
                     return new List<string>()
                     {
@@ -104,10 +104,10 @@ namespace Concrety.Services
             else
             {
                 if (servicoUnidade.FichasVerificacaoServico.All(
-                    f => f.Itens.All(
-                        i => i.Resultado == ResultadoServicoUnidade.Aprovado
-                        ||
-                        i.Resultado == ResultadoServicoUnidade.ReinspecionadoAprovado)))
+                    f => f.Itens.All(i => 
+                        i.Resultado == ResultadoServicoUnidade.Aprovado ||
+                        i.Resultado == ResultadoServicoUnidade.ReinspecionadoAprovado ||
+                        i.Resultado == ResultadoServicoUnidade.NaoAplicavel)))
                 {
                     servicoUnidade.Status = StatusServicoUnidade.Concluida;
                     if (servicoUnidade.DataFim == null || servicoUnidade.DataFim == DateTime.MinValue)
